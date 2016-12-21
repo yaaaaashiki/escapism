@@ -1,5 +1,6 @@
 # README
 
+現実逃避の時間です！！！！
 
 
 # Ruby version
@@ -16,13 +17,18 @@
 
 * mysql 5.5以上
 
-### Configuration
 
-* 中身はご自身の環境に適宜合わせてください
-``
-
-### Gem
+### Gem install 
 
 ```
 bundle install --path vendor/bundle
-`
+```
+
+### Database creation
+
+```
+bundle exec rails db:create
+bundle exec rails db:migrate:reset
+```
+
+
