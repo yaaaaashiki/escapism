@@ -1,0 +1,37 @@
+current directory: /Users/Soichiro/Desktop/work/rails/Escapism/vendor/bundler/ruby/2.3.0/gems/mysql2-0.3.21/ext/mysql2
+/Users/Soichiro/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20161221-34228-rhjqja.rb extconf.rb
+checking for ruby/thread.h... yes
+checking for rb_thread_call_without_gvl() in ruby/thread.h... yes
+checking for rb_thread_blocking_region()... no
+checking for rb_wait_for_single_fd()... yes
+checking for rb_hash_dup()... yes
+checking for rb_intern3()... yes
+-----
+Using mysql_config at /usr/local/bin/mysql_config
+-----
+checking for mysql.h... yes
+checking for errmsg.h... yes
+checking for mysqld_error.h... yes
+-----
+Setting rpath to /usr/local/Cellar/mysql56/5.6.31/lib
+-----
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/Soichiro/Desktop/work/rails/Escapism/vendor/bundler/ruby/2.3.0/extensions/x86_64-darwin-15/2.3.0-static/mysql2-0.3.21/mkmf.log
+
+current directory: /Users/Soichiro/Desktop/work/rails/Escapism/vendor/bundler/ruby/2.3.0/gems/mysql2-0.3.21/ext/mysql2
+make "DESTDIR=" clean
+
+current directory: /Users/Soichiro/Desktop/work/rails/Escapism/vendor/bundler/ruby/2.3.0/gems/mysql2-0.3.21/ext/mysql2
+make "DESTDIR="
+compiling client.c
+compiling infile.c
+compiling mysql2_ext.c
+compiling result.c
+linking shared-object mysql2/mysql2.bundle
+
+current directory: /Users/Soichiro/Desktop/work/rails/Escapism/vendor/bundler/ruby/2.3.0/gems/mysql2-0.3.21/ext/mysql2
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 mysql2.bundle ./.gem.20161221-34228-16o6gzf/mysql2

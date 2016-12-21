@@ -1,0 +1,261 @@
+have_header: checking for ruby/thread.h... -------------------- yes
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -E -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_call_without_gvl() in ruby/thread.h... -------------------- yes
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/thread.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return !p; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()... -------------------- no
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_thread_blocking_region'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return !p; }
+/* end */
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+Undefined symbols for architecture x86_64:
+  "_rb_thread_blocking_region", referenced from:
+      _t in conftest-565149.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void rb_thread_blocking_region();
+14: int t(void) { rb_thread_blocking_region(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_wait_for_single_fd()... -------------------- yes
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_wait_for_single_fd'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return !p; }
+/* end */
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void rb_wait_for_single_fd();
+14: int t(void) { rb_wait_for_single_fd(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_dup()... -------------------- yes
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_hash_dup; return !p; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_intern3()... -------------------- yes
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+conftest.c:13:57: error: use of undeclared identifier 'rb_intern3'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return !p; }
+/* end */
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void rb_intern3();
+14: int t(void) { rb_intern3(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for mysql.h... -------------------- yes
+
+"clang -E -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/usr/local/Cellar/mysql56/5.6.31/include/mysql -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+/* end */
+
+--------------------
+
+have_header: checking for errmsg.h... -------------------- yes
+
+"clang -E -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/usr/local/Cellar/mysql56/5.6.31/include/mysql -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <errmsg.h>
+/* end */
+
+--------------------
+
+have_header: checking for mysqld_error.h... -------------------- yes
+
+"clang -E -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/usr/local/Cellar/mysql56/5.6.31/include/mysql -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysqld_error.h>
+/* end */
+
+--------------------
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/usr/local/Cellar/mysql56/5.6.31/include/mysql -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib    -L/usr/local/Cellar/mysql56/5.6.31/lib  -lmysqlclient  -lssl -lcrypto  -lruby-static -framework CoreFoundation  -Wall -funroll-loops -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"clang -o conftest -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/x86_64-darwin15 -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0/ruby/backward -I/Users/Soichiro/.rbenv/versions/2.3.0/include/ruby-2.3.0 -I. -I/usr/local/Cellar/mysql56/5.6.31/include/mysql -I/Users/Soichiro/.rbenv/versions/2.3.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -Wall -funroll-loops conftest.c  -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib -L. -L/Users/Soichiro/.rbenv/versions/2.3.0/lib  -fstack-protector -L/usr/local/lib    -L/usr/local/Cellar/mysql56/5.6.31/lib  -lmysqlclient  -lssl -lcrypto  -lruby-static -framework CoreFoundation  -Wl,-rpath,/usr/local/Cellar/mysql56/5.6.31/lib -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
