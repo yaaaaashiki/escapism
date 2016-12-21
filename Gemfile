@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '5.0.0'
 gem 'therubyracer', platforms: :ruby
 
-# aUI/UX
+#a aUI/UX
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
