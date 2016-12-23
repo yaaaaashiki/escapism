@@ -1,4 +1,8 @@
 <%= form_for @user do |f| %>
+   <%= f.label :username %><br />
+   <%= f.text_field :username %><br />
+   <%= f.label :year %><br />
+   <%= f.number_field :year %><br />
    <%= f.label :email %><br />
    <%= f.text_field :email %><br />
    <%= f.label :password %><br />
