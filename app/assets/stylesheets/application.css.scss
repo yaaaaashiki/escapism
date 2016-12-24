@@ -11,5 +11,14 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
+ *= require AdminLTE/AdminLTE
+ *= require AdminLTE/skins/skin-blue
  *= require_self
  */
+
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome';
+
