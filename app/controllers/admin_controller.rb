@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   protect_from_forgery with: :exception
+  layout 'admin_lte_2'
 #  layout 'admin/layouts/application'
 #  before_action :authenticate_admin_user!
 
