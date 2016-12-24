@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-ui-rails'
 gem 'dropzonejs-rails'
 gem 'compass-rails'
+gem 'bootstrap_form'
 
 # Authentication
 # gem 'devise'
