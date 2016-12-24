@@ -29,6 +29,6 @@ bundle install --path vendor/bundle
 ```
 bundle exec rails db:create
 bundle exec rails db:migrate:reset
+bundle exec rails db:seed_fu
 ```
-
 
