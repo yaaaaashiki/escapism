@@ -6,6 +6,7 @@ gem 'therubyracer', platforms: :ruby
 #a aUI/UX
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'twitter-bootstrap-rails-confirm'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass', '~> 4.5.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -22,6 +23,9 @@ gem 'compass-rails'
 gem 'sorcery'
 gem 'cancancan'
 gem 'bcrypt', '~> 3.1.7'
+
+# Admin
+gem 'adminlte2-rails'
 
 # Debugger
 gem 'byebug'
