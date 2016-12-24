@@ -1,0 +1,6 @@
+<%= bootstrap_form_tag do |f| %>
+  <%= f.email_field :email, autofocus: true, icon: "envelope" %>
+  <%= f.password_field :password, autocomplete: "off", icon: "lock" %>
+
+  <%= f.submit 'ログイン', class: 'btn btn-primary' %>
+<% end %>
