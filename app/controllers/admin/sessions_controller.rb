@@ -6,18 +6,18 @@ class Admin::SessionsController < AdminController
   end
 
   def create
-    admin_user = AdminUser.find_by(username: params[:username])
-    if admin_user && admin_user.authenticate(params[:password])
-      session[:admin_user_id] = admin_user.id
-      redirect_to admin_path, notice: 'ログインしました。'
+    @admin_user = AdminUser.find_by(username: params[:username])
+    if @admin_user && @admin_user.authenticate(params[:password])
+      admin_log_in @admin_user
+      redirect_to admin_url, notice: 'login succeed'
     else
-      flash.now[:warning] = 'ログインに失敗しました。'
+      flash.now[:warning] = 'login failed'
       render :new
     end
   end
 
   def destroy
-    session[:admin_user_id] = nil
-    redirect_to admin_sign_in_path, notice: 'ログアウトしました。'
+    admin_log_out
+    redirect_to admin_sign_in_url, notice: 'logoutt!'
   end
 end

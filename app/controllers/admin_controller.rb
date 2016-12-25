@@ -3,7 +3,8 @@ class AdminController < ApplicationController
   layout 'admin_lte_2'
 #  layout 'admin/layouts/application'
   before_action :authenticate_admin_user!
-
+  include SessionsHelper
+  
   def current_admin_user
     if session[:admin_user_id].present?
       @current_admin_user ||= AdminUser.find(session[:admin_user_id])
