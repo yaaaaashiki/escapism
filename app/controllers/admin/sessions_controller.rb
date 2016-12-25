@@ -6,9 +6,9 @@ class Admin::SessionsController < AdminController
   end
 
   def create
-    admin_user = AdminUser.find_by(username: params[:username])
-    if admin_user && admin_user.authenticate(params[:password])
-      session[:admin_user_id] = admin_user.id
+    @admin_user = AdminUser.find_by(username: params[:username])
+    if @admin_user && @admin_user.authenticate(params[:password])
+      session[:admin_user_id] = @admin_user.id
       redirect_to admin_path, notice: 'ログインしました。'
     else
       flash.now[:warning] = 'ログインに失敗しました。'
