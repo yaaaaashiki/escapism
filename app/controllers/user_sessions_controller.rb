@@ -8,7 +8,6 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(params[:username], params[:password])
       log_in @user 
-      #redirect_to user_sessions_path
       render 'index' 
     else
       flash.now[:alert] = 'Login failed'
