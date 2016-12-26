@@ -6,6 +6,7 @@ gem 'therubyracer', platforms: :ruby
 #a aUI/UX
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails-confirm'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass', '~> 4.5.0'
@@ -17,6 +18,9 @@ gem 'jquery-ui-rails'
 gem 'dropzonejs-rails'
 gem 'compass-rails'
 gem 'bootstrap_form'
+gem 'execjs'
+gem 'bourbon'
+
 
 # Authentication
 # gem 'devise'
