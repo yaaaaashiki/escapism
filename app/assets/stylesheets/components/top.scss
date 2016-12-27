@@ -19,7 +19,20 @@
   }
 }
 
-.title-align {
-  text-align: center; 
+h1 {
+  height: 100%;
 }
+
+
+.title-align {
+
+//なんかわからんけどうまくいかない縦横中央揃え  
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center; 
+  justify-content: center;
+  align-items: center; 
+}
+
 
