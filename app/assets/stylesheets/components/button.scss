@@ -1,28 +1,24 @@
-$facebook-color: #3b5998;
-.btn-facebook {
+@import "variables/variables";
+
+.top-btn {
   color: white;
-  background-color: $facebook-color;
-
-  i.fa.fa-facebook {
-    font-size: rem(24);
-    padding-right: 4px;
-  }
-
-  span {
-    border-left: 1px solid white;
-    padding-left: 4px;
-  }
-
-}
-
-.btn-login {
-  color: white;
-  background-color: $facebook-color;
+  width: 100px;
+  text-align: center;  
   position: absolute; top:40px;
   position: absolute; right:50px;
-
+  border-radius:13px;
+  opacity: 0.90; 
 }
 
+.login{
+    @extend .top-btn;
+    background-color: $blue; 
+  }
+  
+.logout{
+    @extend .top-btn;
+    background-color: $red; 
+  }
 
 
 
