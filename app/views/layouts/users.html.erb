@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="centering-wrapper-block">
+<head>
+  <title>Escapism</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
+</head>
+<body class="centering-wrapper-block background-book-img"> 
+  <div id="nav">
+    <% if logged_in? %>
+      <%= link_to "Logout", :logout, method: :post, class:"btn logout" %>
+    <% else %>
+      <%= link_to "Register", new_user_path %> 
+      <%= link_to "Login", :login, class:"btn login" %>
+    <% end %>
+  </div>
+  <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
+  <%= yield %>
+</body>
+</html>
