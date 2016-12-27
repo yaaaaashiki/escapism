@@ -1,0 +1,28 @@
+$facebook-color: #3b5998;
+.btn-facebook {
+  color: white;
+  background-color: $facebook-color;
+
+  i.fa.fa-facebook {
+    font-size: rem(24);
+    padding-right: 4px;
+  }
+
+  span {
+    border-left: 1px solid white;
+    padding-left: 4px;
+  }
+
+}
+
+.btn-login {
+  color: white;
+  background-color: $facebook-color;
+  position: absolute; top:40px;
+  position: absolute; right:50px;
+
+}
+
+
+
+
