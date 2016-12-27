@@ -9,11 +9,11 @@
 </head>
 <body>
   <%= render 'shared/main' %>   
+  <%= link_to 'Back', root_path, method: :get, class: "btn back" %> 
   <div id="nav">
     <% if logged_in? %>
       <%= link_to "Logout", :logout, method: :post, class:"btn logout" %>
     <% else %>
-      <%= link_to "Register", new_user_path %> 
       <%= link_to "Login", :login, class:"btn login" %>
     <% end %>
   </div>

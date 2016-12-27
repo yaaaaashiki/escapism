@@ -11,20 +11,27 @@
 .login{
     @extend .top-btn;
     position: absolute; top:40px;
-    position: absolute; right:50px;
+    position: absolute; right:70px;
     background-color: $blue; 
   }
   
 .logout{
     @extend .top-btn;
     position: absolute; top:40px;
-    position: absolute; right:50px;
+    position: absolute; right:70px;
     background-color: $red; 
   }
 
 .submit{
     @extend .top-btn;
     background-color: $blue; 
+  }
+
+.back{
+    @extend .top-btn;
+    position: absolute; top:40px;
+    position: absolute; left:70px;
+    background-color: $yellow; 
   }
 
 
