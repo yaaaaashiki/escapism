@@ -1,13 +1,6 @@
-<%= form_tag user_sessions_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :username %><br/>
-    <%= text_field_tag :username %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
+<%= form_for :session, url: user_sessions_path, :method => :post, :html => {:class => 'form-signin'} do |f| %>
+  <h1 class="form-signin-heading text-muted">Sign In</h1> 
+    <%= f.text_field :username, class: "form-control", placeholder: "username" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+    <%= f.submit_tag "submit",class: "btn btn-lg btn-info btn-block" %>
 <% end %>

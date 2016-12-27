@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   end
  
   def create
-    if @user = login(params[:username], params[:password])
+    if @user = login(params[:session][:username], params[:session][:password])
       log_in @user 
       render 'index' 
     else
