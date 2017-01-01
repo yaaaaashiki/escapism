@@ -8,10 +8,10 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(params[:session][:username], params[:session][:password])
       log_in @user 
-      render 'index' 
+      render :index 
     else
       flash.now[:alert] = 'Login failed'
-      render 'new'
+      render :new 
     end
   end
  

@@ -1,10 +1,7 @@
 <%= bootstrap_form_tag do |f| %>
   <div id="nav">
     <% if admin_logged_in? %>
-      now login 
       <%= link_to "Logout", controller:"admin/sessions", action:"destroy" %>
-    <% else %>
-      please login !
     <% end %>
   </div>
   <%= f.text_field :username, autofocus: true, icon: "envelope" %>
