@@ -91,6 +91,20 @@ GEM
     docile (1.1.5)
     dropzonejs-rails (0.7.3)
       rails (> 3.1)
+    elasticsearch (5.0.0)
+      elasticsearch-api (= 5.0.0)
+      elasticsearch-transport (= 5.0.0)
+    elasticsearch-api (5.0.0)
+      multi_json
+    elasticsearch-dsl (0.1.4)
+    elasticsearch-model (0.1.9)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.9)
+    elasticsearch-transport (5.0.0)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -107,6 +121,7 @@ GEM
       sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    hashie (3.4.6)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -302,6 +317,9 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   compass-rails
   dropzonejs-rails
+  elasticsearch-dsl (= 0.1.4)
+  elasticsearch-model (= 0.1.9)
+  elasticsearch-rails (= 0.1.9)
   execjs
   factory_girl_rails
   font-awesome-rails

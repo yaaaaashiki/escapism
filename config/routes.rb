@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     resources :users 
   end
 
+  get '/search' => 'search#index'
+
 end

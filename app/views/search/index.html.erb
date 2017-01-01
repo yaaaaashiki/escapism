@@ -1,0 +1,30 @@
+<h1>Dürst研論文検索</h1>
+
+<!-- 検索フォーム -->
+<%= form_tag root_path, method: :get, enforce_utf8: false do %>
+  <div class="form-group">
+    <%= search_field_tag :q, params[:q], class: 'form-control', placeholder: 'キーワード' %>
+  </div>
+  <button type="submit" class="btn btn-default">検索</button>
+<% end %>
+
+<br>
+
+<!-- 検索結果の表示 -->
+<div class="col-xs-9">
+  <div id="results">
+    <ul>
+      <% @theses.each do |t| %>
+        <hr />
+        <div class="result">
+          <h4><%= t.url %>（<%= t.author.name %>）</h4>
+          <p class="text-muted">
+            <small>執筆年度: <%= t.year %></small>
+            <small>内容: <%= t.pdf_text %></small>
+            <small>コメント: <%= t.comment %></small>
+          </p>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+</div>
