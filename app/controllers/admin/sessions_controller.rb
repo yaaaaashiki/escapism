@@ -1,5 +1,4 @@
 class Admin::SessionsController < AdminController
-  #layout 'admin/layouts/admin_sign_in'
   skip_before_action :authenticate_admin_user!
 
   def new
