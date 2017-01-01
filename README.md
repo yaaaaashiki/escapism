@@ -69,3 +69,10 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
+# Elasticsearchにシードデータを流し込む
+```bash
+# rails consoleで以下を実行
+Thesis.__elasticsearch__.create_index! force: true # Elasticsearchのインデックスを削除
+Thesis.__elasticsearch__.refresh_index! # Elasticsearchのインデックスを作成
+Thesis.import # ElasticsearchにMySQLの中のThesisデータを流し込む
+```
