@@ -16,7 +16,7 @@
 # System dependencies
 
 * mysql 5.5以上  
-### elasticsearch2.4.3使用時
+### To use elasticsearch2.4.3
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
 * JAVA_HOMEの設定  
 (Javaをバージョン管理したかったらJenvを使用してください)
@@ -32,31 +32,31 @@ gem install bundler -v 1.12.5
 bundle _1.12.5_  install --path vendor/bundle
 ```
 
-# elasticsearch2.4.3の設置方法(起動と停止以外は一回のみ行う)
-## 設置
+# Set up Elasticsearch2.4.3(起動と停止以外は一回のみ行う)
+## Expand Elasticsearch2.4.3's tar.gz to vendor/
 ```bash
 # 圧縮ファイルの解凍
 tar -xvf vendor/elasticsearch-2.4.3.tar.gz -C vendor/
 ```
 
-## 起動
+## Start
 ```bash
 ./vendor/elasticsearch-2.4.3/bin/elasticsearch
 ```
 
-## 停止
+## Stop
 ```bash
 ^C  (←Ctrl + C)
 ```
 
-## 正常に動いてるかどうかの確認
+## Check on the Elasticsearch running
 ```bash
 curl 'localhost:9200/_cat/health'
 # 以下のような出力でgreenになっていればOK
 1483261560 09:06:00 elasticsearch green 1 1 0 0 0 0 0 0 - 100.0%
 ```
 
-## 必要なプラグインのインストール
+## Install a necessary plugin to analyze Japanese
 ```bash
 # 日本語で形態素解析をするのに使用
 sudo vendor/elasticsearch-2.4.3/bin/plugin install analysis-kuromoji
@@ -69,7 +69,7 @@ sudo vendor/elasticsearch-2.4.3/bin/plugin install analysis-kuromoji
 ./vendor/elasticsearch-2.4.3/bin/elasticsearch
 ```
 
-## Elasticsearchにインデックスを作成
+## Create a index onto the Elasticsearch
 rails consoleで以下を実行
 ```bash
 Thesis.__elasticsearch__.create_index! force: true # Elasticsearchのインデックスを削除
