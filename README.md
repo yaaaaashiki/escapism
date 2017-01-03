@@ -32,21 +32,25 @@ gem install bundler -v 1.12.5
 bundle _1.12.5_  install --path vendor/bundle
 ```
 
+# Database creation
+
+```
+bundle exec rails db:create
+bundle exec rails db:migrate:reset
+bundle exec rails db:seed_fu
+```
+
 # Set up Elasticsearch2.4.3(起動と停止以外は一回のみ行う)
-## Expand Elasticsearch2.4.3's tar.gz to vendor/
+## put on Elasricsearch and install a plugin kuromoji to it
 ```bash
-# 圧縮ファイルの解凍
-tar -xvf vendor/elasticsearch-2.4.3.tar.gz -C vendor/
+./putOnElasticsearch.sh
+# 以下のように"analysis-kuromoji"と出力されればOK
+- analysis-kuromoji
 ```
 
 ## Start
 ```bash
 ./vendor/elasticsearch-2.4.3/bin/elasticsearch
-```
-
-## Stop
-```bash
-^C  (←Ctrl + C)
 ```
 
 ## Check on the Elasticsearch running
@@ -56,31 +60,20 @@ curl 'localhost:9200/_cat/health'
 1483261560 09:06:00 elasticsearch green 1 1 0 0 0 0 0 0 - 100.0%
 ```
 
-## Install a necessary plugin to analyze Japanese
+## Initialize Elasicsearch
+起動中に以下を行う
 ```bash
-# 日本語で形態素解析をするのに使用
-sudo vendor/elasticsearch-2.4.3/bin/plugin install analysis-kuromoji
-# 正常にインストールされたことの確認
-./vendor/elasticsearch-2.4.3/bin/plugin list
-# 以下のように"analysis-kuromoji"とあればOK
-- analysis-kuromoji
-# Elasticsearchの再起動を行う
-^C
-./vendor/elasticsearch-2.4.3/bin/elasticsearch
+./initializeElasticsearch.sh
 ```
 
-## Create a index onto the Elasticsearch
-rails consoleで以下を実行
+## Stop
+使わないときに止める
 ```bash
-Thesis.__elasticsearch__.create_index! force: true # Elasticsearchのインデックスを削除
-Thesis.__elasticsearch__.refresh_index! # Elasticsearchのインデックスを作成
+^C  (←Ctrl + C)
 ```
 
-# Database creation
-
+# Insert data to Elasticsearch
+rails consoleで以下のコマンドを打つ
+```bash
+Thesis.new.upsertAll!
 ```
-bundle exec rails db:create
-bundle exec rails db:migrate:reset
-bundle exec rails db:seed_fu
-```
-
