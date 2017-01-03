@@ -5,6 +5,8 @@ class SearchController < ApplicationController
   end
 
   def index
-    @theses = Thesis.search(params)
+    if params['q'] then
+      @theses = Thesis.new.search(params['q'])
+    end
   end
 end

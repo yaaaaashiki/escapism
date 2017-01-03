@@ -1,64 +1,75 @@
-class Thesis < ApplicationRecord
-  belongs_to :author
+class Thesis
+  THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
+  CLIENT = Elasticsearch::Client.new log: true
+  INDEX = 'thesis_development'
+  TYPE = 'thesis'
 
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks # elasticsearchとMYSQLとの自動同期に必要
-
-  # 以下の参考ページ(http://ruby-rails.hatenadiary.com/entry/20151018/1445142266)
-
-  # Elasticsearchへの接続時の設定
-  index_name "thesis_#{Rails.env}" # インデックス名
-  # document_type # ドキュメントタイプ，フォルトでクラス名
-
-  settings do
-    mappings dynamic: 'false' do # デフォルトでマッピングが自動作成されるがそれを無効にする
-      # マッピングの公式ドキュメント
-      # https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-core-types.html
-      indexes :year
-      indexes :comment, analyzer: 'kuromoji'
-      indexes :url
-      indexes :pdf_text, analyzer: 'kuromoji'
-
-      # date型として定義
-      # formatは日付のフォーマットを指定(2015-10-16T19:26:03.679Z)
-      # 詳細: https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html
-      indexes :created_at, type: 'date', format: 'date_time'
-
-      indexes :author do
-        indexes :name, analyzer: 'keyword', index: 'not_analyzed'
-      end
-    end
-  end
-
-  # importメソッドのコールバックメソッド
-  # マッピングのデータを返すようにする
-  def as_indexed_json(options = {})
-    attributes
-      .symbolize_keys
-      .slice(:year, :comment, :url, :pdf_text, :created_at)
-      .merge(author: { name: author.name })
-  end
-
-  # Elasticsearchからのレスポンスを返す
-  def self.search(params = {})
-    keyword = params[:q]
-
-    # 検索クエリを作成（Elasticsearch::DSLを利用）
-    # 参考: https://github.com/elastic/elasticsearch-ruby/tree/master/elasticsearch-dsl
-    search_definition = Elasticsearch::DSL::Search.search {
-      query {
-        if keyword.present?
-          multi_match {
-            query keyword
-            fields %w{ author.name year address comment url pdf_text }
-          }
-        else
-          match_all
-        end
+  def search(keyword = "")
+    response = CLIENT.search index: INDEX, body: {
+      query: {
+        bool: {
+          should: [
+            { match: { author:   keyword } },
+            { match: { year:     keyword } },
+            { match: { text:     keyword } }
+          ]
+        }
       }
     }
+    Hashie::Mash.new response
+  end
 
-    # 検索クエリをなげて結果を表示
-    __elasticsearch__.search(search_definition)
+  def upsert!(url, argQuery = {})
+    tempQuery = {author: nil, year: nil, comment: nil, text: nil}.merge(argQuery)
+
+    # Elsticsearchのマッピングを崩さないためにクエリを再構築
+    query = {}
+    query[:url]     = url # urlはElasticsearchのidに使用するので不変
+    query[:author]  = tempQuery[:author]  if tempQuery[:author]
+    query[:year]    = tempQuery[:year]    if tempQuery[:year]
+    query[:comment] = tempQuery[:comment] if tempQuery[:comment]
+    query[:text]    = tempQuery[:text]    if tempQuery[:text]
+
+    CLIENT.index  index: INDEX, type: TYPE, id: url, body: query
+  end
+
+  def upsertAll!
+    pathArray = fetchPathArray
+
+    pathArray.each do |path|
+      text = extractText(path)
+
+      # TODO: 以下のデータの取得方法を考える
+      # NOTE: ディテクトリのPATHから取るのが良いかも
+      query = { 
+        author:  "Martin J. Dürst",
+        year:    2016,
+        comment: "ハイッ！ミーナサァアアン！！オーハヨウゴザイマァアアアス！！コメントシテクダサイネッッ！！",
+        url:     path,
+        text:    text
+      }
+      upsert! path, query
+    end
+  end
+  
+  private
+  
+  def fetchPathArray
+    require 'find'
+
+    pathArray = []
+    Find.find(THESIS_ROOT_DIRECTORY) do |f|
+      pathArray.push(f) if f =~ /.*\.pdf/
+    end
+
+    return pathArray
+  end
+
+  # pathにはURLも可
+  def extractText(path)
+    data = Yomu.new path
+
+    rawText = data.text
+    rawText.gsub(/\r\n|\n|\r/, "")
   end
 end

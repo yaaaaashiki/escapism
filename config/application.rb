@@ -6,9 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# elasticsearch関係のログ出力のために追加
-require 'elasticsearch/rails/instrumentation'
-
 module Escapism
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

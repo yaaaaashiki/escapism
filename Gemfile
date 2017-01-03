@@ -66,10 +66,13 @@ gem 'turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use Elasticsearch integrations
-gem 'elasticsearch-model', '0.1.9'
-gem 'elasticsearch-rails', '0.1.9'
-gem 'elasticsearch-dsl', '0.1.4'
+# Elasticsearch
+# Ruby integrations for Elasticsearch
+gem 'elasticsearch', '2.0.0'
+# Read text and metadata from files and documents (.doc, .docx, .pages, .odt, .rtf, .pdf) http://github.com/Erol/yomu
+gem 'yomu', '0.1.5'
+# Hashie is a collection of classes and mixins that make hashes more powerful.
+gem 'hashie', '3.4.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
