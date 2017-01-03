@@ -3,18 +3,19 @@ class Thesis
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
+  PAGE_SIZE = 10
 
-  def search(keyword = "")
+  def search(page, keyword = "")
     response = CLIENT.search index: INDEX, body: {
       query: {
-        bool: {
-          should: [
-            { match: { author:   keyword } },
-            { match: { year:     keyword } },
-            { match: { text:     keyword } }
-          ]
+        multi_match: {
+          query: keyword,
+          fields: ["author", "year", "text"]
         }
-      }
+      },
+      sort: { _score: { order: "desc" } },
+      from: page * PAGE_SIZE,
+      size: PAGE_SIZE
     }
     Hashie::Mash.new response
   end
