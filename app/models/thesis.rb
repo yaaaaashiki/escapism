@@ -7,14 +7,15 @@ class Thesis
   def search(keyword = "")
     response = CLIENT.search index: INDEX, body: {
       query: {
-        bool: {
-          should: [
-            { match: { author:   keyword } },
-            { match: { year:     keyword } },
-            { match: { text:     keyword } }
-          ]
+        multi_match: {
+          query: keyword,
+          fields: ["author", "year", "text"]
         }
-      }
+      },
+      sort: { _score: { order: "desc" } } # 検索結果の一致度の降順でソート
+      # Elasticsearchから返す検索結果の数をいじりたいときは以下を使用
+      # from: page * PAGE_SIZE,  # 返す検索結果の開始位置(0が最初)
+      # size: PAGE_SIZE   # 返す検索結果の数
     }
     Hashie::Mash.new response
   end
