@@ -11,22 +11,22 @@
 <br>
 
 <!-- 検索結果の表示 -->
-<% if @theses then %>
-<div class="col-xs-9">
-  <div id="results">
-    <ul>
-      <% @theses.hits.hits.each do |t| %>
-        <hr />
-        <div class="result">
-          <h4><%= t._source.url %>（<%= t._source.author %>）</h4>
-          <p class="text-muted">
-            <small>執筆年度: <%= t._source.year %></small>
-            <small>内容: <%= t._source.text %></small>
-            <small>コメント: <%= t._source.comment %></small>
-          </p>
-        </div>
-      <% end %>
-    </ul>
+<% if @theses %>
+  <div class="col-xs-9">
+    <div id="results">
+      <ul>
+        <% @theses.hits.hits.each do |t| %>
+          <hr />
+          <div class="result">
+            <h4><%= t._source.url %>（<%= t._source.author %>）</h4>
+            <p class="text-muted">
+              <small>執筆年度: <%= t._source.year %></small>
+              <small>内容: <%= t._source.text %></small>
+              <small>コメント: <%= t._source.comment %></small>
+            </p>
+          </div>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
 <% end %>

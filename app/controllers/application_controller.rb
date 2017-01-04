@@ -11,5 +11,4 @@ private
     redirect_to login_path, alert: "Please login first"
   end
 
-
 end

@@ -25,5 +25,11 @@ curl -XPUT 'localhost:9200/thesis_development?pretty' -d '{
       }
     }
   }
+}' 
+curl -XGET 'localhost:9200/thesis_development/_mapping/thesis?pretty' &&
+curl -XPUT 'localhost:9200/_settings' -d '{
+  "index" : {
+    "number_of_replicas" : 0
+  }
 }'
-curl -XGET 'localhost:9200/thesis_development/_mapping/thesis?pretty'
+
