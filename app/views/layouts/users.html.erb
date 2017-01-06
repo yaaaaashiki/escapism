@@ -8,14 +8,21 @@
   <%= favicon_link_tag %>
 </head>
 <body class="centering-wrapper-block background-book-img"> 
-  <div id="nav">
-    <% if logged_in? %>
-      <%= link_to "Logout", :logout, method: :post, class:"btn logout" %>
-    <% else %>
-      <%= link_to "Register", new_user_path %> 
-      <%= link_to "Login", :login, class:"btn login" %>
+  <%= nav_bar brand: "Escapism", brand_link: root_path, responsive: true do %>
+    <%= menu_group pull: :right do %>
+      <% if logged_in? %>
+        <!-- NOTE:何故かmenu_itemにシンボル(:logout)が使えない(引数pathが文字列だから？？)？？ -->
+        <!-- https://github.com/seyhunak/twitter-bootstrap-rails/blob/master/app/helpers/navbar_helper.rb -->
+        <%= menu_item "Logout", "logout", {method: :post} %>
+      <% else %>
+        <%= menu_item "Register", new_user_path %>
+        <%= menu_item "Login", "login" %>
+      <% end %>
     <% end %>
-  </div>
+  <% end %>
+
+
+
   <div>
     <p id="notice"><%= flash[:notice] %></p>
     <p id="alert"><%= flash[:alert] %></p>
