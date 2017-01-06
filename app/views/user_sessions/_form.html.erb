@@ -1,5 +1,5 @@
+<h1 class="form-signin-heading text-muted">Sign In</h1> 
 <%= form_for :session, url: user_sessions_path, :method => :post, :html => {:class => 'form-signin'} do |f| %>
-  <h1 class="form-signin-heading text-muted">Sign In</h1> 
     <%= f.text_field :username, class: "form-control", placeholder: "username" %>
     <%= f.password_field :password, class: "form-control", placeholder: "password" %>
     <%= f.submit_tag "submit",class: "btn btn-lg btn-info btn-block" %>

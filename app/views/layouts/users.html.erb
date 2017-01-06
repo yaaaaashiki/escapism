@@ -8,7 +8,7 @@
   <%= favicon_link_tag %>
 </head>
 <body class="centering-wrapper-block background-book-img"> 
-  <%= nav_bar brand: "Escapism", brand_link: root_path, responsive: true do %>
+  <%= nav_bar static: :top, brand: "Escapism", brand_link: root_path, responsive: true do %>
     <%= menu_group pull: :right do %>
       <% if logged_in? %>
         <!-- NOTE:何故かmenu_itemにシンボル(:logout)が使えない(引数pathが文字列だから？？)？？ -->
