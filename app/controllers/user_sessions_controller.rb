@@ -9,9 +9,10 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(params[:session][:username], params[:session][:password])
       log_in @user 
-      render :index 
+      redirect_to search_url
     else
       flash.now[:alert] = 'Login failed'
+      @bookBack = true
       render :new 
     end
   end

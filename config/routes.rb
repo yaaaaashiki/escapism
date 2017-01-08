@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     resources :users 
   end
 
-  get '/search' => 'search#index'
+  get 'search' => 'search#index', :as => :search
 
 end
