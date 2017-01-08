@@ -3,6 +3,7 @@ class UserSessionsController < ApplicationController
   
   def new
     @user = User.new
+    @bookBack = true
   end
  
   def create

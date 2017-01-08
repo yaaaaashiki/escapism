@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
-  layout 'users'
   
   def index
     #@user = User.all
+    @root     = true
+    @bookBack = true
   end
  
   def new  
     @user = User.new
+    @bookBack = true
   end
  
   def create
