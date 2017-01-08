@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Admin
 gem 'adminlte2-rails'
 
+gem 'dotenv-rails'
+
 # Debugger
 gem 'byebug'
 gem 'better_errors'
@@ -76,6 +78,9 @@ gem 'hashie', '3.4.6'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# understandable model 
+gem 'annotate'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

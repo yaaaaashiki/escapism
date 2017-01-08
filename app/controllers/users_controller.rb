@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
+  before_filter :invitation_mail, only: [:new, :create]  
   layout 'users'
   
   def index
@@ -26,4 +27,14 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :year, :email, :password, :password_confirmation)
     end
+
+
+    def invitation_mail 
+ 
+    
+    end
+
+
+
+
 end
