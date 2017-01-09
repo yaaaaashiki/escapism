@@ -75,5 +75,6 @@ curl 'localhost:9200/_cat/health'
 # Insert data to Elasticsearch
 rails consoleで以下のコマンドを打つ
 ```bash
-Thesis.new.upsertAll!
+ThesisInserter.new.upsertAll!
 ```
+
