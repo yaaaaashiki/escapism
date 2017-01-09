@@ -1,7 +1,7 @@
 # 以下データ挿入
 # Thesis_i.new.upsertAll!
 
-class Thesis_i
+class ThesisInserter
   THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
