@@ -1,13 +1,37 @@
-<%= form_for @user do |f| %>
-   <%= f.label :username %><br />
-   <%= f.text_field :username %><br />
-   <%= f.label :year %><br />
-   <%= f.number_field :year %><br />
-   <%= f.label :email %><br />
-   <%= f.text_field :email %><br />
-   <%= f.label :password %><br />
-   <%= f.password_field :password %><br />
-   <%= f.label :password_confirmation %><br />
-   <%= f.password_field :password_confirmation %><br />
-   <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="page-header">
+    <h1>Register</h1>
+  </div>
+  <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.text_field :username, class: "form-control", placeholder: "username" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.select :year, [*(1990..2100)], class: "form-control", include_blank: "year" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.text_field :email, class: "form-control", placeholder: "email" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "password_confirmation" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <%= f.submit class: "btn btn-primary btn-block" %>
+      </div>
+    </div>
+  <% end %>
+</div>
