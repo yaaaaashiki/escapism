@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
   before_filter :invitation_mail, only: [:new, :create]  
-  layout 'users'
+  #layout 'users'
   
   def index
     #@user = User.all
@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   end
  
   def new  
-    @user = User.new
     @bookBack = true
+    @user = User.new
+    if Token.exists?(token: params[:token]) 
+      redirect_to search_url
+    else
+      redirect_to root_path 
+    end
   end
  
   def create

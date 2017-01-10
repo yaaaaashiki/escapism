@@ -21,6 +21,6 @@ class ThesesController < ApplicationController
     thesis = Thesis.find params[:id]
     filepath = Rails.root.join(thesis.url)
     stat = File::stat(filepath)
-    send_file(filepath, :filename => File.basename(thesis.url))
+    send_file(filepath, :filename => File.basename(thesis.url), :disposition => "inline")
   end
 end

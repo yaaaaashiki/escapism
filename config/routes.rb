@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   get 'search' => 'search#index', :as => :search
   get 'thesis/download/:id' => 'theses#download', :as => :download
+  get 'users/new/:token' => 'users#new'
 
 end
