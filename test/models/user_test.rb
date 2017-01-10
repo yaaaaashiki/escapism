@@ -11,6 +11,11 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #
+# Indexes
+#
+#  index_users_on_email     (email) UNIQUE
+#  index_users_on_username  (username) UNIQUE
+#
 
 require 'test_helper'
 
