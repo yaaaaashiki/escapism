@@ -19,8 +19,6 @@ class ThesesController < ApplicationController
 
   def download
     thesis = Thesis.find params[:id]
-    filepath = Rails.root.join(thesis.url)
-    stat = File::stat(filepath)
-    send_file(filepath, :filename => File.basename(thesis.url), :disposition => "inline")
+    send_file(thesis.url, disposition: :inline)
   end
 end
