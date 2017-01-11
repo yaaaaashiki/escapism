@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170110103837) do
   end
 
   create_table "theses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "title",      limit: 65535
     t.text     "url",        limit: 65535
     t.integer  "year"
     t.integer  "author_id"
