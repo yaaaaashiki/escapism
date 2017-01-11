@@ -1,6 +1,6 @@
 <div class="container">
   <h1>year:<%= @thesis.year %></h1>
-  <h1>URL:<%= link_to @thesis.url, download_path(@thesis.id) %></h1>
+  <h1>URL:<%= link_to @thesis.url, download_path(@thesis), method: :post %></h1>
   <h1>author:<%= @author.name %></h1>
   <h1>Comments:</h1>
   <% @comentArray.each do |c| %>
