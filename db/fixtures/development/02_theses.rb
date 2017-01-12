@@ -1,0 +1,1 @@
+ThesisInserter.new.upsertAll!
