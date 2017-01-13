@@ -1,0 +1,146 @@
+\documentclass[uplatex,12pt,a4j]{ujreport}
+
+\usepackage{./sty/TitlePage}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[T1]{fontenc} 
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[uplatex]{otf}
+\usepackage{listings,jlisting} % ソースコード読み込み用
+\usepackage{color}
+
+\setlength {\oddsidemargin}{10.4mm}
+\setlength {\evensidemargin}{10.4mm}
+\baselineskip 17pt plus 1pt minus 1pt
+
+% 表の中で位置を下にずらして書く
+\newcommand{\lw}[1]{\smash{\lower2.0ex \hbox{#1}}}
+
+\makeatletter
+\def\ngram{{\it n}-gram}
+\def\@AppendixFirst{TRUE}
+\def\appendix#1#2{%
+  \def\true{TRUE}
+  \ifx\@AppendixFirst\true
+  \clearpage\pagenumbering{arabic}\setcounter{page}{1}%
+  \setcounter{chapter}{0}%
+  \def\@AppendixFirst{FALSE}
+  \fi
+  \addtocounter{chapter}{1}%
+  \setcounter{figure}{0}%
+  \renewcommand{\thefigure}{\Alph{chapter}.\@arabic\c@figure}%
+  \renewcommand{\thetable}{\Alph{chapter}.\@arabic\c@table}%
+  \def\addcontentsline##1##2##3{%
+    \protected@write\@auxout
+    {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble\@temptokena{#1-\thepage}}%
+    {\string\@writefile{##1}%
+      {\protect\contentsline{##2}{##3}{\the\@temptokena}}}%
+    }%
+  \setcounter{section}{0}%
+  \chapter*{付録 #1 #2}%
+  \def\ps@jpl@in{%
+    \def\@oddhead{\@empty}\def\@evenhead{\@empty}%
+    \def\@oddfoot{\hfil{#1-\thepage}\hfil}%
+    \def\@evenfoot{\hfil{#1-\thepage}\hfil}}%
+  \pagestyle{jpl@in}%
+  \setcounter{page}{1}%
+  \addcontentsline{toc}{chapter}{付録 #1 #2}%
+  \renewcommand{\thesection}{#1-\arabic{section}}}
+\makeatother
+
+\ronbun{~}
+
+
+% ユーザー定義の色 (各自適宜変更)
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{Pink}{rgb}{1,0.07,0.54}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{LightBrown}{rgb}{0.63,0.44,0}
+\definecolor{Red}{rgb}{0.95, 0.35, 0.35}
+\definecolor{Blue}{rgb}{0.20, 0.35, 0.85}
+
+
+% ソースコード読み込み用 (各自適宜変更)
+\lstset{
+	language=C,
+	basicstyle={\ttfamily\normalsize},
+	identifierstyle={\small},
+    % identifierstyle={\color{LightBrown}\small},
+    commentstyle={\color{Brown}\normalsize\slshape},
+	%keywordstyle={\normalsize\bfseries},
+    keywordstyle={\color{Blue}\normalsize\bfseries},
+    keywordstyle={[2]\color{Red}},        % Function
+    keywordstyle={[3]\color{CadetBlue}},
+	ndkeywordstyle={\color{LightBrown}\normalsize},
+	stringstyle={\color{Pink}\normalsize},
+    backgroundcolor={\color[gray]{.98}},
+	frame={tb},
+	breaklines=true,
+	columns=[l]{fullflexible},
+	numbers=left,
+	xrightmargin=0zw,
+	xleftmargin=3zw,
+	% numberstyle={\normalsize},
+    numberstyle={\ttfamily\small},
+	stepnumber=1,
+	numbersep=1zw,
+	lineskip=-0.5ex,
+	showstringspaces=false,
+	tabsize=2,
+	captionpos=b,
+}
+
+\shozoku{青山学院大学理工学部\\情報テクノロジー学科D\"{u}rst研究室}
+\title{有料道路での無料ゴミ集めのための\\空想環境の提案と実装}
+\author{祖太 上亜}
+\studentID{学籍番号：55555555}
+\date{平成55年度}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+
+\tableofcontents
+
+\clearpage\setcounter{page}{1}\pagenumbering{arabic}
+
+\input{./introduction.tex} 
+\input{./related_work.tex}
+\input{./implementation.tex}
+\input{./evaluation.tex}
+\input{./conclusion.tex}
+
+\newpage
+\addcontentsline{toc}{chapter}{謝辞}
+\input{thanks.tex}
+
+
+\newpage
+\addcontentsline{toc}{chapter}{参考文献}
+\renewcommand{\bibname}{参考文献}
+\bibliographystyle{junsrt}
+%\bibliographystyle{jplain}
+%% 複数ファイル指定間の空白ダメ
+\bibliography{biblio,../ml2011,../ml2012,../ml2013,../ml2014}
+
+\newpage
+\addcontentsline{toc}{chapter}{付録}
+\thispagestyle{empty}
+\vspace*{5.0truecm}
+\begin{center}
+{\Huge 付録}\\
+\end{center}
+\vspace*{5.0truecm}
+{\Large
+ A. 第123回情報処理学会全国大会発表論文\\
+ B. 質疑応答
+}
+
+\appendix{A}{\\第123回情報処理学会全国大会発表論文}
+\input{appendix.tex}
+\appendix{B}{\\質疑応答}
+\input{QA.tex}
+
+\end{document}

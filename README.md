@@ -43,7 +43,7 @@ bundle exec rails db:seed_fu
 # Set up Elasticsearch2.4.3(起動と停止以外は一回のみ行う)
 ## put on Elasricsearch and install a plugin kuromoji to it
 ```bash
-./putOnElasticsearch.sh
+./bin/putOnElasticsearch.sh
 # 以下のように"analysis-kuromoji"と出力されればOK
 - analysis-kuromoji
 ```
@@ -63,7 +63,7 @@ curl 'localhost:9200/_cat/health'
 ## Initialize Elasicsearch
 起動中に以下を行う
 ```bash
-./initializeElasticsearch.sh
+./bin/initializeElasticsearch.sh
 ```
 
 ## Stop
