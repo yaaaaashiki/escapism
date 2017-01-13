@@ -4,20 +4,6 @@ curl -XPUT 'localhost:9200/thesis_development?pretty' -d '{
   "mappings" : {
     "thesis" : {
       "properties" : {
-        "author" : {
-          "type" : "string",
-          "index" : "not_analyzed"
-        },
-        "year" : {
-          "type" : "string"
-        },
-        "comment" : {
-          "type" : "string",
-          "analyzer" : "kuromoji"
-        },
-        "url" : {
-          "type" : "string"
-        },
         "text" : {
           "type" : "string",
           "analyzer" : "kuromoji"
@@ -25,7 +11,7 @@ curl -XPUT 'localhost:9200/thesis_development?pretty' -d '{
       }
     }
   }
-}' 
+}' &&
 curl -XGET 'localhost:9200/thesis_development/_mapping/thesis?pretty' &&
 curl -XPUT 'localhost:9200/_settings' -d '{
   "index" : {
