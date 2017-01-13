@@ -1,4 +1,3 @@
-cd `dirname $0`
 curl -XDELETE 'localhost:9200/thesis_development?pretty' &&
 curl -XPUT 'localhost:9200/thesis_development?pretty' -d '{
   "mappings" : {
