@@ -194,6 +194,3 @@ build-iPhoneSimulator/
 
 # elasticsearch2.4.3
 /vendor/elasticsearch-2.4.3/
-
-# secret thesis
-/thesis_data/thesis/thesis/
