@@ -17,7 +17,7 @@
   
   <!-- 検索結果の表示 -->
   <% if @thesisArray %>
-    <div class="text-muted">約 <%= @total %> 件</div>
+    <%= page_entries_info @thesisArray %>
     <% @thesisArray.each do |t| %>
       <div class="page-header">
         <h4><%= link_to t[:thesis].title, thesis_path(t[:thesis]) %></h4>
