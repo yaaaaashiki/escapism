@@ -1,10 +1,5 @@
 <div class="container">
-  <h1><%= link_to @thesis.title, download_path(@thesis), method: :post %></h1>
-  <h1><%= @author.name %></h1>
-  <h1>執筆年度:<%= @thesis.year %></h1>
-  <h1>Comments:</h1>
-  <% @comentArray.each do |c| %>
-    <%= c[:commenter].username %>:
-    <%= c[:comment] %><br>
-  <% end %>
+  <%= render 'infomation'  %>
+  <%= render 'comment'     %>
+  <%= render 'commentForm' %>
 </div>

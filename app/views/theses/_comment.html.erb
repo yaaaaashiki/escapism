@@ -1,0 +1,8 @@
+<h1>Comments:</h1>
+<% if @thesis.comments.empty? %>
+  <p>この論文にはコメントがありません．コメントを残しませんか？</p>
+<% end %>
+
+<% @thesis.comments.each do |c| %>
+  <pre><%= c[:body] %></pre><br>
+<% end %>
