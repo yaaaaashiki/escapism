@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root :to => 'users#index'
   resources :user_sessions  #, :only => [:new, :create, :destroy]
   resources :users          #, :only => [:index, :new, :create, :show]
-  resources :theses
+  resources :theses do 
+    resources :comments
+  end
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout 

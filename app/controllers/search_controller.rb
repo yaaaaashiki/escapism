@@ -4,11 +4,6 @@ class SearchController < ApplicationController
   INDEX = 'thesis_development'
   TYPE = 'thesis'
 
-  # 開発環境のみログインなし
-  if Rails.env == 'development'
-    skip_before_filter :require_login
-  end
-
   def index
     if params[:q]
       response = search params[:q]

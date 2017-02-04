@@ -1,22 +1,7 @@
 class ThesesController < ApplicationController
-  # 開発環境のみログインなし
-  if Rails.env == 'development'
-    skip_before_filter :require_login
-  end
-
   def show
-    @thesis   = Thesis.find params[:id]
-    @author   = Author.find @thesis.author_id
-    comments  = Comment.where thesis_id: @thesis.id
-    @comentArray = []
-    if !(comments.empty?)
-      comments.each do |c|
-        body = c[:body]
-        commenter = User.find c.user_id
-        comment = {comment: body, commenter: commenter}
-        @comentArray.push comment
-      end
-    end
+    @thesis = Thesis.find params[:id]
+    @author = Author.find @thesis.author_id
   end
 
   def download
