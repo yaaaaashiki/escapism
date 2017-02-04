@@ -1,4 +1,4 @@
-<%= form_for([@thesis, @thesis.comments.build]) do |f| %>
+<%= form_for [@thesis, @thesis.comments.build] do |f| %>
   <div class="form-group">
     <div class="col-sm-12">
       <%= f.text_area :body, class: "form-control", placeholder: "コメント" %>
