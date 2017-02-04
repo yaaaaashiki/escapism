@@ -72,3 +72,10 @@ curl 'localhost:9200/_cat/health'
 ^C  (←Ctrl + C)
 ```
 
+
+## Rspec test 
+プルリクを出す前に実行して, example 全部通っているか確認
+```bash
+bundle exec rails spec
+```
+
