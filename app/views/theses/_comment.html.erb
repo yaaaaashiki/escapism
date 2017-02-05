@@ -4,5 +4,13 @@
 <% end %>
 
 <% @thesis.comments.each do |c| %>
-  <pre><%= c[:body] %></pre><br>
+  <div>
+    <% if c[:user_id] %>
+      <h2><%= (User.find c[:user_id]).username %></h2>
+    <% else %>
+      <h2>Unknown User</h2>
+    <% end %>
+
+    <pre><%= c[:body] %></pre>
+  <div>
 <% end %>
