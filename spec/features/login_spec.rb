@@ -1,10 +1,18 @@
 require 'rails_helper'
 
+
+
 feature 'login page test' do
-  scenario 'when input login information, the data should insert user db' do
+
+  let(:user) { create(:user) }
+
+  scenario 'user data is correct' do 
+    expext(user.id).to eq(1) 
+  end 
+  
+  scenario 'when login and data should insert user db' do
     pending"anyway" 
-    visit "/" 
-    click_on 'Login'
+    visit "/login" 
     expect(response).to render_template :new 
   end
 end
