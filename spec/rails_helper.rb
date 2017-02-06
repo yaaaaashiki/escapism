@@ -6,6 +6,11 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'factory_girl'
+require 'sorcery'
+
+require 'support/authentication'
+
+
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -50,6 +55,23 @@ RSpec.configure do |config|
   #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
+
+  config.include Sorcery::TestHelpers::Rails
+
+  config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
+  config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
+
+  config.include AuthenticationForFeatureRequest, type: :feature
+
+  config.include FactoryGirl::Syntax::Methods
+
+  config.before :all do
+    FactoryGirl.reload
+  end
+
+
+  
+  
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.

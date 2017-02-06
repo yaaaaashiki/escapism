@@ -22,7 +22,8 @@ FactoryGirl.define do
     username "user1"
     year 2016
     email "yaaaaaakishi@gmail.com"
-    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt)
-    salt asdasdastr4325234324sdfds
+    salt "asdasdastr4325234324sdfds"
+    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+ #: binding.pry
   end
 end
