@@ -17,10 +17,13 @@
 #  index_users_on_username  (username) UNIQUE
 #
 
-require 'test_helper'
-
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+FactoryGirl.define do
+  factory :user do
+    username "user1"
+    year 2016
+    email "yaaaaaakishi@gmail.com"
+    salt "asdasdastr4325234324sdfds"
+    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+ #: binding.pry
+  end
 end

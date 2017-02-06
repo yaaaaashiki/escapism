@@ -44,9 +44,21 @@ gem 'pry-rails'
 gem 'pry-stack_explorer'
 
 # Test
-gem 'rspec-rails'
-gem 'factory_girl_rails'
-gem 'simplecov', require: false
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'simplecov', require: false
+  gem 'pry-rails'
+  #gem "faker"
+end
+
+group :test do 
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'rails-controller-testing' 
+end
+
 
 # Search/Pagination
 gem 'kaminari'
