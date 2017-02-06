@@ -40,6 +40,14 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
+# Rspec test 
+プルリクを出す前に実行して, example 全部通っているか確認
+```bash
+bundle exec rails spec 
+```
+
+
+
 # Set up Elasticsearch2.4.3(起動と停止以外は一回のみ行う)
 ## put on Elasricsearch and install a plugin kuromoji to it
 ```bash
@@ -73,9 +81,4 @@ curl 'localhost:9200/_cat/health'
 ```
 
 
-## Rspec test 
-プルリクを出す前に実行して, example 全部通っているか確認
-```bash
-bundle exec rails spec
-```
 
