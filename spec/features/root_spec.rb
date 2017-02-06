@@ -1,19 +1,16 @@
 require 'rails_helper'
 
 feature 'rootpage test' do
-
-  scenario 'when clicking login link, jump to correctlink' do
-    skip
-    visit "/" 
-    click_link 'Login'
-    expect(response).to render_template :new 
+  background do
+    visit "/"
   end
 
   scenario 'render user#index' do
-    skip
-    visit "/" 
-    get :index 
-    expect(response).to render_template :index 
+    expect(page).to have_content 'Dürst 研究室 論文検索システム ´▽｀)/'
   end
 
+  scenario 'when clicking login link, jump to correctlink' do
+    click_on 'Login'
+    expect(page).to have_content 'Sign In'
+  end
 end
