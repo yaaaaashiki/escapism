@@ -7,7 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'factory_girl'
 require 'sorcery'
-
+require 'database_cleaner'
 require 'support/authentication'
 
 
@@ -69,9 +69,21 @@ RSpec.configure do |config|
     FactoryGirl.reload
   end
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+  end
 
-  
-  
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
