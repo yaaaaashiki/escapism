@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'factory_girl'
 require 'sorcery'
 require 'database_cleaner'
-require 'support/authentication'
 
 
 
@@ -61,7 +60,6 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
 
-  config.include AuthenticationForFeatureRequest, type: :feature
 
   config.include FactoryGirl::Syntax::Methods
 
