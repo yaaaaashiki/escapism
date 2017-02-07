@@ -24,6 +24,5 @@ FactoryGirl.define do
     email "yaaaaaakishi@gmail.com"
     salt "asdasdastr4325234324sdfds"
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
- #: binding.pry
   end
 end

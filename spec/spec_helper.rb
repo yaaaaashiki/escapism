@@ -9,12 +9,15 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
 
-module Sorcery
-  module TestHelpers
-    module Rails
-      def login_user_post(user, password)
-        page.driver.post(user_sessions_url, { username: user, password: password}) 
-      end
-    end
-  end
+
+def login_user_post(user = nil, route = nil, http_method = :post)
+  user ||= @user
+  route ||= sessions_url
+  username_attr = user.sorcery_config.username_attribute_names.first
+  username = user.send(username_attr)
+  page.driver.send(http_method, route, { :"session" => {:"#{username_attr}" => username, :password => "password"}} )
 end
+  
+  
+
+
