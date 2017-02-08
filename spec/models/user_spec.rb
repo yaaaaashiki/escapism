@@ -20,5 +20,38 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Validation" do
+    let(:username) { "username" }
+    let(:year)     { 1 }
+    let(:email)    { "emailaddress" }
+
+    it "is valid with username and year and email" do
+      user = build(:user)
+      expect(user).to be_valid
+    end
+
+    it "is not valid without username" do
+      user = User.new(
+        year: year,
+        email: email
+      )
+      expect(user).not_to be_valid
+    end
+
+    it "is not valid without year" do
+      user = User.new(
+        username: username,
+        email: email
+      )
+      expect(user).not_to be_valid
+    end
+
+    it "is not valid without email" do
+      user = User.new(
+        username: username,
+        year: year,
+      )
+      expect(user).not_to be_valid
+    end
+  end
 end
