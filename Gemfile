@@ -55,7 +55,7 @@ end
 group :test do 
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'capybara-webkit'
+  # gem 'capybara-webkit'
   gem 'rails-controller-testing' 
 end
 
