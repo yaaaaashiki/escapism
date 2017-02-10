@@ -16,7 +16,6 @@
 # System dependencies
 
 * mysql 5.5以上  
-### To use elasticsearch2.4.3
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
 * JAVA_HOMEの設定  
 (Javaをバージョン管理したかったらJenvを使用してください)
@@ -33,7 +32,7 @@ bundle _1.12.5_  install --path vendor/bundle
 ```
 
 # Database creation
-
+事前に Elasticsearch を起動しておく
 ```
 bundle exec rails db:create
 bundle exec rails db:migrate:reset
@@ -52,8 +51,6 @@ bundle exec rails spec
 ## put on Elasricsearch and install a plugin kuromoji to it
 ```bash
 ./bin/putOnElasticsearch.sh
-# 以下のように"analysis-kuromoji"と出力されればOK
-- analysis-kuromoji
 ```
 
 ## Start
