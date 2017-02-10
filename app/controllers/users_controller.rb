@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @bookBack = true
   end
  
-  def new  
-    @bookBack = true
+  def new
     @user = User.new
     if Token.exists?(token: params[:token]) 
       redirect_to search_url
