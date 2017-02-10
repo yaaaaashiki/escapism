@@ -71,6 +71,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.12.0)
+      capybara (>= 2.3.0, < 2.13.0)
+      json
     chunky_png (1.3.8)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -335,6 +338,7 @@ DEPENDENCIES
   byebug
   cancancan
   capybara
+  capybara-webkit
   coffee-rails (~> 4.1.0)
   compass-rails
   database_cleaner
