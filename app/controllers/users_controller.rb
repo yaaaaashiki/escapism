@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create]
-  before_filter :invitation_mail, only: [:new, :create]  
+  skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :invitation_mail, only: [:new, :create]  
   #layout 'users'
   
   def index
@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @bookBack = true
   end
  
-  def new  
-    @bookBack = true
+  def new
     @user = User.new
     if Token.exists?(token: params[:token]) 
       redirect_to search_url

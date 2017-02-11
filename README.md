@@ -43,6 +43,9 @@ bundle exec rails db:seed_fu
 プルリクを出す前に実行して, example 全部通っているか確認
 ```bash
 bundle exec rails spec 
+
+# テスト用のデータベース作成方法
+rails db:migrate:reset RAILS_ENV=test
 ```
 
 
