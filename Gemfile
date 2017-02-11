@@ -20,6 +20,7 @@ gem 'compass-rails'
 gem 'bootstrap_form'
 gem 'execjs'
 gem 'bourbon'
+gem 'natto'
 
 
 # Authentication
@@ -49,7 +50,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
   gem 'pry-rails'
-  #gem "faker"
+  gem "faker"
 end
 
 group :test do 

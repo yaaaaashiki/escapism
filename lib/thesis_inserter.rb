@@ -11,8 +11,8 @@ class ThesisInserter
 
   def upsertAll!
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
-      if path =~ /.*\.pdf/
-        texPath = path.match(/(.*)\.pdf/)[1] + ".tex"
+     if path =~ /.*\.pdf/
+       texPath = path.match(/(.*)\.pdf/)[1] + ".tex"
         if File.exist?(texPath) && !(Thesis.exists? url: path)
           upsert path, texPath
         end
