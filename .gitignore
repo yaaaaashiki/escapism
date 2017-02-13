@@ -194,3 +194,9 @@ build-iPhoneSimulator/
 
 # elasticsearch2.4.3
 /vendor/elasticsearch-2.4.3/
+
+
+
+
+# .ruby_version
+.ruby_version

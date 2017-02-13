@@ -1,1 +1,1 @@
-ThesisInserter.new.upsertAll!
+ThesisImporter.upsert_all!

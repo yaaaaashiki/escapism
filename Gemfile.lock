@@ -126,6 +126,8 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.14)
@@ -173,6 +175,8 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.3.21)
+    natto (1.1.1)
+      ffi (>= 1.9.0)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -347,6 +351,7 @@ DEPENDENCIES
   elasticsearch (= 2.0.0)
   execjs
   factory_girl_rails
+  faker
   font-awesome-rails
   font-awesome-sass (~> 4.5.0)
   hashie (= 3.4.6)
@@ -355,6 +360,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   mysql2 (~> 0.3.17)
+  natto
   pry
   pry-byebug
   pry-doc
