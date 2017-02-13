@@ -5,40 +5,44 @@ require 'find'
 class WordCount 
 
   THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
-   # こちらの配列に修造の名言を品詞分解したものを放り込んでいく。
 
   arraytext = [] 
-  # csvファイルを読み込む。1行ずつ処理。
 
-  def ThesisWordCount
+  def all_words_count
+    total = {}
+    Find.find(THESIS_ROOT_DIRECTORY) do |path|
+      total = thesis_words_count(path, total) if path =~ /.*\.pdf/ 
+    end
+    total.select! {|key,val| val >= 60 } 
+    puts total.sort {|(k1, v1), (k2, v2)| v2 <=> v1} 
+    binding.pry 
+    #puts total 
 
+  end
+
+  def thesis_words_count(path, words_count = {})
     words = [] #とりあえずここで宣言
 
-    Find.find(THESIS_ROOT_DIRECTORY) do |path|
-      if path =~ /.*\.pdf/
-        text = extractText(path)
-        arraytext = text.split
-        nm = Natto::MeCab.new
-        arraytext.each do |row|
-          nm.parse(row) do |n|
-             words << n.surface  if (n.feature.match(/(固有名詞|名詞,一般)/)) and (n.surface.length > 1)
-          end
-        end
+    nm = Natto::MeCab.new
+    extract_text(path).split.each do |row|
+      nm.parse(row) do |n|
+        words << n.surface  if n.feature.match(/(固有名詞|名詞,一般)/) && n.surface.length > 1
       end
     end
-    words_count = [] 
 
-    words.uniq.map do |word|  
-        words_count[words_count.size] = ["#{word}", "#{words.grep(word).count}"] if word
+    words.each do |word|  
+      if words_count.key?(word)
+        words_count[word] += 1
+      else
+        words_count[word] = 1
+      end
     end
- 
-    pp words_count.sort_by { |word_count| word_count[1].to_i }.reverse
-
+    words_count
   end
 
   private
     # pathにはURLも可
-    def extractText(path)
+    def extract_text(path)
       data = Yomu.new path
       rawText = data.text
       rawText.gsub(/\r\n|\n|\r/, "")

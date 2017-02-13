@@ -9,7 +9,7 @@ class ThesisInserter
   INDEX = 'thesis_development'
   TYPE = 'thesis'
 
-  def upsertAll!
+  def upsert_all!
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
      if path =~ /.*\.pdf/
        texPath = path.match(/(.*)\.pdf/)[1] + ".tex"
@@ -44,13 +44,13 @@ class ThesisInserter
         end
       end
       
-      thesis = createThesis titleData, authorData, yearData, dateData, path
+      thesis = create_thesis titleData, authorData, yearData, dateData, path
       
-      text = extractText path
-      insertIntoElasticsearch thesis.id, text
+      text = extract_text path
+      insert_into_elasticsearch thesis.id, text
     end
 
-    def createThesis(titleData, authorData, yearData, dateData, path)
+    def create_thesis(titleData, authorData, yearData, dateData, path)
       author = Author.find_by name: authorData
       if !author
         author = Author.create name: authorData
@@ -64,14 +64,14 @@ class ThesisInserter
     end
 
     # pathにはURLも可
-    def extractText(path)
+    def extract_text(path)
       data = Yomu.new path
 
       rawText = data.text
       rawText.gsub(/\r\n|\n|\r/, "")
     end
 
-    def insertIntoElasticsearch(thesisId, text)
+    def insert_into_elasticsearch(thesisId, text)
       CLIENT.index index: INDEX, type: TYPE, id: thesisId, body: { 
         text: text
       }
