@@ -19,12 +19,20 @@ class Thesis < ApplicationRecord
   belongs_to :author
   has_many :comments
 
-  def self.create_from_seed(title_data, author_data, year_data, date_data, path)
+  def self.create_from_seed(attrs = {})
     ActiveRecord::Base.transaction do 
-      author = Author.find_or_create_by(name: author_data)
+      author = Author.find_or_create_by(name: attrs[:author_name])
 
-      year = year_data == "unknown" ? date_data : year_data
-      Thesis.create!(title: title_data, year: year, url: path, author_id: author.id)
+
+      if attrs[:year] == "unknown" 
+        attrs[:year] = attrs[:date_data]
+      end
+     
+
+      attrs[:author_id] = author.id
+      attrs.delete(:author_name)
+      attrs.delete(:date_data)
+      Thesis.create!(attrs)
     end
   end
 end

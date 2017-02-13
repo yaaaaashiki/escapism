@@ -10,13 +10,9 @@ module ThesisImporter
 
   def upsert_all!
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
-      if path =~ /.*\.pdf$/
-        plane_thesis = PlaneThesis.new(path)
-        if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
-          thesis = plane_thesis.thesis!
-          text = plane_thesis.text
-          insert_into_elasticsearch(thesis.id, text)
-        end
+      plane_thesis = PlaneThesis.new(path)
+      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
+        plane_thesis.insert_into_elasticsearch
       end
     end
   end
@@ -24,37 +20,41 @@ module ThesisImporter
   def all_words_count
     total = {}
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
-      words_count = PlaneThesis.new(path).words_count if path =~ /.*\.pdf/ 
-      total = sum_words_count(total, words_count)
+      plane_thesis = PlaneThesis.new(path)
+      if plane_thesis.validate_path?
+        words_count = plane_thesis.words_count  
+        total = sum_words_count(total, words_count)
+      end
     end
     total.select! {|key,val| val >= 60 } 
     puts total.sort {|(k1, v1), (k2, v2)| v2 <=> v1} 
-    binding.pry 
     #puts total 
-
   end
   
   class PlaneThesis
     attr_accessor :text
     def initialize(path)
       @path = path
-      data = Yomu.new(path) 
-      rawText = data.text
-      @text = rawText.gsub(/\r\n|\n|\r/, "")
-      @tex_path = path.gsub(/pdf$/, "tex")
     end
     
+    def text
+      @text ||= if validate_path?
+                  data = Yomu.new(@path) 
+                  rawText = data.text
+                  rawText.gsub(/\r\n|\n|\r/, "")
+                end
+    end
+
+    def validate_path?
+      @path =~ /.*\.pdf/
+    end
+
+    def tex_path
+      @tex_path ||= @path.gsub(/pdf$/, "tex") if validate_path?
+    end
+
     def words_count
-      words = [] #とりあえずここで宣言
       words_count = {}
-
-      nm = Natto::MeCab.new
-      @lines.split.each do |row|
-        nm.parse(row) do |n|
-          words << n.surface  if n.feature.match(/(固有名詞|名詞,一般)/) && n.surface.length > 1
-        end
-      end
-
       words.each do |word|  
         if words_count.key?(word)
           words_count[word] += 1
@@ -66,53 +66,74 @@ module ThesisImporter
     end
 
     def exists_tex?
-      File.exist?(@tex_path)
+      File.exist?(tex_path) if tex_path
     end
     
     def exists_thesis?
-        Thesis.exists?(url: @path)
+      Thesis.exists?(url: @path)
     end
     
     def thesis!
-      @thesis ||= Thesis.create_from_seed(metadatas)
+      @thesis ||= if exists_thesis?
+                    Thesis.find_by!(url: @path)
+                  else
+                    Thesis.create_from_seed(metadatas)
+                  end
     end
+
+    def words
+      if @words.blank?
+        @words = [] #とりあえずここで宣言
+        nm = Natto::MeCab.new
+        text.each_line do |line|
+          nm.parse(line) do |n|
+            @words << n.surface  if n.feature.match(/(固有名詞|名詞,一般)/) && n.surface.length > 1
+          end
+        end
+      end
+      @words
+    end
+    
     
     def metadatas
       # メタデータの取得
-      authorData = "unknown"
-      titleData  = "notitle"
-      dateData   = "unknown"
-      yearData   = "unknown"
+      author_data = "unknown"
+      title_data  = "notitle"
+      date_data   = "unknown"
+      year_data   = "unknown"
 
-      File.open(@tex_path) do |file|
+      File.open(tex_path) do |file|
         file.each_line do |line|
           match = line.match(/author\{(.*?)\}/)
-          authorData = match[1] if authorData == "unknown" && match
+          author_data = match[1] if author_data == "unknown" && match
 
           match = line.match(/title\{(.*?)\}/)
-          titleData  = match[1] if match
+          title_data  = match[1] if match
             
           match = line.match(/date\{(.*?)\}/)
-          dateData   = match[1] if match
+          date_data   = match[1] if match
 
           match = line.match(/year\{(.*?)\}/)
-          yearData   = match[1] if match
+          year_data   = match[1] if match
         end
       end
-      { title: titleData, author_name: authorData, year: yearData, url: path }
+      { title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
+    end
+
+
+    def insert_into_elasticsearch
+      CLIENT.index(index: INDEX, type: TYPE, id: thesis!.id, body: { 
+          text: text
+        }
+      )
     end
 
   end
 
+  module_function :upsert_all!
+
   private
 
-  def insert_into_elasticsearch(thesis_id, text)
-    CLIENT.index(index: INDEX, type: TYPE, id: thesis_id, body: { 
-        text: text
-      }
-    )
-  end
-  
   def sum_words_count(total, words_count)
     words_count.keys.each do |key|
       if total.key?(key)
