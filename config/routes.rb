@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   # postじゃないとダウンロードできない
   post 'thesis/download/:id' => 'theses#download', :as => :download
   get 'users/new/:token' => 'users#new'
-
+  get 'visual' => 'visual#index'
 end
