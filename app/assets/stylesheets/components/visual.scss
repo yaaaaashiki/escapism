@@ -8,6 +8,8 @@ body {
 
 
 #visual{
+  box-sizing: border-box; 
+  border: 0; 
   border : solid red;
   position: absolute;
   top: 5%;          //header の height を % 表示にしておく
@@ -31,6 +33,7 @@ body {
 }
 
 #visualContents{
+  box-sizing: border-box; 
   position: relative;
   height: 90%;
 
@@ -52,13 +55,32 @@ body {
 
   .scale{
     z-index: 100;
-    border : solid red;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     height: 100%;
-     
+   
+    .vartical-division{
+      top: 0%;
+      left: 48.2%; 
+      display: block;
+      position: absolute;
+      z-index: 200;     
+      display: block;
+      margin-bottom: 0px;
+      color: red;
+    }
+    @for $i from 1 through 10 {
+      .horizon-division#{$i}{
+        top: 50%;
+        left: $i*9%; 
+        margin-bottom: 0;
+        position: absolute;
+        z-index: 200;
+        color: red; 
+      }
+    }
     @for $i from 1 through 10 {
       .num#{$i}{
         height: 10%;
@@ -66,9 +88,8 @@ body {
         box-sizing: border-box; 
         @if $i == 5 {
           border: {
-              bottom: dotted black;
-              bottom-width: 2px;
-            
+            bottom: dotted black;
+            bottom-width: 2px;
           } 
         }
         @else {
