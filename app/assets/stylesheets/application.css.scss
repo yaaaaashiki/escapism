@@ -5,15 +5,16 @@
  *= require AdminLTE/AdminLTE
  *= require AdminLTE/skins/skin-blue
 
+ *= require components/top
+ *= require components/search
+ *= require components/visual
+ *= require variables/_color
+
  * bootstrap 
  *= require bootstrap
  *= require rails_bootstrap_forms
 
  
- *= require components/top
- *= require components/search
- *= require variables/_color
-
  */
 
 
