@@ -1,0 +1,166 @@
+\documentclass[11pt, a4j]{jreport}
+\input{./sty/jdummy.def}
+
+\usepackage{./sty/TitlePage}
+\usepackage{framed}
+\usepackage{./sty/jlisting}
+% \usepackage{./sty/fancyheadings}
+% \usepackage{./sty/verbatimfiles}
+\usepackage{./sty/ascmac}
+\usepackage{graphics}
+\usepackage[dvipdfmx]{graphicx, color}
+\usepackage{url}
+\usepackage{mflogo}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+
+% listings の設定
+% 参照 http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/listings.html
+\lstset{%
+  frame=trbl,
+  % basicstyle={\small},%
+  % identifierstyle={\small},%
+  basicstyle=\ttfamily,
+  columns=[l]{fullflexible},
+  framesep=5pt,
+  xrightmargin=0zw,%
+  xleftmargin=3zw,%
+}
+
+% \setlength {\oddsidemargin}{10.4mm}
+% \setlength {\evensidemargin}{10.4mm}
+% \baselineskip 17pt plus 1pt minus 1pt
+
+\newcommand{\lw}[1]{\smash{\lower2.0ex \hbox{#1}}}
+\def\thline{\noalign{\hrule height 1pt}}
+\makeatletter
+\def\ngram{{\it n}-gram}
+\def\@AppendixFirst{TRUE}
+\def\appendix#1#2{
+  \def\true{TRUE}
+  \ifx\@AppendixFirst\true
+  \clearpage\pagenumbering{arabic}\setcounter{page}{1}
+  \setcounter{chapter}{0}
+  \def\@AppendixFirst{FALSE}
+  \fi
+  \addtocounter{chapter}{1}
+  \setcounter{figure}{0}
+  \renewcommand{\thefigure}{\Alph{chapter}.\@arabic\c@figure}
+  \renewcommand{\thetable}{\Alph{chapter}.\@arabic\c@table}
+  \def\addcontentsline##1##2##3{
+    \protected@write\@auxout
+    {\let\label\@gobble \let\index\@gobble \let\glossary\@gobble\@temptokena{#1-\thepage}}
+    {\string\@writefile{##1}
+      {\protect\contentsline{##2}{##3}{\the\@temptokena}}}
+    }
+  \setcounter{section}{0}
+  \chapter*{付録 #1 #2}
+  \def\ps@jpl@in{
+    \def\@oddhead{\@empty}\def\@evenhead{\@empty}
+    \def\@oddfoot{\hfil{#1-\thepage}\hfil}
+    \def\@evenfoot{\hfil{#1-\thepage}\hfil}}
+  \pagestyle{jpl@in}
+  \setcounter{page}{1}
+  \addcontentsline{toc}{chapter}{付録 #1 #2}
+  \renewcommand{\thesection}{#1-\arabic{section}}}
+\makeatother
+
+%\ruby{組版}{くみはん}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\ruby}[2]{
+  \leavevmode
+  \setbox0=\hbox{#1}
+  \setbox1=\hbox{\tiny #2}
+  \ifdim\wd0>\wd1 \dimen0=\wd0 \else \dimen0=\wd1 \fi
+  \hbox{
+    \kanjiskip=0pt plus 2fil
+    \xkanjiskip=0pt plus 2fil
+    \vbox{
+      \hbox to \dimen0{\tiny \hfil#2\hfil}
+      \vspace{0.5mm}
+      \nointerlineskip
+      \hbox to \dimen0{\mathstrut\hfil#1\hfil}}}}
+
+\newenvironment{ToC}{ \baselineskip = 6mm }
+
+\newenvironment{TP} { \baselineskip = 8mm }
+
+\begin{document}
+% Title Pages
+\begin{TP}
+\begin{center}
+{\large 修士論文}
+
+\vspace{15mm}
+{\huge REST と WebSocket アプリケーションの\\統合モデルの提案と検証}
+
+\vspace{5mm}
+{\LARGE Proposal and Verification of a Model \\Integrating REST and WebSocket Applications}
+
+\vspace{87mm}
+{\large 青山学院大学大学院 理工学研究科 理工学専攻 知能情報コース}
+
+{\large Intelligence and Information Course\\ Graduate School of Science and Engineering\\ Aoyama Gakuin University}
+
+\vspace{10mm}
+{\huge 石畑 翔平}
+
+{\Large Shohei, Ishihata}
+
+\thispagestyle{empty}
+\end{center}
+\end{TP}
+%\maketitle
+\newpage
+
+\pagenumbering{roman}
+\begin{ToC}
+\tableofcontents
+\listoffigures
+\listoftables
+\end{ToC}
+
+\clearpage\setcounter{page}{1}\pagenumbering{arabic}
+
+\input{./chapter/introduction.tex}
+\input{./chapter/basic.tex}
+\input{./chapter/websocket.tex}
+\input{./chapter/proposal.tex}
+\input{./chapter/verification.tex}
+\input{./chapter/conclusion.tex}
+
+%% 謝辞
+\newpage
+\addcontentsline{toc}{chapter}{謝辞}
+\input{chapter/thanks.tex}
+
+%% 参考文献
+\newpage
+\setlength{\baselineskip}{1.4zw}
+\renewcommand{\bibname}{参考文献}
+\addcontentsline{toc}{chapter}{\vspace{30mm}参考文献}
+\bibliographystyle{junsrt}
+\bibliography{biblio}
+
+%% 付録
+\newpage
+\addcontentsline{toc}{chapter}{付録}
+\thispagestyle{empty}
+\vspace*{5.0truecm}
+\begin{center}
+{\Huge 付録}\\
+ \end{center}
+\vspace*{5.0truecm}
+{\Large
+  A. 質疑応答\\
+}
+% \\
+% \appendix{A}{\\ 第75回情報処理学会全国大会発表論文}
+% %\input{./appendix_invalid_ruby.tex}
+% \setlength{\baselineskip}{1.8zw}
+% \renewcommand{\baselinestretch}{1.6}
+\appendix{A}{\\ 質疑応答}
+\input{./chapter/QandA.tex}
+
+\end{document}

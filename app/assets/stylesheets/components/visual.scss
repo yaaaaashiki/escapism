@@ -59,9 +59,19 @@ body {
     left: 0;
     height: 100%;
    
-    .vartical-division{
+    .vartical-division-top{
       top: 0%;
-      left: 48.2%; 
+      left: 49%;
+      display: block;
+      position: absolute;
+      z-index: 200;
+      display: block;
+      margin-bottom: 0px;
+      color: red;
+    }
+    .vartical-division-bottom{
+      top: 97%;
+      left: 49%;
       display: block;
       position: absolute;
       z-index: 200;     
@@ -70,21 +80,29 @@ body {
       color: red;
     }
 
+
     @for $i from 1 through 10 {
       .horizon-division#{$i}{
         top: 50%;
-        left: $i*9%; 
+        left: $i*9%;
         margin-bottom: 0;
         position: absolute;
         z-index: 200;
         color: red; 
       }
 
-      .visual-height#{$i}{
-        top: 20%; 
+      .visual-contents#{$i}{
+        top: 0%;
+        left: $i*9%;
+        width: 9%;
+        height: 100%;
+        position: absolute;
         font-size: 6px;
+        z-index: 250;
       }
     }
+
+
 
     @for $i from 1 through 10 {
       .num#{$i}{
