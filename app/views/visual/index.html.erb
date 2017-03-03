@@ -14,6 +14,12 @@
       <% (1..10).each do |i|  %>
         <p class = "horizon-division<%= i %>"> <%= 2006 + i %>
         <hr class = "num<%= i %>">
+       <% end %>
+
+      <% @thesis.each do |t| %>
+        <% if ((2007 <= t.year) && (t.year <= 2016)) %> 
+          <p class = "visual-height<%= t.year - 2006 %> horizon-division<%= t.year - 2006 %>"> <%= t.title %>
+        <% end %>
       <% end %>
     </div>
   </div>

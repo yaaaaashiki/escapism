@@ -28,9 +28,8 @@ module ThesisImporter
     end
     total.select! {|key,val| val >= 60 } 
     puts total.sort {|(k1, v1), (k2, v2)| v2 <=> v1} 
-    #puts total 
   end
-  
+ 
   class PlaneThesis
     attr_accessor :text
     def initialize(path)
@@ -93,7 +92,6 @@ module ThesisImporter
       end
       @words
     end
-    
     
     def metadatas
       # メタデータの取得
