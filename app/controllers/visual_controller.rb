@@ -5,7 +5,6 @@ class VisualController < ApplicationController
     @thesis.each do |t|
       t.year = 0 if t.year == "unknown"
     end
-
   end
 
   private
