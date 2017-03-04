@@ -97,7 +97,6 @@ module ThesisImporter
         total_words += 1
         web_words_count[thesis_id] += 1 if word.include?("Web")
       end 
-      binding.pry
       web_words_count[thesis_id] = Rational(web_words_count[thesis_id], total_words)
       web_words_count
     end
@@ -145,7 +144,6 @@ module ThesisImporter
     end
     
     def metadatas
-      # メタデータの取得
       author_data = "unknown"
       title_data  = "notitle"
       date_data   = "unknown"
@@ -169,17 +167,15 @@ module ThesisImporter
       { title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
     end
 
-
     def insert_into_elasticsearch
       CLIENT.index(index: INDEX, type: TYPE, id: thesis!.id, body: { 
           text: text
         }
       )
     end
-
   end
 
-  module_function :upsert_all!
+  module_function :upsert_all!, :web_count, :ruby_count
 
   private
 

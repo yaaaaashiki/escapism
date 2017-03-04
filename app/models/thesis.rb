@@ -18,6 +18,7 @@
 class Thesis < ApplicationRecord
   belongs_to :author
   has_many :comments
+  has_one :word_count
 
   def self.create_from_seed(attrs = {})
     ActiveRecord::Base.transaction do 
