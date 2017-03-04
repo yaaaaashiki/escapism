@@ -1,0 +1,28 @@
+<section id = "visual">
+  <div id = "visualTitle">
+    <div class = "heightCenter">
+      Dürst 研究室 研究状況
+    </div>
+  </div>
+  <div id = "visualContents" >
+    <div class = "scale" >
+      <img src = "assets/kana.jpg" alt = "" width = 50% height = "100%" class = "kana kana-left" >
+      <img src = "assets/kana2.jpg" alt = "" width = 50% height = "100%" class = "kana kana-right" >
+      <div class = "vartical-division-top"> Ruby </div>
+      <div class = "vartical-division-bottom"> Web </div>
+      <% (1..10).each do |i|  %>
+        <p class = "horizon-division<%= i %>"> <%= 2006 + i %>
+        <hr class = "num<%= i %>">
+       <% end %>
+      <% @thesis.each do |t| %>
+        <% if ((2007 <= t.year) && (t.year <= 2016)) %> 
+          <div class = "visual-height<%= t.year - 2006 %> horizon-division<%= t.year - 2006 %>">
+          </div>
+          <svg class = "visual-contents<%= t.year - 2006 %>">
+            <circle cx = "10%" cy = "30%" r = "10px" />
+          </svg>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

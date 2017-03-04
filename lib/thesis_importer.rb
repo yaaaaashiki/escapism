@@ -28,9 +28,32 @@ module ThesisImporter
     end
     total.select! {|key,val| val >= 60 } 
     puts total.sort {|(k1, v1), (k2, v2)| v2 <=> v1} 
-    #puts total 
   end
-  
+
+  def web_count
+    web_total = {}
+    Find.find(THESIS_ROOT_DIRECTORY) do |path|
+      plane_thesis = PlaneThesis.new(path)
+      if plane_thesis.validate_path?
+        web_words_count = plane_thesis.web_words_count  
+        web_total = web_total.merge(web_words_count) 
+      end
+    end
+    web_total
+  end
+
+  def ruby_count
+    ruby_total = {}
+    Find.find(THESIS_ROOT_DIRECTORY) do |path|
+      plane_thesis = PlaneThesis.new(path)
+      if plane_thesis.validate_path?
+        ruby_words_count = plane_thesis.ruby_words_count  
+        ruby_total = ruby_total.merge(ruby_words_count) 
+      end
+    end
+    ruby_total
+  end
+
   class PlaneThesis
     attr_accessor :text
     def initialize(path)
@@ -65,6 +88,32 @@ module ThesisImporter
       words_count
     end
 
+    def web_words_count
+      web_words_count = {}
+      total_words = 0
+      thesis_id = Thesis.find_by!(url: @path).id
+      web_words_count[thesis_id] = 0 
+      words.each do |word|
+        total_words += 1
+        web_words_count[thesis_id] += 1 if word.include?("Web")
+      end 
+      web_words_count[thesis_id] = Rational(web_words_count[thesis_id], total_words)
+      web_words_count
+    end
+
+    def ruby_words_count
+      ruby_words_count = {}
+      total_words = 0
+      thesis_id = Thesis.find_by!(url: @path).id
+      ruby_words_count[thesis_id] = 0 
+      words.each do |word|
+        total_words += 1
+        ruby_words_count[thesis_id] += 1 if word.include?("Ruby")
+      end 
+      ruby_words_count[thesis_id] = Rational(ruby_words_count[thesis_id], total_words)
+      ruby_words_count
+    end
+
     def exists_tex?
       File.exist?(tex_path) if tex_path
     end
@@ -94,9 +143,7 @@ module ThesisImporter
       @words
     end
     
-    
     def metadatas
-      # メタデータの取得
       author_data = "unknown"
       title_data  = "notitle"
       date_data   = "unknown"
@@ -120,17 +167,15 @@ module ThesisImporter
       { title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
     end
 
-
     def insert_into_elasticsearch
       CLIENT.index(index: INDEX, type: TYPE, id: thesis!.id, body: { 
           text: text
         }
       )
     end
-
   end
 
-  module_function :upsert_all!
+  module_function :upsert_all!, :web_count, :ruby_count
 
   private
 
