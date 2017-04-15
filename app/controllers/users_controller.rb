@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   #layout 'users'
   
   def index
-    #@user = User.all
     @bookBack = true
   end
  
@@ -34,14 +33,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :year, :email, :password, :password_confirmation)
     end
-
-
-    def invitation_mail 
- 
-    
-    end
-
-
-
-
 end

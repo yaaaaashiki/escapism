@@ -12,22 +12,68 @@
   text-align: center;
 }
 
-.centering-wrapper-block { /* センタリングしたいブロックの親ブロック要素につける*/
-  margin: 0;
-  position: relative;
-  height: 100%; /* 高さを指定しないと上下中央にならない */
-}
-/* ここまでブロック要素内のブロック要素の上下左右センタリング */
-
 .background-book-img {
   background-image: image-url("book.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  height: 690px;
 }
 
 .root-title {
   font-weight: bold;
   color: #111;
+}
+
+#rootpage{
+  box-sizing: border-box;
+  border: 0;
+  border : solid red;
+  position: absolute;
+  top: 5%;          //header の height を % 表示にしておく
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 95%;
+
+  #rootContents{
+    height: 80%;
+    .kana{
+       position: absolute;
+       box-sizing: content-box;
+       opacity: 0.9;
+       z-index: -100;
+       border: dotted 2px black;
+       height: 100%;
+     }
+    .col-height{
+      height: 90%;
+    }
+    .col-jquery-height{
+      height: 90%;
+    }
+    .image-right{
+       height: 100%;
+     }
+    .image-left{
+       height: 100%;
+     }
+  }
+}
+
+
+p {
+ z-index: 10000;
+ position: absolute;
+ left: 80%;
+ top: 90%;
+}
+
+div .image{
+ position: absolute;
+ left: 20%;
+ top: 90%;
+ height: 30%;
+ width: 30%;
 }
