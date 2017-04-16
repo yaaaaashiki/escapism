@@ -47,18 +47,23 @@
        border: dotted 2px black;
        height: 100%;
      }
-    .col-height{
+    .before-image-height{
       height: 90%;
     }
-    .col-jquery-height{
+    .after-image-height{
       height: 90%;
+      
     }
-    .image-right{
+    .after-image-right{
        height: 100%;
+       display: none;
      }
-    .image-left{
+    .after-image-left{
        height: 100%;
+       display: none;
      }
+
+
   }
 }
 
