@@ -10,25 +10,25 @@
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
 </head>
-<body> 
-  <%= nav_bar static: :top, brand: "Escapism", brand_link: root_path, responsive: true do %>
-    <%= menu_group pull: :right do %>
-      <% if logged_in? %>
-        <%= menu_item "Search", search_path %>
-        <%= menu_item "Logout", logout_path, {method: :post} %>
-      <% else %>
-        <%= menu_item "Register", new_user_path %>
-        <%= menu_item "Login", login_path %>
+<body class="fadeout">
+  <div class="navigate-anchor">
+    <%= nav_bar static: :top, brand: "Escapism", brand_link: root_path, responsive: true do %>
+      <%= menu_group pull: :right do %>
+          <% if logged_in? %>
+            <%= menu_item "Search", search_path %>
+            <%= menu_item "Logout", logout_path, {method: :post} %>
+          <% else %>
+            <%= menu_item "Register", new_user_path %>
+            <%= menu_item "Login", login_path %>
+          <% end %>
       <% end %>
     <% end %>
-  <% end %>
-
+  </div>
   <% if flash[:notice] %>
     <div class="container">
       <div class="alert alert-info" id="notice"><%= flash[:notice] %></div>
     </div>
   <% end %>
-
   <% if flash[:alert] %>
     <div class="container">
       <div class="alert alert-warning" id="alert"><%= flash[:alert] %></div>
