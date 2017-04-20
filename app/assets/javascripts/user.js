@@ -5,6 +5,13 @@ $(document).ready(function() {
     $("div .before-image-right").fadeOut("slow")
     $("div .after-image-left").fadeIn("slow")
     $("div .after-image-right").fadeIn("slow")
-
   });
+//  $("p").toggle(
+//    function() {
+//  		 $("div .before-image-left").fadeOut("slow")
+//  	},
+//  	function() {
+//  		 $("div .after-image-left").fadeIn("slow")
+//  	}
+//  );
 });
