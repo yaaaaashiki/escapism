@@ -17,11 +17,13 @@ $(document).ready(function() {
 //    );
 //  });
 //
+ 
   $("p").on('click', function(){
-    $("div .before-image-left").fadeOut(5000)
-    $("div .before-image-left").fadeIn(5000)
-});
-
-
-
+    setInterval(function(){
+      $("div .before-image-left").fadeToggle(1000)
+      $("div .after-image-left").fadeToggle(1000)
+      $("div .before-image-right").fadeToggle(1000)
+      $("div .after-image-right").fadeToggle(1000)
+    }, 1000);
+  });
 });
