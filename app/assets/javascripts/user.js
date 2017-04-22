@@ -18,12 +18,15 @@ $(document).ready(function() {
 //  });
 //
  
-  $("p").on('click', function(){
-    setInterval(function(){
-      $("div .before-image-left").fadeToggle(1000)
-      $("div .after-image-left").fadeToggle(1000)
-      $("div .before-image-right").fadeToggle(1000)
-      $("div .after-image-right").fadeToggle(1000)
-    }, 1000);
-  });
+  setInterval(function(){
+    $("div .before-image-left").fadeToggle(3000)
+    $("div .after-image-left").fadeToggle(3000)
+    $("div .before-image-right").fadeToggle(3000)
+    $("div .after-image-right").fadeToggle(3000)
+  }, 3000);
+
+  
+  
+//  $("p").on('click', function(){
+//  });
 });
