@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   resources :sessions  #, :only => [:new, :create, :destroy]
   resources :users          #, :only => [:index, :new, :create, :show]
   resources :theses do 
+
     resources :comments
   end
 
   get 'login' => 'sessions#new', :as => :login
-  post 'logout' => 'sessions#destroy', :as => :logout 
+  #post 'logout' => 'sessions#destroy', :as => :logout 
+  #面倒臭いから現段階では, get リクエストで sessions#destroy 通す 
+  get 'logout' => 'sessions#destroy', :as => :logout 
 
   namespace :admin do
     get '/' => 'dashboard#index'

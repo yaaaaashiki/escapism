@@ -1,13 +1,14 @@
 $(window).on('load', function(){
-  $('body').removeClass('fadeout');
+  $('section').removeClass('fadeout');
 });
 
 $(function() {
   $('a:not([href^="#"]):not([target])').on('click', function(e){
     e.preventDefault();
     url = $(this).attr('href');
+    console.log(url);
     if (url !== '') {
-      $('body').addClass('fadeout');
+      $('section').addClass('fadeout');
       setTimeout(function(){
         window.location = url;
       }, 800);

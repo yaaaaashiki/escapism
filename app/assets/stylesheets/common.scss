@@ -1,4 +1,4 @@
-body::after {
+section::after {
   content: '';
   position: fixed;
   top: 0;
@@ -13,6 +13,6 @@ body::after {
   transition: opacity .8s ease;
 }
 
-body.fadeout::after {
+section.fadeout::after {
   opacity: 1;
 }
