@@ -27,6 +27,8 @@
 }
 
 #rootpage{
+
+
   box-sizing: border-box;
   border: 0;
   border : solid red;
@@ -36,11 +38,12 @@
   bottom: 0;
   left: 0;
   height: 95%;
-  background-color: pink;
+  background-color: #CE5973;
 
 
   #rootContents{
-    height: 80%;
+    margin-top: 10%;
+    height: 60%;
     .kana{
        position: absolute;
        box-sizing: content-box;
@@ -48,6 +51,7 @@
        z-index: -100;
        border: dotted 2px black;
        height: 100%;
+       width: 80%;
      }
     .before-image-height{
       height: 90%;
