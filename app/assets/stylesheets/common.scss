@@ -17,9 +17,9 @@ section.fadeout::after {
   opacity: 1;
 }
 
-section.fadein{
-    -webkit-transform:scale(1.2);
-    transform:scale(1.2);
+#sessions .fadeout .fadein{
+  -webkit-transform:scale(1.2);
+  transform:scale(1.2);
 }
 
 
