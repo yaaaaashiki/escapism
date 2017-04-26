@@ -7,18 +7,27 @@
   bottom: 0;
   left: 0;
   height: 96%;
-  background-color: #1CBABC;
+  background-color: #de9610;
 
-  .page-header{
+    .page-header{
     margin-left: 10%;
     color: white;
+  }
+
+  .text-pos{
+    margin-top: 7px;
+  }
+
+  .textarea{
+    float: right;
+    width: 75%;
   }
 
   .button{
 	  background-color: transparent;
 	  border: 2px solid #fff;
 	  color: #fff;
-	  line-height: 50px;
+	  line-height: 40px;
   }
 
   .button:hover{
@@ -28,8 +37,6 @@
   .btn-pos{
     position: absolute;
     width: 50%;
-    left: 25%;
-    right: 25%;
   }
 }
 
@@ -37,3 +44,5 @@
   overflow: hidden;
   height: 4em;
 }
+
+

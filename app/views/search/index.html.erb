@@ -6,12 +6,12 @@
 
     <!-- 検索フォーム -->
     <%= form_tag search_path, method: :get, enforce_utf8: false, class: "form-horizontal" do %>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <%= search_field_tag :q, params[:q], class: 'form-control', placeholder: 'キーワード' %>
+        <div class="col-sm-9 col-xs-9 text-pos">
+          <%= search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'キーワード' %>
         </div>
-      </div>
-        <%= submit_tag '検索', class: "button btn-pos" %>
+        <div class="col-sm-3 col-xs-3">
+          <%= submit_tag '検索', class: "button btn-pos" %>
+        </div>
     <% end %>
 
     <!-- 検索結果の表示 -->
