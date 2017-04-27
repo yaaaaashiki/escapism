@@ -1,4 +1,4 @@
-#searchpage{
+#sessions{
   box-sizing: border-box;
   border: 0;
   position: absolute;
@@ -7,43 +7,29 @@
   bottom: 0;
   left: 0;
   height: 96%;
-  background-color: #de9610;
+  background-color: #1CBABC;
 
-  .page-header{
-    margin-left: 10%;
+  .signin{
     color: white;
-  }
-
-  .text-pos{
-    margin-top: 7px;
-  }
-
-  .textarea{
-    float: right;
-    width: 75%;
   }
 
   .button{
 	  background-color: transparent;
 	  border: 2px solid #fff;
 	  color: #fff;
-	  height: 30px;
-    margin-top: 8px;
+	  line-height: 50px;
   }
-
   .button:hover{
-  	background-color: rgba(255, 255, 255, .2);
+	  background-color: rgba(255, 255, 255, .2);
   }
-
   .btn-pos{
     position: absolute;
     width: 50%;
+    left: 25%;
+    right: 25%;
+    margin-top: 10%;
   }
-}
 
-.search_summary{
-  overflow: hidden;
-  height: 4em;
 }
 
 

@@ -1,6 +1,8 @@
 /*
  *= require_self
 
+ *= require common
+
  * admin
  *= require AdminLTE/AdminLTE
  *= require AdminLTE/skins/skin-blue
@@ -8,6 +10,7 @@
  *= require components/top
  *= require components/search
  *= require components/visual
+ *= require components/sessions
  *= require variables/_color
 
  * bootstrap 
