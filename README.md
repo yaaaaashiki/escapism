@@ -39,6 +39,13 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
+# mecab install (mac)
+```
+brew install mecab
+brew install mecab-ipadic
+```
+
+
 # Rspec test 
 プルリクを出す前に実行して, example 全部通っているか確認
 ```bash

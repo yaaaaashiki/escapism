@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   post 'thesis/download/:id' => 'theses#download', :as => :download
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
+  get 'introduction' => 'introductions#index'
 end
