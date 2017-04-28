@@ -4,6 +4,7 @@ class SorceryCore < ActiveRecord::Migration
       t.string :username,            :null => false
       t.integer :year 
       t.string :email,           :null => false  
+      t.integer :labo
       t.string :crypted_password
       t.string :salt
       t.timestamps

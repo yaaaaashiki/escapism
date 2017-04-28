@@ -6,6 +6,7 @@
 #  username         :string(255)      not null
 #  year             :integer
 #  email            :string(255)      not null
+#  labo             :integer
 #  crypted_password :string(255)
 #  salt             :string(255)
 #  created_at       :datetime

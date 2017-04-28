@@ -10,19 +10,17 @@ class Admin::UsersController < AdminController
   end
  
   def create
-    if user_params[:password] == params[:user][:password_confirmation]
-      @user = User.new user_params 
-      if @user.save
-        redirect_to admin_users_url, notice: 'user created'
-      else
-        render :new
-      end
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to admin_users_url, notice: 'user created'
+    else
+      render :new
     end
   end
 
   private
     def user_params
-      params.require(:user).permit(:username, :year, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :year, :email, :password)
     end
 end
 

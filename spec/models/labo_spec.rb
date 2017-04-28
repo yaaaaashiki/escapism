@@ -1,23 +1,15 @@
 # == Schema Information
 #
-# Table name: theses
+# Table name: labos
 #
 #  id         :integer          not null, primary key
-#  title      :text(65535)
-#  url        :text(65535)
-#  year       :integer
-#  labo       :integer
-#  author_id  :integer
+#  name       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
-# Indexes
-#
-#  index_theses_on_author_id  (author_id)
 #
 
 require 'rails_helper'
 
-RSpec.describe Thesis, type: :model do
+RSpec.describe Labo, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
