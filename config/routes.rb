@@ -1,29 +1,30 @@
 Rails.application.routes.draw do
-  root :to => 'users#index'
-  resources :sessions  #, :only => [:new, :create, :destroy]
-  resources :users          #, :only => [:index, :new, :create, :show]
-  resources :theses do 
-
-    resources :comments
-  end
-
-  get 'login' => 'sessions#new', :as => :login
+  root 'users#index'
+ 
   #post 'logout' => 'sessions#destroy', :as => :logout 
-  #面倒臭いから現段階では, get リクエストで sessions#destroy 通す 
+  get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout 
 
+  # postじゃないとダウンロードできない
+  get 'search' => 'search#index', :as => :search
+  post 'thesis/download/:id' => 'theses#download', :as => :download
+  get 'users/new/:token' => 'users#new'
+  get 'visual' => 'visual#index'
+  get 'introduction' => 'introductions#index'
+  
   namespace :admin do
     get '/' => 'dashboard#index'
+    get '/users' => 'users#index'
     get '/sign_in' => 'sessions#new'
     post '/sign_in' => 'sessions#create'
     get '/sign_out' => 'sessions#destroy'
     resources :users 
   end
 
-  get 'search' => 'search#index', :as => :search
-  # postじゃないとダウンロードできない
-  post 'thesis/download/:id' => 'theses#download', :as => :download
-  get 'users/new/:token' => 'users#new'
-  get 'visual' => 'visual#index'
-  get 'introduction' => 'introductions#index'
+  resources :theses, only: [:show, :index] do
+    resources :comments
+  end
+
+  resources :sessions
+  resources :users
 end
