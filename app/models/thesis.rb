@@ -6,6 +6,7 @@
 #  title      :text(65535)
 #  url        :text(65535)
 #  year       :integer
+#  labo       :integer
 #  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -17,6 +18,7 @@
 
 class Thesis < ApplicationRecord
   belongs_to :author
+  belongs_to :labo
   has_many :comments
   has_one :word_count
 

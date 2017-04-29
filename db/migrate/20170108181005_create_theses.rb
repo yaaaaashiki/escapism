@@ -4,6 +4,7 @@ class CreateTheses < ActiveRecord::Migration[5.0]
       t.text :title
       t.text :url
       t.integer :year
+      t.integer :labo
       t.references :author, foreign_key: true
 
       t.timestamps

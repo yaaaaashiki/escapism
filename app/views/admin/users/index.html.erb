@@ -1,0 +1,18 @@
+<h1>研究室変更</h1>
+
+<table>
+  <thead>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= form_for [:admin, @user] do |f| %>
+            <%= user.username %>
+            <%= f.hidden_field :info, :value => user.id %>
+            <%= f.collection_select :labo, Labo.all, :id, :name, :include_blank => true %>
+            <%= f.submit "submit", name: "hoge",  class: "btn" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </thead>
+</table>
