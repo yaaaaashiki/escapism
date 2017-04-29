@@ -14,15 +14,19 @@ class Admin::UsersController < AdminController
     @user = User.new(user_params)
     if @user.save
       redirect_to admin_users_url, notice: 'user created'
-    elsif params[:user][:labo] && params[:user][:info]
-      @user = User.find(params[:user][:info])
-      @user.labo = params[:user][:labo]
-      @user.save
-      redirect_to admin_url
     else
       render :new
     end
   end
+
+  def edit
+    params[:user][:labo] && params[:user][:info]
+    @user = User.find(params[:user][:info])
+    @user.labo = params[:user][:labo]
+    @user.save
+    redirect_to admin_url
+  end
+
 
   private
     def user_params
