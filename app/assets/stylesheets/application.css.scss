@@ -1,27 +1,21 @@
 /*
  *= require_self
-
  *= require common
 
- * admin
- *= require AdminLTE/AdminLTE
- *= require AdminLTE/skins/skin-blue
+ * bootstrap
+ *= require bootstrap
+ *= require rails_bootstrap_forms
+
+ *= require variables/_color
 
  *= require components/top
  *= require components/search
  *= require components/visual
  *= require components/sessions
- *= require variables/_color
-
- * bootstrap 
- *= require bootstrap
- *= require rails_bootstrap_forms
-
- 
+ *= require components/introductions
  */
 
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
-

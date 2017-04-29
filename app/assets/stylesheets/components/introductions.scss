@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+body {
+  background: image-url("background.jpg") fixed;
+}
+
+.content {
+  padding-top: 70px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.navbar{
+  border: none;
+  opacity: 0.7;
+}
+
+.transparent-back {
+  color: #fff;
+}
+
+.white-back {
+  background-color: #fff;
+}
+
+.black-back {
+  background-color: #222326;
+  color: #fff;
+}
+
+/* スクロールでフェードイン */
+/* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
+.fade-in-down {
+ -webkit-animation-fill-mode: both;
+ -ms-animation-fill-mode:     both;
+ animation-fill-mode:         both;
+ -webkit-animation-duration: 1s;
+ -ms-animation-duration:     1s;
+ animation-duration:         1s;
+ -webkit-animation-name: fade-in-down;
+ animation-name:         fade-in-down;
+ visibility: visible !important;
+}
+
+@-webkit-keyframes fade-in-down {
+ 0%   { opacity: 0; -webkit-transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+ 0%   { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0);     -ms-transform: translateY(0);     transform: translateY(0); }
+}
+/* ここまでスクロールでフェードイン */
