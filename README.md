@@ -45,9 +45,16 @@ brew install mecab
 brew install mecab-ipadic
 ```
 
+# mecab install (Ubuntu)
+```
+sudo apt-get install mecab mecab-ipadic-utf8
+```
+~/.bashrcに以下を追加
+```
+export MECAB_PATH="/usr/lib/libmecab.so.2"
+```
 
 # Rspec test 
-プルリクを出す前に実行して, example 全部通っているか確認
 ```bash
 bundle exec rails spec 
 
