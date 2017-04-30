@@ -1,21 +1,4 @@
-/*
- *= require_self
- *= require common
-
- * bootstrap
- *= require bootstrap
- *= require rails_bootstrap_forms
-
- *= require variables/_color
-
- *= require components/top
- *= require components/search
- *= require components/visual
- *= require components/sessions
- *= require components/introductions
- */
-
+@import 'common';
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'font-awesome';
