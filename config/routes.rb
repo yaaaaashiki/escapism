@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get '/sign_out' => 'sessions#destroy'
     resources :users 
     patch '/users/:id/edit' => 'users#edit'
+    get 'thesis' => 'theses#index' 
+    patch '/thesis/:id/edit' => 'theses#edit'
+    resources :thesis 
   end
 
   resources :theses, only: [:show, :index] do

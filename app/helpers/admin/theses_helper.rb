@@ -1,0 +1,2 @@
+module Admin::ThesesHelper
+end
