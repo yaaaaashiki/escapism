@@ -195,7 +195,12 @@ build-iPhoneSimulator/
 # elasticsearch2.4.3
 /vendor/elasticsearch-2.4.3/
 
+/thesis_data/ignore/
 
+/lib/lab_selecter.rb
+/lib/thesis*
+/lib/test.rb
+/lib/out*
 
 
 # .ruby_version
