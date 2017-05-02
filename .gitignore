@@ -89,10 +89,6 @@ $RECYCLE.BIN/
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 
 ### Vim ###
@@ -196,11 +192,7 @@ build-iPhoneSimulator/
 /vendor/elasticsearch-2.4.3/
 
 /thesis_data/ignore/
-
-/lib/lab_selecter.rb
-/lib/thesis*
-/lib/test.rb
-/lib/out*
+/lib/select_lab/thesis_data.csv
 
 
 # .ruby_version
