@@ -6,7 +6,7 @@
 #  title      :text(65535)
 #  url        :text(65535)
 #  year       :integer
-#  labo       :integer
+#  labo_id    :integer
 #  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

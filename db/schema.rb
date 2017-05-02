@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170428144220) do
     t.text     "title",      limit: 65535
     t.text     "url",        limit: 65535
     t.integer  "year"
-    t.integer  "labo"
+    t.integer  "labo_id"
     t.integer  "author_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
