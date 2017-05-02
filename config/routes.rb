@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   root 'introductions#index'
- 
-  #post 'logout' => 'sessions#destroy', :as => :logout 
+  
+  get 'kanayannlovelove' => 'users#index'
+
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout 
 
   # postじゃないとダウンロードできない
-  get 'search' => 'search#index', :as => :search
   post 'thesis/download/:id' => 'theses#download', :as => :download
+  get 'search' => 'search#index', :as => :search
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
-  get 'kanayannlovelove' => 'users#index'
-  
+  get 'recommendations' => 'recommendations#index'
+
+
+
   namespace :admin do
     get '/' => 'dashboard#index'
     get '/users' => 'users#index'
