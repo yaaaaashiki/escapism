@@ -19,7 +19,16 @@
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
 * JAVA_HOMEの設定  
 (Javaをバージョン管理したかったらJenvを使用してください)
-
+* Python3  
+  packages
+```
+  - Pandas
+  - NumPy
+  - SciPy
+  - MeCab
+  - scikit-learn
+  - nltk
+```
 # Gem install 
 
 ```
