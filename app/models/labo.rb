@@ -10,5 +10,5 @@
 
 class Labo < ApplicationRecord
   has_many :users
-  has_many :thesss
+  has_many :theses
 end
