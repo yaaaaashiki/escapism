@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'introductions#index'
  
   #post 'logout' => 'sessions#destroy', :as => :logout 
   get 'login' => 'sessions#new', :as => :login
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'thesis/download/:id' => 'theses#download', :as => :download
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
-  get 'introduction' => 'introductions#index'
+  get 'kanayannlovelove' => 'users#index'
   
   namespace :admin do
     get '/' => 'dashboard#index'
