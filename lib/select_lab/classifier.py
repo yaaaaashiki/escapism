@@ -20,8 +20,9 @@ def vectorize(texts):
   return texts.apply(preprocesor)
   
 def predict(text):
-  clf = pickle.load(open(os.path.join('lab_classifier', 'pkl_objects', 'classifier.pkl'), 'rb'))
-  inv_class_mapping = pickle.load(open(os.path.join('lab_classifier', 'pkl_objects', 'inv_class_mapping.pkl'), 'rb'))
+  curDir = os.path.abspath(os.path.dirname(__file__))
+  clf = pickle.load(open(os.path.join(curDir, 'lab_classifier', 'pkl_objects', 'classifier.pkl'), 'rb'))
+  inv_class_mapping = pickle.load(open(os.path.join(curDir, 'lab_classifier', 'pkl_objects', 'inv_class_mapping.pkl'), 'rb'))
   
   x = pd.DataFrame([text], columns=['text'])
   x = vectorize(x['text'])
@@ -30,7 +31,8 @@ def predict(text):
   return ansdf['label'].map(inv_class_mapping)
 
 args = sys.argv
-print(predict(args[1]))
+ans = predict(args[1])
+print(ans[0])
 
 # 以下簡単な確認に使用(削除してもOK)
 # print('適当')
