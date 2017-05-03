@@ -1,2 +1,27 @@
-<h1>Recommendations#index</h1>
-<p>Find me in app/views/recommendations/index.html.erb</p>
+<section id="recommendationpage" class="fadeout">
+  <div class="container fadein">
+    <div class="page-header">
+      <h1>研究室のおすすめ</h1>
+    </div>
+
+    <!-- 検索フォーム -->
+    <%= form_tag recommendations_path, method: :get, enforce_utf8: false, class: "form-horizontal" do %>
+        <div class="col-sm-9 col-xs-9 text-pos">
+          <%= search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'キーワード(やりたいこと)' %>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <%= submit_tag '検索', class: "button btn-pos" %>
+        </div>
+    <% end %>
+
+    <!-- 検索結果の表示 -->
+    <% if @labName %>
+        <div class="page-header col-sm-12 col-xs-12">
+          <h4>やりたいことからおすすめする研究室</h4>
+        </div>
+        <p class="col-sm-12 col-xs-12">
+          <%= @labName %>aaa
+        </p>
+    <% end %>
+  </div>
+</section>
