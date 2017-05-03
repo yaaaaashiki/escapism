@@ -39,7 +39,7 @@
 4. 起動  
   以下を実行
     ```
-      rails s
+      bundle exec rails s
     ```
 
 # Gem install 
@@ -63,9 +63,9 @@ bundle exec rails db:seed_fu
 # Rspec を用いたテスト
 テスト用のデータベース作成
 ```
-rails db:migrate:reset RAILS_ENV=test
+bundle exec rails db:migrate:reset RAILS_ENV=test
 ```
 テストの実行
-```bash
+```
 bundle exec rails spec 
 ```
