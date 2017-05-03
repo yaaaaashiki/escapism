@@ -14,23 +14,35 @@
 
 
 # System dependencies
-
+各種インストール方法はwikiを参照([開発環境構築](https://github.com/yaaaaashiki/Escapism/wiki/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89))
 * mysql 5.5以上  
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
 * JAVA_HOMEの設定  
 (Javaをバージョン管理したかったらJenvを使用してください)
 * Python3  
-  packages
-```
-  - Pandas
-  - NumPy
-  - SciPy
-  - MeCab
-  - scikit-learn
-  - nltk
-```
-# Gem install 
 
+## Pythonのパッケージ
+- Pandas
+- NumPy
+- SciPy
+- MeCab
+- scikit-learn
+- nltk
+
+# 実行手順
+1. elasticsearh起動  
+  wiki参照[Elasticsearchの初期設定と使用法](https://github.com/yaaaaashiki/Escapism/wiki/Elasticsearch%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%81%A8%E4%BD%BF%E7%94%A8%E6%B3%95)
+2. gem install (Gemfileに変更がなければ飛ばして良い)  
+  (以下に記述)
+3. Database creation (dbディレクトリ以下のファイルに変更がなければ飛ばして良い)  
+  (以下に記述)
+4. 起動  
+  以下を実行
+    ```
+      bundle exec rails s
+    ```
+
+# Gem install 
 ```
 bundle _1.12.5_  install --path vendor/bundle
 ```
@@ -41,67 +53,19 @@ bundle _1.12.5_  install --path vendor/bundle
 ```
 
 # Database creation
-事前に Elasticsearch を起動しておく
+以下のコマンドをターミナルで打つ
 ```
 bundle exec rails db:create
 bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
-# mecab install (mac)
+# Rspec を用いたテスト
+テスト用のデータベース作成
 ```
-brew install mecab
-brew install mecab-ipadic
+bundle exec rails db:migrate:reset RAILS_ENV=test
 ```
-
-# mecab install (Ubuntu)
+テストの実行
 ```
-sudo apt-get install mecab mecab-ipadic-utf8
-```
-~/.bashrcに以下を追加
-```
-export MECAB_PATH="/usr/lib/libmecab.so.2"
-```
-
-# Rspec test 
-```bash
 bundle exec rails spec 
-
-# テスト用のデータベース作成方法
-rails db:migrate:reset RAILS_ENV=test
 ```
-
-
-
-# Set up Elasticsearch2.4.3(起動と停止以外は一回のみ行う)
-## put on Elasricsearch and install a plugin kuromoji to it
-```bash
-./bin/putOnElasticsearch.sh
-```
-
-## Start
-```bash
-./vendor/elasticsearch-2.4.3/bin/elasticsearch
-```
-
-## Check on the Elasticsearch running
-```bash
-curl 'localhost:9200/_cat/health'
-# 以下のような出力でgreenになっていればOK
-1483261560 09:06:00 elasticsearch green 1 1 0 0 0 0 0 0 - 100.0%
-```
-
-## Initialize Elasicsearch
-起動中に以下を行う
-```bash
-./bin/initializeElasticsearch.sh
-```
-
-## Stop
-使わないときに止める
-```bash
-^C  (←Ctrl + C)
-```
-
-
-
