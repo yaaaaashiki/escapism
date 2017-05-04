@@ -111,7 +111,6 @@ GEM
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    hashie (3.4.6)
     i18n (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -319,7 +318,6 @@ DEPENDENCIES
   elasticsearch (= 2.0.0)
   factory_girl_rails
   faker
-  hashie (= 3.4.6)
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
