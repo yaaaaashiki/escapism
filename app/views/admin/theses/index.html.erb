@@ -5,7 +5,7 @@
     <% @theses.each do |thesis| %>
       <tr>
         <td>
-          <%= form_for [:admin, thesis], :url => edit_admin_thesis_path(thesis.id), method: :patch do |f| %>
+          <%= form_for [:admin, thesis], :url => admin_thesis_path(thesis.id), method: :patch do |f| %>
             <%= thesis.title %>
             <%= f.hidden_field :info, :value => thesis.id %>
             <%= f.collection_select :labo_id, Labo.all, :id, :name %>
