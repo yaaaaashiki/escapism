@@ -25,7 +25,7 @@ class Admin::UsersController < AdminController
       @user.save
       redirect_to admin_url
     else
-      render 'index'
+      render :index
     end
   end
   

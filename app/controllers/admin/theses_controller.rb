@@ -11,7 +11,7 @@ class Admin::ThesesController < AdminController
       @thesis.save
       redirect_to admin_url
     else
-      render 'index'
+      render :index
     end
   end
 end
