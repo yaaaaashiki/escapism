@@ -15,10 +15,8 @@ Rails.application.routes.draw do
     get '/sign_in' => 'sessions#new'
     post '/sign_in' => 'sessions#create'
     get '/sign_out' => 'sessions#destroy'
-    resources :users, only: [:index, :new, :create, :edit]
-    resources :theses, only: [:index, :edit]
-    patch '/users/:id/edit' => 'users#edit' # TODO:必修正updateを使う
-    patch '/theses/:id/edit' => 'theses#edit' # TODO:必修正updateを使う
+    resources :users, only: [:index, :new, :create, :update]
+    resources :theses, only: [:index, :update]
   end
 
   resources :theses, only: [:show, :index] do
