@@ -18,12 +18,14 @@ class Admin::UsersController < AdminController
     end
   end
 
-  def edit
+  def update
     if params[:user][:labo] && params[:user][:info]
       @user = User.find(params[:user][:info])
       @user.labo = params[:user][:labo]
       @user.save
       redirect_to admin_url
+    else
+      render 'index'
     end
   end
   

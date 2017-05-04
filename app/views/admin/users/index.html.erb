@@ -5,7 +5,7 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <%= form_for [:admin, user], :url => edit_admin_user_path(user.id), method: :patch do |f| %>
+          <%= form_for [:admin, user], :url => admin_user_path(user.id), method: :patch do |f| %>
             <%= user.username %>
             <%= f.hidden_field :info, :value => user.id %>
             <%= f.collection_select :labo, Labo.all, :id, :name %>
