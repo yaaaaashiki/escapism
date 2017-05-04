@@ -1,3 +1,5 @@
+require 'open3'
+
 class RecommendationsController < ApplicationController
   def index
     if params[:q]
