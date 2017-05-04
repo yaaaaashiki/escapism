@@ -1,37 +1,30 @@
 Rails.application.routes.draw do
   root 'introductions#index'
-  
-  get 'kanayannlovelove' => 'users#index'
 
-  get 'login' => 'sessions#new', :as => :login
-  get 'logout' => 'sessions#destroy', :as => :logout 
+  get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
 
-  # postじゃないとダウンロードできない
-  post 'thesis/download/:id' => 'theses#download', :as => :download
-  get 'search' => 'search#index', :as => :search
+  get 'thesis/download/:id' => 'theses#download', :as => :download
+  get 'search' => 'search#index'
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
 
-
-
   namespace :admin do
     get '/' => 'dashboard#index'
-    get '/users' => 'users#index'
     get '/sign_in' => 'sessions#new'
     post '/sign_in' => 'sessions#create'
     get '/sign_out' => 'sessions#destroy'
-    resources :users 
-    patch '/users/:id/edit' => 'users#edit'
-    get 'thesis' => 'theses#index' 
-    patch '/thesis/:id/edit' => 'theses#edit'
-    resources :thesis 
+    resources :users, only: [:index, :new, :create, :edit]
+    resources :theses, only: [:index, :edit]
+    patch '/users/:id/edit' => 'users#edit' # TODO:必修正updateを使う
+    patch '/theses/:id/edit' => 'theses#edit' # TODO:必修正updateを使う
   end
 
   resources :theses, only: [:show, :index] do
-    resources :comments
+    resources :comments, only: [:create]
   end
 
-  resources :sessions
-  resources :users
+  resources :sessions, only: [:create]
+  resources :users, only: [:index, :create]
 end
