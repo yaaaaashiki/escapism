@@ -19,7 +19,6 @@
             <%= menu_item "Search", search_path %>
             <%= menu_item "Logout", logout_path, {method: :post} %>
           <% else %>
-            <%= menu_item "About escapism", new_user_path %>
             <%= menu_item "Login", login_path %>
           <% end %>
       <% end %>

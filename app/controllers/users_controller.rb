@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   #layout 'users'
   
   def index
-    @bookBack = true
   end
  
   def new
@@ -24,7 +23,6 @@ class UsersController < ApplicationController
       redirect_to users_url 
     else
       flash.now[:notice] = "false registration"
-      @bookBack = true
       render :new 
     end
   end
