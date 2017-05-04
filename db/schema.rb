@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428144220) do
+ActiveRecord::Schema.define(version: 20170304022432) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username",        null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170428144220) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["author_id"], name: "index_theses_on_author_id", using: :btree
+    t.index ["labo_id"], name: "index_theses_on_labo_id", using: :btree
   end
 
   create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -83,5 +84,6 @@ ActiveRecord::Schema.define(version: 20170428144220) do
   add_foreign_key "comments", "theses"
   add_foreign_key "comments", "users"
   add_foreign_key "theses", "authors"
+  add_foreign_key "theses", "labos"
   add_foreign_key "word_counts", "theses"
 end

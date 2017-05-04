@@ -14,6 +14,7 @@
 # Indexes
 #
 #  index_theses_on_author_id  (author_id)
+#  index_theses_on_labo_id    (labo_id)
 #
 
 class Thesis < ApplicationRecord

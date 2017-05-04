@@ -34,7 +34,7 @@ module ThesisImporter
     web_total = {}
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
       plane_thesis = PlaneThesis.new(path)
-      if plane_thesis.validate_path?
+      if plane_thesis.exists_thesis?
         web_words_count = plane_thesis.web_words_count  
         web_total = web_total.merge(web_words_count) 
       end
@@ -46,7 +46,7 @@ module ThesisImporter
     ruby_total = {}
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
       plane_thesis = PlaneThesis.new(path)
-      if plane_thesis.validate_path?
+      if plane_thesis.exists_thesis?
         ruby_words_count = plane_thesis.ruby_words_count  
         ruby_total = ruby_total.merge(ruby_words_count) 
       end
@@ -168,6 +168,7 @@ module ThesisImporter
     end
 
     def insert_into_elasticsearch
+      # Thesis!でMySqlにデータを入れながらElasticsearchに挿入www
       CLIENT.index(index: INDEX, type: TYPE, id: thesis!.id, body: { 
           text: text
         }

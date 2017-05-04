@@ -5,9 +5,9 @@ class Admin::ThesesController < AdminController
   end
 
   def edit
-    if params[:thesis][:labo] && params[:thesis][:info]
+    if params[:thesis][:labo_id] && params[:thesis][:info]
       @thesis = Thesis.find(params[:thesis][:info])
-      @thesis.labo_id = params[:thesis][:labo]
+      @thesis.labo_id = params[:thesis][:labo_id]
       @thesis.save
       redirect_to admin_url
     end
