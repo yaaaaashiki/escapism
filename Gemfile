@@ -22,6 +22,8 @@ gem 'bootstrap_form'
 # gem 'bourbon'
 gem 'natto'
 
+# Term Frequency - Inverse Document Frequency in Ruby http://redwriteshere.com
+gem 'tf_idf'
 
 # Authentication
 # gem 'devise'

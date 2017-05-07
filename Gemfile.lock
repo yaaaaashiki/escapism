@@ -267,6 +267,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    tf_idf (0.0.2)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -339,6 +340,7 @@ DEPENDENCIES
   simplecov
   sorcery
   spring
+  tf_idf
   therubyracer
   turbolinks
   twitter-bootstrap-rails
