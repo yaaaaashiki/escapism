@@ -3,7 +3,17 @@ require 'open3'
 class RecommendationsController < ApplicationController
   def index
     if params[:q]
-      @labName = predict(params[:q])
+      predicted_lab_name = predict(params[:q])
+      lab_hash = {'鷲見研究室' => 'sumi'  , 'Dürst 研究室' => 'duerst'  , '佐久田研究室' => 'sakuta'   ,
+                  '大原研究室' => 'ohara' , '小宮山研究室' => 'komiyama', '戸辺研究室'   => 'tobe'     ,
+                  '原田研究室' => 'harada', 'lopez研究室'  => 'lopez'   , '山口研究室'   => 'yamaguchi',
+      }
+      predicted_lab_name.gsub!(/[\r\n]/, "")
+      @lab_name = lab_hash.key(predicted_lab_name)
+      if Labo.exists?(name: @lab_name)
+        lab = Labo.find_by(name: @lab_name)
+        @feaures = lab[:features].keys()
+      end
     end
   end
 
