@@ -15,13 +15,24 @@
     <% end %>
 
     <!-- 検索結果の表示 -->
-    <% if @labName %>
+    <% if @lab_name %>
         <div class="page-header col-sm-12 col-xs-12">
           <h4>やりたいことからおすすめする研究室</h4>
         </div>
         <p class="col-sm-12 col-xs-12">
-          <%= @labName %>
+          <%= @lab_name %>
         </p>
+
+        <% if @feaures %>
+          <div class="page-header col-sm-12 col-xs-12">
+            <h4><%= @lab_name %>のキーワード</h4>
+          </div>
+          <p class="col-sm-12 col-xs-12">
+            <% @feaures.each do |word| %>
+              <div class="col-sm-2 col-xs-2"><%= word %></div>
+            <% end %>
+          </p>
+        <% end %>
     <% end %>
   </div>
 </section>
