@@ -8,7 +8,7 @@ module FeaturesGetter
       feature_hash[lab_name] = fetch_lab_feature(lab_name, feature_num)
     end
     
-    return feature_hash
+    feature_hash
   end
   
   def fetch_lab_feature(lab_name, feature_num)
@@ -35,7 +35,6 @@ module FeaturesGetter
     natto.parse(text)
   end
   
-  # ストップワードの削除がカオスwww
   def clean_wakati_text(wakati_text)
     wakati_text.gsub!(/[θsdi�…ɽ!"#$%&'=~^`@;:,<>_\r\n、。．，０-９0-9\(\)\[\]\{\}\.\?\+\*\|\\\-\/]/, " ")
     wakati_text.gsub!(/\p{blank}.\p{blank}/, " ")
@@ -47,13 +46,12 @@ module FeaturesGetter
       wakati_text.gsub!(/\p{blank}#{s}\p{blank}/, " ")
     end
 
-    # 以下は主観で決定www
     my_stop_words = %w(ある いる する ない よう コード ソース 研究 実験 プロパティ メソッド 処理 使用 可能 クラス その として 削減 れる できる この データ 10 手法 また なる 領域 プログラム 結果 :// the システム 生成 of 追加 情報 is 評価 辞書 被験者 表示 平均 操作 項目 について という られ 用い 示す より による この 利用 れる 行う られる and 論文 必要 本 作成 on における ます 機能 to 青山 学院 大学 青山学院大学 情報テクノロジー 学科 表 なっ コマンド 入力 行っ 「 」 に対する により 参加 用いる in 理工学部 図 優位 比較 考え Fig co Un ng t Ra en an th Facto nt Jo HF LF CR cle F Ref tter 有意 nect 考察 目的 序論 結果 e 因子 でき フォン 間隔 において)
     my_stop_words.each do |s|
       wakati_text.gsub!(/\p{blank}#{s}\p{blank}/, " ")
     end
     
-    return wakati_text
+    wakati_text
   end
 
   def parse_wakati_array(wakati_text)
