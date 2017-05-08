@@ -1,17 +1,14 @@
-import pandas as pd
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-# from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.grid_search import GridSearchCV
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import TfidfVectorizer
 import MeCab
-import re
-from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
-import pickle
+import numpy as np
 import os
+import pandas as pd
+import pickle
+import re
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.grid_search import GridSearchCV
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import Pipeline
 
 def preprocesor(text):
   return re.sub('[\W]+', ' ', text)
@@ -19,82 +16,54 @@ def preprocesor(text):
 def tokenizer(text):
   return text.split()
 
-porter = PorterStemmer()
-def tokenizer_porter(text):
-  return [porter.stem(word) for word in text.split()]
+def read_thesis_data(path):
+  thesis_data = pd.read_csv(path)
+  return thesis_data.dropna()
 
+thesis_data = read_thesis_data('./thesis_data.csv')
 
-df = pd.read_csv('./thesis_data.csv')
-df = df.dropna()
-
-class_mapping = {label:idx for idx, label in enumerate(np.unique(df['labName']))}
-df['labName'] = df['labName'].map(class_mapping)
+class_mapping = {label:idx for idx, label in enumerate(np.unique(thesis_data['labName']))}
 inv_class_mapping = {v: k for k, v in class_mapping.items()}
+thesis_data['labName'] = thesis_data['labName'].map(class_mapping)
 
-text = df['text']
 tagger = MeCab.Tagger("-Owakati")
-for i in range(len(text.values)):
-  text.values[i] = tagger.parse(text.values[i])
+for i in range(len(thesis_data['text'])):
+  thesis_data['text'].values[i] = tagger.parse(thesis_data['text'].values[i])
 
-# count = CountVectorizer()
-# bag = count.fit_transform(text)
+thesis_data['text'] = thesis_data['text'].apply(preprocesor)
 
-# print(count.vocabulary_)
-# print(bag.toarray())
+# サンプル数196 train:test= 7:3 -> 138, 8:2 -> 164
+thesis_data = thesis_data.reindex(np.random.permutation(thesis_data.index))
+X_train = thesis_data.loc[:, 'text'].values
+Y_train = thesis_data.loc[:, 'labName'].values
+X_test = thesis_data.loc[:, 'text'].values
+Y_test = thesis_data.loc[:, 'labName'].values
 
-df['text'] = df['text'].apply(preprocesor)
+text_clf = Pipeline([('vect', CountVectorizer(ngram_range=(1, 2))),
+                     ('tfidf', TfidfTransformer()),
+                     ('clf', MultinomialNB()),
+])
 
-stop = stopwords.words('english')
+parameters = {'clf__alpha': (1e-1, 1e-2, 1e-3),}
 
-tfidf = TfidfVectorizer(strip_accents=None,
-                        preprocessor=None)
-param_grid = [{'vect__ngram_range': [(1, 1)],
-               'vect__stop_words': [stop, None],
-               'vect__tokenizer': [tokenizer, tokenizer_porter],
-               'clf__penalty': ['l1', 'l2'],
-               'clf__C': [1.0, 10.0, 100.0]},
-              {'vect__ngram_range': [(1, 1)],
-               'vect__stop_words': [stop, None],
-               'vect__tokenizer': [tokenizer, tokenizer_porter],
-               'vect__use_idf':[False],
-               'vect__norm':[None],
-               'clf__penalty': ['l1', 'l2'],
-               'clf__C': [1.0, 10.0, 100.0]},
-              ]
+gs_clf = GridSearchCV(text_clf, parameters, n_jobs=-1)
 
-lr_tfidf = Pipeline([('vect', tfidf),
-                     ('clf', LogisticRegression(random_state=0))])
+gs_clf = gs_clf.fit(X_train, Y_train)
 
-gs_lr_tfidf = GridSearchCV(lr_tfidf, param_grid,
-                           scoring='accuracy',
-                           cv=5,
-                           verbose=1,
-                           n_jobs=-1)
+clf = gs_clf.best_estimator_
+print('CV Accuracy: %.3f' % gs_clf.best_score_)
+print('Test Accuracy: %.3f' % clf.score(X_test, Y_test))
 
-# 192個の論文データ
-df = df.reindex(np.random.permutation(df.index))
-X_train = df.loc[:, 'text'].values
-Y_train = df.loc[:, 'labName'].values
-X_test = df.loc[:, 'text'].values
-Y_test = df.loc[:, 'labName'].values
-gs_lr_tfidf.fit(X_train, Y_train)
-
-print('Best parameter set: %s ' % gs_lr_tfidf.best_params_)
-print('CV Accuracy: %.3f' % gs_lr_tfidf.best_score_)
-clf = gs_lr_tfidf.best_estimator_
-print('test Accuracy: %.3f' % clf.score(X_test, Y_test))
+for param_name in sorted(parameters.keys()):
+    print("%s: %r" % (param_name, gs_clf.best_params_[param_name]))
 
 dest = os.path.join('lab_classifier', 'pkl_objects')
 if not os.path.exists(dest):
     os.makedirs(dest)
 
-pickle.dump(stop,
-            open(os.path.join(dest, 'stopwords.pkl'), 'wb'),
-            protocol=4)
 pickle.dump(clf,
             open(os.path.join(dest, 'classifier.pkl'), 'wb'),
             protocol=4)
 pickle.dump(inv_class_mapping,
             open(os.path.join(dest, 'inv_class_mapping.pkl'), 'wb'),
             protocol=4)
-print('saved!!')
