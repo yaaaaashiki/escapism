@@ -8,15 +8,24 @@ class SearchController < ApplicationController
     if params[:q]
       response = search params[:q]
       @total = response["hits"]["total"] #response[:hits][:total]じゃ動かない？？？？
-
+      
       thesisArray = []
       response["hits"]["hits"].each do |t|
-        thesis = Thesis.find t["_id"]
-        thesis = {thesis: thesis, body: t["_source"]["text"]}
-        thesisArray.push thesis
+        if params[:l]
+          thesis = Thesis.find_by(id: t["_id"], labo_id: params[:l])
+        else
+          thesis = Thesis.find t["_id"]
+        end
+
+        if thesis
+          thesis = {thesis: thesis, body: t["_source"]["text"]}
+          thesisArray.push thesis
+        end
       end
       @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
     end
+
+    @labos = Labo.all()
   end
 
   private
