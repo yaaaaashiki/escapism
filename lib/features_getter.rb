@@ -8,7 +8,7 @@ module FeaturesGetter
       feature_hash[lab_name] = fetch_lab_feature(lab_name, feature_num)
     end
     
-    return feature_hash
+    feature_hash
   end
   
   def fetch_lab_feature(lab_name, feature_num)
@@ -53,7 +53,7 @@ module FeaturesGetter
       wakati_text.gsub!(/\p{blank}#{s}\p{blank}/, " ")
     end
     
-    return wakati_text
+    wakati_text
   end
 
   def parse_wakati_array(wakati_text)
