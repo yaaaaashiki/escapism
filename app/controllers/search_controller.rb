@@ -24,7 +24,7 @@ class SearchController < ApplicationController
       @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
     end
 
-    @labos = Labo.all()
+    @labos = Labo.all
   end
 
   private
