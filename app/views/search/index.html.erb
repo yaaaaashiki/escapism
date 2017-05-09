@@ -7,10 +7,10 @@
     <!-- 検索フォーム -->
     <%= form_tag search_path, method: :get, enforce_utf8: false, class: "form-horizontal" do %>
         <div class="col-sm-9 col-xs-9 text-pos">
-          <%= search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'キーワード' %>
+          <%= search_field_tag(:q, params[:q], class: 'form-control textarea', placeholder: 'キーワード') %>
         </div>
         <div class="col-sm-3 col-xs-3">
-          <%= submit_tag '検索', class: "button btn-pos" %>
+          <%= submit_tag('検索', class: "button btn-pos") %>
         </div>
         <% @labos.each do | l | %>
           <div class="col-sm-4 col-xs-4">
@@ -24,7 +24,7 @@
       <%= page_entries_info @thesisArray %>
       <% @thesisArray.each do |t| %>
         <div class="page-header">
-          <h4><%= link_to t[:thesis].title, thesis_path(t[:thesis]) %></h4>
+          <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
         </div>
         <p class="text-muted search_summary">
           <small><%= t[:body] %></small>
