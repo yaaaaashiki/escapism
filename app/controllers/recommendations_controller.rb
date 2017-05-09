@@ -12,7 +12,7 @@ class RecommendationsController < ApplicationController
       @lab_name = lab_hash.key(predicted_lab_name)
       if Labo.exists?(name: @lab_name)
         labo = Labo.find_by(name: @lab_name)
-        @feaures = labo.features.keys()
+        @feaures = labo.features.keys
       end
     end
   end
