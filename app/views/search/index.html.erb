@@ -12,6 +12,11 @@
         <div class="col-sm-3 col-xs-3">
           <%= submit_tag '検索', class: "button btn-pos" %>
         </div>
+        <% @labos.each do | l | %>
+          <div class="col-sm-4 col-xs-4">
+            <label><%= radio_button_tag(:l, l.id) + l.name%></label>
+          </div>
+        <% end %>
     <% end %>
 
     <!-- 検索結果の表示 -->
