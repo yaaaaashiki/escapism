@@ -1,49 +1,31 @@
-#searchpage{
-  box-sizing: border-box;
-  border: 0;
-  position: absolute;
-  top: 4%;          //header の height を % 表示にしておく
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 96%;
+body {
   background-color: #de9610;
+  
+  #searchpage{
+    // bootstrapのクラスをオーバーライド
+    .page-header {
+      color: white;
+    }
 
-  .page-header{
-    margin-left: 10%;
-    color: white;
-  }
+    .textarea {
+      width: 100%;
+    }
 
-  .text-pos{
-    margin-top: 7px;
-  }
+    .button {
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      width: 100%;
+      height: 34px;
+    }
 
-  .textarea{
-    float: right;
-    width: 75%;
-  }
+    .button:hover{
+      background-color: rgba(255, 255, 255, .2);
+    }
 
-  .button{
-	  background-color: transparent;
-	  border: 2px solid #fff;
-	  color: #fff;
-	  height: 30px;
-    margin-top: 8px;
-  }
-
-  .button:hover{
-  	background-color: rgba(255, 255, 255, .2);
-  }
-
-  .btn-pos{
-    position: absolute;
-    width: 50%;
+    .search_summary{
+      overflow: hidden;
+      height: 4em;
+    }
   }
 }
-
-.search_summary{
-  overflow: hidden;
-  height: 4em;
-}
-
-
