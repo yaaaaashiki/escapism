@@ -27,6 +27,15 @@ class SearchController < ApplicationController
     @labos = Labo.all
   end
 
+  def ajax
+    if params[:labo_id]
+      @thesisArray = Thesis.find(params[:labo_id])
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def search(keyword = "")
       response = CLIENT.search(index: INDEX, body: {

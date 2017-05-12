@@ -16,26 +16,29 @@
       </div>
       
       <div class="row">
-        <% @labos.each do | l | %>
+        <% @labos.each do |l| %>
           <div class="col-sm-4 col-xs-4">
-            <label><%= radio_button_tag(:l, l.id)%><%= l.name %></label>
+            <label><%= radio_button_tag(:l, l.id) %><%= l.name %></label>
           </div>
         <% end %>
       </div>
     <% end %>
 
+    <div class="search-result">
     <!-- 検索結果の表示 -->
-    <% if @thesisArray %>
-      <%= page_entries_info @thesisArray %>
-      <% @thesisArray.each do |t| %>
-        <div class="page-header">
-          <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
-        </div>
-        <p class="text-muted search_summary">
-          <small><%= t[:body] %></small>
-        </p>
+      <% if @thesisArray %>
+        <%= page_entries_info @thesisArray %>
+          <% @thesisArray.each do |t| %>
+              <div class="page-header">
+                <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
+              </div>
+              <p class="text-muted search_summary">
+                <small><%= t[:body] %></small>
+              </p>
+          <% end %>
+        <%= paginate @thesisArray %>
       <% end %>
-      <%= paginate @thesisArray %>
-    <% end %>
-  </div>
+    </div>
 </section>
+
+<%= javascript_include_tag "search" %>

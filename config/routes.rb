@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'thesis/download/:id' => 'theses#download', :as => :download
   get 'search' => 'search#index'
+  get 'search/ajax' => 'search#ajax'
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'

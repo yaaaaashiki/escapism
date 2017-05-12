@@ -1,0 +1,8 @@
+<% data.each do |t| %>
+  <div class="page-header">
+    <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
+  </div>
+  <p class="text-muted search_summary">
+    <small><%= t[:body] %></small>
+  </p>
+<% end %>
