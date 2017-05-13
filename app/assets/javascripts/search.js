@@ -1,4 +1,4 @@
-$("[id^=l]", ".labo-radio").click(function(){
+$("[id^=l]", ".labo-radio").change(function(){
   $.ajax({
     url: "search/ajax",
     type: "GET",
