@@ -1,4 +1,4 @@
-$("[id^=l]").click(function(){
+$("[id^=l]", ".labo-radio").click(function(){
   $.ajax({
     url: "search/ajax",
     type: "GET",
@@ -8,4 +8,3 @@ $("[id^=l]").click(function(){
     success: function(data) {
   }});
 });
-

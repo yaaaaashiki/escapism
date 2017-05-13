@@ -18,7 +18,9 @@
       <div class="row">
         <% @labos.each do |l| %>
           <div class="col-sm-4 col-xs-4">
-            <label><%= radio_button_tag(:l, l.id) %><%= l.name %></label>
+            <div class="labo-radio">
+              <label><%= radio_button_tag(:l, l.id) %><%= l.name %></label>
+            </div>
           </div>
         <% end %>
       </div>

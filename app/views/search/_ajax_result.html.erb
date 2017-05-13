@@ -1,10 +1,8 @@
 <% @thesisArray.each do |t| %>
   <div class="page-header">
-    <%# binding.pry %>
     <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
   </div>
-
   <p class="text-muted search_summary">
-    <%= t[:body] %>
+    <small><%= t[:body] %></small>
   </p>
 <% end %>
