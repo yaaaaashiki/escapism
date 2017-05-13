@@ -24,7 +24,8 @@
       </div>
     <% end %>
 
-    <div class="search-result">
+    <div id="search-result">
+    </div>
     <!-- 検索結果の表示 -->
       <% if @thesisArray %>
         <%= page_entries_info @thesisArray %>
@@ -38,7 +39,6 @@
           <% end %>
         <%= paginate @thesisArray %>
       <% end %>
-    </div>
 </section>
 
 <%= javascript_include_tag "search" %>

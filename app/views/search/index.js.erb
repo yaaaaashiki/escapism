@@ -1,1 +1,1 @@
-$(".search-result").html("<%= j(render :partial => 'search/ajax_result', :locals => {:data => @thesisArray}) %>");
+$("#search-result").html("<%= j(render :partial => 'ajax_result', :locale => @thesisArray)%>");

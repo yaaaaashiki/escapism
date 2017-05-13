@@ -5,9 +5,18 @@ class SearchController < ApplicationController
   TYPE = 'thesis'
 
   def index
+    if params[:labo_id]
+      respond_to do |format|
+        if params[:labo_id]
+          ajax
+          format.js
+        end
+        format.html
+      end
+    end
+
     if params[:q]
       response = search(params[:q])
-      
       thesisArray = []
       response["hits"]["hits"].each do |t|
         if params[:l]
@@ -27,15 +36,6 @@ class SearchController < ApplicationController
     @labos = Labo.all
   end
 
-  def ajax
-    if params[:labo_id]
-      @thesisArray = Thesis.find(params[:labo_id])
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
     def search(keyword = "")
       response = CLIENT.search(index: INDEX, body: {
@@ -51,4 +51,24 @@ class SearchController < ApplicationController
         # size: PAGE_SIZE   # 返す検索結果の数
       })
     end
+
+    def ajax
+      thesisArray = []
+      @theses = Thesis.where(labo_id: params[:labo_id])
+      @theses.each do |t|
+        result = from_id_extract_thesis(t.id)
+        thesis = {thesis: t, body: result["hits"]["hits"].first["_source"]["text"]}
+        thesisArray.push(thesis)
+      end
+      @thesisArray = thesisArray
+    end
+
+    def from_id_extract_thesis(thesis_id)
+      CLIENT.search(index: INDEX, body:{
+        query: {
+          terms: {"_id": [thesis_id]}
+        }
+      })
+    end
+
 end
