@@ -8,7 +8,7 @@ class SearchController < ApplicationController
     if params[:labo_id]
       respond_to do |format|
         if params[:labo_id]
-          ajax
+          create_result_by_labo_id
           format.js
         end
         format.html
@@ -52,18 +52,18 @@ class SearchController < ApplicationController
       })
     end
 
-    def ajax
+    def create_result_by_labo_id
       thesisArray = []
       @theses = Thesis.where(labo_id: params[:labo_id])
       @theses.each do |t|
-        result = from_id_extract_thesis(t.id)
+        result = search_by_thesis_id(t)
         thesis = {thesis: t, body: result["hits"]["hits"].first["_source"]["text"]}
         thesisArray.push(thesis)
       end
       @thesisArray = thesisArray
     end
 
-    def from_id_extract_thesis(thesis_id)
+    def search_by_thesis_id(thesis_id)
       CLIENT.search(index: INDEX, body:{
         query: {
           terms: {"_id": [thesis_id]}
