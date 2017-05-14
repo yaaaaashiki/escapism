@@ -14,9 +14,9 @@ class SearchController < ApplicationController
     end
 
     if params[:q]
-      thesisArray = create_result_by_keyword_and_labo_id()
+      thesisArray = create_result_by_keyword_and_labo_id
     elsif params[:labo_id]
-      thesisArray = create_result_by_only_labo_id()
+      thesisArray = create_result_by_only_labo_id
     end
 
     @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
