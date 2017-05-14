@@ -12,7 +12,7 @@ module CSVCreator
 
     # 以下の配列は論文がまとめられているディレクトリ名に対応
     # 例) /thesis_data/ignore/labName[0]以下にduerst研の論文がある
-    labNames = %w(duerst harada komiyama lopez ohara sakuta sumi tobe yamaguchi)
+    labNames = %w(duerst harada komiyama lopez ohara sakuta sumi tobe) # yamaguchi)
     labNames.each do |labName|
       labDir = Rails.root.join('thesis_data/ignore/' + labName)
       Find.find(labDir) do |path|
