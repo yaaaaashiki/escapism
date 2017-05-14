@@ -2,7 +2,7 @@ require 'find'
 
 module FeaturesGetter
   def fetch(feature_num)
-    lab_names = %w(duerst harada komiyama lopez ohara sakuta sumi tobe yamaguchi)
+    lab_names = %w(duerst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
     feature_hash = {}
     lab_names.each do |lab_name|
       feature_hash[lab_name] = fetch_lab_feature(lab_name, feature_num)
