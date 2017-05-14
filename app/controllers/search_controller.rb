@@ -5,18 +5,27 @@ class SearchController < ApplicationController
   TYPE = 'thesis'
 
   def index
-    if params[:labo_id]
-      respond_to do |format|
-        if params[:labo_id]
-          create_result_by_labo_id
-          format.js
-        end
-        format.html
-      end
+    @labos = Labo.all
+  end
+
+  def search
+    respond_to do |format|
+      format.js
     end
 
     if params[:q]
-      response = search(params[:q])
+      thesisArray = create_result_by_keyword_and_labo_id()
+    elsif params[:labo_id]
+      thesisArray = create_result_by_only_labo_id()
+    end
+
+    @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
+    @labos = Labo.all
+  end
+
+  private
+    def create_result_by_keyword_and_labo_id 
+      response = search_by_keyword(params[:q])
       thesisArray = []
       response["hits"]["hits"].each do |t|
         if params[:l]
@@ -30,15 +39,11 @@ class SearchController < ApplicationController
           thesisArray.push(thesis)
         end
       end
-      @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
+      thesisArray
     end
-
-    @labos = Labo.all
-  end
-
-  private
-    def search(keyword = "")
-      response = CLIENT.search(index: INDEX, body: {
+    
+    def search_by_keyword(keyword = "")
+      CLIENT.search(index: INDEX, body: {
         query: {
           multi_match: {
             query: keyword,
@@ -52,7 +57,7 @@ class SearchController < ApplicationController
       })
     end
 
-    def create_result_by_labo_id
+    def create_result_by_only_labo_id
       thesisArray = []
       @theses = Thesis.where(labo_id: params[:labo_id])
       @theses.each do |t|
@@ -60,7 +65,7 @@ class SearchController < ApplicationController
         thesis = {thesis: t, body: result["hits"]["hits"].first["_source"]["text"]}
         thesisArray.push(thesis)
       end
-      @thesisArray = thesisArray
+      thesisArray
     end
 
     def search_by_thesis_id(thesis_id)
@@ -70,5 +75,4 @@ class SearchController < ApplicationController
         }
       })
     end
-
 end
