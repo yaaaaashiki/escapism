@@ -9,11 +9,7 @@ class SearchController < ApplicationController
   end
 
   def search
-    respond_to do |format|
-      format.js
-    end
-
-    if params[:q]
+    if params[:q] && params[:q] != ""
       thesisArray = create_result_by_keyword_and_labo_id
     elsif params[:labo_id]
       thesisArray = create_result_by_only_labo_id
@@ -28,8 +24,8 @@ class SearchController < ApplicationController
       response = search_by_keyword(params[:q])
       thesisArray = []
       response["hits"]["hits"].each do |t|
-        if params[:l]
-          thesis = Thesis.find_by(id: t["_id"], labo_id: params[:l])
+        if params[:labo_id]
+          thesis = Thesis.find_by(id: t["_id"], labo_id: params[:labo_id])
         else
           thesis = Thesis.find(t["_id"])
         end
