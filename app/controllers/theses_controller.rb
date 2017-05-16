@@ -28,10 +28,13 @@ class ThesesController < ApplicationController
   end
 
   def show
-    @thesis = Thesis.find params[:id]
-    @author = Author.find @thesis.author_id
-    impressionist(@thesis, "message...") # 2nd argument is optional
-    @thesis.impressionist_count(:filter=>:ip_address)
+    @thesis = Thesis.find(params[:id])
+    @author = Author.find(@thesis.author_id)
+    if @thesis
+      impressionist(@thesis)
+      @thesis.update_attribute(:access, @thesis.impressionist_count)
+    end
+    binding.pry
   end
 
   def download
