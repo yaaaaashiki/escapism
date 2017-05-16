@@ -4,7 +4,13 @@ class SearchController < ApplicationController
   INDEX = 'thesis_development'
   TYPE = 'thesis'
 
+  impressionist :actions=>[:index]
+
   def index
+    @widget = Widget.find
+    impressionist(@widget, "message...") # 2nd argument is optional
+    @widget.impressionist_count(:filter=>:ip_address)
+
     if params[:q]
       response = search(params[:q])
       

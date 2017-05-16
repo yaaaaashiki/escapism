@@ -23,6 +23,8 @@ class Thesis < ApplicationRecord
   has_many :comments
   has_one :word_count
 
+  is_impressionable
+
   def self.create_from_seed(attrs = {})
     ActiveRecord::Base.transaction do 
       author = Author.find_or_create_by(name: attrs[:author_name])
