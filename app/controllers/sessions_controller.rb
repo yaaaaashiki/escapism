@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     if @user = login(params[:session][:username], params[:session][:password])
       log_in @user 
-      redirect_to search_url
+      redirect_to theses_url
     else
       flash.now[:alert] = 'Login failed'
       @bookBack = true

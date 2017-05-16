@@ -1,17 +1,11 @@
 class ThesesController < ApplicationController
-
+  impressionist :actions=>[:index]
   THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
 
-  impressionist :actions=>[:index]
-
   def index
- #   @widget = Widget.find
- #   impressionist(@widget, "message...") # 2nd argument is optional
- #   @widget.impressionist_count(:filter=>:ip_address)
-
     if params[:q]
       response = search(params[:q])
       thesisArray = []
@@ -36,6 +30,8 @@ class ThesesController < ApplicationController
   def show
     @thesis = Thesis.find params[:id]
     @author = Author.find @thesis.author_id
+    impressionist(@thesis, "message...") # 2nd argument is optional
+    @thesis.impressionist_count(:filter=>:ip_address)
   end
 
   def download

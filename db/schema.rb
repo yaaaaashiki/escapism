@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516121542) do
+ActiveRecord::Schema.define(version: 20170516161353) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "username",        null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170516121542) do
     t.integer  "author_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "access"
     t.index ["author_id"], name: "index_theses_on_author_id", using: :btree
     t.index ["labo_id"], name: "index_theses_on_labo_id", using: :btree
   end

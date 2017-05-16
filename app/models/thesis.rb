@@ -10,6 +10,7 @@
 #  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  access     :integer
 #
 # Indexes
 #
@@ -18,12 +19,11 @@
 #
 
 class Thesis < ApplicationRecord
+  is_impressionable
   belongs_to :author
   belongs_to :labo
   has_many :comments
   has_one :word_count
-
-  is_impressionable
 
   def self.create_from_seed(attrs = {})
     ActiveRecord::Base.transaction do 
