@@ -6,8 +6,10 @@ class ThesesController < ApplicationController
   TYPE = 'thesis'
 
   def index
+    @hash = create_popular_thesis_hash
+    @hash = sort_hash_des(@hash)
     if params[:q]
-      response = search(params[:q])
+      response = search_by_keyword(params[:q])
       thesisArray = []
       response["hits"]["hits"].each do |t|
         if params[:l]
@@ -32,9 +34,12 @@ class ThesesController < ApplicationController
     @author = Author.find(@thesis.author_id)
     if @thesis
       impressionist(@thesis)
-      @thesis.update_attribute(:access, @thesis.impressionist_count)
+      if @thesis.impressionist_count.nil?
+        @thesis.update_attribute(:access, 0)
+      else
+        @thesis.update_attribute(:access, @thesis.impressionist_count)
+      end
     end
-    binding.pry
   end
 
   def download
@@ -43,7 +48,7 @@ class ThesesController < ApplicationController
   end
 
   private
-    def search(keyword = "")
+    def search_by_keyword(keyword = "")
       response = CLIENT.search(index: INDEX, body: {
         query: {
           multi_match: {
@@ -56,6 +61,15 @@ class ThesesController < ApplicationController
         # from: page * PAGE_SIZE,  # 返す検索結果の開始位置(0が最初)
         # size: PAGE_SIZE   # 返す検索結果の数
       })
+    end
+
+    def create_popular_thesis_hash
+      @theses = Thesis.all
+      @theses.map{|thesis| [thesis.id, thesis.access]}.to_h
+    end
+
+    def sort_hash_des(hash)
+      hash.sort{|(k1, v1), (k2, v2)| v2 <=> v1}.to_h
     end
 
 end
