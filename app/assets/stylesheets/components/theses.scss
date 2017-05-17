@@ -40,5 +40,22 @@ body {
   #right-nav-container{
     color: white;
     border: 2px solid #DDD;
+
+    .ranking{
+      font-size: 30px;
+      color: black;
+    }
+    .access{
+      font-size: 23px;
+      color: black;
+    }
+    .thesis-title{
+      font-size: 20px;
+      color: black;
+    }
+    .author{
+      font-size: 20px;
+      color: black;
+    }
   }
 }

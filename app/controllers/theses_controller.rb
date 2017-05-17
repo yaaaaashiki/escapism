@@ -6,8 +6,8 @@ class ThesesController < ApplicationController
   TYPE = 'thesis'
 
   def index
-    @hash = create_popular_thesis_hash
-    @hash = sort_hash_des(@hash)
+    @popular_theses = Thesis.all.order(access: :desc).limit(5)
+
     if params[:q]
       response = search_by_keyword(params[:q])
       thesisArray = []
@@ -61,15 +61,6 @@ class ThesesController < ApplicationController
         # from: page * PAGE_SIZE,  # 返す検索結果の開始位置(0が最初)
         # size: PAGE_SIZE   # 返す検索結果の数
       })
-    end
-
-    def create_popular_thesis_hash
-      @theses = Thesis.all
-      @theses.map{|thesis| [thesis.id, thesis.access]}.to_h
-    end
-
-    def sort_hash_des(hash)
-      hash.sort{|(k1, v1), (k2, v2)| v2 <=> v1}.to_h
     end
 
 end
