@@ -27,12 +27,14 @@
     <% if @thesisArray %>
       <%= page_entries_info @thesisArray %>
       <% @thesisArray.each do |t| %>
-        <div class="page-header">
-          <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
+        <div class="col-sm-offset-1 col-xs-offset-1">
+          <div class="page-header thesis-width">
+            <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
+          </div>
+          <p class="text-muted search_summary">
+            <small><%= t[:body] %></small>
+          </p>
         </div>
-        <p class="text-muted search_summary">
-          <small><%= t[:body] %></small>
-        </p>
       <% end %>
       <%= paginate @thesisArray %>
     <% end %>
