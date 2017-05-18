@@ -36,7 +36,7 @@ class ThesesController < ApplicationController
       if @thesis.impressionist_count.nil?
         @thesis.update_attribute(:access, 0)
       else
-        @thesis.update_attribute(:access, @thesis.impressionist_count)
+        @thesis.update_attribute(:access, @thesis.impressionist_count(:filter=>:all))
       end
     end
   end
