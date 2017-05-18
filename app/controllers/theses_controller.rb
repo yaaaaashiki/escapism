@@ -1,5 +1,4 @@
 class ThesesController < ApplicationController
-  impressionist :actions=>[:index]
   THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
