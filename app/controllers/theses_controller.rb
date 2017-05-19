@@ -4,8 +4,10 @@ class ThesesController < ApplicationController
   INDEX = 'thesis_development'
   TYPE = 'thesis'
 
+  before_action :init_set_popular_theses
+
   def index
-    @popular_theses = Thesis.all.order(access: :desc).limit(5)
+    #@popular_theses = Thesis.all.order(access: :desc).limit(5)
 
     if params[:q]
       response = search_by_keyword(params[:q])
@@ -29,6 +31,7 @@ class ThesesController < ApplicationController
   end
 
   def show
+    @popular_theses = Thesis.all.order(access: :desc).limit(5)
     @thesis = Thesis.find(params[:id])
     @author = Author.find(@thesis.author_id)
     if @thesis
@@ -60,6 +63,10 @@ class ThesesController < ApplicationController
         # from: page * PAGE_SIZE,  # 返す検索結果の開始位置(0が最初)
         # size: PAGE_SIZE   # 返す検索結果の数
       })
+    end
+
+    def init_set_popular_theses
+      @popular_theses = Thesis.all.order(access: :desc).limit(5)
     end
 
 end
