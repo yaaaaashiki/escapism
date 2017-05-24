@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 20170516161353) do
     t.integer  "year"
     t.integer  "labo_id"
     t.integer  "author_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "access"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "access",                   default: 0, null: false
     t.index ["author_id"], name: "index_theses_on_author_id", using: :btree
     t.index ["labo_id"], name: "index_theses_on_labo_id", using: :btree
   end

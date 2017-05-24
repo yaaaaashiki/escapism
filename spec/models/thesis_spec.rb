@@ -10,7 +10,7 @@
 #  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  access     :integer
+#  access     :integer          default("0"), not null
 #
 # Indexes
 #

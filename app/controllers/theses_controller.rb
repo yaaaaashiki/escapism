@@ -7,8 +7,6 @@ class ThesesController < ApplicationController
   before_action :init_set_popular_theses
 
   def index
-    #@popular_theses = Thesis.all.order(access: :desc).limit(5)
-
     if params[:q]
       response = search_by_keyword(params[:q])
       thesisArray = []
