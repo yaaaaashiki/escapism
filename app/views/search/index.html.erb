@@ -5,7 +5,7 @@
     </div>
 
     <!-- 検索フォーム -->
-    <%= form_tag(search_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do %>
+    <%= form_tag(search_ajax_path, method: :get, remote: true, enforce_utf8: false, class: "form-horizontal form-inline") do %>
       <div class="row">
         <div class="col-sm-offset-2 col-xs-offset-2 col-sm-7 col-xs-7">
           <%= search_field_tag(:q, params[:q], class: 'form-control textarea', placeholder: 'キーワード') %>
@@ -16,26 +16,17 @@
       </div>
       
       <div class="row">
-        <% @labos.each do | l | %>
+        <% @labos.each do |l| %>
           <div class="col-sm-4 col-xs-4">
-            <label><%= radio_button_tag(:l, l.id)%><%= l.name %></label>
+            <div class="labo-radio">
+              <label><%= radio_button_tag(:l, l.id) %><%= l.name %></label>
+            </div>
           </div>
         <% end %>
       </div>
     <% end %>
 
-    <!-- 検索結果の表示 -->
-    <% if @thesisArray %>
-      <%= page_entries_info @thesisArray %>
-      <% @thesisArray.each do |t| %>
-        <div class="page-header">
-          <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
-        </div>
-        <p class="text-muted search_summary">
-          <small><%= t[:body] %></small>
-        </p>
-      <% end %>
-      <%= paginate @thesisArray %>
-    <% end %>
-  </div>
+    <div id="search-result">
+    </div>
 </section>
+
