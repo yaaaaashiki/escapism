@@ -1,10 +1,14 @@
-$(window).on('load', function(){
+window.onunload = function(){
+  $('body').addClass('fade-in');
+};
+  
+$(window).bind("unload",function(){
   $('body').addClass('fade-in');
 });
 
-window.onunload = function(){};
-
-$(window).bind("unload",function(){});
+$(window).on('load', function(){
+  $('body').addClass('fade-in');
+});
 
 $(function() {
   $('a').on('click', function(e) {
@@ -17,4 +21,5 @@ $(function() {
 
     return false;
   });
+
 });
