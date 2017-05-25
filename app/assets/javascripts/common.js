@@ -2,8 +2,7 @@ window.onunload = function(){
   $('body').addClass('fade-in');
 };
   
-$(window).bind("unload",function(){
-  $('body').addClass('fade-in');
+$(window).on("unload",function(){
 });
 
 $(window).on('load', function(){
