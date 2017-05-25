@@ -6,10 +6,4 @@ class VisualController < ApplicationController
       t.year = 0 if t.year == "unknown"
     end
   end
-
-  private
-
-  def extract_year
-
-  end
 end

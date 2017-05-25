@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
   get 'thesis/download/:id' => 'theses#download', :as => :download
-  get 'search' => 'search#index'
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'

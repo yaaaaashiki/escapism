@@ -21,6 +21,7 @@ gem 'bootstrap_form'
 # gem 'execjs'
 # gem 'bourbon'
 gem 'natto'
+gem 'impressionist', '~> 1.5.1'
 
 # Term Frequency - Inverse Document Frequency in Ruby http://redwriteshere.com
 gem 'tf_idf'

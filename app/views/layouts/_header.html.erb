@@ -16,7 +16,7 @@
       <%= menu_group pull: :right do %>
           <% if logged_in? %>
             <%= menu_item "Recommend Lab", recommendations_path %>
-            <%= menu_item "Search", search_path %>
+            <%= menu_item "Search", theses_path %>
             <%= menu_item "Logout", logout_path, {method: :post} %>
           <% else %>
             <%= menu_item "Login", login_path %>

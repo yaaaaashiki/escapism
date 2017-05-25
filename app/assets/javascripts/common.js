@@ -1,3 +1,10 @@
+window.onunload = function(){
+  $('body').addClass('fade-in');
+};
+  
+$(window).on("unload",function(){
+});
+
 $(window).on('load', function(){
   $('body').addClass('fade-in');
 });
@@ -13,4 +20,5 @@ $(function() {
 
     return false;
   });
+
 });

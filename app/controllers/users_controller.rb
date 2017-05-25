@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     if Token.exists?(token: params[:token]) 
-      redirect_to search_url
+      redirect_to theses_url
     else
       redirect_to root_path 
     end

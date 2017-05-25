@@ -10,6 +10,7 @@
 #  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  access     :integer          default("0"), not null
 #
 # Indexes
 #
@@ -18,6 +19,7 @@
 #
 
 class Thesis < ApplicationRecord
+  is_impressionable
   belongs_to :author
   belongs_to :labo
   has_many :comments
