@@ -12,6 +12,7 @@ class ThesesController < ApplicationController
       thesisArray = []
       response["hits"]["hits"].each do |t|
         if params[:l]
+          params[:l] = 9 if params[:l] == 9
           thesis = Thesis.find_by(id: t["_id"], labo_id: params[:l])
         else
           thesis = Thesis.find(t["_id"])
