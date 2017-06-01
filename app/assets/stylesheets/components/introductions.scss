@@ -4,6 +4,11 @@ body {
   background: image-url("bg1.jpeg") fixed;
 }
 
+#pageContents{
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: "MS PGothic", "Osaka", Arial, sans-serif;
+}
+
 .content {
   padding-top: 70px;
   padding-bottom: 50px;
@@ -13,6 +18,7 @@ body {
 .navbar{
   border: none;
   opacity: 0.7;
+  margin: 0;
 }
 
 .transparent-back {
