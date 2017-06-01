@@ -9,8 +9,14 @@ body {
   font-family: "MS PGothic", "Osaka", Arial, sans-serif;
 }
 
+.titleContent {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  width: 100%;
+}
+
 .content {
-  padding-top: 70px;
+  padding-top: 50px;
   padding-bottom: 50px;
   width: 100%;
 }
@@ -19,6 +25,16 @@ body {
   border: none;
   opacity: 0.7;
   margin: 0;
+  height: 100px;
+  padding-top: 30px;
+}
+
+.nav{
+  font-size: 20px;
+}
+
+.navbar-brand{
+  font-size: 30px;
 }
 
 .transparent-back {
