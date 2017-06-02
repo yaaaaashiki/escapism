@@ -35,15 +35,53 @@ body::after {
   color: darkorange;
 }
 
+.font-size-14{
+  font-size: 14px;
+}
+
 .font-size-20{
   font-size: 20px;
 }
 
+.font-size-35{
+  font-size: 35px;
+}
+
 .font-size-40{
+  font-size: 40px;
+}
+
+.font-size-45{
+  font-size: 45px;
+}
+
+.font-size-50{
+  font-size: 50px;
+}
+
+.font-size-60{
   font-size: 60px;
 }
 
 .clear-margin{
   margin: 0;
 }
+
+.mar-ri-20 {
+  margin-right: 20px;
+}
+
+.mar-bo-30 {
+  margin-bottom: 30px;
+}
+
+.underLine {
+// background: linear-gradient(transparent 70%, darkorange 70%);
+  border-bottom: solid 3px darkorange;
+}
+
+
+
+
+
 
