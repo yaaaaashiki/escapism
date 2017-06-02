@@ -1,30 +1,91 @@
 @charset "UTF-8";
 
 body {
-  background: image-url("background.jpg") fixed;
+  background: image-url("bg1.jpeg") fixed;
+}
+
+#pageContents{
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: "MS PGothic", "Osaka", Arial, sans-serif;
+}
+
+.titleContent {
+  padding-top: 160px;
+  padding-bottom: 160px;
+  width: 100%;
 }
 
 .content {
-  padding-top: 70px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   width: 100%;
 }
+
+.container {
+  padding-left: 60px;
+}
+
+.position{
+  position: absolute;
+  top: 320px;
+  right: 60px;
+}
+
+.laboName{
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+  border-bottom: solid 3px coral;
+  width: 18%;
+}
+
+.laboName6{
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+  border-bottom: solid 3px coral;
+  width: 22%;
+}
+
+.laboProfessor {
+  font-size: 20px;
+}
+
+.laboKeyword {
+  margin-top: 30px;
+}
+
+.laboInfo {
+  font-size: 20px;
+}
+
+
 
 .navbar{
   border: none;
   opacity: 0.7;
+  margin: 0;
+  height: 100px;
+  padding-top: 30px;
+}
+
+.nav{
+  font-size: 20px;
+}
+
+.navbar-brand{
+  font-size: 30px;
 }
 
 .transparent-back {
-  color: #fff;
+  color: #333;
 }
 
 .white-back {
-  background-color: #fff;
+  background-color: rgba(45, 45, 45, 0.6);
+  color: #fff;
 }
 
 .black-back {
-  background-color: #222326;
+  background-color: rgba(0, 3, 4, 0.58);
   color: #fff;
 }
 
