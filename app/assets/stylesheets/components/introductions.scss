@@ -10,8 +10,8 @@ body {
 }
 
 .titleContent {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 160px;
+  padding-bottom: 160px;
   width: 100%;
 }
 
@@ -25,6 +25,12 @@ body {
   padding-left: 60px;
 }
 
+.position{
+  position: absolute;
+  top: 320px;
+  right: 60px;
+}
+
 .laboName{
   letter-spacing: 6px;
   margin-bottom: 30px;
@@ -35,7 +41,7 @@ body {
 .laboName{
   letter-spacing: 6px;
   margin-bottom: 30px;
-  border-bottom: solid 3px darkorange;
+  border-bottom: solid 3px coral;
   width: 20%;
 }
 
@@ -81,7 +87,7 @@ body {
 }
 
 .white-back {
-  background-color: #fff;
+  background-color: #f6f6f6;
   color: #333;
 }
 

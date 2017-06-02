@@ -31,8 +31,20 @@ body::after {
   color: blue;
 }
 
+.skyblue{
+  color: skyblue;
+}
+
 .orange{
   color: darkorange;
+}
+
+.coral{
+  color: coral;
+}
+
+.gray{
+  color: #333;
 }
 
 .white{
@@ -43,8 +55,16 @@ body::after {
   font-size: 14px;
 }
 
+.font-size-16{
+  font-size: 16px;
+}
+
 .font-size-20{
   font-size: 20px;
+}
+
+.font-size-30{
+  font-size: 30px;
 }
 
 .font-size-35{
@@ -79,6 +99,12 @@ body::after {
   margin-bottom: 30px;
 }
 
+.pad-le-40 {
+  padding-left: 40px;
+}
+
+
+
 .pad-le-60 {
   padding-left: 60px;
 }
@@ -89,9 +115,5 @@ body::after {
 // background: linear-gradient(transparent 70%, darkorange 70%);
   border-bottom: solid 3px darkorange;
 }
-
-
-
-
 
 
