@@ -1,30 +1,29 @@
-  <div class="l-footerNav">
-    <div class="l-container l-container--full">
-      <nav class="m-navigation m-navigation--center">
-        <ul>
-          <li><a class="font-size-20" href="/">TOP</a></li>
-          <li><a class="font-size-20" href="/">PRODUCT</a></li>
-          <li><a class="font-size-20" href="/">ABOUT</a></li>
-          <li><a class="font-size-20" href="/">NEWS</a></li>
-          <li><a class="font-size-20" href="/">CONTACT</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-
-
   <footer id="footer">
+    <div class="l-footerNav">
+      <div class="l-container l-container--full">
+        <nav class="m-navigation m-navigation--center">
+          <ul>
+            <% if logged_in? %>
+              <li><%= link_to "TOP", "/", {class: "font-size-20"} %></li>
+              <li><%= link_to "Recommend Lab", recommendations_path, {class: "font-size-20"} %></li>
+              <li><%= link_to "Search", theses_path, {class: "font-size-20"} %></li>
+              <li><%= link_to "Logout", logout_path, {class: "font-size-20", method: :post} %></li>
+            <% else %>
+              <li><%= link_to "Login", login_path, {class: "font-size-20"} %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <div class="l-container l-container--narrow">
       <h1 class="m-siteLogo m-siteLogo--small">
         <a href="http://pas-pol.jp">論文検索支援システム escapism</a>
       </h1>
-  
       <div class="m-copyRight">
-        <small>Copyright &copy; 2017 論文検索支援システム escapism All rights reserved.</small>
+      <small>Copyright &copy; 2017 論文検索支援システム escapism All rights reserved.</small>
       </div>
     </div>
   </footer>
-
   <%= stylesheet_link_tag "footers" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag params[:controller] %>

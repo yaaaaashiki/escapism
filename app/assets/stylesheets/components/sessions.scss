@@ -1,35 +1,29 @@
-#sessions{
-  box-sizing: border-box;
-  border: 0;
-  position: absolute;
-  top: 4%;          //header の height を % 表示にしておく
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 96%;
+body{
   background-color: #1CBABC;
 
-  .signin{
-    color: white;
-  }
-
-  .button{
-	  background-color: transparent;
-	  border: 2px solid #fff;
-	  color: #fff;
-	  line-height: 50px;
-  }
-  .button:hover{
-	  background-color: rgba(255, 255, 255, .2);
-  }
-  .btn-pos{
-    position: absolute;
-    width: 50%;
-    left: 25%;
-    right: 25%;
-    margin-top: 10%;
+  #sessions{
+  
+    .signin{
+      color: white;
+    }
+  
+    .button{
+  	  background-color: transparent;
+  	  border: 2px solid #fff;
+  	  color: #fff;
+  	  line-height: 50px;
+    }
+    .button:hover{
+  	  background-color: rgba(255, 255, 255, .2);
+    }
+    .btn-pos{
+      position: absolute;
+      width: 50%;
+      left: 25%;
+      right: 25%;
+      margin-top: 10%;
+    }
+  
   }
 
 }
-
-
