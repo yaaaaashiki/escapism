@@ -15,6 +15,7 @@
   <div class="navigate-anchor">
     <%= nav_bar static: :top, brand: "論文検索支援システム", brand_link: root_path, responsive: true do %>
       <%= menu_group pull: :right do %>
+        <%= menu_item "TOP", root_path %>
           <% if logged_in? %>
             <%= menu_item "Recommend Lab", recommendations_path %>
             <%= menu_item "Search", theses_path %>
