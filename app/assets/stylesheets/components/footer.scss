@@ -1,20 +1,20 @@
+#footer {
+  background-color: #656c6e;
+  font-family: "MS PGothic", "Osaka", Arial, sans-serif;
+}
+
 .l-footerNav{
   background-color: #f8f8f8;
   padding: 30px 0;
-  text-align: center;
   opacity: 0.7;
 }
 
 .l-container {
-  max-width: 940px;
+  //max-width: 940px;
   overflow: hidden;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   padding: 0 7%;
-}
-
-#footer {
-  background-color: #656c6e;
 }
 
 .m-navigation li {
@@ -31,20 +31,17 @@
 }
 
 .m-navigation--center ul {
-    text-align: center;
+  float: right;
+  padding-right: 60px;
 }
 
 .m-navigation ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    font-size: 0;
-    letter-spacing: -1em;
-    word-spacing: -1em;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0;
+  letter-spacing: -1em;
+  word-spacing: -1em;
 }
 
-.l-container.l-container--full {
-  max-width: 100%;
-  padding: 0;
-}
 
