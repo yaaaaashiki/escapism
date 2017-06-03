@@ -3,6 +3,7 @@ require 'open3'
 class RecommendationsController < ApplicationController
   def index
     if params[:q]
+      binding.pry
       predicted_lab_name = predict(params[:q])
       lab_hash = {'鷲見研究室' => 'sumi'  , 'Dürst 研究室' => 'duerst'  , '佐久田研究室' => 'sakuta'   ,
                   '大原研究室' => 'ohara' , '小宮山研究室' => 'komiyama', '戸辺研究室'   => 'tobe'     ,
