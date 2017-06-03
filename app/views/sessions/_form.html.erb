@@ -1,20 +1,25 @@
 <div id = "sessions" class = "fadeuout">
   <div class="container fadein">
-    <div class="page-header">
-      <h1 class="signin">Sign In</h1>
+      <div class="form-group">
+        <div class="col-sm-12">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+        </div>
+      </div>
+    <div class = "container">
+      <div class="wrapper">
+        <div class="form-signin">
+          <h3 class="form-signin-heading">サインイン</h3>
+          <hr class="colorgraph"><br>
+          <%= form_for :session, url: sessions_path, html: {class: 'form-horizontal'} do |f| %>
+          <%= f.text_field :username, class: "form-control", placeholder: "ユーザ名" %>
+          <%= f.password_field :password, class: "form-control", placeholder: "パスワード" %>
+          <%= f.submit_tag "ログイン", class: "btn btn-lg btn-primary btn-block" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <%= form_for :session, url: sessions_path, html: {class: 'form-horizontal'} do |f| %>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <%= f.text_field :username, class: "form-control", placeholder: "username" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <%= f.password_field :password, class: "form-control", placeholder: "password" %>
-        </div>
-      </div>
-          <%= f.submit_tag "submit", class: "button btn-pos" %>
-    <% end %>
   </div>
 </div>
