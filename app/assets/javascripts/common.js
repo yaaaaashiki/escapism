@@ -21,4 +21,10 @@ $(function() {
     return false;
   });
 
+  $('.navigate-anchor ul li').mouseover(function() {
+    $(this).addClass("bottom-border");
+  }).mouseout(function() {
+    $(this).removeClass("bottom-border");
+  });
+
 });
