@@ -17,3 +17,4 @@ curl -XPUT 'localhost:9200/_settings' -d '{
     "number_of_replicas" : 0
   }
 }'
+
