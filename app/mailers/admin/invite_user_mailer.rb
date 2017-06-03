@@ -1,6 +1,5 @@
 class Admin::InviteUserMailer < ApplicationMailer
   def invite(to, subject)
-    
     body = "hoge"
     token = generate_token 
     @registraion_url = new_user_url + "/" + token 
@@ -17,5 +16,4 @@ class Admin::InviteUserMailer < ApplicationMailer
     def generate_token
       token = SecureRandom.urlsafe_base64(6)
     end
-
 end
