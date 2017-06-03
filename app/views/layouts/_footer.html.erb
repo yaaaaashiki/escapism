@@ -4,12 +4,12 @@
         <nav class="m-navigation m-navigation--center">
           <ul>
             <% if logged_in? %>
-              <li><%= link_to "TOP", "/", {class: "font-size-20"} %></li>
-              <li><%= link_to "Recommend Lab", recommendations_path, {class: "font-size-20"} %></li>
-              <li><%= link_to "Search", theses_path, {class: "font-size-20"} %></li>
-              <li><%= link_to "Logout", logout_path, {class: "font-size-20", method: :post} %></li>
+              <li><%= link_to "TOP", "/", {class: "font-size-20 white"} %></li>
+              <li><%= link_to "Recommend Lab", recommendations_path, {class: "font-size-20 white"} %></li>
+              <li><%= link_to "Search", theses_path, {class: "font-size-20 white"} %></li>
+              <li><%= link_to "Logout", logout_path, {class: "font-size-20 white", method: :post} %></li>
             <% else %>
-              <li><%= link_to "Login", login_path, {class: "font-size-20"} %></li>
+              <li><%= link_to "Login", login_path, {class: "font-size-20 white"} %></li>
             <% end %>
           </ul>
         </nav>
@@ -17,7 +17,7 @@
     </div>
     <div class="l-container l-container--narrow">
       <h1 class="m-siteLogo m-siteLogo--small">
-        <a href="http://pas-pol.jp">論文検索支援システム escapism</a>
+        <a class=" white" href="/">論文検索支援システム escapism</a>
       </h1>
       <div class="m-copyRight">
       <small>Copyright &copy; 2017 論文検索支援システム escapism All rights reserved.</small>
