@@ -27,4 +27,10 @@ $(function() {
     $(this).removeClass("bottom-border");
   });
 
+   $('.l-footerNav ul li').mouseover(function() {
+    $(this).addClass("bottom-border");
+  }).mouseout(function() {
+    $(this).removeClass("bottom-border");
+  });
+
 });
