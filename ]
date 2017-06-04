@@ -42,6 +42,14 @@ body {
   border-bottom: solid 3px coral;
 }
 
+
+.laboName6{
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+  border-bottom: solid 3px coral;
+  width: 22%;
+}
+
 .laboProfessor {
   font-size: 20px;
 }
