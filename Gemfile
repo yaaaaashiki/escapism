@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '5.0.0'
 gem 'therubyracer', platforms: :ruby
 
-#a aUI/UX
+#aa aUI/UX
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
@@ -60,7 +60,6 @@ end
 group :test do 
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'capybara-webkit'
   gem 'rails-controller-testing' 
 end
 
