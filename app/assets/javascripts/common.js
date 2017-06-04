@@ -12,7 +12,6 @@ $(window).on('load', function(){
 $(function() {
   $('a').on('click', function(e) {
     $('body').addClass('fade-out');
-
     url = $(this).attr('href');
     setTimeout(function(){
       window.location = url;
@@ -28,9 +27,9 @@ $(function() {
   });
 
    $('.l-footerNav ul li').mouseover(function() {
-    $(this).addClass("bottom-border");
+    $(this).addClass("bottom-border-orange");
   }).mouseout(function() {
-    $(this).removeClass("bottom-border");
+    $(this).removeClass("bottom-border-orange");
   });
 
 });

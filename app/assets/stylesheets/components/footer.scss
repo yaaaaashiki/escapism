@@ -7,6 +7,11 @@
 .l-footerNav{
   background-color: black;
   padding: 30px 0;
+
+  a:hover {
+    color: darkorange;
+    text-decoration: none;
+  }
 }
 
 .l-container {
