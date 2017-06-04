@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
   get 'thesis/download/:id' => 'theses#download', :as => :download
-  get 'users/new/:token' => 'users#new'
+  get 'users/new/:token' => 'users#token'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
 
@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:create]
-  resources :users, only: [:index, :create]
+  resources :users, only: [:new, :index, :create]
 end
