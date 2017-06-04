@@ -2,6 +2,8 @@
 
 body {
   background: image-url("bg1.jpeg") fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #pageContents{
