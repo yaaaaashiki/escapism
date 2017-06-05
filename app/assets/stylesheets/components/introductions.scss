@@ -110,20 +110,18 @@ body {
 /* ここまでスクロールでフェードイン */
 
 // カルーセル制御
-// 上三つは画像サイズ固定処理
-// これがなかなか難しいねんな...
 .carousel{
   height: 200px;
   margin:auto;
-}
 
-.carousel .item {
-  height: 100%;
-}
+  .item {
+    height: 100%;
+  }
 
-.carousel img {
-  position: absolute;
-  height: 100%;
+  img {
+    position: absolute;
+    height: 100%;
+  }
 }
 
 @media (min-width: 320px) {

@@ -11,12 +11,20 @@ $(window).on('load', function(){
 
 $(function() {
   $('a').on('click', function(e) {
-    if(!$(this).hasclass('carousel-control')) {
+    if(!$(this).hasClass('carousel-control')) {
       $('body').addClass('fade-out');
       url = $(this).attr('href');
       setTimeout(function(){
         window.location = url;
       }, 800);
+    }
+    else{
+      if($(this).hasClass('right')){
+        $('#carousel-example-generic').carousel('next');
+      }
+      else{
+        $('#carousel-example-generic').carousel('prev');
+      }
     }
     return false;
   });
