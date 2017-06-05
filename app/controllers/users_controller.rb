@@ -1,19 +1,12 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :token_exists?, only:[:new]
 
   def index
   end
  
   def new
     @user = User.new
-  end
-
-  def token
-    if Token.exists?(token: params[:token]) 
-      redirect_to new_user_url
-    else
-      redirect_to root_path
-    end
   end
 
   def create
@@ -30,4 +23,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :year, :email, :password)
     end
+
+    def token_exists?
+      redirect_to root_path unless Token.exists?(token: params[:token])
+    end
+
 end
