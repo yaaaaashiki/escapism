@@ -108,3 +108,39 @@ body {
  100% { opacity: 1; -webkit-transform: translateY(0);     -ms-transform: translateY(0);     transform: translateY(0); }
 }
 /* ここまでスクロールでフェードイン */
+
+// カルーセル制御
+// 上三つは画像サイズ固定処理
+// これがなかなか難しいねんな...
+.carousel{
+  height: 200px;
+  margin:auto;
+}
+
+.carousel .item {
+  height: 100%;
+}
+
+.carousel img {
+  position: absolute;
+  height: 100%;
+}
+
+@media (min-width: 320px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:200px;
+  }
+}
+// 下のheightをいじることで表示領域を変更できる
+@media (min-width: 768px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:400px;
+  }
+}
+// ここまでカルーセル制御
