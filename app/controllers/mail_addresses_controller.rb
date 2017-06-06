@@ -1,5 +1,5 @@
 class MailAddressesController < ApplicationController
-  SUBJECT  = "論文検索システム Escapism です." 
+  SUBJECT  = "論文検索システム Escapism です"
 
   def new
     @mail = MailAddress.new
