@@ -6,7 +6,7 @@
   <h3 class="page-header">こちらからそのメールアドレス宛にメールを送信します</h3>
   <h3 class="page-header">受信メールに記載された URI へ飛んでください</h3>
   <h3 class="page-header">ユーザ情報の入力フォームをご記入ください</h3>
-  <%= form_tag('mail_addresses', class: "form-horizontal") do %>
+  <%= form_tag('/mail_addresses', class: "form-horizontal") do %>
     <div class="form-group">
       <div class="col-sm-12">
         <%= text_field :address, :name, :class => "form-control", :placeholder => "aoyama email address" %>

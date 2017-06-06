@@ -1,4 +1,5 @@
 class MailAddressesController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
   SUBJECT  = "論文検索システム Escapism です"
 
   def new
@@ -6,10 +7,9 @@ class MailAddressesController < ApplicationController
   end
 
   def create
-    @mail = MailAddress.new({address: params[:address]})
-    if @mail.save
+    if MailAddress.create(address: params[:address][:name]).valid?
       flash[:now] = "メールを送信したので、そちらの URI からアクセスください" 
-      send_email(params[:address])
+      send_email(params[:address][:name])
       redirect_to root_path
     else
       flash[:error] = "error" 
@@ -20,5 +20,4 @@ class MailAddressesController < ApplicationController
   def send_email(address)
     Admin::InviteUserMailer.invite(address, SUBJECT).deliver  
   end
-
 end

@@ -9,8 +9,7 @@
 #
 
 class MailAddress < ApplicationRecord
-  validates :address, format: {with: /^[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama.jp/}
+  #validates :address, format: {with: /[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama.jp/}
 
-  #production 環境では下記正規表現. developは作業用にバリなしで
-  #/^[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama.jp/
+  #production 環境では上記正規表現. develop は作業用にバリなしで
 end
