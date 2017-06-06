@@ -21,7 +21,7 @@
             <%= menu_item "Search", theses_path %>
             <%= menu_item "Logout", logout_path, {method: :post} %>
           <% else %>
-            <%= menu_item "Sign in", new_user_path %>
+            <%= menu_item "Sign in", mail_path %>
             <%= menu_item "Login", login_path %>
           <% end %>
       <% end %>

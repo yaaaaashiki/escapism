@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:create]
+  resources :mails, only: [:new, :create]
   resources :users, only: [:new, :index, :create]
 end
