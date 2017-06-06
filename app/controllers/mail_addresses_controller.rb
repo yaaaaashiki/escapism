@@ -7,17 +7,13 @@ class MailAddressesController < ApplicationController
   end
 
   def create
-    if MailAddress.create(address: params[:address][:name]).valid?
-      flash[:now] = "メールを送信したので、そちらの URI からアクセスください" 
-      send_email(params[:address][:name])
-      redirect_to root_path
-    else
-      flash[:error] = "error" 
-      redirect_to root_path
-    end
+    send_email(params[:address][:name]) if MailAddress.create(address: params[:address][:name]).valid?
+    redirect_to root_path
   end
 
-  def send_email(address)
-    Admin::InviteUserMailer.invite(address, SUBJECT).deliver  
-  end
+  private
+
+    def send_email(address)
+      Admin::InviteUserMailer.invite(address, SUBJECT).deliver
+    end
 end
