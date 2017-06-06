@@ -16,6 +16,7 @@
                 <li><%= link_to "Search", theses_path, {class: "font-size-20 white"} %></li>
                 <li><%= link_to "Logout", logout_path, {class: "font-size-20 white", method: :post} %></li>
               <% else %>
+                <li><%= link_to "Sign in", new_mail_address_path, {class: "font-size-20 white"} %></li>
                 <li><%= link_to "Login", login_path, {class: "font-size-20 white"} %></li>
               <% end %>
             </ul>
