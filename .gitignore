@@ -196,7 +196,7 @@ build-iPhoneSimulator/
 
 
 # .ruby_version
-.ruby_version
+.ruby-version
 
 # .python_version
-.python_version
+.python-version
