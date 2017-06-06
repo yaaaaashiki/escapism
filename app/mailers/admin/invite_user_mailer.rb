@@ -1,4 +1,6 @@
-class Admin::InviteUserMailer < ApplicationMailer
+class Admin::InviteUserMailer < ActionMailer::Base
+puts "a"
+  default from: "escapismaoyama@gmail.com"
   def invite(to, subject)
     token = generate_token
     @registraion_url = new_user_url + "/" + token 
