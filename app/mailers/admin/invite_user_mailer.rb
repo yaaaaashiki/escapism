@@ -7,8 +7,7 @@ class Admin::InviteUserMailer < ApplicationMailer
     mail(to: to, subject: subject)
   end
 
-  private
-    def generate_token
-      SecureRandom.urlsafe_base64(6)
-    end
+  def generate_token
+    SecureRandom.urlsafe_base64(6)
+  end
 end

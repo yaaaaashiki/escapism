@@ -24,5 +24,4 @@ class User < ApplicationRecord
   belongs_to :labos
   validates :username, :year,:email, presence: true
   validates :email, uniqueness: true
-  has_one :mails
 end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: mails
+# Table name: mail_addresses
 #
 #  id         :integer          not null, primary key
 #  address    :string(255)
@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-class Mail < ApplicationRecord
-  belongs_to :users
+FactoryGirl.define do
+  factory :mail_address do
+    address "MyString"
+  end
 end

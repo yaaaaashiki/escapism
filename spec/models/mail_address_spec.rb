@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: mails
+# Table name: mail_addresses
 #
 #  id         :integer          not null, primary key
 #  address    :string(255)
@@ -8,8 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
-  factory :mail do
-    email "MyString"
-  end
+require 'rails_helper'
+
+RSpec.describe MailAddress, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
