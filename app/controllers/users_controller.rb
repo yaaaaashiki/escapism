@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @mail_address = MailAddress.find_by(mail: params[:user][:email])
     if @user.valid? && @user.save  #  && MailAddress.find_by(address: params[:user][:email])
       log_in @user
       redirect_to users_path
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :year, :email, :password)
+      params.require(:user).permit(:username, :year, :password)
     end
 
     def token_exists?
