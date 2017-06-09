@@ -25,6 +25,6 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :year, presence: true
-  validates :email, presence: true  #  , uniqueness: true
+  #validates :email, presence: true  #  , uniqueness: true
   validates :password, presence: true
 end
