@@ -3,7 +3,8 @@ class Admin::InviteUserMailer < ApplicationMailer
     token = generate_token
     @registraion_url = new_user_url + "/" + token 
 
-    Token.create(token: token)
+    mail_address_id = MailAddress.find_by(address: to).id
+    Token.create(token: token, mail_address_id: mail_address_id)
     mail(to: to, subject: subject)
   end
 
