@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save  #&& MailAddress.find_by(address: params[:user][:email])
+    if @user.valid? && @user.save  #  && MailAddress.find_by(address: params[:user][:email])
       log_in @user
-      redirect_to users_url
+      redirect_to users_path
     else
       render :new 
     end
