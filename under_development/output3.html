@@ -1,0 +1,371 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body>
+<span style="position:absolute; border: gray 1px solid; left:0px; top:50px; width:595px; height:841px;"></span>
+<div style="position:absolute; top:50px;"><a name="1">Page 1</a></div>
+<div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:167px; top:76px; width:253px; height:14px;"><span style="font-family: Ryumin-Light; font-size:9px">青山学院大学 理工学部 情報テクノロジー学科
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:189px; top:94px; width:210px; height:17px;"><span style="font-family: PQSEIQ+CMR12; font-size:10px">2016</span><span style="font-family: Ryumin-Light; font-size:11px">（平成 </span><span style="font-family: PQSEIQ+CMR12; font-size:10px">28</span><span style="font-family: Ryumin-Light; font-size:11px">）年度卒業論文要旨
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:119px; top:129px; width:347px; height:46px;"><span style="font-family: Ryumin-Light; font-size:14px">属性付きレビュー関係ネットワークを用いた
+<br>レシピ共有サイトにおけるユーザの特徴分析
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:241px; top:187px; width:115px; height:14px;"><span style="font-family: Ryumin-Light; font-size:9px">平野雅也（</span><span style="font-family: PQSEIQ+CMR12; font-size:8px">15813076</span><span style="font-family: Ryumin-Light; font-size:9px">）
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:265px; top:207px; width:57px; height:14px;"><span style="font-family: Ryumin-Light; font-size:9px">大原研究室
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:49px; top:243px; width:56px; height:11px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1. </span><span style="font-family: Ryumin-Light; font-size:8px">はじめに
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:49px; top:262px; width:241px; height:235px;"><span style="font-family: Ryumin-Light; font-size:8px">近年普及しているレシピ共有サイトでは，利用したレ
+<br>シピに対する感想を投稿するレビュー機能が存在し，レ
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">ビューを貰うことがレシピ投稿者の投稿意欲向上につな
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">がることが指摘されている．そのことから，レビュー数
+<br>の多いユーザ，もしくはレシピの特徴を明らかにするこ
+<br>とは重要である．既存研究では，</span><span style="font-family: SZNDOS+CMR10; font-size:6px">KeyGraph </span><span style="font-family: Ryumin-Light; font-size:8px">を用いてレ
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">シピの投稿者と利用者の嗜好，意図の可視化を行い，理
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">解することを試みている </span><span style="font-family: SZNDOS+CMR10; font-size:6px">[1, 2]</span><span style="font-family: Ryumin-Light; font-size:8px">．本研究では，属性付き
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">レビュー関係ネットワークを構築し，それを用いてレシ
+<br>ピ共有サイトにおけるユーザの特徴を明らかにすること
+<br>を試みる．具体的には，ユーザをノード，レビューの投
+<br>稿関係をリンクとしたネットワークに対し，さらにレシ
+<br>ピのカテゴリや食材に基づきノードに属性を付与する．
+<br>そして，ネットワーク構造から抽出されるコミュニティ
+<br>構造と属性情報の類似性を対比させることで，ユーザの
+<br>特徴分析を試みる．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:49px; top:510px; width:171px; height:11px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2. </span><span style="font-family: Ryumin-Light; font-size:8px">属性付きレビュー関係ネットワーク
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:49px; top:530px; width:241px; height:325px;"><span style="font-family: Ryumin-Light; font-size:8px">投稿型レシピ共有サイトにおけるユーザ間のレビュー
+<br>投稿関係を有向ネットワーク </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">G </span><span style="font-family: SZNDOS+CMR10; font-size:6px">= (</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">V ; E </span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">で表現する．
+<br>ここで，</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">V </span><span style="font-family: Ryumin-Light; font-size:8px">は各ユーザに対応するノードの集合であり，
+<br>ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">2 </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">V </span><span style="font-family: Ryumin-Light; font-size:8px">がユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">2 </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">V </span><span style="font-family: Ryumin-Light; font-size:8px">の投稿したレシピに対し
+<br>てレビューを投稿したことを有向リンク </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u; v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">2 </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">E </span><span style="font-family: Ryumin-Light; font-size:8px">に
+<br>より表現する．ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">が投稿した複数のレシピに対し
+<br>てユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u </span><span style="font-family: Ryumin-Light; font-size:8px">がレビューを投稿する場合があるが，ここ
+<br>ではノード </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u; v </span><span style="font-family: Ryumin-Light; font-size:8px">間に多重リンクを生成するのではなく，
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u </span><span style="font-family: Ryumin-Light; font-size:8px">がユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">の投稿したレシピに対して投稿し
+<br>たレビュー数をリンク重み </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">w</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">uv </span><span style="font-family: Ryumin-Light; font-size:8px">として表現する．ただ
+<br>し，レビューは </span><span style="font-family: SZNDOS+CMR10; font-size:6px">1 </span><span style="font-family: Ryumin-Light; font-size:8px">件のレシピに対して複数存在していた
+<br>場合でも </span><span style="font-family: SZNDOS+CMR10; font-size:6px">1 </span><span style="font-family: Ryumin-Light; font-size:8px">件とみなす．また，ノード集合 </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">F</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">v </span><span style="font-family: SZNDOS+CMR10; font-size:6px">= </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">f</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u</span><span style="font-family: UOSMPH+CMSY10; font-size:12px">j</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">2
+<br></span><span style="font-family: DQJNPP+CMMI10; font-size:6px">V ; </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">u; v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">2 </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">E </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">g </span><span style="font-family: Ryumin-Light; font-size:8px">に対して，</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">d</span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) = </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">j</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">F</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">v </span><span style="font-family: UOSMPH+CMSY10; font-size:12px">j </span><span style="font-family: Ryumin-Light; font-size:8px">をノード </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">の入次
+<br></span><span style="font-family: DQJNPP+CMMI10; font-size:6px">w</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">uv </span><span style="font-family: Ryumin-Light; font-size:8px">をノード </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">の重みつき入
+<br>次数とする．ノード </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">の重みつき入次数 </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">d</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">w </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">は，</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">が
+<br>投稿したレシピに対するレビューの総数を表し，この数
+<br>値が大きいユーザほど他のユーザに大きな影響を与えて
+<br>いると解釈できる．
+<br>次に，ノードに付与する属性を定義する．ノードに対
+<br>応するユーザは，レシピ投稿者とレビュー投稿者という
+<br></span><span style="font-family: SZNDOS+CMR10; font-size:6px">2 </span><span style="font-family: Ryumin-Light; font-size:8px">つの役割をもつ．そして，ユーザが投稿するレシピ，
+<br>およびレビューの対象となるレシピ，いずれのレシピに
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:49px; top:724px; width:74px; height:12px;"><span style="font-family: Ryumin-Light; font-size:8px">数とし，</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">d</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">w </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) =
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:126px; top:689px; width:10px; height:37px;"><span style="font-family: LAISGG+CMEX10; font-size:26px">∑
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:137px; top:725px; width:18px; height:14px;"><span style="font-family: UAFDAV+CMMI7; font-size:4px">u</span><span style="font-family: WYMCEF+CMSY7; font-size:8px">2</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">F</span><span style="font-family: XGACNV+CMMI5; font-size:3px">v
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:304px; top:243px; width:241px; height:355px;"><span style="font-family: Ryumin-Light; font-size:8px">もそのユーザの嗜好や要求が反映されていると考えられ
+<br>る．ただし，必ずしもそれらのレシピのもつ特徴が一致
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">するとは限らない．そのため，ここでは各ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">に対
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">してレシピカテゴリベクトル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">crec </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">とレビューカテ
+<br>ゴリベクトル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">crev </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">)</span><span style="font-family: Ryumin-Light; font-size:8px">，レシピ食材ベクトル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">irec </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">と
+<br>レビュー食材ベクトル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">irev </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">の </span><span style="font-family: SZNDOS+CMR10; font-size:6px">4 </span><span style="font-family: Ryumin-Light; font-size:8px">つの特徴ベクトルを
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">定義する．いずれも，投稿者が自身であるかどうかに関
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">わらず，レシピの特徴を表すものであり，その構成要素
+<br>は共通のものを用いる．レシピの特徴としては，レシピ
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">カテゴリ，目的，食材，調理方法など多様なものが考え
+<br>られるが，ここでは，その中でもレシピカテゴリの利用
+<br>頻度と食材の利用頻度を用いる．具体的には，レシピカ
+<br>テゴリの利用頻度の </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">i </span><span style="font-family: Ryumin-Light; font-size:8px">番目のベクトル要素は対象レシピ
+<br>集合におけるレシピカテゴリ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">M </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">i</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">に属するレシピの相
+<br>対出現頻度とする．たとえば，ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">の投稿したレシ
+<br>ピのうちパスタに属するものの数が </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">p</span><span style="font-family: Ryumin-Light; font-size:8px">，ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">が投稿
+<br>したレシピ総数が </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">R</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">v </span><span style="font-family: Ryumin-Light; font-size:8px">であった場合，パスタカテゴリに
+<br>対応する </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">crec </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">の要素の値は </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">p=R</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">v </span><span style="font-family: Ryumin-Light; font-size:8px">となる．また，食
+<br>材ジャンルの利用頻度の </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">j </span><span style="font-family: Ryumin-Light; font-size:8px">番目のベクトル要素は対象食
+<br>材集合における食材ジャンル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">N </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">j </span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">に属する食材の相対
+<br>出現頻度とする．たとえば，ユーザ </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v </span><span style="font-family: Ryumin-Light; font-size:8px">の投稿したレシピ
+<br>の食材のうち牛肉に属するものの数が </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">q </span><span style="font-family: Ryumin-Light; font-size:8px">であった場合，
+<br>牛肉ジャンルに対応する </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">irec </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">の要素の値は </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">q=R</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">v </span><span style="font-family: Ryumin-Light; font-size:8px">と
+<br>なる．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:304px; top:611px; width:56px; height:11px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">3. </span><span style="font-family: Ryumin-Light; font-size:8px">実験結果
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:304px; top:630px; width:241px; height:206px;"><span style="font-family: Ryumin-Light; font-size:8px">国立情報学研究所を通して公開されているクックパッ
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">ド </span><span style="font-family: NPKGGU+CMR7; font-size:4px">1 </span><span style="font-family: Ryumin-Light; font-size:8px">のデータを利用し，実際に属性付きレビューネット
+<br>ワークを構築し，そこから抽出したコミュニティに着目
+<br>して，重みつき入次数</span><span style="font-family: SZNDOS+CMR10; font-size:6px">, </span><span style="font-family: Ryumin-Light; font-size:8px">および入次数の高いユーザの特徴
+<br>を分析した．今回は，クックパッドにおけるレビューに
+<br>相当するつくれぽを投稿したユーザのうち，投稿数上位
+<br></span><span style="font-family: SZNDOS+CMR10; font-size:6px">1,500 </span><span style="font-family: Ryumin-Light; font-size:8px">名を対象にネットワークを構築した．具体的には，
+<br>それらのユーザとつくれぽの対象レシピを投稿したユー
+<br>ザ間に重みつき有向リンクを生成した．レシピカテゴリ
+<br>はクックパッドのものを用い，カテゴリベクトルの次元
+<br>数は </span><span style="font-family: SZNDOS+CMR10; font-size:6px">57 </span><span style="font-family: Ryumin-Light; font-size:8px">となった．また，食材ベクトルは，</span><span style="font-family: SZNDOS+CMR10; font-size:6px">2016/12/07
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">の時点で「キューピー </span><span style="font-family: SZNDOS+CMR10; font-size:6px">3 </span><span style="font-family: Ryumin-Light; font-size:8px">分クッキング」で掲載されてい
+<br>るレシピの食材 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">5,671 </span><span style="font-family: Ryumin-Light; font-size:8px">件に対して，形態素解析エンジン
+<br></span><span style="font-family: SZNDOS+CMR10; font-size:6px">MeCab </span><span style="font-family: Ryumin-Light; font-size:8px">を使用し，抽出した形態素のうち「名詞」に分
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:315px; top:848px; width:200px; height:9px;"><span style="font-family: DMTKIE+CMR6; font-size:4px">1 </span><span style="font-family: YWKOMX+CMR8; font-size:5px">http://www.nii.ac.jp/dsc/idr/cookpad/cookpad.html
+<br></span></div><span style="position:absolute; border: black 1px solid; left:51px; top:117px; width:485px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:304px; top:846px; width:94px; height:0px;"></span>
+<span style="position:absolute; border: gray 1px solid; left:0px; top:941px; width:595px; height:841px;"></span>
+<div style="position:absolute; top:941px;"><a name="2">Page 2</a></div>
+<div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:238px; top:1019px; width:111px; height:11px;"><span style="font-family: Ryumin-Light; font-size:8px">表 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">1: </span><span style="font-family: Ryumin-Light; font-size:8px">ネットワークの概要
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:225px; top:1057px; width:19px; height:11px;"><span style="font-family: Ryumin-Light; font-size:8px">全体
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:274px; top:1059px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">0
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:316px; top:1059px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:359px; top:1059px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:398px; top:1059px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">3
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:345px; top:1042px; width:57px; height:11px;"><span style="font-family: Ryumin-Light; font-size:8px">コミュニティ
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:218px; top:1074px; width:32px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">12,508
+<br>412,621
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:221px; top:1104px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">32.989
+<br>54.977
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:101px; top:1072px; width:145px; height:116px;"><span style="font-family: Ryumin-Light; font-size:8px">ノード数
+<br>リンク数
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">平均次数
+<br>平均重み次数
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">ネットワーク直径
+<br>グラフ密度
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">平均クラスタリング係数 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">0.096
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">平均パス長
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:223px; top:1134px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">5
+<br>0.003
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:129px; top:1194px; width:48px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">Modularity
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:115px; top:1207px; width:76px; height:11px;"><span style="font-family: Ryumin-Light; font-size:8px">つくれぽ投稿者数
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:223px; top:1208px; width:22px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1,500
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:223px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2.517
+<br>0.246
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:263px; top:1074px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1,432
+<br>11,690
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:263px; top:1104px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">8.163
+<br>16.365
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:265px; top:1134px; width:22px; height:39px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">5
+<br>0.006
+<br>0.146
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:265px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2.538
+<br>0.152
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:269px; top:1208px; width:14px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">212
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:303px; top:1074px; width:32px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">3,912
+<br>105,404
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:305px; top:1104px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">26.944
+<br>47.008
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:308px; top:1134px; width:22px; height:39px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">5
+<br>0.007
+<br>0.144
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:308px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2.331
+<br>0.115
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:311px; top:1208px; width:14px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">514
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:347px; top:1074px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">4,135
+<br>53,267
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:347px; top:1104px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">12.882
+<br>17.518
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:350px; top:1134px; width:22px; height:39px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">7
+<br>0.003
+<br>0.022
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:350px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2.833
+<br>0.160
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:354px; top:1208px; width:14px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">407
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:387px; top:1074px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2,944
+<br>33,570
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:387px; top:1104px; width:27px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">11.403
+<br>32.645
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:389px; top:1134px; width:22px; height:39px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">5
+<br>0.004
+<br>0.168
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:389px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">2.540
+<br>0.124
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:393px; top:1208px; width:14px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">365
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:435px; top:1059px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">4
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:433px; top:1074px; width:9px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">68
+<br>67
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:426px; top:1104px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">0.985
+<br>1.088
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:426px; top:1134px; width:22px; height:39px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1
+<br>0.015
+<br>0.000
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:426px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1.000
+<br>0.000
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:435px; top:1208px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:470px; top:1059px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">5
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:467px; top:1074px; width:9px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">17
+<br>16
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:461px; top:1104px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">0.941
+<br>0.941
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:461px; top:1134px; width:22px; height:39px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1
+<br>0.059
+<br>0.000
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:461px; top:1179px; width:22px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1.000
+<br>0.000
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:470px; top:1208px; width:4px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">1
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:57px; top:1245px; width:219px; height:12px;"><span style="font-family: Ryumin-Light; font-size:8px">表 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">2: </span><span style="font-family: Ryumin-Light; font-size:8px">レシピカテゴリベクトル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">crec </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">上位 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">5 </span><span style="font-family: Ryumin-Light; font-size:8px">要素
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:307px; top:1245px; width:229px; height:12px;"><span style="font-family: Ryumin-Light; font-size:8px">表 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">3: </span><span style="font-family: Ryumin-Light; font-size:8px">レビューカテゴリベクトル </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">A</span><span style="font-family: UAFDAV+CMMI7; font-size:4px">crev </span><span style="font-family: SZNDOS+CMR10; font-size:6px">(</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">v</span><span style="font-family: SZNDOS+CMR10; font-size:6px">) </span><span style="font-family: Ryumin-Light; font-size:8px">上位 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">5 </span><span style="font-family: Ryumin-Light; font-size:8px">要素
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:124px; top:1271px; width:11px; height:10px;"><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">0
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:194px; top:1271px; width:11px; height:10px;"><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">1
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:101px; top:1285px; width:57px; height:71px;"><span style="font-family: Ryumin-Light; font-size:8px">野菜のおかず
+<br>お菓子
+<br>お肉のおかず
+<br>パン
+<br>お弁当
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:171px; top:1285px; width:57px; height:71px;"><span style="font-family: Ryumin-Light; font-size:8px">お菓子
+<br>野菜のおかず
+<br>パン
+<br>お肉のおかず
+<br>ごはんもの
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:375px; top:1271px; width:11px; height:10px;"><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">0
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:449px; top:1271px; width:11px; height:10px;"><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">1
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:352px; top:1285px; width:136px; height:71px;"><span style="font-family: Ryumin-Light; font-size:8px">野菜のおかず 野菜のおかず
+<br>お肉のおかず
+<br>お菓子
+<br>パン
+<br>お肉のおかず
+<br>お弁当
+<br>パン
+<br>お菓子
+<br>おもてなし料理
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:49px; top:1384px; width:241px; height:355px;"><span style="font-family: Ryumin-Light; font-size:8px">類される食材のみを利用した．同サイトの「食材から探
+<br>す」に倣い，手動で分類した．結果，食材ベクトルの次
+<br>元数は </span><span style="font-family: SZNDOS+CMR10; font-size:6px">43 </span><span style="font-family: Ryumin-Light; font-size:8px">となった．
+<br>このネットワークを重みつき無向グラフとみなし，</span><span style="font-family: SZNDOS+CMR10; font-size:6px">Lou-
+<br>vain </span><span style="font-family: Ryumin-Light; font-size:8px">法 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">[3] </span><span style="font-family: Ryumin-Light; font-size:8px">によりコミュニティを抽出した．その結果，表
+<br></span><span style="font-family: SZNDOS+CMR10; font-size:6px">1 </span><span style="font-family: Ryumin-Light; font-size:8px">の </span><span style="font-family: SZNDOS+CMR10; font-size:6px">6 </span><span style="font-family: Ryumin-Light; font-size:8px">つのコミュニティが抽出されたが，うち </span><span style="font-family: SZNDOS+CMR10; font-size:6px">2 </span><span style="font-family: Ryumin-Light; font-size:8px">つがつく
+<br>れぽ投稿者が </span><span style="font-family: SZNDOS+CMR10; font-size:6px">1 </span><span style="font-family: Ryumin-Light; font-size:8px">名のみ属するコミュニティのため，分析
+<br>対象から除外した．今回，残り </span><span style="font-family: SZNDOS+CMR10; font-size:6px">4 </span><span style="font-family: Ryumin-Light; font-size:8px">つのコミュニティのう
+<br>ち平均重みつき次数が最も低いコミュニティ</span><span style="font-family: SZNDOS+CMR10; font-size:6px">0</span><span style="font-family: Ryumin-Light; font-size:8px">（</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">0</span><span style="font-family: Ryumin-Light; font-size:8px">）と，
+<br>逆に平均重みつき次数が最も高いコミュニティ</span><span style="font-family: SZNDOS+CMR10; font-size:6px">1</span><span style="font-family: Ryumin-Light; font-size:8px">（</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">1</span><span style="font-family: Ryumin-Light; font-size:8px">）
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">について考察する．
+<br>レシピカテゴリベクトルの上位の比較を表 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">2 </span><span style="font-family: Ryumin-Light; font-size:8px">に示す．
+<br>表 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">2 </span><span style="font-family: Ryumin-Light; font-size:8px">より，</span><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">0 </span><span style="font-family: Ryumin-Light; font-size:8px">と </span><span style="font-family: DQJNPP+CMMI10; font-size:6px">C</span><span style="font-family: NPKGGU+CMR7; font-size:4px">1 </span><span style="font-family: Ryumin-Light; font-size:8px">共に「野菜のおかず」「お菓子」「お
+<br>肉のおかず」「パン」と順位は異なるが同じカテゴリが
+<br>出現した．次に，レビューカテゴリベクトルの比較を表
+<br></span><span style="font-family: SZNDOS+CMR10; font-size:6px">3 </span><span style="font-family: Ryumin-Light; font-size:8px">に示す．表 </span><span style="font-family: SZNDOS+CMR10; font-size:6px">3 </span><span style="font-family: Ryumin-Light; font-size:8px">より，レシピカテゴリベクトル結果同様，
+<br>特徴となる要素の違いを得ることは出来なかった．要因
+<br>としては，コミュニティ内の人数が分割後でも大きく，
+<br>さらに分割する必要があると考えられる．一方，レシピ
+<br>食材ベクトルとレビュー食材ベクトルは比較できるほど
+<br>の差が出現しなかった．考えられる要因としては，手動
+<br>で分類した食材の数が少なく，クックパッドデータベー
+<br>ス上の食材の網羅率が低いため，特徴が反映しきれな
+<br></span><span style="font-family: Ryumin-Light; font-size:8px">かったと考えられる．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:304px; top:1384px; width:36px; height:11px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">4. </span><span style="font-family: Ryumin-Light; font-size:8px">結論
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:304px; top:1404px; width:241px; height:116px;"><span style="font-family: Ryumin-Light; font-size:8px">本稿では，投稿型レシピサイトにおいて影響力の高い
+<br>ユーザを分析するために，属性付きレビューネットワー
+<br>クを提案し，実際のデータに適用した．活性度の異なる
+<br>コミュニティ間では，その特徴に違いが見られたものの，
+<br>現段階ではレシピ共有サイトユーザを特徴づけるまでは
+<br>至っていない．今後，詳細な分析を進める必要がある．
+<br>本研究では，クックパッド株式会社と国立情報学研究所
+<br>が提供する「クックパッドデータ」を利用した．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:304px; top:1532px; width:38px; height:11px;"><span style="font-family: Ryumin-Light; font-size:8px">参考文献
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:309px; top:1552px; width:230px; height:41px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">[1] </span><span style="font-family: Ryumin-Light; font-size:8px">大澤幸生，ネルス </span><span style="font-family: SZNDOS+CMR10; font-size:6px">E. </span><span style="font-family: Ryumin-Light; font-size:8px">ベンソン，谷内田正彦：</span><span style="font-family: SZNDOS+CMR10; font-size:6px">Key-
+<br>Graph:</span><span style="font-family: Ryumin-Light; font-size:8px">語の共起グラフの分割・統合によるキーワー
+<br>ド抽出，電子情報通信学会論文誌，</span><span style="font-family: SZNDOS+CMR10; font-size:6px">Vol. J82-D-1,
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:324px; top:1598px; width:110px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">No. 2 pp. 381-400 (1999).
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:309px; top:1618px; width:230px; height:26px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">[2] </span><span style="font-family: Ryumin-Light; font-size:8px">江本守，大澤幸生：レシピサイトにおける提供者と
+<br>使用者の嗜好抽出と可視化，情報科学技術フォーラ
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:324px; top:1648px; width:214px; height:11px;"><span style="font-family: Ryumin-Light; font-size:8px">ム講演論文集，</span><span style="font-family: SZNDOS+CMR10; font-size:6px">Vol. 14, No. 4, pp. 483-484 (2015).
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:309px; top:1671px; width:230px; height:9px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">[3] Blondel, V., Guillaume, J., Lambiotte, R., and
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:324px; top:1686px; width:214px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">Lefebvre, E. : Fast unfolding of communities in
+<br>large networks, Journal of Statistical Mechanics:
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:324px; top:1716px; width:214px; height:24px;"><span style="font-family: SZNDOS+CMR10; font-size:6px">Theory and Experiment, Vol. 10008, No. 10, pp.
+<br></span><span style="font-family: SZNDOS+CMR10; font-size:6px">1-6 (2008).
+<br></span></div><span style="position:absolute; border: black 1px solid; left:95px; top:1041px; width:394px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1041px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1041px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1041px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1056px; width:394px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1056px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1071px; width:394px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1072px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1086px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1101px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1116px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1131px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1146px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1161px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1176px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1191px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:212px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:257px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:297px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:341px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:381px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:420px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:455px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:490px; top:1206px; width:0px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1221px; width:394px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1268px; width:138px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1284px; width:138px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:95px; top:1359px; width:138px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:346px; top:1268px; width:148px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:346px; top:1284px; width:148px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:346px; top:1359px; width:148px; height:0px;"></span>
+<div style="position:absolute; top:0px;">Page: <a href="#1">1</a>, <a href="#2">2</a></div>
+</body></html>
