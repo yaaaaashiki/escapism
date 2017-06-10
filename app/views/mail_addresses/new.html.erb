@@ -1,17 +1,21 @@
 <div class="container">
-  <div class="page-header">
-  </div>
+  <% if @mail.errors.any? %>
+    <div id="error_explanation">
+      <h3 class="red"><%= @mail.errors.count %> 件のエラーが発生しました</h3>
+      <ul>
+        <% @mail.errors.full_messages.each do |address_validation_error| %>
+          <li class="red"><%= address_validation_error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <h3>ユーザー登録STEP</h3>
     <%= image_tag("sign_in/step1.png", :width=> "80%", :height => "auto") %>
   </div>
-  <!-- <h3 class="page-header">登録手順</h3> -->
   <h3 class="page-header">あなたの青学メールを送信ください。</h3>
-    <!--
-  <h3 class="page-header">こちらからそのメールアドレス宛にメールを送信します</h3>
-  <h3 class="page-header">受信メールに記載された URI へ飛んでください</h3>
-  <h3 class="page-header">ユーザ情報の入力フォームをご記入ください</h3>
-  -->
+
   <%= form_tag('/mail_addresses', class: "form-horizontal") do %>
     <div class="form-group">
       <div class="col-sm-12">
