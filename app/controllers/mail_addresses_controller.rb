@@ -1,5 +1,5 @@
 class MailAddressesController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:index, :new, :create]
   SUBJECT  = "論文検索システム Escapism です"
 
   def index
@@ -11,13 +11,11 @@ class MailAddressesController < ApplicationController
 
   def create
     @mail = MailAddress.new(address: params[:address][:name])
-    if @mail.invalid?
-      binding.pry
-      render :new
-    else
-      @mail.save
+    if @mail.valid? && @mail.save
       send_email(params[:address][:name])
-      redirect_to root_path
+      redirect_to mail_addresses_path
+    else
+      render :new
     end
   end
 
