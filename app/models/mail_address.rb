@@ -22,10 +22,10 @@ class MailAddress < ApplicationRecord
   end
 
   def address_form
-    errors[:base] << "not mail address form" unless address.match(/.*@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/)
+    errors[:base] << "not mail address form" unless address.match(/\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/)
   end
 
   def aoyama_address
-    errors[:base] << "not aoyama mail address form" unless address.match(/[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama.jp/)
+    errors[:base] << "not aoyama mail address form" unless address.match(/[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama(?:\.ac)?\.jp/)
   end
 end
