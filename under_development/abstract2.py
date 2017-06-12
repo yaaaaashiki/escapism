@@ -6,10 +6,17 @@ import nltk
 import numpy
 import re
 import sys
+import os
+import glob
 from PyPDF2 import PdfFileWriter, PdfFileReader
+import pandas as pd
+
 
 TOKEN = '''<div\s.+?><span\s.+?>[1-9][. ].*</span><span\s.+?>.+?\n<br></span></div>'''
 FOOTER = '''<div\s.+>(<span\s.+>[1-9]\s</span><span\s.+>(.|\n)+</span>)+</div>'''
+THESIS_DIR = '''../thesis_data/ignore/'''
+STUDENT_DATA = '''\s*(.+?)(?:\n|\s)?[(（]?(\d{8})[)）]?'''
+
 
 class AbstractableDoc(metaclass=ABCMeta):
     '''
@@ -184,14 +191,14 @@ class TextMining(metaclass=ABCMeta):
             形態素解析対象となる文字列。
 
         '''
-        mt = MeCab.Tagger("-Owakati")
+        mt = MeCab.Tagger("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd -Owakati")
         wordlist = mt.parse(data)
         self.token = wordlist.rstrip(" \n").split(" ")
 
     def listup_sentence(self, data, counter=0):
         '''
         日本語を文ごとに区切る。
-        暫定的に、ここでは「。」と「\n」で区切る。
+        暫定的に、ここでは「．」で区切る。
 
         Args:
             data:       区切る対象となる文字列。
@@ -447,28 +454,96 @@ class AutoAbstractor(TextMining):
 
         return scores_list
 
-if __name__ == '__main__':
-    # input1 = PdfFileReader("thesis_data/ignore/ohara/abstract/b_watari.pdf")
-    # print(input1.getNumPages())
-    # f = open('/Users/masaya/rails/Escapism/under_development/output.html')
-    f = open(sys.argv[1])
-    document = f.read()
-    f.close
-    result = []
+
+def copy_list_into_dir(file_list,dir_path):
+    num = 0
+    for file_name in file_list:
+        shutil.copyfile(file_name,dir_path+"/"+str(num)) # testディレクトリにコピー
+        num += 1
+
+
+def convert_pdf_to_html(path):
+    from pdfminer.pdfparser import PDFParser, PDFDocument
+    from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+    from pdfminer.converter import PDFPageAggregator, HTMLConverter
+    from pdfminer.layout import LAParams, LTTextBox, LTTextLine
+    import io
+
+    fp = open(path, 'rb')
+    parser = PDFParser(fp)
+    doc = PDFDocument()
+    parser.set_document(doc)
+    doc.set_parser(parser)
+    doc.initialize('')
+    rsrcmgr = PDFResourceManager()
+    laparams = LAParams()
+    outfp = io.open('temp.html', 'wt', encoding='utf-8', errors='ignore')
+    # device = PDFPageAggregator(rsrcmgr, laparams=laparams)
+    device = HTMLConverter(rsrcmgr, outfp, scale=1, layoutmode='normal',laparams=laparams, showpageno=False)
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    # Process each page contained in the document.
+    for page in doc.get_pages():
+        interpreter.process_page(page)
+        # layout = device.get_result()
+        # for lt_obj in layout:
+        #     if isinstance(lt_obj, LTTextBox) or isinstance(lt_obj, LTTextLine):
+        #         print(lt_obj.get_html())
+    fp.close()
+    device.close()
+    outfp.close()
+
+
+def main():
+    fdir = os.getcwd()
+    os.chdir(THESIS_DIR)
+    file_list = glob.glob('**/*.pdf',recursive=True)
+    thesis_dir = []
     chapter = re.compile(TOKEN)
     footer = re.compile(FOOTER)
     content = re.compile('<.+?>')
-    purse = chapter.split(document)
-    # print(len(purse))
-    for text in purse[1:]:
-        if len(text) != 0:
-            output = footer.sub('',text)
-            output = content.sub('',output)
-            output = re.sub('\n','',output)
-            result.append(output)
+    student_data = re.compile(STUDENT_DATA)
+    # print(file_list)
+    os.chdir(fdir)
+    # print(os.getcwd())
+    for tdir in file_list:
+        fdir = THESIS_DIR+tdir
+        tdata = PdfFileReader(fdir)
+        if tdata.getNumPages() <= 2:
+            thesis_dir.append(fdir)
+    # print(thesis_dir)
+    database = pd.DataFrame(columns=['id','name','abstract'])
+    for thesis in thesis_dir:
+        print(thesis)
+        convert_pdf_to_html(thesis)
+        html = open('temp.html','r')
+        document = html.read()
+        html.close()
+        result = []
+        purse = chapter.split(document)
+        # print(len(purse))
+        if purse[0].find('情報テクノロジー学科') != -1 and purse[0].find('著者紹介') == -1:
+            header = content.sub('',purse[0])
+            # print(header)
+            student_list = student_data.findall(header)
+            for text in purse[1:]:
+                if len(text) != 0:
+                    output = footer.sub('',text)
+                    output = content.sub('',output)
+                    output = re.sub('\n','',output)
+                    if output.find('参考文献') == -1:
+                        result.append(output)
 
-            # print(output)
-    auto_abstractor = AutoAbstractor()
-    abstractable_doc = AbstractableTopNRank()
-    result_list = auto_abstractor.summarize("".join(result), abstractable_doc)
-    [print(sentence) for sentence in result_list["summarize_result"]]
+            auto_abstractor = AutoAbstractor()
+            abstractable_doc = AbstractableTopNRank()
+            result_list = auto_abstractor.summarize("".join(result), abstractable_doc)
+            abstract = "".join(result_list["summarize_result"])
+            # print(abstract)
+            for name,sid in student_list:
+                d = {'id':sid, 'name':name, 'abstract':abstract}
+                instance = pd.DataFrame(d,columns=['id','name','abstract'],index=[0])
+                database = database.append(instance,ignore_index=True)
+
+    database.set_index('id')
+    database.to_json('output.json',force_ascii=False)
+if __name__ == '__main__':
+    main()
