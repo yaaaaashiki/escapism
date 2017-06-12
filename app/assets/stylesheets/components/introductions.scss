@@ -39,13 +39,37 @@ body {
   height: 75px;
 }
 
-.image-height{
+.icons{
   position: relative;
   height: 185px;
+  padding-left: 0px;
   li {
     display: inline;
   }
 }
+
+.icon-wrapper{
+  position: absolute;
+  height: 150px;
+  width: 150px;
+}
+
+.recommend{
+  left: 25%;
+}
+
+.search{
+  left: 40%;
+}
+
+.comment{
+  left: 55%;
+}
+
+.cinii{
+  left: 70%;
+}
+
 
 
 
