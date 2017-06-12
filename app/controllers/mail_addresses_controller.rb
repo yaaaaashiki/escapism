@@ -1,6 +1,6 @@
 class MailAddressesController < ApplicationController
   skip_before_action :require_login, only: [:index, :new, :create]
-  SUBJECT  = "論文検索システム Escapism です"
+  SUBJECT  = "【論文検索システム Escapism】 ユーザ登録ページのご案内"
 
   def index
   end
