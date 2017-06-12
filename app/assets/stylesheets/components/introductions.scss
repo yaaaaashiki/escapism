@@ -27,6 +27,28 @@ body {
   padding-left: 60px;
 }
 
+.image-width {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  height: 300px;
+}
+
+.image-caption{
+  position: relative;
+  height: 75px;
+}
+
+.image-height{
+  position: relative;
+  height: 185px;
+  li {
+    display: inline;
+  }
+}
+
+
+
 .position{
   position: absolute;
   top: 320px;
