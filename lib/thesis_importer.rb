@@ -29,20 +29,40 @@ module ThesisImporter
               if anchor[:href].match(/.+_T\.pdf/)
                 labo_path_array.push(anchor[:href])
                 duerst_thesis_title_array.push(td_elements.content)
+                puts td_elements.content
               end
             end
           end
-          puts labo_path_array
-          puts duerst_thesis_title_array
+          #puts labo_path_array
+          #puts duerst_thesis_title_array
         end
-       
+
+        if labo_path.include?("komiyama")
+          komiyama_thesis_title_array = []
+          labo_index_html.css('td').each do |td_elements|
+            td_elements.css('a').each do |anchor|
+              if anchor[:href].match(/\Athesis.+/)
+                labo_path_array.push(anchor[:href])
+                komiyama_thesis_title_array.push(td_elements.content)
+                puts td_elements.content
+                puts labo_path_array
+              end
+            end
+          end
+          #puts labo_path_array
+          #puts duerst_thesis_title_array
+        end
+
+
+
+
 
 
       end
     end
    
 
-
+##########################################既存のやつ消しちゃだめ##################################################
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
 #      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
