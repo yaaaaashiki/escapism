@@ -4,19 +4,27 @@ require 'pp'
 
 module ThesisImporter
   THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
+  LABO_THESIS_ROOT_DIRECTORY = THESIS_ROOT_DIRECTORY.join('ignore')
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
 
   def upsert_all!
-    Find.find(THESIS_ROOT_DIRECTORY) do |path|
-      plane_thesis = PlaneThesis.new(path)
-      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
-        plane_thesis.insert_into_elasticsearch
+    a =[]
+    Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
+      if File.basename(labo_path).include?("index.html")
+        #nokogiri
       end
     end
+    
+#    Find.find(THESIS_ROOT_DIRECTORY) do |path|
+#      plane_thesis = PlaneThesis.new(path)
+#      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
+#        plane_thesis.insert_into_elasticsearch
+#      end
+#    end
   end
-  
+ 
   def all_words_count
     total = {}
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
