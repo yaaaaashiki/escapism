@@ -18,14 +18,26 @@ module ThesisImporter
        
         #puts fetch_year(labo_index_html)
         
-        puts labo_index_html.title
-        
-        labo_index_html.css('td').each do |td_elements|
-          td_elements.css('a').each do |anchor|
-            labo_path_array.push(anchor[:href])
+##########################################抽出するべき情報##################################################
+########{ title: title_data, author_name: author_data, year: year_data, url: @path }
+################date_data は year が一位に定まるため不要####################################################
+##########################################抽出するべき情報##################################################
+        if labo_path.include?("duerst")
+          duerst_thesis_title_array = []
+          labo_index_html.css('td').each do |td_elements|
+            td_elements.css('a').each do |anchor|
+              if anchor[:href].match(/.+_T\.pdf/)
+                labo_path_array.push(anchor[:href])
+                duerst_thesis_title_array.push(td_elements.content)
+              end
+            end
           end
+          puts labo_path_array
+          puts duerst_thesis_title_array
         end
-        puts labo_path_array
+       
+
+
       end
     end
    
