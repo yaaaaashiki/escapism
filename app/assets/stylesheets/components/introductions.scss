@@ -41,8 +41,10 @@ body {
 
 .icons{
   position: relative;
-  height: 185px;
+  height: 165px;
   padding-left: 0px;
+  width: 100%;
+  margin-bottom: 0px;
   li {
     display: inline;
   }
@@ -50,8 +52,8 @@ body {
 
 .icon-wrapper{
   position: absolute;
-  height: 150px;
-  width: 150px;
+  width: 10%;
+  height: auto;
 }
 
 .recommend{
