@@ -12,12 +12,25 @@ module ThesisImporter
   def upsert_all!
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
       if File.basename(labo_path).include?("index.html")
+        labo_path_array = []
         index_file = File.open(labo_path)
         labo_index_html = parse_html(index_file)
-        puts fetch_year(labo_index_html)
+       
+        #puts fetch_year(labo_index_html)
+        
+        puts labo_index_html.title
+        
+        labo_index_html.css('td').each do |td_elements|
+          td_elements.css('a').each do |anchor|
+            labo_path_array.push(anchor[:href])
+          end
+        end
+        puts labo_path_array
       end
     end
-    
+   
+
+
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
 #      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
