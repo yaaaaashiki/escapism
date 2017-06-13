@@ -10,10 +10,11 @@ module ThesisImporter
   TYPE = 'thesis'
 
   def upsert_all!
-    a =[]
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
       if File.basename(labo_path).include?("index.html")
-        #nokogiri
+        index_file = File.open(labo_path)
+        labo_index_html = parse_html(index_file)
+        puts fetch_year(labo_index_html)
       end
     end
     
@@ -24,7 +25,15 @@ module ThesisImporter
 #      end
 #    end
   end
- 
+
+  def parse_html(file)
+    Nokogiri::HTML(file)
+  end
+
+  def fetch_year(html)
+    html.title.match(/\A20\w{2}/)
+  end
+
   def all_words_count
     total = {}
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
@@ -187,6 +196,7 @@ module ThesisImporter
 
 
   module_function :upsert_all!, :web_count, :ruby_count
+  module_function :parse_html, :fetch_year
 
   private
 
