@@ -1,14 +1,6 @@
 <div class="container">
-  <% if @mail.errors.any? %>
-    <div id="error_explanation">
-      <h3 class="red"><%= @mail.errors.count %> 件のエラーが発生しました</h3>
-      <ul>
-        <% @mail.errors.full_messages.each do |address_validation_error| %>
-          <li class="red"><%= address_validation_error %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+  <%= render :partial => 'shared/error_messages', :locals => { object: @mail } %>
 
   <div>
     <h3>ユーザー登録STEP</h3>
