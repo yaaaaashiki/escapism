@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :year, :password)
+      params.require(:user).permit(:username, :year, :email, :password)
     end
 
     def token_exists?
