@@ -38,6 +38,8 @@ module ThesisImporter
                 if anchor[:href].match(/\Athesis.+/)
                   labo_path_array.push(anchor[:href])
                   thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
+                end
+              else
                 if anchor[:href].match(/.+_T\.pdf/)
                   labo_path_array.push(anchor[:href])
                   thesis_title_array.push(td_elements.content)
