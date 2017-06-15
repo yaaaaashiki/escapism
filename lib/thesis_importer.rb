@@ -9,12 +9,19 @@ module ThesisImporter
   INDEX = 'thesis_development'
   TYPE = 'thesis'
   LABO_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe )
+  labo_member = {}
+  LABO_NAMES.each do |labo_name|
+    labo_member.store(labo_name, "hoge")
+  end
+  puts labo_member
 
 ######  ####################################抽出するべき情報##################################################
 ######  ##{ title: title_data, author_name: author_data, year: year_data, url: @path }
 ######  ##########date_data は year が一位に定まるため不要####################################################
 ######  ####################################抽出するべき情報##################################################
- 
+
+
+
   def upsert_all!
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
       LABO_NAMES.each do |labo_name|
@@ -22,9 +29,9 @@ module ThesisImporter
           labo_path_array = []
           thesis_title_array = []
           index_file = File.open(labo_path)
-          labo_index_html = parse_html(index_file)
-          fetch_year(labo_index_html)
-          labo_index_html.css('td').each do |td_elements|
+          labo_html = parse_html(index_file)
+          fetch_year(labo_html)
+          labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
               unless labo_name == LABO_NAMES.first 
                 if anchor[:href].match(/\Athesis.+/)
@@ -38,10 +45,8 @@ module ThesisImporter
                 end 
               end
             end
-
+          #fetch_labo_member(html)
           end
-          puts labo_path_array
-          puts thesis_title_array
         end
       end
     end
@@ -62,6 +67,14 @@ module ThesisImporter
 
   def fetch_year(html)
     html.title.to_s.match(/\A20\w{2}/)
+  end
+
+  def fetch_labo_member(html)
+    labo_html.css('tr').each do |tr_elem|
+      #labo_member << tr_elem.css('td')[1]
+    end
+
+    #puts labo_member
   end
 
   def all_words_count
@@ -226,7 +239,7 @@ module ThesisImporter
 
 
   module_function :upsert_all!, :web_count, :ruby_count
-  module_function :parse_html, :fetch_year
+  module_function :parse_html, :fetch_year, :fetch_labo_member
 
   private
 
