@@ -9,17 +9,15 @@ module ThesisImporter
   INDEX = 'thesis_development'
   TYPE = 'thesis'
   LABO_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe )
-######  ####################################抽出するべき情報##################################################
-######  ##{ title: title_data, author_name: author_data, year: year_data, url: @path }
-######  ##########date_data は year が一位に定まるため不要####################################################
-######  ####################################抽出するべき情報##################################################
-
-
 
   def upsert_all!
     students = {}
+    thesis_all_title = {}
+    thesis_title_hash = {}
     LABO_NAMES.each do |labo_name|
       students.store(labo_name.to_sym, "")
+      thesis_all_title.store(labo_name.to_sym, "")
+      thesis_title_hash.store(labo_name.to_sym, "")
     end
 
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
@@ -31,12 +29,13 @@ module ThesisImporter
           labo_html = parse_html(index_file)
           fetch_year(labo_html)
           
+          thesis_all_title[labo_name.to_sym] = labo_html.title if thesis_all_title[labo_name.to_sym] == "" && labo_path.include?(labo_name)
           labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
               unless labo_name == LABO_NAMES.first 
                 if anchor[:href].match(/\Athesis.+/)
                   labo_path_array.push(anchor[:href])
-                  thesis_title_array.push(td_elements.content)
+                  thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
                 end
               else
                 if anchor[:href].match(/.+_T\.pdf/)
@@ -53,11 +52,17 @@ module ThesisImporter
             end
             students[labo_name.to_sym] = labo_member
           end
+
+          if thesis_title_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+            thesis_title_hash[labo_name.to_sym] = thesis_title_array
+          end
         end
       end
     end
-    puts students 
-##########################################既存のやつ消しちゃだめ##################################################
+    puts thesis_all_title
+    puts students
+    puts thesis_title_hash
+
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
 #      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
@@ -84,6 +89,10 @@ module ThesisImporter
 
   def fetch_just_name(string)
     string.match(/\A\w{8}\s/) ? string.gsub!(/\A\w{8}\s/, "") : string
+  end
+
+  def fetch_just_thesis_title(string)
+    string.match(/(:?\r\n)?\s/) ? string.gsub!(/(:?\r\n)?\s/, "") : string
   end
 
   def all_words_count
@@ -248,7 +257,7 @@ module ThesisImporter
 
 
   module_function :upsert_all!, :web_count, :ruby_count
-  module_function :parse_html, :fetch_year, :fetch_labo_member, :fetch_just_name
+  module_function :parse_html, :fetch_year, :fetch_labo_member, :fetch_just_name, :fetch_just_thesis_title
 
   private
 
