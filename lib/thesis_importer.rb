@@ -9,12 +9,6 @@ module ThesisImporter
   INDEX = 'thesis_development'
   TYPE = 'thesis'
   LABO_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe )
-  labo_member = {}
-  LABO_NAMES.each do |labo_name|
-    labo_member.store(labo_name, "hoge")
-  end
-  puts labo_member
-
 ######  ####################################抽出するべき情報##################################################
 ######  ##{ title: title_data, author_name: author_data, year: year_data, url: @path }
 ######  ##########date_data は year が一位に定まるため不要####################################################
@@ -23,6 +17,11 @@ module ThesisImporter
 
 
   def upsert_all!
+    students = {}
+    LABO_NAMES.each do |labo_name|
+      students.store(labo_name.to_sym, "")
+    end
+
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
       LABO_NAMES.each do |labo_name|
         if File.basename(labo_path).include?("index.html")
@@ -31,6 +30,7 @@ module ThesisImporter
           index_file = File.open(labo_path)
           labo_html = parse_html(index_file)
           fetch_year(labo_html)
+          
           labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
               unless labo_name == LABO_NAMES.first 
@@ -45,13 +45,21 @@ module ThesisImporter
                 end 
               end
             end
-          #fetch_labo_member(html)
+          #fetch_labo_member(labo_html, labo_name) if labo_member[labo_name.to_sym] = ""
+          end
+          if students[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+
+            labo_member = []
+            labo_html.css('tr').each do |tr_elem|
+              labo_member.push(tr_elem.css('td')[1].content)  if tr_elem.css('td')[1]
+            end
+
+            students[labo_name.to_sym] = labo_member
           end
         end
       end
     end
-   
-
+    puts students 
 ##########################################既存のやつ消しちゃだめ##################################################
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
@@ -69,9 +77,9 @@ module ThesisImporter
     html.title.to_s.match(/\A20\w{2}/)
   end
 
-  def fetch_labo_member(html)
-    labo_html.css('tr').each do |tr_elem|
-      #labo_member << tr_elem.css('td')[1]
+  def fetch_labo_member(html, labo_name)
+    html.css('tr').each do |tr_elem|
+      #labo_member[labo_name.to_sym] << tr_elem.css('td')[1]
     end
 
     #puts labo_member
