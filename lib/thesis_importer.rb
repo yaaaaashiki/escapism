@@ -36,7 +36,7 @@ module ThesisImporter
             td_elements.css('a').each do |anchor|
               unless labo_name == LABO_NAMES.first 
                 if anchor[:href].match(/\Athesis.+/)
-                  labo_path_array.push(anchor[:href])
+                  labo_path_array.push(return_full_path(labo_path, anchor[:href]))
                   thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
                 end
               else
@@ -49,10 +49,7 @@ module ThesisImporter
           end
 
           thesis_title_hash[labo_name.to_sym] = thesis_title_array if thesis_title_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
-
-          if thesis_url_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
-            thesis_url_hash[labo_name.to_sym] = labo_path_array
-          end
+          thesis_url_hash[labo_name.to_sym] = labo_path_array if thesis_url_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
 
           if students[labo_name.to_sym] == "" && labo_path.include?(labo_name)
             labo_member = []
@@ -82,6 +79,10 @@ module ThesisImporter
 
   def fetch_year(html)
     html.title.to_s.match(/\A20\w{2}/)
+  end
+
+  def return_full_path(labo_path, thesis_path)
+    "#{labo_path.gsub(/\/index\.html/, "")}/#{thesis_path}"
   end
 
 #  def fetch_labo_member(html, labo_name)
@@ -263,6 +264,7 @@ module ThesisImporter
 
   module_function :upsert_all!, :web_count, :ruby_count
   module_function :parse_html, :fetch_year, :fetch_just_name, :fetch_just_thesis_title
+  module_function :return_full_path
 
   private
 
