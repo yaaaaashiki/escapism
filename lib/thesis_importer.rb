@@ -45,15 +45,12 @@ module ThesisImporter
                 end 
               end
             end
-          #fetch_labo_member(labo_html, labo_name) if labo_member[labo_name.to_sym] = ""
           end
           if students[labo_name.to_sym] == "" && labo_path.include?(labo_name)
-
             labo_member = []
             labo_html.css('tr').each do |tr_elem|
-              labo_member.push(tr_elem.css('td')[1].content)  if tr_elem.css('td')[1]
+              labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
             end
-
             students[labo_name.to_sym] = labo_member
           end
         end
@@ -83,6 +80,10 @@ module ThesisImporter
     end
 
     #puts labo_member
+  end
+
+  def fetch_just_name(string)
+    string.match(/\A\w{8}\s/) ? string.gsub!(/\A\w{8}\s/, "") : string
   end
 
   def all_words_count
@@ -247,7 +248,7 @@ module ThesisImporter
 
 
   module_function :upsert_all!, :web_count, :ruby_count
-  module_function :parse_html, :fetch_year, :fetch_labo_member
+  module_function :parse_html, :fetch_year, :fetch_labo_member, :fetch_just_name
 
   private
 
