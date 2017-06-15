@@ -14,10 +14,12 @@ module ThesisImporter
     students = {}
     thesis_all_title = {}
     thesis_title_hash = {}
+    thesis_url_hash = {}
     LABO_NAMES.each do |labo_name|
       students.store(labo_name.to_sym, "")
       thesis_all_title.store(labo_name.to_sym, "")
       thesis_title_hash.store(labo_name.to_sym, "")
+      thesis_url_hash.store(labo_name.to_sym, "")
     end
 
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
@@ -36,8 +38,6 @@ module ThesisImporter
                 if anchor[:href].match(/\Athesis.+/)
                   labo_path_array.push(anchor[:href])
                   thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
-                end
-              else
                 if anchor[:href].match(/.+_T\.pdf/)
                   labo_path_array.push(anchor[:href])
                   thesis_title_array.push(td_elements.content)
@@ -45,6 +45,13 @@ module ThesisImporter
               end
             end
           end
+
+          thesis_title_hash[labo_name.to_sym] = thesis_title_array if thesis_title_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+
+          if thesis_url_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+            thesis_url_hash[labo_name.to_sym] = labo_path_array
+          end
+
           if students[labo_name.to_sym] == "" && labo_path.include?(labo_name)
             labo_member = []
             labo_html.css('tr').each do |tr_elem|
@@ -52,17 +59,13 @@ module ThesisImporter
             end
             students[labo_name.to_sym] = labo_member
           end
-
-          if thesis_title_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
-            thesis_title_hash[labo_name.to_sym] = thesis_title_array
-          end
         end
       end
     end
     puts thesis_all_title
     puts students
     puts thesis_title_hash
-
+    puts thesis_url_hash
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
 #      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
@@ -79,13 +82,13 @@ module ThesisImporter
     html.title.to_s.match(/\A20\w{2}/)
   end
 
-  def fetch_labo_member(html, labo_name)
-    html.css('tr').each do |tr_elem|
-      #labo_member[labo_name.to_sym] << tr_elem.css('td')[1]
-    end
-
-    #puts labo_member
-  end
+#  def fetch_labo_member(html, labo_name)
+#    html.css('tr').each do |tr_elem|
+#      #labo_member[labo_name.to_sym] << tr_elem.css('td')[1]
+#    end
+#
+#    #puts labo_member
+#  end
 
   def fetch_just_name(string)
     string.match(/\A\w{8}\s/) ? string.gsub!(/\A\w{8}\s/, "") : string
@@ -257,7 +260,7 @@ module ThesisImporter
 
 
   module_function :upsert_all!, :web_count, :ruby_count
-  module_function :parse_html, :fetch_year, :fetch_labo_member, :fetch_just_name, :fetch_just_thesis_title
+  module_function :parse_html, :fetch_year, :fetch_just_name, :fetch_just_thesis_title
 
   private
 
