@@ -7,6 +7,7 @@ class ThesesController < ApplicationController
   before_action :init_set_popular_theses
 
   def index
+    @author = Author.all
     if params[:q]
       response = search_by_keyword(params[:q])
       thesisArray = []
@@ -23,7 +24,7 @@ class ThesesController < ApplicationController
           thesisArray.push(thesis)
         end
       end
-      @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
+     @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
     end
 
     @labos = Labo.all

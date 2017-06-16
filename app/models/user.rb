@@ -22,6 +22,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :comments
   belongs_to :labos
-  validates :username, :year,:email, presence: true
-  validates :email, uniqueness: true
+
+  validates :username, presence: true
+  validates :year, presence: true
+  validates :password, presence: true
 end

@@ -3,6 +3,9 @@
     <h1>Register</h1>
   </div>
   <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+
+    <%= render :partial => 'shared/error_messages', :locals => { object: @user } %>
+
     <div class="form-group">
       <div class="col-sm-12">
         <%= f.text_field :username, class: "form-control", placeholder: "username" %>
@@ -15,7 +18,8 @@
     </div>
     <div class="form-group">
       <div class="col-sm-12">
-        <%= f.text_field :email, class: "form-control", placeholder: "email" %>
+        <%= @mail_address %>
+        <%= f.hidden_field :email, :value => @mail_address %>
       </div>
     </div>
     <div class="form-group">

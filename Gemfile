@@ -33,6 +33,8 @@ gem 'sorcery'
 gem 'cancancan'
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'nokogiri'
+
 # Admin
 gem 'adminlte2-rails'
 

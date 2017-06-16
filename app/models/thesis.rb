@@ -28,7 +28,8 @@ class Thesis < ApplicationRecord
   def self.create_from_seed(attrs = {})
     ActiveRecord::Base.transaction do 
       author = Author.find_or_create_by(name: attrs[:author_name])
-
+      author = Author.find_or_create_by(name: attrs[:author_name])
+      
       if attrs[:year] == "unknown" 
         attrs[:year] = attrs[:date_data]
       end
