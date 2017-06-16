@@ -27,6 +27,6 @@ class MailAddressesController < ApplicationController
     end
 
     def exists_mail?
-      raise ActionController::RoutingError.new('here is only admin user page') unless Rails.application.routes.recognize_path(request.referrer)[:action] == "new"
+      raise ActionController::RoutingError.new('Please input mail address by sign up page') unless Rails.application.routes.recognize_path(request.referrer)[:action] == "new"
     end
 end
