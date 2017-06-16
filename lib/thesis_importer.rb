@@ -61,6 +61,7 @@ module ThesisImporter
         end
       end
     end
+
     #puts thesis_all_title
     
     #students.each do |key, value|
@@ -77,16 +78,38 @@ module ThesisImporter
 
     final = []
 
-    students.flatten.each_with_index do |labo, i|
-      if labo.class == "array"
+    students.flatten.each do |labo|
+      if labo.kind_of?(Array)
         labo.each do |student_name|
-          binding.pry
-          final.push(author_name: student_name)
+          final.push({author_name: student_name})
+        end
+      end
+    end
+  
+    count = 0
+    
+    thesis_url_hash.flatten.each do |labo|
+      if labo.kind_of?(Array)
+        labo.each do |thesis_url|
+          final[count].store(:url, thesis_url)
+          count = count + 1
         end
       end
     end
 
-    puts final
+
+#    final.each do |student_hash|
+#      student_hash.store(key, value)
+#    end
+
+   # puts final
+
+
+
+
+    puts thesis_url_hash 
+ 
+
 
     #[{title: hoge, kjkl}, {}, {}, {}, {}, {}]
 
@@ -120,10 +143,6 @@ module ThesisImporter
 #      end
 #    end
   end
-
-  
- 
-
 
   def parse_html(file)
     Nokogiri::HTML(file)
