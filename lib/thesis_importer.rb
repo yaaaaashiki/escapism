@@ -15,6 +15,7 @@ module ThesisImporter
     thesis_all_title = {}
     thesis_title_hash = {}
     thesis_url_hash = {}
+
     LABO_NAMES.each do |labo_name|
       students.store(labo_name.to_sym, "")
       thesis_all_title.store(labo_name.to_sym, "")
@@ -28,11 +29,10 @@ module ThesisImporter
           labo_path_array = []
           thesis_title_array = []
           index_file = File.open(labo_path)
-          labo_html = parse_html(index_file)
-          fetch_year(labo_html)
-          
-          thesis_all_title[labo_name.to_sym] = labo_html.title if thesis_all_title[labo_name.to_sym] == "" && labo_path.include?(labo_name)
-          labo_html.css('td').each do |td_elements|
+          parse_html(index_file)
+          fetch_year
+          thesis_all_title[labo_name.to_sym] = @labo_html.title if thesis_all_title[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+          @labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
               if anchor[:href].match(/\Athesis.+/)
                 labo_path_array.push(return_full_path(labo_path, anchor[:href]))
@@ -55,7 +55,7 @@ module ThesisImporter
 
           if students[labo_name.to_sym] == "" && labo_path.include?(labo_name)
             labo_member = []
-            labo_html.css('tr').each do |tr_elem|
+            @labo_html.css('tr').each do |tr_elem|
               labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
             end
             students[labo_name.to_sym] = labo_member
@@ -66,10 +66,11 @@ module ThesisImporter
 
     final = []
 
+    puts @thesis_year
     students.flatten.each do |labo|
       if labo.kind_of?(Array)
         labo.each do |student_name|
-          final.push({author_name: student_name})
+          final.push({author_name: student_name, year: @thesis_year})
         end
       end
     end
@@ -92,10 +93,10 @@ module ThesisImporter
         labo.each do |thesis_url|
           final[count].store(:url, thesis_url)
           @thesisss = Thesis.create_from_seed(final[count])
-#          CLIENT.index(index: INDEX, type: TYPE, id: @thesisss.id, body: { 
-#              text: set_text_content(thesis_url)
-#            }
-#          )
+   #       CLIENT.index(index: INDEX, type: TYPE, id: @thesisss.id, body: { 
+   #           text: set_text_content(thesis_url)
+   #         }
+   #       )
           count = count + 1
         end
       end
@@ -119,11 +120,11 @@ puts final
   end
 
   def parse_html(file)
-    Nokogiri::HTML(file)
+    @labo_html = Nokogiri::HTML(file)
   end
 
-  def fetch_year(html)
-    html.title.to_s.match(/\A20\w{2}/)
+  def fetch_year
+    @thesis_year = @labo_html.title.to_s.match(/\A20\w{2}/).to_s.to_i
   end
 
   def return_full_path(labo_path, thesis_path)
