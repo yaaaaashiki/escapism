@@ -35,6 +35,7 @@ body {
 .icons{
   position: relative;
   height: 165px;
+  top: 10%; 
   padding-left: 0px;
   width: 100%;
   margin-bottom: 0px;
@@ -45,7 +46,7 @@ body {
 
 .icon-wrapper{
   position: absolute;
-  width: 10%;
+  width: 12%;
   height: auto;
 }
 
@@ -54,23 +55,27 @@ body {
 }
 
 .recommend{
-  left: 25%;
+  left: 12%;
 }
 
 .search{
-  left: 40%;
+  left: 32%;
 }
 
 .comment{
-  left: 55%;
+  left: 52%;
 }
 
 .cinii{
-  left: 70%;
+  left: 72%;
 }
 
+.odd{
+  top: 15%;
+}
 
-
+.even{
+}
 
 .position{
   position: absolute;
@@ -132,7 +137,7 @@ body {
 .image-back {
   position: relative;
   top: 0px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.88);
   color: #fff;
   height: 300px;
 }
@@ -142,12 +147,13 @@ body {
   width: 80%;
   margin: auto;
   top: 0px;
+  height: 90%;
 }
 
 .image-content {
   padding-top: 40px;
   width: 100%;
-  height: 100%;
+  height: 400px;
 }
 
 
