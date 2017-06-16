@@ -64,37 +64,12 @@ module ThesisImporter
       end
     end
 
-    #puts thesis_all_title
-    
-    #students.each do |key, value|
-    #  if thesis_title_hash.has_key?(key) && thesis_url_hash.has_key?(key)
-    #    #students.value.each do |studenst|
-    #    #{ title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
-    #    #end
-    #    students[key] = value + thesis_title_hash.values_at(key) + thesis_url_hash.values_at(key)
-    #  end
-    #end
-    #puts students
-    #puts thesis_title_hash   
-    #puts thesis_url_hash 
-
     final = []
 
     students.flatten.each do |labo|
       if labo.kind_of?(Array)
         labo.each do |student_name|
           final.push({author_name: student_name})
-        end
-      end
-    end
- 
-    count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
-    
-    thesis_url_hash.flatten.each do |labo|
-      if labo.kind_of?(Array)
-        labo.each do |thesis_url|
-          final[count].store(:url, thesis_url)
-          count = count + 1
         end
       end
     end
@@ -110,7 +85,23 @@ module ThesisImporter
       end
     end
 
+    count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
+    
+    thesis_url_hash.flatten.each do |labo|
+      if labo.kind_of?(Array)
+        labo.each do |thesis_url|
+          final[count].store(:url, thesis_url)
+          @thesisss = Thesis.create_from_seed(final[count])
+#          CLIENT.index(index: INDEX, type: TYPE, id: @thesisss.id, body: { 
+#              text: set_text_content(thesis_url)
+#            }
+#          )
+          count = count + 1
+        end
+      end
+    end
 
+puts final
 
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
@@ -118,6 +109,13 @@ module ThesisImporter
 #        plane_thesis.insert_into_elasticsearch
 #      end
 #    end
+  
+  end
+
+  def set_text_content(thesis_path)
+    data = Yomu.new(thesis_path)
+    rawText = data.text
+    rawText.gsub(/\r\n|\n|\r/, "")
   end
 
   def parse_html(file)
@@ -129,16 +127,13 @@ module ThesisImporter
   end
 
   def return_full_path(labo_path, thesis_path)
+    thesis_path = thesis_path.gsub(/\.\//, "") if martin?(labo_path)
     "#{labo_path.gsub(/\/index\.html/, "")}/#{thesis_path}"
   end
 
-#  def fetch_labo_member(html, labo_name)
-#    html.css('tr').each do |tr_elem|
-#      #labo_member[labo_name.to_sym] << tr_elem.css('td')[1]
-#    end
-#
-#    #puts labo_member
-#  end
+  def martin?(labo_path)
+    labo_path.include?(LABO_NAMES.first)
+  end
 
   def fetch_just_name(string)
     string.match(/\A\w{8}\s/) ? string.gsub!(/\A\w{8}\s/, "") : string
@@ -310,7 +305,7 @@ module ThesisImporter
 
   module_function :upsert_all!, :web_count, :ruby_count
   module_function :parse_html, :fetch_year, :fetch_just_name, :fetch_just_thesis_title
-  module_function :return_full_path
+  module_function :return_full_path, :set_text_content, :martin?
 
   private
 
