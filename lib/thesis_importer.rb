@@ -94,13 +94,11 @@ module ThesisImporter
         labo.each do |thesis_url|
           final[count].store(:url, thesis_url)
           @insert_thesis = Thesis.create_from_seed(final[count])
-          #insert_thesis_into_elasticsearch(thesis_url)
+          insert_thesis_into_elasticsearch(thesis_url)
           count = count + 1
         end
       end
     end
-
-    puts final
 
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
