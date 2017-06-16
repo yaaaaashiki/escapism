@@ -33,6 +33,7 @@
         <div class="col-sm-offset-1 col-xs-offset-1">
           <div class="page-header width">
             <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
+            <h4><%= t[:thesis].year %><%= @author.find(t[:thesis].id).name %></h4>
           </div>
           <p class="text-muted search_summary">
             <small><%= t[:body] %></small>
