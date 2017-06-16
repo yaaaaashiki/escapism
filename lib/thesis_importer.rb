@@ -34,16 +34,18 @@ module ThesisImporter
           thesis_all_title[labo_name.to_sym] = labo_html.title if thesis_all_title[labo_name.to_sym] == "" && labo_path.include?(labo_name)
           labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
-              unless labo_name == LABO_NAMES.first 
-                if anchor[:href].match(/\Athesis.+/)
-                  labo_path_array.push(return_full_path(labo_path, anchor[:href]))
-                  thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
-                end
-              else
-                if anchor[:href].match(/.+_T\.pdf/)
-                  labo_path_array.push(anchor[:href])
-                  thesis_title_array.push(td_elements.content)
-                end 
+              if anchor[:href].match(/\Athesis.+/)
+                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
+              elsif anchor[:href].match(/.+_T\.pdf/)
+                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+                thesis_title_array.push(td_elements.content)
+              elsif anchor[:href].match(/\Aabs\/.+/) && !anchor[:href].match(/\Aabs\/.+E\.pdf\Z/)
+                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
+              elsif  anchor[:href].match(/\Aabstract\/undergraduate/)
+                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
               end
             end
           end
@@ -86,32 +88,32 @@ module ThesisImporter
       end
     end
   
-    count = 0
+    count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
     
     thesis_url_hash.flatten.each do |labo|
       if labo.kind_of?(Array)
         labo.each do |thesis_url|
+          binding.pry if final[count].nil?
           final[count].store(:url, thesis_url)
           count = count + 1
         end
       end
     end
 
-
 #    final.each do |student_hash|
 #      student_hash.store(key, value)
 #    end
 
-   # puts final
+   puts final
 
 
 
 
-    puts thesis_url_hash 
+  #puts thesis_url_hash 
  
 
 
-    #[{title: hoge, kjkl}, {}, {}, {}, {}, {}]
+  #[{title: hoge, kjkl}, {}, {}, {}, {}, {}]
 
 
 #      author_data = "unknown"
