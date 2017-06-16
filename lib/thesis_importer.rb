@@ -9,22 +9,24 @@ module ThesisImporter
   INDEX = 'thesis_development'
   TYPE = 'thesis'
   LABO_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe )
+  SYMBOL_LABO_NAMES = %i(duerst harada komiyama lopez ohara sakuta sumi tobe )
 
   def upsert_all!
     students = {}
     thesis_all_title = {}
     thesis_title_hash = {}
     thesis_url_hash = {}
+    final = []
 
-    LABO_NAMES.each do |labo_name|
-      students.store(labo_name.to_sym, "")
-      thesis_all_title.store(labo_name.to_sym, "")
-      thesis_title_hash.store(labo_name.to_sym, "")
-      thesis_url_hash.store(labo_name.to_sym, "")
+    SYMBOL_LABO_NAMES.each do |labo_name|
+      students.store(labo_name, "")
+      thesis_all_title.store(labo_name, "")
+      thesis_title_hash.store(labo_name, "")
+      thesis_url_hash.store(labo_name, "")
     end
 
     Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
-      LABO_NAMES.each do |labo_name|
+      SYMBOL_LABO_NAMES.each do |labo_name|
         if File.basename(labo_path).include?("index.html")
           labo_path_array = []
           thesis_title_array = []
@@ -32,43 +34,35 @@ module ThesisImporter
           index_file = File.open(@labo_path)
           parse_html(index_file)
           set_thesis_year
-          thesis_all_title[labo_name.to_sym] = @labo_html.title if thesis_all_title[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
+          thesis_all_title[labo_name] = @labo_html.title if thesis_all_title[labo_name] == "" && @labo_path.include?(labo_name.to_s)
           @labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
               set_thesis_path(anchor[:href])
-              if common_thesis?
-                labo_path_array.push(return_full_path)
-                thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
-              elsif martin_thesis? 
-                labo_path_array.push(return_full_path)
+
+              labo_path_array.push(return_full_path) if insert_thesis?
+
+              if martin_thesis?
                 thesis_title_array.push(td_elements.content)
-              elsif harada_thesis?
-                labo_path_array.push(return_full_path)
-                thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
-              elsif sakuta_bachelor_thesis?
-                labo_path_array.push(return_full_path)
+              elsif insert_thesis?
                 thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
               end
             end
           end
 
-          thesis_title_hash[labo_name.to_sym] = thesis_title_array if thesis_title_hash[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
-          thesis_url_hash[labo_name.to_sym] = labo_path_array if thesis_url_hash[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
+          thesis_title_hash[labo_name] = thesis_title_array if thesis_title_hash[labo_name] == "" && @labo_path.include?(labo_name.to_s)
+          thesis_url_hash[labo_name] = labo_path_array if thesis_url_hash[labo_name] == "" && @labo_path.include?(labo_name.to_s)
 
-          if students[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
+          if students[labo_name] == "" && @labo_path.include?(labo_name.to_s)
             labo_member = []
             @labo_html.css('tr').each do |tr_elem|
               labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
             end
-            students[labo_name.to_sym] = labo_member
+            students[labo_name] = labo_member
           end
         end
       end
     end
 
-    final = []
-
-    puts @thesis_year
     students.flatten.each do |labo|
       if labo.kind_of?(Array)
         labo.each do |student_name|
@@ -77,7 +71,7 @@ module ThesisImporter
       end
     end
 
-    count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
+    count = 0
 
     thesis_title_hash.flatten.each do |labo|
       if labo.kind_of?(Array)
@@ -88,23 +82,20 @@ module ThesisImporter
       end
     end
 
-    count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
+    count = 0
     
     thesis_url_hash.flatten.each do |labo|
       if labo.kind_of?(Array)
         labo.each do |thesis_url|
           final[count].store(:url, thesis_url)
-          @thesisss = Thesis.create_from_seed(final[count])
-   #       CLIENT.index(index: INDEX, type: TYPE, id: @thesisss.id, body: { 
-   #           text: set_text_content(thesis_url)
-   #         }
-   #       )
+          @insert_thesis = Thesis.create_from_seed(final[count])
+          insert_thesis_into_elasticsearch(thesis_url)
           count = count + 1
         end
       end
     end
 
-puts final
+    puts final
 
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
@@ -142,6 +133,10 @@ puts final
     "#{@labo_path.gsub(/\/index\.html/, "")}/#{@thesis_path}"
   end
 
+  def insert_thesis?
+    common_thesis? || martin_thesis? || harada_thesis? || sakuta_bachelor_thesis?
+  end
+
   def martin_path?
     @labo_path.include?(LABO_NAMES.first)
   end
@@ -168,6 +163,12 @@ puts final
 
   def fetch_just_thesis_title(string)
     string.match(/(:?\r\n)?\s/) ? string.gsub!(/(:?\r\n)?\s/, "") : string
+  end
+
+  def insert_thesis_into_elasticsearch(thesis_url)
+    CLIENT.index(index: INDEX, type: TYPE, id: @insert_thesis.id, body: {
+      text: set_text_content(thesis_url)
+    })
   end
 
   def all_words_count
@@ -330,9 +331,10 @@ puts final
 
 
 
-  module_function :upsert_all!, :web_count, :ruby_count
-  module_function :parse_html, :set_thesis_year, :fetch_just_name, :fetch_just_thesis_title
-  module_function :return_full_path, :set_text_content, :martin_path?, :current_path, :set_thesis_path, :sakuta_bachelor_thesis?, :harada_thesis?, :martin_thesis?, :common_thesis?
+  module_function :upsert_all!, :web_count, :ruby_count, :insert_thesis_into_elasticsearch
+  module_function :parse_html, :set_thesis_year, :fetch_just_name, :fetch_just_thesis_title, :set_text_content
+  module_function :sakuta_bachelor_thesis?, :harada_thesis?, :martin_thesis?, :common_thesis?, :insert_thesis?
+  module_function :return_full_path, :martin_path?, :current_path, :set_thesis_path
 
   private
 
