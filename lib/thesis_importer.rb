@@ -8,8 +8,8 @@ module ThesisImporter
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
-  LABO_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe )
-  SYMBOL_LABO_NAMES = %i(duerst harada komiyama lopez ohara sakuta sumi tobe )
+  LABO_NAMES = %w(sumi duerst sakuta ohara komiyama tobe harada lopez )
+  SYMBOL_LABO_NAMES = %i(sumi duerst sakuta ohara komiyama tobe harada lopez )
 
   def upsert_all!
     students = {}
@@ -60,7 +60,6 @@ module ThesisImporter
             labo_member = []
             @labo_html.css('tr').each do |tr_elem|
               labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
-              thesis_title_array.push(tr_elem.css('td')[2].content) if tr_elem.css('td')[2] && thesis_title_hash[labo_name] == "" && harada_path?
             end
             students[labo_name] = labo_member
           end
@@ -68,10 +67,11 @@ module ThesisImporter
       end
     end
 
-    students.flatten.each do |labo|
+    students.flatten.each_with_index do |labo, index|
+      @labo_id = (index + 1) / 2
       if labo.kind_of?(Array)
         labo.each do |student_name|
-          final.push({author_name: student_name, year: @thesis_year})
+          final.push({author_name: student_name, year: @thesis_year, labo_id: @labo_id})
         end
       end
     end
@@ -94,11 +94,13 @@ module ThesisImporter
         labo.each do |thesis_url|
           final[count].store(:url, thesis_url)
           @insert_thesis = Thesis.create_from_seed(final[count])
-          insert_thesis_into_elasticsearch(thesis_url)
+          #insert_thesis_into_elasticsearch(thesis_url)
           count = count + 1
         end
       end
     end
+
+    puts final
 
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
