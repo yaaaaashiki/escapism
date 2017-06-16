@@ -44,7 +44,9 @@ module ThesisImporter
               if martin_thesis?
                 thesis_title_array.push(td_elements.content)
               elsif harada_thesis?
-                thesis_title_array.push(td_elements.previous.content)
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.previous.content))
+              elsif sakuta_bachelor_thesis?
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.previous.previous.content))
               elsif insert_thesis?
                 thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
               end
@@ -142,6 +144,10 @@ module ThesisImporter
 
   def martin_path?
     @labo_path.include?("duerst")
+  end
+
+  def sakuta_path?
+    @labo_path.include?("sakuta")
   end
 
   def harada_path?
@@ -341,7 +347,7 @@ module ThesisImporter
   module_function :upsert_all!, :web_count, :ruby_count, :insert_thesis_into_elasticsearch
   module_function :parse_html, :set_thesis_year, :fetch_just_name, :fetch_just_thesis_title, :set_text_content
   module_function :sakuta_bachelor_thesis?, :harada_thesis?, :martin_thesis?, :common_thesis?, :insert_thesis?
-  module_function :return_full_path, :martin_path?, :harada_path?, :current_path, :set_thesis_path
+  module_function :return_full_path, :martin_path?, :harada_path?, :sakuta_path?, :current_path, :set_thesis_path
 
   private
 
