@@ -43,6 +43,8 @@ module ThesisImporter
 
               if martin_thesis?
                 thesis_title_array.push(td_elements.content)
+              elsif harada_thesis?
+                thesis_title_array.push(td_elements.previous.content)
               elsif insert_thesis?
                 thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
               end
@@ -56,6 +58,7 @@ module ThesisImporter
             labo_member = []
             @labo_html.css('tr').each do |tr_elem|
               labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
+              thesis_title_array.push(tr_elem.css('td')[2].content) if tr_elem.css('td')[2] && thesis_title_hash[labo_name] == "" && harada_path?
             end
             students[labo_name] = labo_member
           end
@@ -89,7 +92,7 @@ module ThesisImporter
         labo.each do |thesis_url|
           final[count].store(:url, thesis_url)
           @insert_thesis = Thesis.create_from_seed(final[count])
-          insert_thesis_into_elasticsearch(thesis_url)
+          #insert_thesis_into_elasticsearch(thesis_url)
           count = count + 1
         end
       end
@@ -138,7 +141,11 @@ module ThesisImporter
   end
 
   def martin_path?
-    @labo_path.include?(LABO_NAMES.first)
+    @labo_path.include?("duerst")
+  end
+
+  def harada_path?
+    @labo_path.include?("harada")
   end
 
   def common_thesis?
@@ -334,7 +341,7 @@ module ThesisImporter
   module_function :upsert_all!, :web_count, :ruby_count, :insert_thesis_into_elasticsearch
   module_function :parse_html, :set_thesis_year, :fetch_just_name, :fetch_just_thesis_title, :set_text_content
   module_function :sakuta_bachelor_thesis?, :harada_thesis?, :martin_thesis?, :common_thesis?, :insert_thesis?
-  module_function :return_full_path, :martin_path?, :current_path, :set_thesis_path
+  module_function :return_full_path, :martin_path?, :harada_path?, :current_path, :set_thesis_path
 
   private
 
