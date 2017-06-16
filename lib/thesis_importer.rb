@@ -87,56 +87,30 @@ module ThesisImporter
         end
       end
     end
-  
+ 
     count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
     
     thesis_url_hash.flatten.each do |labo|
       if labo.kind_of?(Array)
         labo.each do |thesis_url|
-          binding.pry if final[count].nil?
           final[count].store(:url, thesis_url)
           count = count + 1
         end
       end
     end
 
-#    final.each do |student_hash|
-#      student_hash.store(key, value)
-#    end
+    count = 0  #wwwwwwwwwwwwwwwwwwwwwwwwwwww
 
-   puts final
-
-
-
-
-  #puts thesis_url_hash 
- 
-
-
-  #[{title: hoge, kjkl}, {}, {}, {}, {}, {}]
+    thesis_title_hash.flatten.each do |labo|
+      if labo.kind_of?(Array)
+        labo.each do |thesis_title|
+          final[count].store(:title, thesis_title)
+          count = count + 1
+        end
+      end
+    end
 
 
-#      author_data = "unknown"
-#      title_data  = "notitle"
-#      date_data   = "unknown"
-#      year_data   = "unknown"
-#
-#      File.open(tex_path) do |file|
-#        file.each_line do |line|
-#          match = line.match(/author\{(.*?)\}/)
-#          author_data = match[1] if author_data == "unknown" && match
-#
-#          match = line.match(/title\{(.*?)\}/)
-#          title_data  = match[1] if match
-#            
-#          match = line.match(/date\{(.*?)\}/)
-#          date_data   = match[1] if match
-#
-#          match = line.match(/year\{(.*?)\}/)
-#          year_data   = match[1] if match
-#        end
-#      end
-#      { title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
 
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
