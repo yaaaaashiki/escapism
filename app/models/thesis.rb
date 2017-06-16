@@ -37,7 +37,6 @@ class Thesis < ApplicationRecord
       attrs[:author_id] = author.id
       attrs.delete(:author_name)
       attrs.delete(:date_data)
-      binding.pry
       Thesis.create!(attrs)
     end
   end
