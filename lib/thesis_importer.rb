@@ -28,32 +28,34 @@ module ThesisImporter
         if File.basename(labo_path).include?("index.html")
           labo_path_array = []
           thesis_title_array = []
-          index_file = File.open(labo_path)
+          current_path(labo_path)
+          index_file = File.open(@labo_path)
           parse_html(index_file)
-          fetch_year
-          thesis_all_title[labo_name.to_sym] = @labo_html.title if thesis_all_title[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+          set_thesis_year
+          thesis_all_title[labo_name.to_sym] = @labo_html.title if thesis_all_title[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
           @labo_html.css('td').each do |td_elements|
             td_elements.css('a').each do |anchor|
-              if anchor[:href].match(/\Athesis.+/)
-                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+              set_thesis_path(anchor[:href])
+              if common_thesis?
+                labo_path_array.push(return_full_path)
                 thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
-              elsif anchor[:href].match(/.+_T\.pdf/)
-                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+              elsif martin_thesis? 
+                labo_path_array.push(return_full_path)
                 thesis_title_array.push(td_elements.content)
-              elsif anchor[:href].match(/\Aabs\/.+/) && !anchor[:href].match(/\Aabs\/.+E\.pdf\Z/)
-                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+              elsif harada_thesis?
+                labo_path_array.push(return_full_path)
                 thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
-              elsif  anchor[:href].match(/\Aabstract\/undergraduate/)
-                labo_path_array.push(return_full_path(labo_path, anchor[:href]))
+              elsif sakuta_bachelor_thesis?
+                labo_path_array.push(return_full_path)
                 thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
               end
             end
           end
 
-          thesis_title_hash[labo_name.to_sym] = thesis_title_array if thesis_title_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
-          thesis_url_hash[labo_name.to_sym] = labo_path_array if thesis_url_hash[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+          thesis_title_hash[labo_name.to_sym] = thesis_title_array if thesis_title_hash[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
+          thesis_url_hash[labo_name.to_sym] = labo_path_array if thesis_url_hash[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
 
-          if students[labo_name.to_sym] == "" && labo_path.include?(labo_name)
+          if students[labo_name.to_sym] == "" && @labo_path.include?(labo_name)
             labo_member = []
             @labo_html.css('tr').each do |tr_elem|
               labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
@@ -113,27 +115,51 @@ puts final
   
   end
 
+  def current_path(labo_path)
+    @labo_path = labo_path 
+  end
+
   def set_text_content(thesis_path)
     data = Yomu.new(thesis_path)
     rawText = data.text
     rawText.gsub(/\r\n|\n|\r/, "")
   end
 
+  def set_thesis_path(thesis_path)
+    @thesis_path  = thesis_path
+  end
+
   def parse_html(file)
     @labo_html = Nokogiri::HTML(file)
   end
 
-  def fetch_year
+  def set_thesis_year
     @thesis_year = @labo_html.title.to_s.match(/\A20\w{2}/).to_s.to_i
   end
 
-  def return_full_path(labo_path, thesis_path)
-    thesis_path = thesis_path.gsub(/\.\//, "") if martin?(labo_path)
-    "#{labo_path.gsub(/\/index\.html/, "")}/#{thesis_path}"
+  def return_full_path
+    @thesis_path = @thesis_path.gsub(/\.\//, "") if martin_path?
+    "#{@labo_path.gsub(/\/index\.html/, "")}/#{@thesis_path}"
   end
 
-  def martin?(labo_path)
-    labo_path.include?(LABO_NAMES.first)
+  def martin_path?
+    @labo_path.include?(LABO_NAMES.first)
+  end
+
+  def common_thesis?
+    @thesis_path.match(/\Athesis.+/)
+  end
+
+  def martin_thesis?
+    @thesis_path.match(/.+_T\.pdf/)
+  end
+
+  def sakuta_bachelor_thesis?
+    @thesis_path.match(/\Aabstract\/undergraduate/)
+  end
+
+  def harada_thesis?
+    @thesis_path.match(/\Aabs\/.+/) && !@thesis_path.match(/\Aabs\/.+E\.pdf\Z/)
   end
 
   def fetch_just_name(string)
@@ -305,8 +331,8 @@ puts final
 
 
   module_function :upsert_all!, :web_count, :ruby_count
-  module_function :parse_html, :fetch_year, :fetch_just_name, :fetch_just_thesis_title
-  module_function :return_full_path, :set_text_content, :martin?
+  module_function :parse_html, :set_thesis_year, :fetch_just_name, :fetch_just_thesis_title
+  module_function :return_full_path, :set_text_content, :martin_path?, :current_path, :set_thesis_path, :sakuta_bachelor_thesis?, :harada_thesis?, :martin_thesis?, :common_thesis?
 
   private
 
