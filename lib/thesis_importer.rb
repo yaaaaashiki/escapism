@@ -61,10 +61,58 @@ module ThesisImporter
         end
       end
     end
-    puts thesis_all_title
-    puts students
-    puts thesis_title_hash
-    puts thesis_url_hash
+    #puts thesis_all_title
+    
+    #students.each do |key, value|
+    #  if thesis_title_hash.has_key?(key) && thesis_url_hash.has_key?(key)
+    #    #students.value.each do |studenst|
+    #    #{ title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
+    #    #end
+    #    students[key] = value + thesis_title_hash.values_at(key) + thesis_url_hash.values_at(key)
+    #  end
+    #end
+    #puts students
+    #puts thesis_title_hash   
+    #puts thesis_url_hash 
+
+    final = []
+
+    students.flatten.each_with_index do |labo, i|
+      if labo.class == "array"
+        labo.each do |student_name|
+          binding.pry
+          final.push(author_name: student_name)
+        end
+      end
+    end
+
+    puts final
+
+    #[{title: hoge, kjkl}, {}, {}, {}, {}, {}]
+
+
+#      author_data = "unknown"
+#      title_data  = "notitle"
+#      date_data   = "unknown"
+#      year_data   = "unknown"
+#
+#      File.open(tex_path) do |file|
+#        file.each_line do |line|
+#          match = line.match(/author\{(.*?)\}/)
+#          author_data = match[1] if author_data == "unknown" && match
+#
+#          match = line.match(/title\{(.*?)\}/)
+#          title_data  = match[1] if match
+#            
+#          match = line.match(/date\{(.*?)\}/)
+#          date_data   = match[1] if match
+#
+#          match = line.match(/year\{(.*?)\}/)
+#          year_data   = match[1] if match
+#        end
+#      end
+#      { title: title_data, author_name: author_data, year: year_data, date_data: date_data, url: @path }
+
 #    Find.find(THESIS_ROOT_DIRECTORY) do |path|
 #      plane_thesis = PlaneThesis.new(path)
 #      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
@@ -72,6 +120,10 @@ module ThesisImporter
 #      end
 #    end
   end
+
+  
+ 
+
 
   def parse_html(file)
     Nokogiri::HTML(file)
@@ -252,7 +304,6 @@ module ThesisImporter
     end
 
     def insert_into_elasticsearch
-      # Thesis!でMySqlにデータを入れながらElasticsearchに挿入www
       CLIENT.index(index: INDEX, type: TYPE, id: thesis!.id, body: { 
           text: text
         }
