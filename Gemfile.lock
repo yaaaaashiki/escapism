@@ -328,6 +328,7 @@ DEPENDENCIES
   kaminari
   mysql2 (~> 0.3.17)
   natto
+  nokogiri
   pry
   pry-byebug
   pry-doc

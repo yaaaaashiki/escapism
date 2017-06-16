@@ -4,19 +4,186 @@ require 'pp'
 
 module ThesisImporter
   THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data')
+  LABO_THESIS_ROOT_DIRECTORY = THESIS_ROOT_DIRECTORY.join('ignore')
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
+  LABO_NAMES = %w(sumi duerst sakuta ohara komiyama tobe harada lopez )
+  SYMBOL_LABO_NAMES = %i(sumi duerst sakuta ohara komiyama tobe harada lopez )
 
   def upsert_all!
-    Find.find(THESIS_ROOT_DIRECTORY) do |path|
-      plane_thesis = PlaneThesis.new(path)
-      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
-        plane_thesis.insert_into_elasticsearch
+    students = {}
+    thesis_all_title = {}
+    thesis_title_hash = {}
+    thesis_url_hash = {}
+    final = []
+
+    SYMBOL_LABO_NAMES.each do |labo_name|
+      students.store(labo_name, "")
+      thesis_all_title.store(labo_name, "")
+      thesis_title_hash.store(labo_name, "")
+      thesis_url_hash.store(labo_name, "")
+    end
+
+    Find.find(LABO_THESIS_ROOT_DIRECTORY) do |labo_path|
+      SYMBOL_LABO_NAMES.each do |labo_name|
+        if File.basename(labo_path).include?("index.html")
+          labo_path_array = []
+          thesis_title_array = []
+          current_path(labo_path)
+          index_file = File.open(@labo_path)
+          parse_html(index_file)
+          set_thesis_year
+          thesis_all_title[labo_name] = @labo_html.title if thesis_all_title[labo_name] == "" && @labo_path.include?(labo_name.to_s)
+          @labo_html.css('td').each do |td_elements|
+            td_elements.css('a').each do |anchor|
+              set_thesis_path(anchor[:href])
+
+              labo_path_array.push(return_full_path) if insert_thesis?
+
+              if martin_thesis?
+                thesis_title_array.push(td_elements.content)
+              elsif harada_thesis?
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.previous.content))
+              elsif sakuta_bachelor_thesis?
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.previous.previous.content))
+              elsif insert_thesis?
+                thesis_title_array.push(fetch_just_thesis_title(td_elements.content))
+              end
+            end
+          end
+
+          thesis_title_hash[labo_name] = thesis_title_array if thesis_title_hash[labo_name] == "" && @labo_path.include?(labo_name.to_s)
+          thesis_url_hash[labo_name] = labo_path_array if thesis_url_hash[labo_name] == "" && @labo_path.include?(labo_name.to_s)
+
+          if students[labo_name] == "" && @labo_path.include?(labo_name.to_s)
+            labo_member = []
+            @labo_html.css('tr').each do |tr_elem|
+              labo_member.push(fetch_just_name(tr_elem.css('td')[1].content)) if tr_elem.css('td')[1]
+            end
+            students[labo_name] = labo_member
+          end
+        end
       end
     end
-  end
+
+    students.flatten.each_with_index do |labo, index|
+      @labo_id = (index + 1) / 2
+      if labo.kind_of?(Array)
+        labo.each do |student_name|
+          final.push({author_name: student_name, year: @thesis_year, labo_id: @labo_id})
+        end
+      end
+    end
+
+    count = 0
+
+    thesis_title_hash.flatten.each do |labo|
+      if labo.kind_of?(Array)
+        labo.each do |thesis_title|
+          final[count].store(:title, thesis_title)
+          count = count + 1
+        end
+      end
+    end
+
+    count = 0
+    
+    thesis_url_hash.flatten.each do |labo|
+      if labo.kind_of?(Array)
+        labo.each do |thesis_url|
+          final[count].store(:url, thesis_url)
+          @insert_thesis = Thesis.create_from_seed(final[count])
+          insert_thesis_into_elasticsearch(thesis_url)
+          count = count + 1
+        end
+      end
+    end
+
+    puts final
+
+#    Find.find(THESIS_ROOT_DIRECTORY) do |path|
+#      plane_thesis = PlaneThesis.new(path)
+#      if plane_thesis.exists_tex? && !plane_thesis.exists_thesis?
+#        plane_thesis.insert_into_elasticsearch
+#      end
+#    end
   
+  end
+
+  def current_path(labo_path)
+    @labo_path = labo_path 
+  end
+
+  def set_text_content(thesis_path)
+    data = Yomu.new(thesis_path)
+    rawText = data.text
+    rawText.gsub(/\r\n|\n|\r/, "")
+  end
+
+  def set_thesis_path(thesis_path)
+    @thesis_path  = thesis_path
+  end
+
+  def parse_html(file)
+    @labo_html = Nokogiri::HTML(file)
+  end
+
+  def set_thesis_year
+    @thesis_year = @labo_html.title.to_s.match(/\A20\w{2}/).to_s.to_i
+  end
+
+  def return_full_path
+    @thesis_path = @thesis_path.gsub(/\.\//, "") if martin_path?
+    "#{@labo_path.gsub(/\/index\.html/, "")}/#{@thesis_path}"
+  end
+
+  def insert_thesis?
+    common_thesis? || martin_thesis? || harada_thesis? || sakuta_bachelor_thesis?
+  end
+
+  def martin_path?
+    @labo_path.include?("duerst")
+  end
+
+  def sakuta_path?
+    @labo_path.include?("sakuta")
+  end
+
+  def harada_path?
+    @labo_path.include?("harada")
+  end
+
+  def common_thesis?
+    @thesis_path.match(/\Athesis.+/)
+  end
+
+  def martin_thesis?
+    @thesis_path.match(/.+_T\.pdf/)
+  end
+
+  def sakuta_bachelor_thesis?
+    @thesis_path.match(/\Aabstract\/undergraduate/)
+  end
+
+  def harada_thesis?
+    @thesis_path.match(/\Aabs\/.+/) && !@thesis_path.match(/\Aabs\/.+E\.pdf\Z/)
+  end
+
+  def fetch_just_name(string)
+    string.match(/\A\w{8}\s/) ? string.gsub!(/\A\w{8}\s/, "") : string
+  end
+
+  def fetch_just_thesis_title(string)
+    string.match(/(:?\r\n)?\s/) ? string.gsub!(/(:?\r\n)?\s/, "") : string
+  end
+
+  def insert_thesis_into_elasticsearch(thesis_url)
+    CLIENT.index(index: INDEX, type: TYPE, id: @insert_thesis.id, body: {
+      text: set_text_content(thesis_url)
+    })
+  end
+
   def all_words_count
     total = {}
     Find.find(THESIS_ROOT_DIRECTORY) do |path|
@@ -168,7 +335,6 @@ module ThesisImporter
     end
 
     def insert_into_elasticsearch
-      # Thesis!でMySqlにデータを入れながらElasticsearchに挿入www
       CLIENT.index(index: INDEX, type: TYPE, id: thesis!.id, body: { 
           text: text
         }
@@ -178,7 +344,10 @@ module ThesisImporter
 
 
 
-  module_function :upsert_all!, :web_count, :ruby_count
+  module_function :upsert_all!, :web_count, :ruby_count, :insert_thesis_into_elasticsearch
+  module_function :parse_html, :set_thesis_year, :fetch_just_name, :fetch_just_thesis_title, :set_text_content
+  module_function :sakuta_bachelor_thesis?, :harada_thesis?, :martin_thesis?, :common_thesis?, :insert_thesis?
+  module_function :return_full_path, :martin_path?, :harada_path?, :sakuta_path?, :current_path, :set_thesis_path
 
   private
 
