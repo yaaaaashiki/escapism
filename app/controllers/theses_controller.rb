@@ -27,6 +27,10 @@ class ThesesController < ApplicationController
      @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
     end
 
+    if params[:l]
+      @thesisArray = Kaminari.paginate_array(search_by_labo_id(params[:l])).page(params[:page]).per(4)
+    end
+
     @labos = Labo.all
   end
 
@@ -62,6 +66,25 @@ class ThesesController < ApplicationController
         # Elasticsearchから返す検索結果の数をいじりたいときは以下を使用
         # from: page * PAGE_SIZE,  # 返す検索結果の開始位置(0が最初)
         # size: PAGE_SIZE   # 返す検索結果の数
+      })
+    end
+
+    def search_by_labo_id(id)
+      thesisArray = []
+      @theses = Thesis.where(labo_id: id)
+      @theses.each do |t|
+        result = search_by_thesis_id(t)
+        thesis = {thesis: t, body: result["hits"]["hits"].first["_source"]["text"]}
+        thesisArray.push(thesis)
+      end
+      thesisArray
+    end
+
+    def search_by_thesis_id(thesis_id)
+      CLIENT.search(index: INDEX, body:{
+        query: {
+          terms: {"_id": [thesis_id]}
+        }
       })
     end
 
