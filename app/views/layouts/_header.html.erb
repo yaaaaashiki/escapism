@@ -17,6 +17,7 @@
       <%= menu_group pull: :right do %>
         <%= menu_item "TOP", root_path %>
           <% if logged_in? %>
+            <%= current_user.username %>さん
             <%= menu_item "Recommend Lab", recommendations_path %>
             <%= menu_item "Search", theses_path %>
             <%= menu_item "Logout", logout_path, {method: :post} %>
