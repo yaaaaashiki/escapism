@@ -3,6 +3,7 @@ class ThesesController < ApplicationController
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
+  NO_LABO_ID = 9
 
   before_action :init_set_popular_theses
 
@@ -17,8 +18,12 @@ class ThesesController < ApplicationController
     if @labo_id && @query != ""
       response = search_by_keyword(@query)
       response["hits"]["hits"].each do |t|
-        thesis = Thesis.find_by(id: t["_id"], labo_id: @labo_id)
-        if thesis
+        unless @labo_id.to_i == NO_LABO_ID
+          thesis = Thesis.find_by(id: t["_id"], labo_id: @labo_id)
+        else
+          thesis = Thesis.find_by(id: t["_id"])
+        end
+      if thesis
           thesis = {thesis: thesis, body: t["_source"]["text"]}
           thesisArray.push(thesis)
         end
