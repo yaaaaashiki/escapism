@@ -3,32 +3,44 @@ class ThesesController < ApplicationController
   CLIENT = Elasticsearch::Client.new log: true
   INDEX = 'thesis_development'
   TYPE = 'thesis'
+  NO_LABO_ID = 9
 
   before_action :init_set_popular_theses
 
   def index
     @author = Author.all
-    if params[:q]
-      response = search_by_keyword(params[:q])
-      thesisArray = []
-      response["hits"]["hits"].each do |t|
-        if params[:l]
-          params[:l] = 9 if params[:l] == 9
-          thesis = Thesis.find_by(id: t["_id"], labo_id: params[:l])
-        else
-          thesis = Thesis.find(t["_id"])
-        end
+    @labo_id = params[:l]
+    @query = params[:q]
 
+
+    thesisArray = []
+
+    if @labo_id && @query != ""
+      response = search_by_keyword(@query)
+      response["hits"]["hits"].each do |t|
+        unless @labo_id.to_i == NO_LABO_ID
+          thesis = Thesis.find_by(id: t["_id"], labo_id: @labo_id)
+        else
+          thesis = Thesis.find_by(id: t["_id"])
+        end
+      if thesis
+          thesis = {thesis: thesis, body: t["_source"]["text"]}
+          thesisArray.push(thesis)
+        end
+      end
+     @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
+    elsif @query != ""
+      response = search_by_keyword(@query)
+      response["hits"]["hits"].each do |t|
+      thesis = Thesis.find(t["_id"])
         if thesis
           thesis = {thesis: thesis, body: t["_source"]["text"]}
           thesisArray.push(thesis)
         end
       end
      @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
-    end
-
-    if params[:l]
-      @thesisArray = Kaminari.paginate_array(search_by_labo_id(params[:l])).page(params[:page]).per(4)
+    elsif @labo_id
+      @thesisArray = Kaminari.paginate_array(search_by_labo_id(@labo_id)).page(params[:page]).per(4)
     end
 
     @labos = Labo.all
