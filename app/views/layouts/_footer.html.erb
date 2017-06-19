@@ -2,22 +2,22 @@
     <div class="l-footerNav">
       <div class="l-container l-container--full pad-le-40">
         <nav class="m-navigation m-navigation--center">
-          <div class="col-sm-6"> 
+          <div class="col-sm-6">
             <span class="font-size-30"><a class=" white" href="/">論文検索支援システム escapism</a></span>
             <div class="m-copyRight">
               <small class="pad-le-20">Copyright &copy; 2017 論文検索支援システム escapism All rights reserved.</small>
             </div>
           </div>
-          <div class="col-sm-6 pad-top-30"> 
+          <div class="col-sm-6 pad-top-30">
             <ul>
-              <li><%= link_to "TOP", "/", {class: "font-size-20 white"} %></li>
+              <li><%= link_to "TOP", "/" %></li>
               <% if logged_in? %>
-                <li><%= link_to "Recommend Lab", recommendations_path, {class: "font-size-20 white"} %></li>
-                <li><%= link_to "Search", theses_path, {class: "font-size-20 white"} %></li>
-                <li><%= link_to "Logout", logout_path, {class: "font-size-20 white", method: :post} %></li>
+                <li><%= link_to "Recommend Lab", recommendations_path %></li>
+                <li><%= link_to "Search", theses_path %></li>
+                <li><%= link_to "Logout", logout_path, {method: :post} %></li>
               <% else %>
-                <li><%= link_to "Sign Up", new_mail_address_path, {class: "font-size-20 white"} %></li>
-                <li><%= link_to "Login", login_path, {class: "font-size-20 white"} %></li>
+                <li><%= link_to "Sign Up", new_mail_address_path %></li>
+                <li><%= link_to "Login", login_path %></li>
               <% end %>
             </ul>
           </div>

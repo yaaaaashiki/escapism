@@ -1,9 +1,8 @@
 body {
-  background-color: #de9610;
-  
+
   #searchpage{
    .page-header {
-      color: white;
+      color: #f6ae54;
     }
     .width {
       width: 80%;
@@ -13,8 +12,8 @@ body {
     }
     .button {
       background-color: transparent;
-      border: 2px solid white;
-      color: white;
+      border: 2px solid #abb1b5;
+      color: black;
       width: 100%;
       height: 34px;
     }
@@ -28,8 +27,8 @@ body {
   }
 
   #right-nav-container{
-    color: white;
-    border: 2px solid #DDD;
+    color: #f6ae54;
+    border: 2px solid #abb1b5;
 
     .ranking{
       font-size: 30px;
