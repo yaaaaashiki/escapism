@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     mail_address_id = Token.find_by(token: params[:token]).mail_address_id
-    @mail_address = MailAddress.find(mail_address_id).address
+    session[:email] = MailAddress.find(mail_address_id).address
   end
 
   def create

@@ -18,8 +18,8 @@
     </div>
     <div class="form-group">
       <div class="col-sm-12">
-        <%= @mail_address %>
-        <%= f.hidden_field :email, :value => @mail_address %>
+        <%= session[:email] %>
+        <%= f.hidden_field :email, :value => session[:email] %>
       </div>
     </div>
     <div class="form-group">
