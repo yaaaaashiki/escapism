@@ -32,6 +32,7 @@
       <% @thesisArray.each do |t| %>
         <div class="col-sm-offset-1 col-xs-offset-1">
           <div class="page-header width">
+            <h4><%= t[:thesis].year %><span style="margin-right: 100px;" ></span><%= @author.find(t[:thesis].id).name %><span  style="margin-right: 100px;"></span><%= @labos.find(t[:thesis].labo_id).name %></h4>
             <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
           </div>
           <p class="text-muted search_summary">
