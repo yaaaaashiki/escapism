@@ -17,7 +17,11 @@
       <div class="row">
         <% @labos.each do | l | %>
           <div class="col-sm-offset-1 col-xs-offset-1 col-sm-3 col-xs-3">
-            <label><%= radio_button_tag(:l, l.id)%><%= l.name %></label>
+            <% if @labo_id.to_i == l.id %>
+              <label><%= radio_button_tag(:l, l.id, true)%><%= l.name %></label>
+            <% else %>
+              <label><%= radio_button_tag(:l, l.id)%><%= l.name %></label>
+            <% end %>
           </div>
         <% end %>
         <div class="col-sm-offset-1 col-xs-offset-1 col-sm-3 col-xs-3">
