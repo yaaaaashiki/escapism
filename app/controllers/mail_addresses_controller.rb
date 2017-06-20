@@ -27,6 +27,6 @@ class MailAddressesController < ApplicationController
     end
 
     def exists_mail?
-      raise ActionController::RoutingError.new('Please input mail address by sign up page') unless (Rails.application.routes.recognize_path(request.referrer)[:action] == "new" || "index") || (Rails.application.routes.recognize_path(request.referrer)[:controller] == "MailAddresses")
+      raise ActionController::RoutingError.new('Please input mail address by sign up page') unless (Rails.application.routes.recognize_path(request.referrer)[:action] == "new" || "index") && (Rails.application.routes.recognize_path(request.referrer)[:controller] == "mail_addresses")
     end
 end
