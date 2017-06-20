@@ -1,9 +1,10 @@
+@import "components/color";
+
 body {
-  background-color: #de9610;
-  
+
   #searchpage{
    .page-header {
-      color: white;
+      color: $goldenYellow;
     }
     .width {
       width: 80%;
@@ -13,8 +14,8 @@ body {
     }
     .button {
       background-color: transparent;
-      border: 2px solid white;
-      color: white;
+      border: 2px solid $fog;
+      color: black;
       width: 100%;
       height: 34px;
     }
@@ -28,8 +29,8 @@ body {
   }
 
   #right-nav-container{
-    color: white;
-    border: 2px solid #DDD;
+    color: $goldenYellow;
+    border: 2px solid $fog;
 
     .ranking{
       font-size: 30px;

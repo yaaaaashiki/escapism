@@ -36,9 +36,9 @@ $(function() {
   });
 
    $('.l-footerNav ul li').mouseover(function() {
-    $(this).addClass("bottom-border-orange");
+    $(this).addClass("bottom-border");
   }).mouseout(function() {
-    $(this).removeClass("bottom-border-orange");
+    $(this).removeClass("bottom-border");
   });
 
   $(".icons img").mouseover(function(){

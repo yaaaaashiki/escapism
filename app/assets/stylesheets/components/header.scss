@@ -1,16 +1,60 @@
+@import 'components/color';
+
 .navbar{
   border: none;
-  opacity: 0.7;
+  opacity: 1;
   margin: 0;
   height: 100px;
   padding-top: 30px;
 }
 
 .nav{
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: normal;
 }
 
 .navbar-brand{
-  font-size: 30px;
+  font-size: 40px;
+  font-weight: bolder;
 }
 
+.navbar-default {
+  color: $goldenYellow;
+  background-color: $wineRed;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: white;
+  background-color: inherit;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+  color: white;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover {
+  color: $goldenYellow;
+  background-color: inherit;
+}
+
+.navbar > .container .navbar-brand {
+  margin-left: 0px;
+}
+
+.container > .navbar-collapse {
+    margin-right: 0px;
+    margin-left: 0px;
+}
