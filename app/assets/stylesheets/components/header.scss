@@ -1,3 +1,4 @@
+@import 'components/color';
 
 .navbar{
   border: none;
@@ -18,8 +19,8 @@
 }
 
 .navbar-default {
-  color: #f6ae54;
-  background-color: #a0d8ef;
+  color: $goldenYellow;
+  background-color: $cream;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -45,7 +46,7 @@
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-  color: #f6ae54;
+  color: $goldenYellow;
   background-color: inherit;
 }
 

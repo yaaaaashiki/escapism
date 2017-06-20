@@ -1,3 +1,5 @@
+@import "components/color";
+
 #footer {
   background-color: #2b2b2b;
   color: white;
@@ -13,14 +15,14 @@
 
   a:hover,
   a:focus {
-    color: #f6ae54;
+    color: $goldenYellow;
     text-decoration: none;
   }
 
   .active>a,
   .active>a:focus,
   .active>a:hover {
-    color: #f6ae54;
+    color: $goldenYellow;
     background-color: inherit;
   }
 }
