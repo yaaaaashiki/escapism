@@ -15,7 +15,7 @@ class ThesesController < ApplicationController
 
     thesisArray = []
 
-    if @labo_id && @query != ("" || nil)
+    if @labo_id && @query != "" && @query != nil
       response = search_by_keyword(@query)
       response["hits"]["hits"].each do |t|
         unless @labo_id.to_i == NO_LABO_ID
@@ -29,7 +29,7 @@ class ThesesController < ApplicationController
         end
       end
      @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
-    elsif @query != ("" || nil)
+    elsif @query != "" && @query != nil
       response = search_by_keyword(@query)
       response["hits"]["hits"].each do |t|
       thesis = Thesis.find(t["_id"])
