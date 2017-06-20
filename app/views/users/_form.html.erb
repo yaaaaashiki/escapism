@@ -1,4 +1,9 @@
 <div class="container">
+  <div>
+    <h3>ユーザー登録STEP</h3>
+    <%= image_tag("sign_in/step3.png", :width=> "80%", :height => "auto") %>
+  </div>
+
   <div class="page-header">
     <h1>Register</h1>
   </div>
@@ -18,8 +23,8 @@
     </div>
     <div class="form-group">
       <div class="col-sm-12">
-        <%= @mail_address %>
-        <%= f.hidden_field :email, :value => @mail_address %>
+        <%= session[:email] %>
+        <%= f.hidden_field :email, :value => session[:email] %>
       </div>
     </div>
     <div class="form-group">
