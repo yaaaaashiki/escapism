@@ -10,6 +10,7 @@ $(window).on('load', function(){
 });
 
 $(function() {
+
   $('a').on('click', function(e) {
     if(!$(this).hasClass('carousel-control')) {
       $('body').addClass('fade-out');
