@@ -11,3 +11,19 @@ $(window).scroll(function() {
     }
   });
 });
+
+$(function() {
+
+  $(".icons img").mouseover(function(){
+    if($(this).hasClass("default_img")){
+      $(this).hide();
+      $(this).next().show();
+    }
+  }).mouseout(function(){
+     if($(this).hasClass("mouseover_img")){
+      $(this).hide();
+      $(this).prev().show();
+    }
+  });
+
+});
