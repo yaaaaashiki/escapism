@@ -2,6 +2,12 @@
 
 body {
 
+  .search-form{
+    position: relative; 
+    width: 100%;
+
+  }
+
   #searchpage{
    .page-header {
       color: $goldenYellow;
