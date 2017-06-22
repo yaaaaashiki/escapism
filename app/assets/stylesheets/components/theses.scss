@@ -5,7 +5,6 @@ body {
   .search-form{
     position: relative; 
     width: 100%;
-
   }
 
   #searchpage{
@@ -36,22 +35,21 @@ body {
 
   #right-nav-container{
     color: $goldenYellow;
-    border: 2px solid $fog;
 
     .ranking{
-      font-size: 30px;
+      font-size: 20px;
       color: black;
     }
     .access{
-      font-size: 23px;
+      font-size: 18px;
       color: black;
     }
     .thesis-title{
-      font-size: 20px;
+      font-size: 18px;
       color: black;
     }
     .author{
-      font-size: 20px;
+      font-size: 18px;
       color: black;
     }
   }

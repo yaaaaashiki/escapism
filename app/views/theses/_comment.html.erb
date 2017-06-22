@@ -1,15 +1,17 @@
-<h1>Comments:</h1>
-<% if @thesis.comments.empty? %>
-  <p>この論文にはコメントがありません．コメントを残しませんか？</p>
-<% end %>
-
-<% @thesis.comments.each do |c| %>
-  <h2>
-    <% if c[:user_id] %>
-      <%= c.user.username %>
-    <% else %>
-      Unknown User
-    <% end %>
-  </h2>
-  <pre><%= c[:body] %></pre>
-<% end %>
+<div class="col-sm-offset-1 col-xs-offset-1">
+  <h1>Comments:</h1>
+  <% if @thesis.comments.empty? %>
+    <p>この論文にはコメントがありません．コメントを残しませんか？</p>
+  <% end %>
+  
+  <% @thesis.comments.each do |c| %>
+    <h2>
+      <% if c[:user_id] %>
+        <%= c.user.username %>
+      <% else %>
+        Unknown User
+      <% end %>
+    </h2>
+    <pre><%= c[:body] %></pre>
+  <% end %>
+</div>
