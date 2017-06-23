@@ -60,7 +60,7 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
-# database.yml の配置
+# database.yml
 Mac の方は以下を config/database.yml に記述
 ```
 default: &default
