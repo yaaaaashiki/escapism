@@ -60,8 +60,8 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
-# config/database.yml の配置
-Mac の方は以下を database.yml に記述
+# database.yml の配置
+Mac の方は以下を config/database.yml に記述
 ```
 default: &default
   adapter: mysql2
@@ -85,7 +85,7 @@ test:
 mysql_config --socket
 ```
 上記の実行結果を config/database.yml の socket:
-の値に記述
+に記述
 
 
 # Rspec を用いたテスト
