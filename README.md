@@ -60,6 +60,32 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
+#config/database.yml
+Mac の方は以下を配置
+```
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: escapism_development
+
+test:
+  <<: *default
+  database: escapism_test 
+```
+
+その他の環境の方は
+``` mysql_config --socket```
+上記の実行結果を config/database.yml の socket:
+の値に記述
+
+
 # Rspec を用いたテスト
 テスト用のデータベース作成
 ```
