@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
   skip_before_filter :require_login, only: [:index, :new, :create]
-  
+  before_action :set_user, only: [:show, :update]
+
   def index
     @users = User.all
   end
@@ -8,7 +9,10 @@ class Admin::UsersController < AdminController
   def new  
     @user = User.new
   end
- 
+
+  def show
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -19,19 +23,24 @@ class Admin::UsersController < AdminController
   end
 
   def update
-    if params[:user][:labo] && params[:user][:info]
-      @user = User.find(params[:user][:info])
-      @user.labo = params[:user][:labo]
-      @user.save
+    if @user.update(except_password_user_params)
       redirect_to admin_url
     else
-      render :index
+      render :edit
     end
   end
   
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
     def user_params
       params.require(:user).permit(:username, :year, :email, :password, :labo)
+    end
+
+    def except_password_user_params
+      params.require(:user).permit(:username, :year, :email, :labo)
     end
 end
 

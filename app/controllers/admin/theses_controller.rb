@@ -1,4 +1,5 @@
 class Admin::ThesesController < AdminController
+  skip_before_filter :require_login, only: [:index, :show, :update]
   before_action :set_thesis, only: [:show, :update]
 
   def index 
@@ -12,12 +13,11 @@ class Admin::ThesesController < AdminController
     if @thesis.update(thesis_params)
       redirect_to admin_theses_url
     else
-      render :index
+      render :edit
     end
   end
 
   private
-
     def set_thesis
       @thesis = Thesis.find(params[:id])
     end
@@ -25,6 +25,5 @@ class Admin::ThesesController < AdminController
     def thesis_params
       params.require(:thesis).permit(:title, :year, :labo_id, :author_id)
     end
-
 end
 
