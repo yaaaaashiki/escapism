@@ -9,7 +9,7 @@ class Admin::ThesesController < AdminController
   end
 
   def update
-    if params[:thesis][:labo_id] && params[:thesis][:info]
+    if 
       @thesis = Thesis.find(params[:thesis][:info])
       @thesis.labo_id = params[:thesis][:labo_id]
       @thesis.save
@@ -18,5 +18,12 @@ class Admin::ThesesController < AdminController
       render :index
     end
   end
+
+  private
+
+    def thesis_params
+      params.require(:thesis).permit(:title, :year, :labo_id, :author_id)
+    end
+
 end
 
