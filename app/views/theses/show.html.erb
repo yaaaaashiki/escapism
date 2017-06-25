@@ -1,10 +1,15 @@
 <div class="container fade-in">
-  <section id="searchpage" class="fadeout col-sm-9 col-xm-9">
-    <%= render 'infomation'  %>
-    <%= render 'comment'     %>
-    <%= render 'comment_form' %>
+  <section id="searchpage" class="fadeout">
+    <%= render 'search_form' %>
   </section>
-  <aside id="right-nav-container"class="col-sm-3 col-xm-3">
-    <%= render 'sideber'  %>
-  </aside>
+  <div class="centerContents"> 
+    <div class="col-sm-9 col-xm-9">
+      <%= render 'infomation' %>
+      <%= render 'comment' %>
+    </div>
+    <aside id="right-nav-container"class="col-sm-3 col-xm-3">
+      <%= render 'sideber'  %>
+    </aside>
+  </div>
 </div>
+
