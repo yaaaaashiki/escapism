@@ -24,7 +24,7 @@ class Admin::UsersController < AdminController
 
   def update
     if @user.update(except_password_user_params)
-      redirect_to admin_url
+      redirect_to admin_users_url
     else
       render :edit
     end
