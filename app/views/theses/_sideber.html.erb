@@ -6,7 +6,7 @@
       <span class="access"> アクセス数 <%= thesis.access %> </span>
       <div class="thesis-title"> 論文 : <%= link_to(thesis.title, thesis_path(thesis)) %></div>
       <div class="author"> 著者 : <%= thesis.author.name %></div>
-      <div class="author"> 研究室 : <%= @labos.find(thesis.labo_id).name %></div>
+      <div class="labo-name"> 研究室 : <%= @labos.find(thesis.labo_id).name %></div>
     </div>
   <% end %>
 </div>
