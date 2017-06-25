@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     post '/sign_in' => 'sessions#create'
     get '/sign_out' => 'sessions#destroy'
     resources :users, only: [:index, :new, :create, :update]
-    resources :theses, only: [:index, :update]
+    resources :theses, only: [:index, :show, :update]
   end
 
   resources :theses, only: [:show, :index] do

@@ -4,6 +4,10 @@ class Admin::ThesesController < AdminController
     @theses = Thesis.all
   end
 
+  def show
+    @thesis = Thesis.find(params[:id])
+  end
+
   def update
     if params[:thesis][:labo_id] && params[:thesis][:info]
       @thesis = Thesis.find(params[:thesis][:info])
@@ -15,3 +19,4 @@ class Admin::ThesesController < AdminController
     end
   end
 end
+
