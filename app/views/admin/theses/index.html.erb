@@ -2,17 +2,25 @@
 
 <table>
   <thead>
+    <tr>
+      <th> id </th> 
+      <th> タイトル </th> 
+      <th> 執筆年度 </th> 
+      <th> 研究室ID </th> 
+      <th> 著者ID </th> 
+    </tr>
+  </thead>
+  <tbody>
     <% @theses.each do |thesis| %>
       <tr>
         <td>
-          <%= form_for [:admin, thesis], :url => admin_thesis_path(thesis.id), method: :patch do |f| %>
-            <%= thesis.title %>
-            <%= f.hidden_field :info, :value => thesis.id %>
-            <%= f.collection_select :labo_id, Labo.all, :id, :name %>
-            <%= f.submit "submit", name: "hoge",  class: "btn" %>
-          <% end %>
-        </td>
+          <%= thesis.id %>
+          <%= link_to thesis.title, admin_thesis_path(thesis) %>
+          <%= thesis.year %>
+          <%= thesis.labo_id %>
+          <%= thesis.author_id %>
+       </td>
       </tr>
     <% end %>
-  </thead>
+  </tbody>
 </table>
