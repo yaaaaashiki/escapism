@@ -10,7 +10,7 @@ class Admin::ThesesController < AdminController
 
   def update
     if @thesis.update(thesis_params)
-      redirect_to admin_url
+      redirect_to admin_theses_url
     else
       render :index
     end
