@@ -5,7 +5,7 @@
 <ul>
   <li>ID : <%= @user.id %> </li>
   <li>氏名 : <%= @user.username %> </li>
-  <li>パスワード : <%= @user.password %> </li>
+  <li>パスワード : <%= @user.crypted_password %> </li>
 </ul>
 
 <%= form_for [:admin, @user], :url => admin_password_path(@user.id), method: :patch do |f| %>
