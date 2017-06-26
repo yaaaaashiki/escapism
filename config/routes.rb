@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/sign_out' => 'sessions#destroy'
     resources :users, only: [:index, :new, :show, :create, :update]
     resources :theses, only: [:index, :show, :update]
+    resources :passwords, only: [:index, :new, :show, :update]
   end
 
   resources :theses, only: [:show, :index] do
