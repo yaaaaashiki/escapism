@@ -1,11 +1,12 @@
-<div class="page-header">
+<div class="page-header mar-to-100">
   <h1>人気の論文</h1>
   <% @popular_theses.each_with_index do |thesis, i| %>
     <div class="page-header">
       <span class="ranking"> 第 <%= i + 1 %> 位 </span>
       <span class="access"> アクセス数 <%= thesis.access %> </span>
-      <div class="thesis-title"> title : <%= link_to(thesis.title, thesis_path(thesis)) %></div>
-      <div class="author"> author : <%= thesis.author.name %></div>
+      <div class="thesis-title"> 論文 : <%= link_to(thesis.title, thesis_path(thesis)) %></div>
+      <div class="author"> 著者 : <%= thesis.author.name %></div>
+      <div class="labo-name"> 研究室 : <%= @labos.find(thesis.labo_id).name %></div>
     </div>
   <% end %>
 </div>

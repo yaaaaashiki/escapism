@@ -50,6 +50,7 @@ class ThesesController < ApplicationController
     @popular_theses = Thesis.all.order(access: :desc).limit(5)
     @thesis = Thesis.find(params[:id])
     @author = Author.find(@thesis.author_id)
+    @labos = Labo.all
     if @thesis
       impressionist(@thesis)
       if @thesis.impressionist_count.nil?

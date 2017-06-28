@@ -1,0 +1,19 @@
+<h1>論文データ更新ページ</h1>
+
+<h4><%= @thesis.title %></h4>
+
+<ul>
+  <li>ID : <%= @thesis.id %> </li>
+  <li>タイトル : <%= @thesis.title %> </li>
+  <li>執筆年度 : <%= @thesis.year %> </li>
+  <li>研究室ID : <%= @thesis.labo_id %> </li>
+  <li>著者ID : <%= @thesis.author_id %> </li>
+</ul>
+
+<%= form_for [:admin, @thesis], :url => admin_thesis_path(@thesis.id), method: :patch do |f| %>
+  <h4>論文名 : <%= f.text_field :title, :size=>"100", :value => @thesis.title %></h4>
+  <h4>執筆年度 :   <%= f.number_field :year %></h4>
+  <h4>研究室ID : <%= f.number_field :labo_id %></h4>
+  <h4>著者ID :   <%= f.number_field :author_id %></h4>
+  <%= f.submit "データ更新", name: "update-btn",  class: "btn" %>
+<% end %>

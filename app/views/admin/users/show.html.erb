@@ -1,0 +1,20 @@
+<h1>ユーザデータ更新ページ</h1>
+
+<h4><%= @user.username %></h4>
+
+<ul>
+  <li>ID : <%= @user.id %> </li>
+  <li>氏名 : <%= @user.username %> </li>
+  <li>入学年度 : <%= @user.year %> </li>
+  <li>Email : <%= @user.email %> </li>
+  <li>パスワード : <%= @user.password %> </li>
+  <li>研究室ID : <%= @user.labo %> </li>
+</ul>
+
+<%= form_for [:admin, @user], :url => admin_user_path(@user.id), method: :patch do |f| %>
+  <h4>氏名 : <%= f.text_field :username, :size=>"30", :value => @user.username %></h4>
+  <h4>入学年度 :   <%= f.number_field :year %></h4>
+  <h4>Email : <%= f.text_field :email, :size=>"50" %></h4>
+  <h4>研究室ID :   <%= f.number_field :labo %></h4>
+  <%= f.submit "データ更新", name: "update-btn",  class: "btn" %>
+<% end %>
