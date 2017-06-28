@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :token_exists?, only:[:new]
 
   def index
-    render_404
   end
  
   def new
