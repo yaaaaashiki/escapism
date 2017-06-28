@@ -7,18 +7,9 @@
   </div>
   <h3 class="page-header">あなたの青学メールを送信ください。</h3>
 
-  <div id="step-description">
-    <%= form_tag('/mail_addresses', class: "form-horizontal") do %>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <%= text_field :address, :name, :class => "form-control", :placeholder => "aoyama email address"%>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <%= submit_tag :submit, class: "btn btn-primary btn-block" %>
-        </div>
-      </div>
-    <% end %>
+  <%= form_tag('/mail_addresses', class: "form-horizontal") do %>
+  <%= text_field :address, :name, :class => "form-size", :placeholder => "aoyama email address", :size => "60"%><br>
   </div>
+  <%= submit_tag :submit, :class => "btn-size", :class => "center-block"%>
+  <% end %>
 </div>

@@ -1,1 +1,22 @@
+$margin: 30px;
+$padding: 20px;
 
+.step-images {
+  text-align: center;
+  margin: $margin;
+  padding: $padding;
+}
+
+.page-header {
+  text-align: center;
+}
+
+.form-size {
+  margin: center;
+}
+
+.btn-size {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+}
