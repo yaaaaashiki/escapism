@@ -10,9 +10,9 @@ $padding: 20px;
 .form-setting {
   $margin-form: 160px;
   text-align: center;
-  background-color: #cafbce;
-  border: 2px solid #fff;
-  box-shadow: 0 0 0 2px #cafbce;
+  background-color: rgba(255, 108, 0, 0.5);
+  border: 2px solid #f7f5f3;
+  box-shadow: 0 0 0 2px #ffd000;
   color: #0a8915;
   margin-left: $margin-form;
   margin-right: $margin-form;
@@ -21,7 +21,7 @@ $padding: 20px;
 
 .h2 {
   display: inline-block;
-  border-bottom: double 6px orange;
+  color:white;
   //background: linear-gradient(transparent 0%, #FF9872 0%);
   //background: linear-gradient(transparent 60%, #FF9872 60%);
 }
@@ -40,10 +40,11 @@ $padding: 20px;
     display: inline-block;
     padding: 0.3em 1em;
     text-decoration: none;
-    color: #67c5ff;
-    border: solid 2px #67c5ff;
+    color: white;
+    border: solid 2px darkorange;
     border-radius: 3px;
     transition: .4s;
+    background-color: darkorange;
 }
 
 .square_btn:hover {
