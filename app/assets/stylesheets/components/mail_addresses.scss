@@ -1,22 +1,52 @@
-$margin: 30px;
+$margin: 20px;
 $padding: 20px;
 
 .step-images {
   text-align: center;
+  margin: 30px;
+  padding: $padding;
+}
+
+.form-setting {
+  $margin-form: 160px;
+  text-align: center;
+  background-color: #cafbce;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #cafbce;
+  color: #0a8915;
+  margin-left: $margin-form;
+  margin-right: $margin-form;
+  padding: 20px;
+}
+
+.h2 {
+  display: inline-block;
+  border-bottom: double 6px orange;
+  //background: linear-gradient(transparent 0%, #FF9872 0%);
+  //background: linear-gradient(transparent 60%, #FF9872 60%);
+}
+
+.test {
   margin: $margin;
   padding: $padding;
 }
 
-.page-header {
-  text-align: center;
+.text-field {
+  margin: $margin;
+  position: relative;
 }
 
-.form-size {
-  margin: center;
+.square_btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
 }
 
-.btn-size {
-  width: 100px;
-  height: 30px;
-  text-align: center;
+.square_btn:hover {
+    background: #67c5ff;
+    color: white;
 }

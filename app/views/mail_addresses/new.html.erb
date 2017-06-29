@@ -5,11 +5,12 @@
   <div class="step-images">
     <%= image_tag("sign_in/step1.png", :width=> "80%", :height => "auto") %>
   </div>
-  <h3 class="page-header">あなたの青学メールを送信ください。</h3>
 
-  <%= form_tag('/mail_addresses', class: "form-horizontal") do %>
-  <%= text_field :address, :name, :class => "form-size", :placeholder => "aoyama email address", :size => "60"%><br>
+  <div class="form-setting">
+    <h2 class="h2">あなたの青学メールを送信してください</h2>
+    <%= form_tag('/mail_addresses') do %>
+    <%= text_field :address, :name, :class => "text-field", :placeholder => "　aoyama email address", :size => "60" %><br>
+    <%= submit_tag :submit, :class => "square_btn" %>
+    <% end %>
   </div>
-  <%= submit_tag :submit, :class => "btn-size", :class => "center-block"%>
-  <% end %>
 </div>
