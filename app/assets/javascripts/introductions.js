@@ -29,6 +29,10 @@ $(function() {
 });
 
 
+/*フォントサイズや色の変更*/
+$(".comment_title").css('font-size', '20px');
+$(".comment_list").find("p").css("font-size", "14px");
+
 /*男女比をjQueryで描画*/
 var dataset = [{"laboProfessor":"tobe", "man":4, "woman":6},
                 {"laboProfessor":"sumi", "man":14, "woman":1},
