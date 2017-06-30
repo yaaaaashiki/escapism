@@ -10,13 +10,13 @@ class ThesesController < ApplicationController
   def index
     @author = Author.all
     @labo_id = params[:l]
-    @query = params[:q]
+    query = params[:q]
 
 
     thesisArray = []
 
-    if @labo_id && @query != "" && @query != nil
-      response = search_by_keyword(@query)
+    if @labo_id && query != "" && query != nil
+      response = search_by_keyword(query)
       response["hits"]["hits"].each do |t|
         unless @labo_id.to_i == NO_LABO_ID
           thesis = Thesis.find_by(id: t["_id"], labo_id: @labo_id)
@@ -29,8 +29,8 @@ class ThesesController < ApplicationController
         end
       end
      @thesisArray = Kaminari.paginate_array(thesisArray).page(params[:page]).per(4)
-    elsif @query != "" && @query != nil
-      response = search_by_keyword(@query)
+    elsif query != "" && query != nil
+      response = search_by_keyword(query)
       response["hits"]["hits"].each do |t|
       thesis = Thesis.find(t["_id"])
         if thesis
