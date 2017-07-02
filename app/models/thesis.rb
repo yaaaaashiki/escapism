@@ -29,6 +29,9 @@ class Thesis < ApplicationRecord
   has_many :comments
   has_one :word_count
 
+  @@SEARCH_BY_BODY = "0"
+  @@SEARCH_BY_TITLE = "1"
+
   @@LABO_THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data/ignore')
   index_name "thesis_#{Rails.env}"
   settings do
@@ -49,13 +52,18 @@ class Thesis < ApplicationRecord
       .slice(:id, :body, :title, :url, :year, :labo_id, :author_id)
   end
 
-  def self.search_by_keyword(keyword, labo_id)
+  def self.search_by_keyword(keyword, labo_id, field)
     search_definition = Elasticsearch::DSL::Search.search {
       query {
         if keyword.present?
           multi_match {
             query keyword
-            fields %w{ body }
+
+            if field == @@SEARCH_BY_BODY
+              fields %W{ body }
+            elsif field == @@SEARCH_BY_TITLE
+              fields %W{ title }
+            end
           }
         else
           match_all
@@ -66,34 +74,7 @@ class Thesis < ApplicationRecord
         by "_score", order: "desc"
       }
 
-      if labo_id.present? && labo_id.to_i != Labo.NO_LABO_ID
-        filter {
-          term labo_id: labo_id.to_i
-        }
-      end
-    }
-    
-    __elasticsearch__.search(search_definition)
-  end
-
-  def self.search_by_title(keyword, labo_id)
-    search_definition = Elasticsearch::DSL::Search.search {
-      query {
-        if keyword.present?
-          multi_match {
-            query keyword
-            fields %w{ title }
-          }
-        else
-          match_all
-        end
-      }
-
-      sort { 
-        by "_score", order: "desc"
-      }
-
-      if labo_id.present? && labo_id.to_i != Labo.NO_LABO_ID
+      if labo_id.to_i != Labo.NO_LABO_ID
         filter {
           term labo_id: labo_id.to_i
         }
@@ -111,6 +92,14 @@ class Thesis < ApplicationRecord
 
   def self.LABO_THESIS_ROOT_DIRECTORY
     @@LABO_THESIS_ROOT_DIRECTORY
+  end
+
+  def self.SEARCH_BY_BODY
+    @@SEARCH_BY_BODY
+  end 
+
+  def self.SEARCH_BY_TITLE
+    @@SEARCH_BY_TITLE
   end
 
   def belongs_to_martin_labo?

@@ -4,8 +4,9 @@ class ThesesController < ApplicationController
   def index
     @labo_id = params[:l]
     query = params[:q]
-    if @labo_id.present? || query.present?
-      @theses = Thesis.search_by_keyword(query, @labo_id).page(params[:page]).per(4)
+    @search_field = params[:f]
+    if query.present? || @labo_id.to_i != Labo.NO_LABO_ID
+      @theses = Thesis.search_by_keyword(query, @labo_id, @search_field).page(params[:page]).per(4)
     end
 
     @author = Author.all
