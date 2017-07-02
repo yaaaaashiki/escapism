@@ -65,8 +65,8 @@ Mac の方は以下を config/database.yml に記述
 ```
 default: &default
   adapter: mysql2
-  encoding: utf8
-  pool: 5
+  encoding: utf8mb4
+  pool: 5
   username: root
   password:
   socket: /tmp/mysql.sock
