@@ -15,7 +15,7 @@
 
 # System dependencies
 各種インストール方法はwikiを参照([開発環境構築](https://github.com/yaaaaashiki/Escapism/wiki/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89))
-* mysql 5.5以上  
+* mysql 5.7以上
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
 * JAVA_HOMEの設定  
 (Javaをバージョン管理したかったらJenvを使用してください)
@@ -65,8 +65,8 @@ Mac の方は以下を config/database.yml に記述
 ```
 default: &default
   adapter: mysql2
-  encoding: utf8
-  pool: 5
+  encoding: utf8mb4
+  pool: 5
   username: root
   password:
   socket: /tmp/mysql.sock
