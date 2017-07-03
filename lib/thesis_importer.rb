@@ -26,7 +26,7 @@ module ThesisImporter
                     thesis.title = td_element.content
                   elsif thesis.belongs_to_harada_labo?
                     thesis.title = fetch_just_thesis_title(td_element.previous.content)
-                  elsif thesis.belongs_to_harada_labo?
+                  elsif thesis.belongs_to_sakuta_bachelor_thesis?
                     thesis.title = fetch_just_thesis_title(td_element.previous.previous.content)
                   else
                     thesis.title = fetch_just_thesis_title(td_element.content)
