@@ -55,7 +55,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
-  gem 'pry-rails'
   gem "faker"
 end
 
@@ -88,9 +87,12 @@ gem 'jquery-turbolinks'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Elasticsearch
-# Ruby integrations for Elasticsearch
-gem 'elasticsearch', '2.0.0'
+#  Elasticsearch integrations for ActiveModel/Record and Ruby on Rails 
+# https://github.com/elastic/elasticsearch-rails
+gem 'elasticsearch-model', '2.0.1'
+gem 'elasticsearch-rails', '2.0.1'
+gem 'elasticsearch-dsl', '0.1.5'
+
 # Read text and metadata from files and documents (.doc, .docx, .pages, .odt, .rtf, .pdf) http://github.com/Erol/yomu
 gem 'yomu', '0.1.5'
 
