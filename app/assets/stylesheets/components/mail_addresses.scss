@@ -36,18 +36,13 @@ $padding: 20px;
   position: relative;
 }
 
-.square_btn {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: white;
-    border: solid 2px darkorange;
-    border-radius: 3px;
-    transition: .4s;
-    background-color: darkorange;
+.button {
+  border-style: none;
+  background-color: #ff8c00;
+  color: #fff;
 }
-
-.square_btn:hover {
-    background: #67c5ff;
-    color: white;
+.button:hover {
+  background-color: #fff;
+  color: #ff8c00;
+  text-decoration: underline;
 }
