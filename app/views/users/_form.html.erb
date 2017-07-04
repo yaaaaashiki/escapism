@@ -5,7 +5,7 @@
 
   <div class="form-setting">
     <h1 class="h1">Register</h1>
-    <%= form_for @user, html: {} do |f| %>
+    <%= form_for @user do |f| %>
       <%= render :partial => 'shared/error_messages', :locals => { object: @user } %>
       
       <%= f.select :year, [*(1990..2100)], :class => "select-box", include_blank: "year" %>
