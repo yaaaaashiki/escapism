@@ -1,41 +1,19 @@
 <div class="container">
-  <div>
-    <h3>ユーザー登録STEP</h3>
+  <div class="step-images">
     <%= image_tag("sign_in/step3.png", :width=> "80%", :height => "auto") %>
   </div>
 
-  <div class="page-header">
-    <h1>Register</h1>
+  <div class="form-setting">
+    <h1 class="h1">Register</h1>
+    <%= form_for @user do |f| %>
+      <%= render :partial => 'shared/error_messages', :locals => { object: @user } %>
+      
+      <%= f.select :year, [*(1990..2100)], :class => "select-box", include_blank: "year" %>
+      <%= session[:email] %>
+      <%= f.hidden_field :email, :value => session[:email] %><br>
+      <%= f.text_field :username, :class => "text-field", placeholder: "username", :size => "60" %><br>
+      <%= f.password_field :password, class: "text-field", placeholder: "password", :size => "60" %><br>
+      <%= f.submit class: "button" %>
+    <% end %>
   </div>
-  <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
-
-    <%= render :partial => 'shared/error_messages', :locals => { object: @user } %>
-
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= f.text_field :username, class: "form-control", placeholder: "username" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= f.select :year, [*(1990..2100)], class: "form-control", include_blank: "year" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= session[:email] %>
-        <%= f.hidden_field :email, :value => session[:email] %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= f.password_field :password, class: "form-control", placeholder: "password" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= f.submit class: "btn btn-primary btn-block" %>
-      </div>
-    </div>
-  <% end %>
 </div>
