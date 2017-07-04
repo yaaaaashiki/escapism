@@ -61,14 +61,14 @@ for(var i=0;i<dataset.length;i++){
         height: 28,
         x: 0,
         y: 0,
-        fill: "#0000ff"
+        fill: "#A9D0F5"
     });
     $rect_w.attr({
         width: $width*(d.woman/(d.man+d.woman))*(2/3),
         height: 28,
         x: $width*(d.man/(d.man+d.woman))*(2/3),
         y: 0,
-        fill: "#ff1493"
+        fill: "#F5A9F2"
     });
     $svg.append($rect_m);
     $svg.append($rect_w);
