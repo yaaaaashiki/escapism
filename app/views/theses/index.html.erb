@@ -3,20 +3,20 @@
     <%= render 'search_form' %>
 
     <!-- 検索結果の表示 -->
-    <% if @thesisArray %>
-      <%= page_entries_info @thesisArray %>
-      <% @thesisArray.each do |t| %>
+    <% if @theses %>
+      <%= page_entries_info @theses, entry_name: Thesis.name %>
+      <% @theses.each do |t| %>
         <div class="col-sm-offset-1 col-xs-offset-1">
           <div class="page-header width">
-            <h4><%= t[:thesis].year %><span style="margin-right: 100px;" ></span><%= @author.find(t[:thesis].id).name %><span  style="margin-right: 100px;"></span><%= @labos.find(t[:thesis].labo_id).name %></h4>
-            <h4><%= link_to(t[:thesis].title, thesis_path(t[:thesis])) %></h4>
+            <h4><%= t.year %><span style="margin-right: 100px;" ></span><%= @author.find(t.author_id).name %><span  style="margin-right: 100px;"></span><%= @labos.find(t.labo_id).name %></h4>
+            <h4><%= link_to(t.title, thesis_path(t.id)) %></h4>
           </div>
           <p class="text-muted search_summary">
-            <small><%= t[:body] %></small>
+            <small><%= t.body %></small>
           </p>
         </div>
       <% end %>
-      <%= paginate @thesisArray %>
+      <%= paginate @theses %>
     <% end %>
   </section>
   <aside id="right-nav-container"class="col-sm-3 col-xm-3">
