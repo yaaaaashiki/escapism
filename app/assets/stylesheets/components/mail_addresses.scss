@@ -13,7 +13,8 @@ $padding: 20px;
   background-color: rgba(255, 108, 0, 0.5);
   border: 2px solid #f7f5f3;
   box-shadow: 0 0 0 2px #ffd000;
-  color: #0a8915;
+  color: black;
+  font-weight: bold;
   margin-left: $margin-form;
   margin-right: $margin-form;
   padding: 20px;
@@ -22,8 +23,6 @@ $padding: 20px;
 .h2 {
   display: inline-block;
   color:white;
-  //background: linear-gradient(transparent 0%, #FF9872 0%);
-  //background: linear-gradient(transparent 60%, #FF9872 60%);
 }
 
 .test {
@@ -36,18 +35,27 @@ $padding: 20px;
   position: relative;
 }
 
-.square_btn {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: white;
-    border: solid 2px darkorange;
-    border-radius: 3px;
-    transition: .4s;
-    background-color: darkorange;
+.button {
+  border-style: none;
+  background-color: #ff8c00;
+  color: #fff;
+}
+.button:hover {
+  background-color: #fff;
+  color: #ff8c00;
+  text-decoration: underline;
 }
 
-.square_btn:hover {
-    background: #67c5ff;
-    color: white;
+/* user registration */
+.h1 {
+  display: inline-block;
+  color:white;
+  font-size: 45px;
+  margin-bottom: 30px;
 }
+
+.select-box {
+  margin: $margin;
+  position: relative;
+}
+
