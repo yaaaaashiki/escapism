@@ -200,3 +200,5 @@ build-iPhoneSimulator/
 
 # .python_version
 .python-version
+
+/config/database.yml
