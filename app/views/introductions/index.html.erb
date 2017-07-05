@@ -13,28 +13,55 @@
       <div class="item active">
         <%= image_tag("introduction/image5.jpg") %>
         <div class="carousel-caption">
-          <h1>image6</h1>
-          <p></p>
+          <h1 class="slide_h1">ようこそ</h1>
+          <p class="slide_p">
+          情報テクノロジー学科のB1、B2、B3のみなさん。<br>
+          B4の時にどの研究室を選べばいいかで悩んでいませんか？<br>
+          このシステムはそんなあなたの研究室選びをサポートします。<br>
+          　<br>
+          　<br>
+          　<br>
+          　<br>
+          　
+          </p>
         </div>
       </div>
       <div class="item">
         <%= image_tag("introduction/slide4.jpg") %>
         <div class="carousel-caption">
-          <h1>image4</h1>
-          <p></p>
+          <h1 class="slide_h1">研究室推薦</h1>
+          <p class="slide_p">
+          自分の興味ある研究分野のキーワードで検索することで<br>
+          これまで各研究室で執筆されてきた論文データをもとに<br>
+          その分野に最も精通している研究室が推薦されます。<br>
+          推薦された研究室で行われてきた研究をもっと見たければ<br>
+          論文検索機能で探してみましょう。<br>
+          「やりたいことはあるけど、どの研究室に行けばいいかわからない・・・」<br>
+          という人はぜひ使ってみてください。<br>
+          　
+          </p>
         </div>
       </div>
       <div class="item">
         <%= image_tag("introduction/slide3.jpg") %>
         <div class="carousel-caption">
-          <h1>image5</h1>
-          <p></p>
+          <h1 class="slide_h1">論文検索</h1>
+          <p class="slide_p">
+          自分の興味のある研究分野のキーワードを検索することで<br>
+          これまで各研究室で執筆されてきた<br>
+          そのキーワードを含む論文をpdf形式で読むことができます。<br>
+          各研究室の先輩方がどんな研究を行ってきたかを見ることで<br>
+          あなたの研究室選びの参考にしてください。<br>
+          また、よく読まれている論文のランキングも載せているので<br>
+          それを参考にすることで新しい発見があるかもしれません。<br>
+          　
+          </p>
         </div>
       </div>
       <div class="item">
         <%= image_tag("introduction/slide1.jpg") %>
         <div class="carousel-caption">
-          <h1>image7</h1>
+          <h1 class="slide_h1">コメント機能</h1>
           <p></p>
         </div>
       </div>
@@ -54,7 +81,7 @@
   <div class="image-content image-back">
     <div class="image-width">
       <div class="image-caption text-center">
-        <h1>自分の気になる研究室を</h1>
+        <h1>システムの機能</h1>
       </div>
       <ul class="icons">
         <a href="recommendations" alt=""><li class="icon-wrapper recommend odd"><%= image_tag("introduction/recommendation_image.png",:class => "default_img", :width=> "100%" ) %><%= image_tag("introduction/HR_recommendation_image.png", :class=>"mouseover_img", :width=> "100%" ) %><div class="text-center">研究室推薦</div></li></a>
@@ -85,16 +112,16 @@
           <p class="comment_title">現役生からのコメント</p>
             <ul class="comment_list">
                 <li>
-                    <p class="font-size-14">たこ焼きパーティーをします。</p>
+                    <p class="font-size-14">様々なことに挑戦できる環境です。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Ruby コミッターが面倒をみてくれます。</p>
+                    <p class="font-size-14">グローバル志向で海外に行く機会が多くあります。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Tensolflow 使いになれます。</p>
+                    <p class="font-size-14">理系学生として知っておくべきことを学べる勉強会の開催。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">ロボット高額。小宮山先生は何をしてるんだ</p>
+                    <p class="font-size-14">飲み会が頻繁にあります。</p>
                 </li>
             </ul>
         </div>
@@ -159,16 +186,16 @@
           <p class="comment_title">現役生からのコメント</p>
             <ul class="comment_list">
                 <li>
-                    <p class="font-size-14">たこ焼きパーティーをします。</p>
+                    <p class="font-size-14">HCIと機械学習を学べます。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Ruby コミッターが面倒をみてくれます。</p>
+                    <p class="font-size-14">研究テーマは自由で、必要な機材の購入を頼めばすぐに実現します。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Tensolflow 使いになれます。</p>
+                    <p class="font-size-14">壁を取り払いオープンスペースを作った研究室は開放感があります。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">ロボット高額。小宮山先生は何をしてるんだ</p>
+                    <p class="font-size-14">夏合宿や個人的な開発合宿などで佐久田先生の別荘を使わせてもらえます。</p>
                 </li>
             </ul>
         </div>
@@ -187,7 +214,7 @@
             <span>助教授 : 盛川 浩志</span>
           </div>
           <div class="laboKeyword">
-            <p class="font-size-14">ヒューマンインタフェース/ヒューマンコンピュータインタラクション/バーチャルリアリ</p>
+            <p class="font-size-14">ヒューマンインタフェース/ヒューマンコンピュータインタラクション/バーチャルリアリティ</p>
             <p class="font-size-20" id="gender_ratio_text_komiyama"></p>
             <p id="gender_ratio_rect_komiyama"></p>
           </div>
@@ -196,16 +223,16 @@
           <p class="comment_title">現役生からのコメント</p>
             <ul class="comment_list">
                 <li>
-                    <p class="font-size-14">たこ焼きパーティーをします。</p>
+                    <p class="font-size-14">インタフェース系なら小宮山研。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Ruby コミッターが面倒をみてくれます。</p>
+                    <p class="font-size-14">インタフェース系から派生した心理学的な分野の研究もできます。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Tensolflow 使いになれます。</p>
+                    <p class="font-size-14">研究室の空気は非常にゆるいです笑</p>
                 </li>
                 <li>
-                    <p class="font-size-14">ロボット高額。小宮山先生は何をしてるんだ</p>
+                    <p class="font-size-14">先生に話を聴きやすい環境です。</p>
                 </li>
             </ul>
         </div>
@@ -233,16 +260,16 @@
           <p class="comment_title">現役生からのコメント</p>
             <ul class="comment_list">
                 <li>
-                    <p class="font-size-14">たこ焼きパーティーをします。</p>
+                    <p class="font-size-14">各自で自由にスケジュールが組めます。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Ruby コミッターが面倒をみてくれます。</p>
+                    <p class="font-size-14">基本放任主義でゆるいです。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Tensolflow 使いになれます。</p>
+                    <p class="font-size-14">自分の好きな研究テーマはもちろん、決まらない場合はテーマをもらえます。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">ロボット高額。小宮山先生は何をしてるんだ</p>
+                    <p class="font-size-14">研究は2人組で進めるので、うまくハマれば負担が1/2です。</p>
                 </li>
             </ul>
         </div>
@@ -270,16 +297,16 @@
           <p class="comment_title">現役生からのコメント</p>
             <ul class="comment_list">
                 <li>
-                    <p class="font-size-14">たこ焼きパーティーをします。</p>
+                    <p class="font-size-14">研究室がめちゃくちゃ広いです。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Ruby コミッターが面倒をみてくれます。</p>
+                    <p class="font-size-14">みんな仲が良く、外でバスケやサッカーなど一緒になって遊んだりします。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Tensolflow 使いになれます。</p>
+                    <p class="font-size-14">多くの留学生を受け入れているので、国際交流ができます。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">ロボット高額。小宮山先生は何をしてるんだ</p>
+                    <p class="font-size-14">ロペズ先生は若く、すごく優しいです。</p>
                 </li>
             </ul>
         </div>
@@ -307,16 +334,16 @@
           <p class="comment_title">現役生からのコメント</p>
             <ul class="comment_list">
                 <li>
-                    <p class="font-size-14">たこ焼きパーティーをします。</p>
+                    <p class="font-size-14">たこパやピザパなどイベントが豊富です。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Ruby コミッターが面倒をみてくれます。</p>
+                    <p class="font-size-14">大原先生と豊田先生の面倒見がよく、相談しやすいです。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">Tensolflow 使いになれます。</p>
+                    <p class="font-size-14">今流行りの機械学習、ビックデータに関する研究ができます。</p>
                 </li>
                 <li>
-                    <p class="font-size-14">ロボット高額。小宮山先生は何をしてるんだ</p>
+                    <p class="font-size-14">例年女子が多いです。（今年はいないけど）</p>
                 </li>
             </ul>
         </div>
