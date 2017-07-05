@@ -1,0 +1,228 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body>
+<span style="position:absolute; border: gray 1px solid; left:0px; top:50px; width:595px; height:841px;"></span>
+<div style="position:absolute; top:50px;"><a name="1">Page 1</a></div>
+<div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:157px; top:84px; width:276px; height:38px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:14px">青山学院大学理工学部情報テクノロジー学科
+<br></span><span style="font-family: IZEFEL+CMR12; font-size:10px">2016 (</span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:14px">平成 </span><span style="font-family: IZEFEL+CMR12; font-size:10px">28) </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:14px">年度 卒業論文要旨
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:146px; top:134px; width:298px; height:87px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:21px">リアルタイムアプリケーション用
+<br>ライブラリの検証と比較
+<br></span><span style="font-family: PAJKOA+CMR17; font-size:14px">| REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:21px">設計に向けて
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:225px; top:220px; width:141px; height:21px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:14px">矢舗 宗一郎 </span><span style="font-family: IZEFEL+CMR12; font-size:8px">(15813088)
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:256px; top:244px; width:78px; height:22px;"><span style="font-family: IZEFEL+CMR12; font-size:10px">D(cid:127)urst </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:14px">研究室
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:274px; width:66px; height:20px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">1 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">はじめに
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:295px; width:221px; height:29px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">2000 </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">年 </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Roy Thomas Fielding </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">が </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST (Repre-
+<br>sentational State Transfer) </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">という </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Web </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">アーキテク
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:324px; width:226px; height:115px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">チャスタイルを提唱した </span><span style="font-family: YWYNHX+CMR7; font-size:4px">[1]</span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">．</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Web </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">アプリケーション
+<br>は </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に沿って設計することで，サービス全体を
+<br>効率的に，可用性・信頼性高く開発できる．
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">近年，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Twitter </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">や </span><span style="font-family: ECMNXT+CMR10; font-size:6px">LINE </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">など，動的にリソースを
+<br>更新するアプリケーションが増加している．それに
+<br>伴い，クライアントとサーバ間の通信速度の高速化
+<br>やリソース更新の最適化に対する需要が高まってい
+<br>る．これらを実現するリアルタイム通信技術として，
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:439px; width:118px; height:15px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">が開発された．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:453px; width:221px; height:129px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は従来の擬似的なリアルタイム通信と
+<br>比べステートフルな通信により双方向通信を可能と
+<br>した．しかし，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は非リソース指向アーキ
+<br>テクチャである．本研究ではこの問題を解決するた
+<br>め </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と </span><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">アプリケーションを統合し
+<br>たサンプルアプリケーションを作成する．作成する
+<br>上で使用したライブラリを検証，比較する．またリ
+<br>アルタイムアプリケーションへの </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の追加につ
+<br>いて考察する．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:597px; width:66px; height:20px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">2 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">基礎技術
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:623px; width:221px; height:24px;"><span style="font-family: BYCLZK+CMBX10; font-size:6px">2.1 REST
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Roy Fielding </span><span style="font-family: YWYNHX+CMR7; font-size:4px">[1] </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">が </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Web </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の成功要因に
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:647px; width:226px; height:14px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">ついてアーキテクチャスタイルとしてまとめている．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:661px; width:221px; height:15px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">Web </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">サービスや </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Web API </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">が </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の規約を守る
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:676px; width:169px; height:15px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">ことで </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Web </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">全体として調和が取れる．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:705px; width:81px; height:9px;"><span style="font-family: BYCLZK+CMBX10; font-size:6px">2.2 WebSocket
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:714px; width:221px; height:57px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は </span><span style="font-family: ECMNXT+CMR10; font-size:6px">TCP </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">コネクションを使用した双方
+<br>向通信プロトコルである．従来の </span><span style="font-family: ECMNXT+CMR10; font-size:6px">HTTP </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">通信と比
+<br>べ，通信コストが低い点やリアルタイム性の高い点
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">が評価されている </span><span style="font-family: YWYNHX+CMR7; font-size:4px">[2] </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:95px; top:786px; width:78px; height:9px;"><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:785px; width:221px; height:24px;"><span style="font-family: BYCLZK+CMBX10; font-size:6px">2.2.1
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby on Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">上で動作する </span><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSokcet </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">ライブラ
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:809px; width:226px; height:29px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">リである．このライブラリはイベントと呼ばれる単
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">位でサーバとクライアント間でデータを送受信する．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:283px; width:221px; height:24px;"><span style="font-family: BYCLZK+CMBX10; font-size:6px">2.2.2 Action Cable
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby on Rails 5.0 </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">において標準搭
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:306px; width:221px; height:72px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">載された．リアルタイム通信に対応したサーバ，クラ
+<br>イアントに対する </span><span style="font-family: ECMNXT+CMR10; font-size:6px">JavaScript </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">フレームワーク </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">フレームワークを同時に提供するフレームワークで
+<br>ある．従来サーバで全部レンダリングしていた部分
+<br>をページの一箇所を部分的にレンダリングできる．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:392px; width:66px; height:20px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">3 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">提案手法
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:319px; top:413px; width:212px; height:15px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">導入により，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">アプリケーショ
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:428px; width:221px; height:44px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">ンの効率の良さとスケーラビリティを損なわずに，通
+<br>常の </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">アプリケーションと同じスタイル・方法
+<br>でリアルタイム機能を </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">で記述できる．</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:471px; width:221px; height:29px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">on Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">には，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">DRY (Don’t Repeat yourself ), CoC
+<br>(Convention over Con(cid:12)guration) </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に基づいたコーデ
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:499px; width:221px; height:15px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">ィングできる設計に作られている．そこで </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:514px; width:221px; height:15px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">における開発は </span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と比べど
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:528px; width:226px; height:87px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">のようなメリットが得られるか検証する．
+<br>本研究では </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">設計におけるリアルタイムア
+<br>プリケーション用ライブラリを検証するため，機能
+<br>が同じサンプルアプリケーションを </span><span style="font-family: ECMNXT+CMR10; font-size:6px">2 </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">つ作成した．
+<br>これに基づいてリアルタイムアプリケーションへの
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の追加について考察する．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:628px; width:77px; height:20px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">4 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">設計と実装
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:649px; width:221px; height:100px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">本研究で実装したサンプルアプリケーションの構
+<br>成は図 </span><span style="font-family: ECMNXT+CMR10; font-size:6px">1</span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">2 </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の通りある．
+<br>本アプリケーションでは，時系列に状態を </span><span style="font-family: GXGOBP+CMTT10; font-size:6px">id </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と
+<br>して保持した．アドレス可能性追加のため，リソー
+<br>スと </span><span style="font-family: ECMNXT+CMR10; font-size:6px">URI </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">を一意に結びつけた．接続性追加に関して
+<br>は，リソース間を </span><span style="font-family: ECMNXT+CMR10; font-size:6px">UI </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">上で移動するためハイパーリ
+<br>ンクを追加した．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:764px; width:146px; height:20px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">5 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">ライブラリの検証と比較
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:319px; top:785px; width:186px; height:15px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">表 </span><span style="font-family: ECMNXT+CMR10; font-size:6px">5 </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に二つのライブラリの検証結果を示す</span><span style="font-family: ECMNXT+CMR10; font-size:6px">.
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:293px; top:868px; width:4px; height:9px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">1
+<br></span></div><span style="position:absolute; border: black 1px solid; left:60px; top:127px; width:471px; height:0px;"></span>
+<span style="position:absolute; border: gray 1px solid; left:0px; top:941px; width:595px; height:841px;"></span>
+<div style="position:absolute; top:941px;"><a name="2">Page 2</a></div>
+<div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:996px; width:19px; height:14px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">る．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1018px; width:54px; height:17px;"><span style="font-family: BYCLZK+CMBX10; font-size:6px">5.3 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">可読性
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:319px; top:1034px; width:212px; height:15px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">前節で述べた通り，</span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と比べ </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ac-
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1049px; width:221px; height:58px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">tion Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の方が </span><span style="font-family: ECMNXT+CMR10; font-size:6px">CoC </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に基づいていることから可読
+<br>性の高いライブラリであるといえる．</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">による開発は，コードの把握が容易となり開発者の
+<br>負担が減る</span><span style="font-family: ECMNXT+CMR10; font-size:6px">.
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1120px; width:221px; height:37px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">6 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">リ ア ル タ イ ム ア プ リ ケ ー シ ョ ン へ の
+<br></span><span style="font-family: JYIVPY+CMBX12; font-size:8px">REST </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">の追加の検討
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1158px; width:226px; height:144px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">チャットアプリへのアドレス可能性の追加により
+<br>リソースに対しブラウザのブックマーク，戻る機能，
+<br>参照機能が回復した．また接続性の追加により，ユー
+<br>ザビリティが向上する．
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">はステートフルな通信によってリアル
+<br>タイム通信を実現している．</span><span style="font-family: ECMNXT+CMR10; font-size:6px">RESTful </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">なアプリケー
+<br>ションの性質はステートレス性であるが，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">通信をステートレスにするとリアルタイム通信のメ
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">リットが消失する．そのため完全にステートレス性
+<br>にする必要はない．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1316px; width:123px; height:20px;"><span style="font-family: JYIVPY+CMBX12; font-size:8px">7 </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">まとめと今後の課題
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1337px; width:221px; height:173px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">本研究ではリアルタイムサンプルアプリケーショ
+<br>ンを作成し </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">の性質を取り入れた．それに基づ
+<br>いてライブラリを検証，比較した．その結果，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action
+<br>Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">で開発することにより可読性の高いコーディン
+<br>グを可能にすることをを示した．また </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable
+<br></span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">による開発のメリットについて考察した．さらにリ
+<br>アルタイムアプリケーションへの </span><span style="font-family: ECMNXT+CMR10; font-size:6px">REST </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">追加につい
+<br>て考察した．今後の課題として，本研究で得られた
+<br>多くの知見を抽象化しそれをフレームワークとして
+<br>実装する．このフレームワークにより，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Web </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と親和
+<br>性の高めるリアルタイムアプリケーション開発環境
+<br>を提供する</span><span style="font-family: ECMNXT+CMR10; font-size:6px">.
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1523px; width:46px; height:19px;"><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:13px">参考文献
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1550px; width:221px; height:53px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">[1] Roy T. Fielding and Richard N. Taylor. Prin-
+<br>cipled design of the modern Web architec-
+<br>ture. </span><span style="font-family: BXNHOW+CMTI10; font-size:6px">ACM Transactions on Internet Technology
+<br>(TOIT)</span><span style="font-family: ECMNXT+CMR10; font-size:6px">, Vol. 2 Issue 2, pp. 115{150, May 2002.
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:310px; top:1615px; width:221px; height:81px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">[2] Lok Fang Fang Stella, Stan Jarzabek, and Bim-
+<br>lesh Wadhwa. A comparative study of maintain-
+<br>ability of web applications on J2EE, .net and
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby on Rails.
+<br>In </span><span style="font-family: BXNHOW+CMTI10; font-size:6px">Web Site Evolution, 2008.
+<br>WSE 2008. 10th International Symposium on</span><span style="font-family: ECMNXT+CMR10; font-size:6px">,
+<br>pp. 93{99. IEEE, 2008.
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:68px; top:1171px; width:205px; height:17px;"><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">図 </span><span style="font-family: BYCLZK+CMBX10; font-size:6px">1: </span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">チャットアプリの構成
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1335px; width:221px; height:74px;"><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">図 </span><span style="font-family: BYCLZK+CMBX10; font-size:6px">2: </span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Action Cable </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">チャットアプリの構成
+<br></span><span style="font-family: BYCLZK+CMBX10; font-size:6px">5.1 DRY
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby on Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">で </span><span style="font-family: ECMNXT+CMR10; font-size:6px">DRY </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に記述できるものは
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">でも </span><span style="font-family: ECMNXT+CMR10; font-size:6px">DRY </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に記述できる．つまり
+<br></span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と </span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に違いが生じる
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1408px; width:221px; height:29px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">のは </span><span style="font-family: ECMNXT+CMR10; font-size:6px">WebSocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">通信処理部分である．それらに関
+<br>して調査したが，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">で </span><span style="font-family: ECMNXT+CMR10; font-size:6px">DRY </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に記述でき
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1437px; width:221px; height:15px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">る処理は </span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">でも </span><span style="font-family: ECMNXT+CMR10; font-size:6px">DRY </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に記述でき
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1451px; width:221px; height:29px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">た．そのため本研究では，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">DRY </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に関して優位性を見
+<br>ることはできなかった．
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1495px; width:221px; height:38px;"><span style="font-family: BYCLZK+CMBX10; font-size:6px">5.2 CoC
+<br></span><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">では，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Websocket </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">通信の箇所を
+<br></span><span style="font-family: ECMNXT+CMR10; font-size:6px">JavaScript </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">のメソッドで記述する．</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Ruby on Rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1533px; width:221px; height:72px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">おいて </span><span style="font-family: ECMNXT+CMR10; font-size:6px">JavaScript </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">のコード記述位置は．開発者に依
+<br>存する．対して，</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">はコーディングの内
+<br>容と処理を記述するファイルが一意に定まる</span><span style="font-family: ECMNXT+CMR10; font-size:6px">. Action
+<br>Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は</span><span style="font-family: ECMNXT+CMR10; font-size:6px">, </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">制約を設けることでシンプルかつロジッ
+<br>クに集中してコーディングできる．</span><span style="font-family: ECMNXT+CMR10; font-size:6px">Action Cable </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">は
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1604px; width:221px; height:15px;"><span style="font-family: GXGOBP+CMTT10; font-size:6px">Websocket-rails </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">と比べ， </span><span style="font-family: ECMNXT+CMR10; font-size:6px">CoC (Convention over
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:60px; top:1619px; width:221px; height:15px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">Con(cid:12)guration) </span><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:10px">に基づいたコーディングが可能とな
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:104px; top:1642px; width:132px; height:17px;"><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">表 </span><span style="font-family: BYCLZK+CMBX10; font-size:6px">5.1: </span><span style="font-family: GRMTWW+HiraKakuProN-W6; font-size:11px">ライブラリの検証結果
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:159px; top:1660px; width:45px; height:7px;"><span style="font-family: UAUKKD+CMR9; font-size:5px">Action Cable
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:214px; top:1661px; width:60px; height:7px;"><span style="font-family: IGDYOS+CMTT9; font-size:4px">Websocket-Rails
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:213px; top:1670px; width:6px; height:64px;"><span style="font-family: UAUKKD+CMR9; font-size:5px">=
+<br>=
+<br>=
+<br></span><span style="font-family: AMXSNL+CMMI9; font-size:5px">&gt;
+<br></span><span style="font-family: UAUKKD+CMR9; font-size:5px">=
+<br></span><span style="font-family: UAUKKD+CMR9; font-size:5px">=
+<br></span><span style="font-family: AMXSNL+CMMI9; font-size:5px">&gt;
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:293px; top:1760px; width:4px; height:9px;"><span style="font-family: ECMNXT+CMR10; font-size:6px">2
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:70px; top:1670px; width:16px; height:7px;"><span style="font-family: UAUKKD+CMR9; font-size:5px">DRY
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:71px; top:1698px; width:15px; height:7px;"><span style="font-family: UAUKKD+CMR9; font-size:5px">CoC
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:67px; top:1713px; width:22px; height:11px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:7px">可読性
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:109px; top:1656px; width:29px; height:20px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:7px">検証範囲
+<br>ビュー
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:105px; top:1679px; width:37px; height:7px;"><span style="font-family: UAUKKD+CMR9; font-size:5px">WebSocket
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:102px; top:1684px; width:44px; height:11px;"><span style="font-family: XSCPAR+HiraMinProN-W3; font-size:7px">サーバサイド
+<br></span></div><div style="position:absolute; border: textbox 1px solid; writing-mode:lr-tb; left:99px; top:1698px; width:48px; height:35px;"><span style="font-family: UAUKKD+CMR9; font-size:5px">JavaScript
+<br>Ruby on Rails
+<br></span><span style="font-family: UAUKKD+CMR9; font-size:5px">JavaScript
+<br>Ruby on Rails
+<br></span></div><span style="position:absolute; border: black 1px solid; left:38px; top:916px; width:328px; height:246px;"></span>
+<span style="font-family: DYBWIW+YuGothic-Light; font-size:16px">(cid:9)(cid:8)(cid:5)(cid:6)(cid:1)(cid:4)(cid:2)(cid:3)(cid:7)(cid:10)</span><span style="font-family: UWDWBC+YuGothic-Regular; font-size:4px">(cid:1)</span><span style="font-family: CSLOXS+HiraKakuPro-W6; font-size:10px">クライアントサーバサイド<span style="position:absolute; border: black 1px solid; left:141px; top:1019px; width:129px; height:127px;"></span>
+<span style="position:absolute; border: black 1px solid; left:141px; top:1019px; width:129px; height:127px;"></span>
+<span style="position:absolute; border: black 1px solid; left:112px; top:1022px; width:57px; height:11px;"></span>
+</span><span style="font-family: CSLOXS+HiraKakuPro-W6; font-size:10px">DB<span style="position:absolute; border: black 1px solid; left:109px; top:1032px; width:60px; height:11px;"></span>
+<span style="position:absolute; border: black 1px solid; left:196px; top:1051px; width:2px; height:7px;"></span>
+<span style="position:absolute; border: black 1px solid; left:169px; top:1089px; width:11px; height:10px;"></span>
+<span style="position:absolute; border: black 1px solid; left:163px; top:1086px; width:12px; height:11px;"></span>
+</span><span style="font-family: CSLOXS+HiraKakuPro-W6; font-size:10px">WSHTTP<span style="position:absolute; border: black 1px solid; left:114px; top:1056px; width:55px; height:11px;"></span>
+<span style="position:absolute; border: black 1px solid; left:203px; top:1050px; width:2px; height:7px;"></span>
+<span style="position:absolute; border: black 1px solid; left:176px; top:1060px; width:56px; height:25px;"></span>
+<span style="position:absolute; border: black 1px solid; left:176px; top:1060px; width:56px; height:25px;"></span>
+</span><span style="font-family: CSLOXS+HiraKakuPro-W6; font-size:9px">Rails サーバ<span style="position:absolute; border: black 1px solid; left:177px; top:1023px; width:56px; height:26px;"></span>
+<span style="position:absolute; border: black 1px solid; left:177px; top:1023px; width:56px; height:26px;"></span>
+WSサーバ</span><span style="font-family: CSLOXS+HiraKakuPro-W6; font-size:10px">サーバサイド<span style="position:absolute; border: black 1px solid; left:40px; top:1111px; width:295px; height:221px;"></span>
+</span><span style="font-family: SUTPIK+YuGothic-Light; font-size:15px">(cid:9)(cid:8)(cid:5)(cid:6)(cid:1)(cid:4)(cid:2)(cid:3)(cid:7)(cid:10)</span><span style="font-family: SAQNYI+YuGothic-Regular; font-size:4px">(cid:1)</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:9px">クライアント<span style="position:absolute; border: black 1px solid; left:133px; top:1203px; width:139px; height:114px;"></span>
+<span style="position:absolute; border: black 1px solid; left:133px; top:1203px; width:139px; height:114px;"></span>
+<span style="position:absolute; border: black 1px solid; left:107px; top:1209px; width:30px; height:14px;"></span>
+</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:9px">DB<span style="position:absolute; border: black 1px solid; left:152px; top:1246px; width:5px; height:29px;"></span>
+<span style="position:absolute; border: black 1px solid; left:161px; top:1247px; width:67px; height:29px;"></span>
+</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:9px">WS</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:9px">サーバサイド<span style="position:absolute; border: black 1px solid; left:141px; top:1216px; width:57px; height:23px;"></span>
+<span style="position:absolute; border: black 1px solid; left:141px; top:1216px; width:57px; height:23px;"></span>
+</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:9px">Action </span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:8px">Cable</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:9px">サーバ<span style="position:absolute; border: black 1px solid; left:217px; top:1215px; width:50px; height:23px;"></span>
+<span style="position:absolute; border: black 1px solid; left:217px; top:1215px; width:50px; height:23px;"></span>
+</span><span style="font-family: RPPYEG+HiraKakuPro-W6; font-size:8px">Rails サーバ<span style="position:absolute; border: black 1px solid; left:105px; top:1220px; width:30px; height:14px;"></span>
+<span style="position:absolute; border: black 1px solid; left:203px; top:1227px; width:9px; height:2px;"></span>
+<span style="position:absolute; border: black 1px solid; left:62px; top:1660px; width:216px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1660px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1660px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:209px; top:1660px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:62px; top:1669px; width:216px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1670px; width:184px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1670px; width:184px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1669px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1669px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1679px; width:184px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1679px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1679px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1688px; width:184px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1688px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1688px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:62px; top:1697px; width:216px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1698px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1698px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1707px; width:184px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1707px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1707px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:62px; top:1716px; width:216px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1717px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1717px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1726px; width:184px; height:0px;"></span>
+<span style="position:absolute; border: black 1px solid; left:94px; top:1726px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:153px; top:1726px; width:0px; height:9px;"></span>
+<span style="position:absolute; border: black 1px solid; left:62px; top:1735px; width:216px; height:0px;"></span>
+<div style="position:absolute; top:0px;">Page: <a href="#1">1</a>, <a href="#2">2</a></div>
+</body></html>
