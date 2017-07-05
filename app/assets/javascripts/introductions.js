@@ -74,3 +74,7 @@ for(var i=0;i<dataset.length;i++){
     $svg.append($rect_w);
     $gender_ratio_rect.append($svg);
 }
+
+var $carousel_width = $(".carousel-inner").height();
+$(".carousel-caption").height($carousel_width*3/4);
+
