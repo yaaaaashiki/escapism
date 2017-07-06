@@ -13,7 +13,7 @@ class Api::CiniisSearchController < ApplicationController
   end
   
   def self.scraping(html)
-    data = [] 
+    data = []
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
       title = article.at_css('div > dl > dt > a').text.strip
       url = "http://ci.nii.ac.jp" + article.at_css('div > dl > dt > a')[:href]

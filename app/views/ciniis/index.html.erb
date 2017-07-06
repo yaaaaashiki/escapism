@@ -15,15 +15,14 @@
     <% end %>
 
     <!-- 検索結果の表示 -->
-    <% if @results %>
-      <div class="page-header col-sm-12 col-xs-12">
-        <h4>search result</h4>
-      </div>
-      <%= JSON.parse(@results)["1"]["title"] %>
-      <%= JSON.parse(@results)["1"]["url"] %>
-      <%= JSON.parse(@results)["1"]["author"] %>
-      <p class="col-sm-12 col-xs-12">
-      </p>
-   <% end %>
+    <div class="ciniiResult">
+      <% if @results %>
+        <% @results.each do |result| %>
+          <div class="font-size-10"><%= link_to result["title"], "#{result["url"]}" %></div>
+        <% end %>
+        <p class="col-sm-12 col-xs-12">
+        </p>
+      <% end %>
+    </div>
   </div>
 </section>
