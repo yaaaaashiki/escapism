@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'introductions#index'
 
   get 'login' => 'sessions#new'
