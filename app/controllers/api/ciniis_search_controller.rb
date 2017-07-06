@@ -1,18 +1,18 @@
 require 'uri'
 require 'open-uri'
 
-class Api::Cinii < ApplicationController
-  def url_encoding(keyword)
+class Api::CiniisSearchController < ApplicationController
+  def self.url_encoding(keyword)
     # TODO: start=0で始めるかstart=変数にするかどうか検討が必要
     URI.escape("http://ci.nii.ac.jp/search?q=#{keyword}&range=0&count=20&sortorder=1&type=0")
   end
   
-  def crawling(url)
+  def self.crawling(url)
     # TODO: 取得できなかった場合のError処理をどうしようか検討が必要
     Nokogiri::HTML.parse(open(url))
   end
   
-  def scraping(html)
+  def self.scraping(html)
     data = {}
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
       title = article.at_css('div > dl > dt > a').text.strip
@@ -28,7 +28,7 @@ class Api::Cinii < ApplicationController
     data.to_json
   end
   
-  def create_json(search_keyword)
+  def self.create_json(search_keyword)
     # search_keywordは配列を想定
     keyword = search_keyword.join("+")
     html = crawling(url_encoding(keyword))
