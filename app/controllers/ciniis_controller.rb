@@ -1,4 +1,5 @@
 require 'json'
+
 class CiniisController < ApplicationController
   def index
     array = []
@@ -12,7 +13,8 @@ class CiniisController < ApplicationController
   def show
   end
 
-  def parse_json(json)
-    JSON.parse(json)
-  end
+  private
+    def parse_json(json)
+      JSON.parse(json)
+    end
 end
