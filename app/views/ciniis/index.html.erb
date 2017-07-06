@@ -15,14 +15,12 @@
     <% end %>
 
     <!-- 検索結果の表示 -->
-    <div class="ciniiResult">
-      <% if @results %>
+    <% if @results %>
+      <div class="ciniiResult">
         <% @results.each do |result| %>
           <div class="font-size-10"><%= link_to result["title"], "#{result["url"]}" %></div>
         <% end %>
-        <p class="col-sm-12 col-xs-12">
-        </p>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </section>
