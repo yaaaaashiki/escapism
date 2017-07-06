@@ -19,6 +19,9 @@
       <div class="page-header col-sm-12 col-xs-12">
         <h4>search result</h4>
       </div>
+      <%= JSON.parse(@results)["1"]["title"] %>
+      <%= JSON.parse(@results)["1"]["url"] %>
+      <%= JSON.parse(@results)["1"]["author"] %>
       <p class="col-sm-12 col-xs-12">
       </p>
    <% end %>
