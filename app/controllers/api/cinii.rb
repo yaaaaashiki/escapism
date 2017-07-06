@@ -28,11 +28,11 @@ class Api::Cinii < ApplicationController
     data.to_json
   end
   
-  def main(search_keyword)
+  def create_json(search_keyword)
     # search_keywordは配列を想定
     keyword = search_keyword.join("+")
     html = crawling(url_encoding(keyword))
-    puts scraping(html)
+    scraping(html)
   end
 end
 
