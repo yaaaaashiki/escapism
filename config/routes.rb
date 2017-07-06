@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'introductions#index'
 
   get 'login' => 'sessions#new'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :mail_addresses, only: [:index, :new, :create]
   resources :users, only: [:index, :new, :create]
+  resources :ciniis, only: [:index, :show]
 
   get '*path', controller: 'application', action: 'render_404'
 end
