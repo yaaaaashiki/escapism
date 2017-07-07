@@ -160,6 +160,15 @@ body {
   display: none;
 }
 
+.background-wallpaper::before{
+  position: absolute;
+  width: 50%;
+  height: 400px;
+  filter: blur(2px);
+  -webkit-filter: blur(5px);
+  background-clip: content-box
+}
+
 
 
 
