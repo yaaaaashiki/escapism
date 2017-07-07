@@ -1,0 +1,15 @@
+section#ciniipage.fadeout
+  .container.fadein
+    .page-header
+      h1
+        | cinii
+    = form_tag ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal" do
+      .col-sm-9.col-xs-9.text-pos
+        = search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'cinii 検索'
+      .col-sm-3.col-xs-3
+        = submit_tag '検索', class: "button btn-pos"
+    - if @results
+      .ciniiResult
+        - @results.each do |result|
+          .font-size-10
+            = link_to result["title"], "#{result["url"]}"

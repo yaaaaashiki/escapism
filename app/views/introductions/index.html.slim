@@ -1,0 +1,249 @@
+#pageContents
+  #carousel-example-generic.carousel.slide[data-ride="carousel" data-interval="10000"]
+    ol.carousel-indicators
+      li.active[data-target="#carousel-example-generic" data-slide-to="0"]
+      li[data-target="#carousel-example-generic" data-slide-to="1"]
+      li[data-target="#carousel-example-generic" data-slide-to="2"]
+      li[data-target="#carousel-example-generic" data-slide-to="3"]
+    .carousel-inner[role="listbox"]
+      .item.active
+        = image_tag("introduction/image5.jpg")
+        .carousel-caption
+          h1
+            | image6
+          p
+      .item
+        = image_tag("introduction/slide4.jpg")
+        .carousel-caption
+          h1
+            | image4
+          p
+      .item
+        = image_tag("introduction/slide3.jpg")
+        .carousel-caption
+          h1
+            | image5
+          p
+      .item
+        = image_tag("introduction/slide1.jpg")
+        .carousel-caption
+          h1
+            | image7
+          p
+    a.left.carousel-control
+      span.glyphicon.glyphicon-chevron-left
+      span.sr-only
+        | Previous
+    a.right.carousel-control
+      span.glyphicon.glyphicon-chevron-right
+      span.sr-only
+        | Next
+  .image-content.image-back
+    .image-width
+      .image-caption.text-center
+        h1
+          | 自分の気になる研究室を
+      ul.icons
+
+      a[href="recommendations" alt=""]
+        li.icon-wrapper.recommend.odd
+          = image_tag("introduction/recommendation_image.png",:class => "default_img", :width=> "100%" )
+          = image_tag("introduction/HR_recommendation_image.png", :class=>"mouseover_img", :width=> "100%" )
+          .text-center
+            | 研究室推薦
+      a[href="theses" alt=""]
+        li.icon-wrapper.search.even
+          = image_tag("introduction/search_image.png", :width=> "100%", :class => "default_img" )
+          = image_tag("introduction/HR_search_image.png", :class=>"mouseover_img", :width=> "100%" )
+          .text-center
+            | 論文検索
+      a[href="theses" alt=""]
+        li.icon-wrapper.comment.odd
+          = image_tag("introduction/comment_image.png",:class => "default_img", :width=> "100%")
+          = image_tag("introduction/HR_comment_image.png", :class=>"mouseover_img", :width=> "100%" )
+          .text-center
+            | 先輩からの
+          .text-center
+            | コメント
+      a[href="theses" alt=""]
+        li.icon-wrapper.cinii.even
+          = image_tag("introduction/CiNii_image.png",:class => "default_img", :width=> "100%")
+          = image_tag("introduction/HR_CiNii_image.png", :class=>"mouseover_img", :width=> "100%" )
+          .text-center
+            | CiNii連動
+  .container.content.black-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | 戸辺研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : 戸辺 義人
+            span
+              | 助教授 : 高橋 淳二
+          .laboKeyword
+            p.font-size-14
+              | 情報ネットワーク/センシングネットワーク/実世界コンピューティング/人間情報インタフェース
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | たこ焼きパーティーをします。Ruby コミッターが面倒をみてくれます。tensolflow 使いになれます。ロボット高額。小宮山先生は何をしてるんだ
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.white-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | 鷲見研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : 鷲見 和彦
+            span
+              | 助教授 : 金子 直史
+          .laboKeyword
+            p.font-size-14
+              | 画像情報処理/センサ情報処理/画像理解/ロボット視覚/リモートセンシング/ヒューマンセンシング/映像セキュリティ
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.black-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | 佐久田研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : 佐久田 博司
+            span
+              | 助教授 : 長谷川 大
+          .laboKeyword
+            p.font-size-14
+              | 設計情報工学/数値解析システム/成形プラスチック歯車/図形科学教育システム/e-Learning
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.white-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | 小宮山研究室</> 
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : 小宮山 摂
+            span
+              | 助教授 : 盛川 浩志
+          .laboKeyword
+            p.font-size-14
+              | ヒューマンインタフェース/ヒューマンコンピュータインタラクション/バーチャルリアリ
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.black-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | 原田研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : 原田 実
+            span
+              | 助教授 : 冬子（不在）
+          .laboKeyword
+            p.font-size-14
+              | 自然言語処理/意味理解/質問応答/自動要約/テキストマイニング/プログラム自動生成/株式投資工学/機械学習/ルールベースの自動更新
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.white-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | Lopez研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : Guillaume LOPEZ
+            span
+              | 助教授 : 磯山先生(不在）
+          .laboKeyword
+            p.font-size-14
+              | ウェアラブルコンピューティング/マルチメディアデバイス/人間情報学/環境情報学
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.black-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | 大原研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : 大原 剛三
+            span
+              | 助教授 : 豊田 哲也
+          .laboKeyword
+            p.font-size-14
+              | データマイニング/機械学習/推薦システム/社会情報ネットワーク解析/ 個人適応/統計モデルの推定
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
+  .container.content.white-back
+    .fade-in
+      .laboName
+        span.font-size-35.clear-margin.border-width
+          | Dürst研究室
+      .laboInfo
+        .col-sm-5
+          .laboProfessor
+            span.mar-ri-20
+              | 教授 : Martin J. DÜRST
+            span
+              | 助教授 : 松原 俊一
+          .laboKeyword
+            p.font-size-14
+              | ソフトウェアの国際化/Web/プログラミング言語/DSL
+        .col-sm-6.col-md-offset-1
+          p.font-size-20
+            | 現役生からのコメント
+          p.font-size-14
+            | 文字数のdb使うことになったら文字数にバリ儲けましょう
+          p.font-size-20
+            | 男女比 4:6
