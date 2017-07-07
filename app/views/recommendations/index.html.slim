@@ -25,4 +25,5 @@ section#recommendationpage.fadeout
               .col-sm-2.col-xs-2
                 = word
                 = check_box 'feature', i, {}, true, false
+            = hidden_field :lab_id, @labo_id
             = submit_tag('CiNii 検索', class: "button btn-pos")

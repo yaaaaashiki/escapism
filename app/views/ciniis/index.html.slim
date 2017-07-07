@@ -10,6 +10,6 @@ section#ciniipage.fadeout
         = submit_tag '検索', class: "button btn-pos"
     - if @results
       .ciniiResult
-        - @results.each do |result|
+        - @results.compact.each do |result|
           .font-size-10
             = link_to result["title"], "#{result["url"]}"
