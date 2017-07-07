@@ -1,0 +1,17 @@
+.container
+  .step-images
+    = image_tag("sign_in/step3.png", :width=> "80%", :height => "auto")
+  .form-setting
+    h1.h1
+      | Register
+    = form_for @user do |f|
+      = render :partial => 'shared/error_messages', :locals => { object: @user }
+      = f.select :year, [*(1990..2100)], :class => "select-box", include_blank: "year"
+      = session[:email]
+      = f.hidden_field :email, :value => session[:email]
+      br
+      = f.text_field :username, :class => "text-field", placeholder: "username", :size => "60"
+      br
+      = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
+      br
+      = f.submit class: "button"

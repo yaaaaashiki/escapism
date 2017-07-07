@@ -1,0 +1,21 @@
+header.main-header
+  a.logo[href="/"]
+    span.logo-mini
+      b
+        | Ka
+      | Na
+    span.logo-lg
+      b
+        | Kana
+      | Nishino
+  nav.navbar.navbar-static-top[role="navigation"]
+    a.sidebar-toggle[href="#" data-toggle="offcanvas" role="button"]
+      span.sr-only
+        | Toggle navigation
+    .navbar-custom-menu
+      ul.nav.navbar-nav
+        li.dropdown.messages-menu
+          - if admin_logged_in?
+            = link_to "Logout", admin_sign_out_path
+          - else
+            = link_to "Login", admin_sign_in_path

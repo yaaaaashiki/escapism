@@ -13,6 +13,7 @@ class RecommendationsController < ApplicationController
       if Labo.exists?(name: @lab_name)
         labo = Labo.find_by(name: @lab_name)
         @feaures = labo.features.keys
+        @labo_id = labo.id
       end
     end
   end
