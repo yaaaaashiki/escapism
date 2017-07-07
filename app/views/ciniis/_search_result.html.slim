@@ -1,0 +1,5 @@
+- if @results
+  .ciniiResult
+    - @results.compact.each do |result|
+      .font-size-10
+        = link_to result["title"], "#{result["url"]}"
