@@ -1,8 +1,8 @@
 require 'find'
 
 module ThesisImporter
-  def upsert_all!
-    Find.find(Thesis.LABO_THESIS_ROOT_DIRECTORY) do |path|
+  def upsert_all!(theses_year_dir)
+    Find.find(theses_year_dir) do |path|
       if PathChecker.index_html_path?(path)
         index_html = HTMLParser.parse_html_object(path)
         written_year = HTMLParser.parse_written_year(index_html)
@@ -14,12 +14,12 @@ module ThesisImporter
                 begin
                   thesis = Thesis.new
                   thesis.year = written_year
+
                   thesis.url = "#{path.gsub(/\/index\.html/, "")}/#{a_element[:href]}"
+                  thesis.url = PathChecker.return_martin_labo_full_path(thesis.url) if thesis.belongs_to_martin_labo?
+
                   thesis.labo = Labo.find_by(name: Labo.parse_labo_name(path))
 
-                  # thesis.urlに日本語があると死ぬかも
-                  # とりあえずubuntu16.04では戸部研の論文が死んだ
-                  # NOTE:要対応？？？
                   thesis.body = Thesis.extract_body(thesis.url)
 
                   if thesis.belongs_to_martin_labo?
