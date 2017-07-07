@@ -27,11 +27,14 @@
           <div class="page-header col-sm-12 col-xs-12">
             <h4><%= @lab_name %>のキーワード</h4>
           </div>
-          <p class="col-sm-12 col-xs-12">
-            <% @feaures.each do |word| %>
-              <div class="col-sm-2 col-xs-2"><%= word %></div>
-            <% end %>
-          </p>
+          <%= form_tag(ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do %>
+            <div class="col-sm-12 col-xs-12">
+              <% @feaures.each_with_index do |word, i| %>
+                <div class="col-sm-2 col-xs-2"><%= word %><%= check_box 'feature', i, {}, true, false %></div>
+              <% end %>
+              <%= submit_tag('CiNii 検索', class: "button btn-pos") %>
+            </div>
+          <% end%>
         <% end %>
     <% end %>
   </div>
