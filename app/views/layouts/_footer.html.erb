@@ -13,6 +13,7 @@
               <li><%= link_to "TOP", "/" %></li>
               <% if logged_in? %>
                 <li><%= link_to "Recommend Lab", recommendations_path %></li>
+                <li><%= link_to "CiNii Search", ciniis_path %></li>
                 <li><%= link_to "Search", theses_path %></li>
                 <li><%= link_to "Logout", logout_path, {method: :post} %></li>
               <% else %>

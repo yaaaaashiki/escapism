@@ -19,6 +19,7 @@
           <% if logged_in? %>
             <%# current_user.username %>
             <%= menu_item "Recommend Lab", recommendations_path %>
+            <%= menu_item "CiNii Search", ciniis_path %>
             <%= menu_item "Search", theses_path %>
             <%= menu_item "Logout", logout_path, {method: :post} %>
           <% else %>
