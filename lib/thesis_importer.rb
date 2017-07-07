@@ -20,7 +20,7 @@ module ThesisImporter
 
                   thesis.labo = Labo.find_by(name: Labo.parse_labo_name(path))
 
-                  #thesis.body = Thesis.extract_body(thesis.url)
+                  thesis.body = Thesis.extract_body(thesis.url)
 
                   if thesis.belongs_to_martin_labo?
                     thesis.title = td_element.content
@@ -39,11 +39,10 @@ module ThesisImporter
                   end 
                   thesis.author = author
 
-                  puts thesis.year, thesis.url, thesis.labo, thesis.title, author_name
-                  #thesis.save
-                  #puts "saved:" + thesis.url
+                  thesis.save
+                  puts "saved:" + thesis.url
                 rescue
-                  #puts "save failed!!:" + thesis.url
+                  puts "save failed!!:" + thesis.url
                 end
               end
             end

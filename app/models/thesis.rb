@@ -32,6 +32,8 @@ class Thesis < ApplicationRecord
   @@SEARCH_BY_BODY = "0"
   @@SEARCH_BY_TITLE = "1"
 
+  @@THESES_YEAR = %w[2015, 2016]
+
   @@LABO_THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data/ignore')
   index_name "thesis_#{Rails.env}"
   settings do
@@ -100,6 +102,10 @@ class Thesis < ApplicationRecord
 
   def self.LABO_2015_THESES
     @@LABO_THESIS_ROOT_DIRECTORY.join('2015theses')
+  end
+
+  def self.ALL_THESES_YEAR
+    @@THESES_YEAR
   end
 
   def self.SEARCH_BY_BODY
