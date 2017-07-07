@@ -2,7 +2,7 @@ require 'find'
 
 module ThesisImporter
   def upsert_all!
-    Find.find(Thesis.LABO_THESIS_ROOT_DIRECTORY) do |path|
+    Find.find(Thesis.LABO_2016_THESES) do |path|
       if PathChecker.index_html_path?(path)
         index_html = HTMLParser.parse_html_object(path)
         written_year = HTMLParser.parse_written_year(index_html)
