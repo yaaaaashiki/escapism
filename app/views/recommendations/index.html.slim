@@ -1,0 +1,25 @@
+section#recommendationpage.fadeout
+  .container.fadein
+    .page-header
+      h1
+        | 研究室のおすすめ
+    = form_tag recommendations_path, method: :get, enforce_utf8: false, class: "form-horizontal" do
+      .col-sm-9.col-xs-9.text-pos
+        = search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'キーワード(やりたいこと)'
+      .col-sm-3.col-xs-3
+        = submit_tag '検索', class: "button btn-pos"
+    - if @lab_name
+      .page-header.col-sm-12.col-xs-12
+        h4
+          | やりたいことからおすすめする研究室
+      p.col-sm-12.col-xs-12
+        = @lab_name
+      - if @feaures
+        .page-header.col-sm-12.col-xs-12
+          h4
+            = @lab_name
+            | のキーワード
+        p.col-sm-12.col-xs-12
+          - @feaures.each do |word|
+            .col-sm-2.col-xs-2
+              = word

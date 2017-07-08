@@ -1,0 +1,26 @@
+.container
+  div
+    h3
+      | ユーザー登録STEP
+    = image_tag("sign_in/step3.png", :width=> "80%", :height => "auto")
+  .page-header
+    h1
+      | Register
+  = form_for @user, html: {class: "form-horizontal"} do |f|
+    = render :partial => 'shared/error_messages', :locals => { object: @user }
+    .form-group
+      .col-sm-12
+        = f.text_field :username, class: "form-control", placeholder: "username"
+    .form-group
+      .col-sm-12
+        = f.select :year, [*(1990..2100)], class: "form-control", include_blank: "year"
+    .form-group
+      .col-sm-12
+        = session[:email]
+        = f.hidden_field :email, :value => session[:email]
+    .form-group
+      .col-sm-12
+        = f.password_field :password, class: "form-control", placeholder: "password"
+    .form-group
+      .col-sm-12
+        = f.submit class: "btn btn-primary btn-block"

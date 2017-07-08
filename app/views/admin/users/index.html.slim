@@ -1,0 +1,28 @@
+h1
+  | ユーザ情報管理
+table
+  thead
+    tr
+      th
+        |  id 
+      th
+        |  氏名 
+      th
+        |  入学年度 
+      th
+        |  email 
+      th
+        |  研究室ID 
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = user.id
+        td
+          = link_to user.username, admin_user_path(user)
+        td
+          = user.year
+        td
+          = user.email
+        td
+          = user.labo

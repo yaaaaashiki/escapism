@@ -1,0 +1,34 @@
+h1
+  | 論文データ更新ページ
+h4
+  = @thesis.title
+ul
+  li
+    | ID : 
+    = @thesis.id
+  li
+    | タイトル : 
+    = @thesis.title
+  li
+    | 執筆年度 : 
+    = @thesis.year
+  li
+    | 研究室ID : 
+    = @thesis.labo_id
+  li
+    | 著者ID : 
+    = @thesis.author_id
+= form_for [:admin, @thesis], :url => admin_thesis_path(@thesis.id), method: :patch do |f|
+  h4
+    | 論文名 : 
+    = f.text_field :title, :size=>"100", :value => @thesis.title
+  h4
+    | 執筆年度 : 
+    = f.number_field :year
+  h4
+    | 研究室ID : 
+    = f.number_field :labo_id
+  h4
+    | 著者ID : 
+    = f.number_field :author_id
+  = f.submit "データ更新", name: "update-btn",  class: "btn"

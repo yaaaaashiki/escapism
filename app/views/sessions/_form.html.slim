@@ -1,0 +1,19 @@
+#sessions.fadeuout
+  .container.fadein
+    .form-group
+      .col-sm-12
+
+    .form-group
+      .col-sm-12
+
+    .container
+      .wrapper
+        .form-signin
+          h3.form-signin-heading
+            | サインイン
+          hr.colorgraph
+          br
+          = form_for :session, url: sessions_path, html: {class: 'form-horizontal'} do |f|
+            = f.text_field :username, class: "form-control", placeholder: "ユーザ名"
+            = f.password_field :password, class: "form-control", placeholder: "パスワード"
+            = f.submit_tag "ログイン", class: "btn btn-lg btn-primary btn-block"
