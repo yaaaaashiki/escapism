@@ -1,5 +1,5 @@
 #pageContents
-  #carousel-example-generic.carousel.slide[data-ride="carousel" data-interval="10000"]
+  #carousel-example-generic.carousel.slide[data-ride="carousel" data-interval="100000000000000000"]
     ol.carousel-indicators
       li.active[data-target="#carousel-example-generic" data-slide-to="0"]
       li[data-target="#carousel-example-generic" data-slide-to="1"]
@@ -8,27 +8,63 @@
     .carousel-inner[role="listbox"]
       .item.active
         = image_tag("introduction/image5.jpg")
-        .carousel-caption
-          h1
-            | image6
-          p
+        .background-wallpaper
+          .carousel-caption
+            h1.slide_h1
+              | ようこそ
+            p.slide_p
+              |  情報テクノロジー学科のB1、B2、B3のみなさん。
+              br
+              |  B4の時にどの研究室を選べばいいかで悩んでいませんか？
+              br
+              |  このシステムはそんなあなたの研究室選びをサポートします。 
       .item
         = image_tag("introduction/slide4.jpg")
         .carousel-caption
-          h1
-            | image4
-          p
+          h1.slide_h1
+            a.slide_a[href="recommendations"]
+              | 研究室推薦
+          p.slide_p
+            |  自分の興味ある研究分野のキーワードで検索することで
+            br
+            |  これまで各研究室で執筆されてきた論文データをもとに
+            br
+            |  その分野に最も精通している研究室が推薦されます。
+            br
+            |  推薦された研究室で行われてきた研究をもっと見たければ
+            br
+            a.slide_a[href="theses"]
+              | 論文検索機能
+            | で探してみましょう。
+            br
+            |  「やりたいことはあるけど、どの研究室に行けばいいかわからない・・・」
+            br
+            |  という人はぜひ使ってみてください。 
       .item
         = image_tag("introduction/slide3.jpg")
         .carousel-caption
-          h1
-            | image5
-          p
+          h1.slide_h1
+            a.slide_a[href="theses"]
+              | 論文検索
+          p.slide_p
+            |  自分の興味のある研究分野のキーワードを検索することで
+            br
+            |  これまで各研究室で執筆されてきた
+            br
+            |  そのキーワードを含む論文をpdf形式で読むことができます。
+            br
+            |  各研究室の先輩方がどんな研究を行ってきたかを見ることで
+            br
+            |  あなたの研究室選びの参考にしてください。
+            br
+            |  また、よく読まれている論文のランキングも載せているので
+            br
+            |  それを参考にすることで新しい発見があるかもしれません。 
       .item
         = image_tag("introduction/slide1.jpg")
         .carousel-caption
-          h1
-            | image7
+          h1.slide_h1
+            | コメント機能
           p
     a.left.carousel-control
       span.glyphicon.glyphicon-chevron-left
@@ -42,7 +78,7 @@
     .image-width
       .image-caption.text-center
         h1
-          | 自分の気になる研究室を
+          | システムの機能
       ul.icons
         a[href="recommendations" alt=""]
           li.icon-wrapper.recommend.odd
@@ -85,13 +121,24 @@
           .laboKeyword
             p.font-size-14
               | 情報ネットワーク/センシングネットワーク/実世界コンピューティング/人間情報インタフェース
+            p#gender_ratio_text_tobe.font-size-20
+            p#gender_ratio_rect_tobe
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | たこ焼きパーティーをします。Ruby コミッターが面倒をみてくれます。tensolflow 使いになれます。ロボット高額。小宮山先生は何をしてるんだ
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | 様々なことに挑戦できる環境です。
+            li
+              p.font-size-14
+                | グローバル志向で海外に行く機会が多くあります。
+            li
+              p.font-size-14
+                | 理系学生として知っておくべきことを学べる勉強会の開催。
+            li
+              p.font-size-14
+                | 飲み会が頻繁にあります。
   .container.content.white-back
     .fade-in
       .laboName
@@ -107,13 +154,24 @@
           .laboKeyword
             p.font-size-14
               | 画像情報処理/センサ情報処理/画像理解/ロボット視覚/リモートセンシング/ヒューマンセンシング/映像セキュリティ
+            p#gender_ratio_text_sumi.font-size-20
+            p#gender_ratio_rect_sumi
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | 画像認識なら鷲見研。関連して深層学習も学べます。
+            li
+              p.font-size-14
+                | 研究内容ごとに各先輩を代表としたグループが作られ、そこで相談できます。
+            li
+              p.font-size-14
+                | オンオフの切り替えがよく、フィットネスに行く人がめっちゃいます。
+            li
+              p.font-size-14
+                | 年に1回テニス大会があります。
   .container.content.black-back
     .fade-in
       .laboName
@@ -129,13 +187,24 @@
           .laboKeyword
             p.font-size-14
               | 設計情報工学/数値解析システム/成形プラスチック歯車/図形科学教育システム/e-Learning
+            p#gender_ratio_text_sakuta.font-size-20
+            p#gender_ratio_rect_sakuta
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | HCIと機械学習を学べます。
+            li
+              p.font-size-14
+                | 研究テーマは自由で、必要な機材の購入を頼めばすぐに実現します。
+            li
+              p.font-size-14
+                | 壁を取り払いオープンスペースを作った研究室は開放感があります。
+            li
+              p.font-size-14
+                | 夏合宿や個人的な開発合宿などで佐久田先生の別荘を使わせてもらえます。
   .container.content.white-back
     .fade-in
       .laboName
@@ -150,14 +219,25 @@
               | 助教授 : 盛川 浩志
           .laboKeyword
             p.font-size-14
-              | ヒューマンインタフェース/ヒューマンコンピュータインタラクション/バーチャルリアリ
+              | ヒューマンインタフェース/ヒューマンコンピュータインタラクション/バーチャルリアリティ
+            p#gender_ratio_text_komiyama.font-size-20
+            p#gender_ratio_rect_komiyama
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | インタフェース系なら小宮山研。
+            li
+              p.font-size-14
+                | インタフェース系から派生した心理学的な分野の研究もできます。
+            li
+              p.font-size-14
+                | 研究室の空気は非常にゆるいです笑
+            li
+              p.font-size-14
+                | 先生に話を聴きやすい環境です。
   .container.content.black-back
     .fade-in
       .laboName
@@ -173,13 +253,24 @@
           .laboKeyword
             p.font-size-14
               | 自然言語処理/意味理解/質問応答/自動要約/テキストマイニング/プログラム自動生成/株式投資工学/機械学習/ルールベースの自動更新
+            p#gender_ratio_text_harada.font-size-20
+            p#gender_ratio_rect_harada
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | 各自で自由にスケジュールが組めます。
+            li
+              p.font-size-14
+                | 基本放任主義でゆるいです。
+            li
+              p.font-size-14
+                | 自分の好きな研究テーマはもちろん、決まらない場合はテーマをもらえます。
+            li
+              p.font-size-14
+                | 研究は2人組で進めるので、うまくハマれば負担が1/2です。
   .container.content.white-back
     .fade-in
       .laboName
@@ -195,13 +286,24 @@
           .laboKeyword
             p.font-size-14
               | ウェアラブルコンピューティング/マルチメディアデバイス/人間情報学/環境情報学
+            p#gender_ratio_text_lopez.font-size-20
+            p#gender_ratio_rect_lopez
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | 研究室がめちゃくちゃ広いです。
+            li
+              p.font-size-14
+                | みんな仲が良く、外でバスケやサッカーなど一緒になって遊んだりします。
+            li
+              p.font-size-14
+                | 多くの留学生を受け入れているので、国際交流ができます。
+            li
+              p.font-size-14
+                | ロペズ先生は若く、すごく優しいです。
   .container.content.black-back
     .fade-in
       .laboName
@@ -217,13 +319,24 @@
           .laboKeyword
             p.font-size-14
               | データマイニング/機械学習/推薦システム/社会情報ネットワーク解析/ 個人適応/統計モデルの推定
+            p#gender_ratio_text_ohara.font-size-20
+            p#gender_ratio_rect_ohara
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | たこパやピザパなどイベントが豊富です。
+            li
+              p.font-size-14
+                | 大原先生と豊田先生の面倒見がよく、相談しやすいです。
+            li
+              p.font-size-14
+                | 今流行りの機械学習、ビックデータに関する研究ができます。
+            li
+              p.font-size-14
+                | 例年女子が多いです。（今年はいないけど）
   .container.content.white-back
     .fade-in
       .laboName
@@ -239,10 +352,21 @@
           .laboKeyword
             p.font-size-14
               | ソフトウェアの国際化/Web/プログラミング言語/DSL
+            p#gender_ratio_text_durst.font-size-20
+            p#gender_ratio_rect_durst
         .col-sm-6.col-md-offset-1
-          p.font-size-20
+          p.comment_title
             | 現役生からのコメント
-          p.font-size-14
-            | 文字数のdb使うことになったら文字数にバリ儲けましょう
-          p.font-size-20
-            | 男女比 4:6
+          ul.comment_list
+            li
+              p.font-size-14
+                | RubyとWebに興味がある方はぜひ！ VR,視線追跡、文字コードも研究できます 
+            li
+              p.font-size-14
+                | 合宿には毎年楽しい()レクリエーションがあります。
+            li
+              p.font-size-14
+                | 週2で卒業可能です。
+            li
+              p.font-size-14
+                | 4年生から各自ディスプレイを3つ与えられます。
