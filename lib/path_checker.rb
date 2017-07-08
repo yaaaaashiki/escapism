@@ -18,7 +18,7 @@ class PathChecker
     end
 
     def self.martin_thesis_path?(path)
-      path.match(/.+_T\.pdf/)
+      path.match(/.+_[T|t]\.pdf/)
     end
 
     def self.harada_thesis_path?(path)
