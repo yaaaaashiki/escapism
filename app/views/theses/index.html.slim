@@ -1,7 +1,6 @@
 .container-fluid.fade-in
   section#searchpage.fadeout.col-sm-9.col-xm-9
     = render 'search_form'
-
     - if @theses
       = page_entries_info @theses, entry_name: Thesis.name
       - @theses.each do |t|
