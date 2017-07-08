@@ -188,6 +188,9 @@ build-iPhoneSimulator/
 
 # End of https://www.gitignore.io/api/rails,macos,windows,linux,visualstudiocode,vim,osx,ruby
 
+# elasticsearch2.4.3
+/vendor/elasticsearch-2.4.3/
+
 /thesis_data/ignore/
 /lib/select_lab/thesis_data.csv
 
