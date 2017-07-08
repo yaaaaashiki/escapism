@@ -2,20 +2,24 @@ footer#footer
   .l-footerNav
     .l-container.l-container--full.pad-le-40
       nav.m-navigation.m-navigation--center
-        .col-sm-6.pad-le-90
+
+        .col-sm-5.
           span.font-size-25
             a.white[href="/"]
               | 論文検索支援システム escapism
           .m-copyRight
             small.pad-le-5
               | Copyright © 2017 論文検索支援システム escapism All rights reserved.
-        .col-sm-6.pad-top-30.pos-bot-5
+        .col-sm-7.pad-top-30.pos-bot-5
           ul
             li
               = link_to "TOP", "/"
             - if logged_in?
               li
                 = link_to "Recommend Lab", recommendations_path
+              li
+
+                = link_to "CiNii", ciniis_path
               li
                 = link_to "Search", theses_path
               li

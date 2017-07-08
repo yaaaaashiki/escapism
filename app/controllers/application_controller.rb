@@ -4,16 +4,16 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   protect_from_forgery with: :exception
   before_action :require_login
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ActionController::RoutingError, with: :render_404
-  rescue_from Exception, with: :render_500
+#  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+#  rescue_from ActionController::RoutingError, with: :render_404
+#  rescue_from Exception, with: :render_500
 
   def render_404
-    render file: Rails.root.join('public/404.html'), status: 404, layout: 'application', content_type: 'text/html'
+    render file: Rails.root.join('public/404.html.erb'), status: 404, layout: 'application', content_type: 'text/html'
   end
 
   def render_500
-    render file: Rails.root.join('public/500.html'), status: 500, layout: 'application', content_type: 'text/html'
+    render file: Rails.root.join('public/500.html.erb'), status: 500, layout: 'application', content_type: 'text/html'
   end
 
   private

@@ -3,10 +3,10 @@
     = link_to @thesis.title, download_path(@thesis), method: :post
   h1.font-size-20
     | 著者 : 
-    = @author.name
+    = @thesis.author.name
   h1.font-size-20
     | 研究室 : 
-    = @labos.find(@thesis.labo_id).name
+    = @thesis.labo.name
   h1.font-size-20
     | 執筆年度 : 
     = @thesis.year

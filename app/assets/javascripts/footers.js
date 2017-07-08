@@ -2,10 +2,11 @@ $(function() {
 
   uri = location.href;
   $footerLinkElem = $(".l-footerNav .m-navigation ul li");
-  loginUser = $footerLinkElem.eq(3).length;
+  loginUser = $footerLinkElem.eq(4).length;
   
   RECOMMEND = 1;
-  THESES = 2;
+  CIINIISEARCH = 2;
+  THESES = 3;
   TOP = 0;
  
   SIGNUP = 1;
@@ -13,6 +14,8 @@ $(function() {
 
   if (loginUser){
     if(uri.match(/recommendations/)) $footerLinkElem.eq(RECOMMEND).addClass("active");
+
+    else if(uri.match(/ciniis/)) $footerLinkElem.eq(CIINIISEARCH).addClass("active");
 
     else if(uri.match(/theses/)) $footerLinkElem.eq(THESES).addClass("active");
 
