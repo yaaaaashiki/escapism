@@ -16,7 +16,7 @@
               = link_to(t.title, thesis_path(t.id))
           p.text-muted.search_summary
             small
-              = t.body
+              = t.summary
       = paginate @theses
   aside#right-nav-container.col-sm-3.col-xm-3
     = render "sideber"
