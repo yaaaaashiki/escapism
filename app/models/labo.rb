@@ -11,7 +11,7 @@
 
 class Labo < ApplicationRecord
   @@SYMBOL_LABO_NAMES = %i(sumi duerst sakuta ohara komiyama tobe harada lopez )
-  @@ARRAY_LABO_DIRECTORY_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
+  @@ARRAY_LABO_DIRECTORY_NAMES = %w(durst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
   @@ARRAY_LABO_NAMES = ['鷲見研究室', 'Dürst 研究室', '佐久田研究室', '大原研究室', '小宮山研究室', '戸辺研究室', '原田研究室', 'lopez 研究室']
   @@NO_LABO_ID = -1
 

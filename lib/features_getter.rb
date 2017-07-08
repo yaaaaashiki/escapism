@@ -18,13 +18,15 @@ module FeaturesGetter
   end
   
   def create_labo_thesis_wakati_array(labo_name)
-    labo_dir = Thesis.LABO_THESIS_ROOT_DIRECTORY.join(labo_name)
     labo_thesis_wakati_array = []
-    Find.find(labo_dir) do |path|
-      if path =~ /.*\.pdf/
-        thesis_wakati_array = create_wakati_array(path)
-        labo_thesis_wakati_array.concat(thesis_wakati_array)
-        puts 'have read: ' + path 
+    Thesis.YHESIS_DIRECTORY_PAR_YEAR.each do |year|
+      labo_dir = Thesis.LABO_THESIS_ROOT_DIRECTORY.join(year, 'contents', labo_name)
+      Find.find(labo_dir) do |path|
+        if path =~ /.*\.pdf/
+          thesis_wakati_array = create_wakati_array(path)
+          labo_thesis_wakati_array.concat(thesis_wakati_array)
+          puts 'have read: ' + path 
+        end
       end
     end
 
