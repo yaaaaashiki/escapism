@@ -1,0 +1,44 @@
+[2017-05-06 02:20:40,012][INFO ][node                     ] [Guido Carosella] version[2.4.3], pid[784], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-06 02:20:40,013][INFO ][node                     ] [Guido Carosella] initializing ...
+[2017-05-06 02:20:40,450][INFO ][plugins                  ] [Guido Carosella] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-06 02:20:40,467][INFO ][env                      ] [Guido Carosella] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [310.4gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-06 02:20:40,467][INFO ][env                      ] [Guido Carosella] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-06 02:20:41,954][INFO ][node                     ] [Guido Carosella] initialized
+[2017-05-06 02:20:41,954][INFO ][node                     ] [Guido Carosella] starting ...
+[2017-05-06 02:20:42,048][INFO ][transport                ] [Guido Carosella] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-06 02:20:42,053][INFO ][discovery                ] [Guido Carosella] elasticsearch/fA9yOOzbRNShKKI_qyOv7A
+[2017-05-06 02:20:45,093][INFO ][cluster.service          ] [Guido Carosella] new_master {Guido Carosella}{fA9yOOzbRNShKKI_qyOv7A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-06 02:20:45,141][INFO ][http                     ] [Guido Carosella] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-06 02:20:45,141][INFO ][node                     ] [Guido Carosella] started
+[2017-05-06 02:20:45,268][INFO ][gateway                  ] [Guido Carosella] recovered [0] indices into cluster_state
+[2017-05-06 02:21:26,523][INFO ][cluster.metadata         ] [Guido Carosella] [thesis_development] creating index, cause [api], templates [], shards [5]/[1], mappings [thesis]
+[2017-05-06 02:21:26,856][INFO ][cluster.metadata         ] [Guido Carosella] updating number_of_replicas to [0] for indices [thesis_development]
+[2017-05-06 02:21:27,535][INFO ][cluster.routing.allocation] [Guido Carosella] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4]] ...]).
+[2017-05-06 02:21:27,658][INFO ][cluster.metadata         ] [Guido Carosella] [thesis_development] creating index, cause [api], templates [], shards [5]/[1], mappings [thesis]
+[2017-05-06 02:21:27,929][INFO ][cluster.metadata         ] [Guido Carosella] updating number_of_replicas to [0] for indices [thesis_development]
+[2017-05-06 02:21:28,526][INFO ][cluster.routing.allocation] [Guido Carosella] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4]] ...]).
+[2017-05-06 02:21:29,952][INFO ][cluster.metadata         ] [Guido Carosella] [thesis_development] creating index, cause [api], templates [], shards [5]/[1], mappings [thesis]
+[2017-05-06 02:21:30,275][INFO ][cluster.metadata         ] [Guido Carosella] updating number_of_replicas to [0] for indices [thesis_development]
+[2017-05-06 02:21:30,927][INFO ][cluster.routing.allocation] [Guido Carosella] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4]] ...]).
+[2017-05-06 02:30:42,624][INFO ][node                     ] [Guido Carosella] stopping ...
+[2017-05-06 02:30:44,401][INFO ][node                     ] [Guido Carosella] stopped
+[2017-05-06 02:30:44,402][INFO ][node                     ] [Guido Carosella] closing ...
+[2017-05-06 02:30:44,404][INFO ][node                     ] [Guido Carosella] closed
+[2017-05-06 12:56:41,465][INFO ][node                     ] [Jean DeWolff] version[2.4.3], pid[4749], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-06 12:56:41,482][INFO ][node                     ] [Jean DeWolff] initializing ...
+[2017-05-06 12:56:42,632][INFO ][plugins                  ] [Jean DeWolff] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-06 12:56:42,818][INFO ][env                      ] [Jean DeWolff] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [309.9gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-06 12:56:42,818][INFO ][env                      ] [Jean DeWolff] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-06 12:56:46,803][INFO ][node                     ] [Jean DeWolff] initialized
+[2017-05-06 12:56:46,803][INFO ][node                     ] [Jean DeWolff] starting ...
+[2017-05-06 12:56:47,079][INFO ][transport                ] [Jean DeWolff] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-06 12:56:47,084][INFO ][discovery                ] [Jean DeWolff] elasticsearch/XOSV_arZRD69mdAUEKcMDQ
+[2017-05-06 12:56:50,124][INFO ][cluster.service          ] [Jean DeWolff] new_master {Jean DeWolff}{XOSV_arZRD69mdAUEKcMDQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-06 12:56:50,151][INFO ][http                     ] [Jean DeWolff] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-06 12:56:50,151][INFO ][node                     ] [Jean DeWolff] started
+[2017-05-06 12:56:50,701][INFO ][gateway                  ] [Jean DeWolff] recovered [1] indices into cluster_state
+[2017-05-06 12:56:52,191][INFO ][cluster.routing.allocation] [Jean DeWolff] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][2]] ...]).
+[2017-05-06 13:03:33,373][INFO ][node                     ] [Jean DeWolff] stopping ...
+[2017-05-06 13:03:33,413][INFO ][node                     ] [Jean DeWolff] stopped
+[2017-05-06 13:03:33,415][INFO ][node                     ] [Jean DeWolff] closing ...
+[2017-05-06 13:03:33,420][INFO ][node                     ] [Jean DeWolff] closed

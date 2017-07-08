@@ -1,0 +1,72 @@
+[2017-06-25 19:04:07,055][INFO ][node                     ] [Jack of Hearts] version[2.4.3], pid[4599], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-06-25 19:04:07,056][INFO ][node                     ] [Jack of Hearts] initializing ...
+[2017-06-25 19:04:09,331][INFO ][plugins                  ] [Jack of Hearts] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-06-25 19:04:09,742][INFO ][env                      ] [Jack of Hearts] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [308.4gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-06-25 19:04:09,743][INFO ][env                      ] [Jack of Hearts] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-06-25 19:04:15,899][INFO ][node                     ] [Jack of Hearts] initialized
+[2017-06-25 19:04:15,899][INFO ][node                     ] [Jack of Hearts] starting ...
+[2017-06-25 19:04:16,170][INFO ][transport                ] [Jack of Hearts] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-06-25 19:04:16,176][INFO ][discovery                ] [Jack of Hearts] elasticsearch/O8VnjmoET9exVlhP3I9fWw
+[2017-06-25 19:04:19,224][INFO ][cluster.service          ] [Jack of Hearts] new_master {Jack of Hearts}{O8VnjmoET9exVlhP3I9fWw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-06-25 19:04:19,254][INFO ][http                     ] [Jack of Hearts] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-06-25 19:04:19,254][INFO ][node                     ] [Jack of Hearts] started
+[2017-06-25 19:04:19,724][INFO ][gateway                  ] [Jack of Hearts] recovered [1] indices into cluster_state
+[2017-06-25 19:04:21,035][INFO ][cluster.routing.allocation] [Jack of Hearts] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4], [thesis_development][4]] ...]).
+[2017-06-25 19:04:27,031][INFO ][node                     ] [Jack of Hearts] stopping ...
+[2017-06-25 19:04:27,100][INFO ][node                     ] [Jack of Hearts] stopped
+[2017-06-25 19:04:27,100][INFO ][node                     ] [Jack of Hearts] closing ...
+[2017-06-25 19:04:27,104][INFO ][node                     ] [Jack of Hearts] closed
+[2017-06-25 19:04:42,514][INFO ][node                     ] [Elektra] version[2.4.3], pid[4830], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-06-25 19:04:42,515][INFO ][node                     ] [Elektra] initializing ...
+[2017-06-25 19:04:42,991][INFO ][plugins                  ] [Elektra] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-06-25 19:04:43,012][INFO ][env                      ] [Elektra] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [308.2gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-06-25 19:04:43,012][INFO ][env                      ] [Elektra] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-06-25 19:04:45,407][INFO ][node                     ] [Elektra] initialized
+[2017-06-25 19:04:45,408][INFO ][node                     ] [Elektra] starting ...
+[2017-06-25 19:04:45,462][INFO ][transport                ] [Elektra] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-06-25 19:04:45,467][INFO ][discovery                ] [Elektra] elasticsearch/jOXGWBkFQIqjC4q4EuJrGQ
+[2017-06-25 19:04:48,501][INFO ][cluster.service          ] [Elektra] new_master {Elektra}{jOXGWBkFQIqjC4q4EuJrGQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-06-25 19:04:48,534][INFO ][http                     ] [Elektra] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-06-25 19:04:48,534][INFO ][node                     ] [Elektra] started
+[2017-06-25 19:04:48,744][INFO ][gateway                  ] [Elektra] recovered [1] indices into cluster_state
+[2017-06-25 19:04:49,709][INFO ][cluster.routing.allocation] [Elektra] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][1], [thesis_development][1]] ...]).
+[2017-06-25 20:00:42,552][INFO ][node                     ] [Elektra] stopping ...
+[2017-06-25 20:00:42,593][INFO ][node                     ] [Elektra] stopped
+[2017-06-25 20:00:42,593][INFO ][node                     ] [Elektra] closing ...
+[2017-06-25 20:00:42,597][INFO ][node                     ] [Elektra] closed
+[2017-06-25 20:18:26,162][INFO ][node                     ] [Count Abyss] version[2.4.3], pid[2458], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-06-25 20:18:26,238][INFO ][node                     ] [Count Abyss] initializing ...
+[2017-06-25 20:18:39,362][INFO ][plugins                  ] [Count Abyss] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-06-25 20:18:41,524][INFO ][env                      ] [Count Abyss] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [308.5gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-06-25 20:18:41,524][INFO ][env                      ] [Count Abyss] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-06-25 20:19:19,810][INFO ][node                     ] [Count Abyss] initialized
+[2017-06-25 20:19:19,812][INFO ][node                     ] [Count Abyss] starting ...
+[2017-06-25 20:19:20,441][INFO ][transport                ] [Count Abyss] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-06-25 20:19:20,538][INFO ][discovery                ] [Count Abyss] elasticsearch/ghR9RV7mT7ONViyf5wTeCw
+[2017-06-25 20:19:23,588][INFO ][cluster.service          ] [Count Abyss] new_master {Count Abyss}{ghR9RV7mT7ONViyf5wTeCw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-06-25 20:19:23,606][INFO ][http                     ] [Count Abyss] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-06-25 20:19:23,611][INFO ][node                     ] [Count Abyss] started
+[2017-06-25 20:19:24,206][INFO ][gateway                  ] [Count Abyss] recovered [1] indices into cluster_state
+[2017-06-25 20:19:26,697][INFO ][cluster.routing.allocation] [Count Abyss] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][2], [thesis_development][4], [thesis_development][4], [thesis_development][2]] ...]).
+[2017-06-25 21:30:27,559][INFO ][node                     ] [Count Abyss] stopping ...
+[2017-06-25 21:30:30,227][INFO ][node                     ] [Count Abyss] stopped
+[2017-06-25 21:30:30,227][INFO ][node                     ] [Count Abyss] closing ...
+[2017-06-25 21:30:30,233][INFO ][node                     ] [Count Abyss] closed
+[2017-06-25 21:33:26,758][INFO ][node                     ] [Spike] version[2.4.3], pid[2358], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-06-25 21:33:26,774][INFO ][node                     ] [Spike] initializing ...
+[2017-06-25 21:33:27,837][INFO ][plugins                  ] [Spike] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-06-25 21:33:28,000][INFO ][env                      ] [Spike] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.4gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-06-25 21:33:28,000][INFO ][env                      ] [Spike] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-06-25 21:33:31,345][INFO ][node                     ] [Spike] initialized
+[2017-06-25 21:33:31,345][INFO ][node                     ] [Spike] starting ...
+[2017-06-25 21:33:31,567][INFO ][transport                ] [Spike] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-06-25 21:33:31,572][INFO ][discovery                ] [Spike] elasticsearch/000_LXrNSbS0U7hEI6-yjg
+[2017-06-25 21:33:34,613][INFO ][cluster.service          ] [Spike] new_master {Spike}{000_LXrNSbS0U7hEI6-yjg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-06-25 21:33:34,639][INFO ][http                     ] [Spike] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-06-25 21:33:34,639][INFO ][node                     ] [Spike] started
+[2017-06-25 21:33:35,276][INFO ][gateway                  ] [Spike] recovered [1] indices into cluster_state
+[2017-06-25 21:33:36,980][INFO ][cluster.routing.allocation] [Spike] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][1]] ...]).
+[2017-06-25 22:20:36,559][INFO ][node                     ] [Spike] stopping ...
+[2017-06-25 22:20:37,300][INFO ][node                     ] [Spike] stopped
+[2017-06-25 22:20:37,301][INFO ][node                     ] [Spike] closing ...
+[2017-06-25 22:20:37,304][INFO ][node                     ] [Spike] closed

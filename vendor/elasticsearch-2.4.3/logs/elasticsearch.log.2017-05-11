@@ -1,0 +1,18 @@
+[2017-05-11 01:21:48,447][INFO ][node                     ] [Living Diamond] stopping ...
+[2017-05-11 01:21:49,120][INFO ][node                     ] [Living Diamond] stopped
+[2017-05-11 01:21:49,120][INFO ][node                     ] [Living Diamond] closing ...
+[2017-05-11 01:21:49,124][INFO ][node                     ] [Living Diamond] closed
+[2017-05-11 19:02:28,149][INFO ][node                     ] [Jean-Paul Beaubier] version[2.4.3], pid[5442], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-11 19:02:28,157][INFO ][node                     ] [Jean-Paul Beaubier] initializing ...
+[2017-05-11 19:02:29,395][INFO ][plugins                  ] [Jean-Paul Beaubier] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-11 19:02:29,691][INFO ][env                      ] [Jean-Paul Beaubier] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [309.1gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-11 19:02:29,692][INFO ][env                      ] [Jean-Paul Beaubier] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-11 19:02:33,334][INFO ][node                     ] [Jean-Paul Beaubier] initialized
+[2017-05-11 19:02:33,334][INFO ][node                     ] [Jean-Paul Beaubier] starting ...
+[2017-05-11 19:02:33,753][INFO ][transport                ] [Jean-Paul Beaubier] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-11 19:02:33,782][INFO ][discovery                ] [Jean-Paul Beaubier] elasticsearch/LNz5NFE_TcuDVkHrrvHzrg
+[2017-05-11 19:02:36,835][INFO ][cluster.service          ] [Jean-Paul Beaubier] new_master {Jean-Paul Beaubier}{LNz5NFE_TcuDVkHrrvHzrg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-11 19:02:36,862][INFO ][http                     ] [Jean-Paul Beaubier] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-11 19:02:36,862][INFO ][node                     ] [Jean-Paul Beaubier] started
+[2017-05-11 19:02:37,697][INFO ][gateway                  ] [Jean-Paul Beaubier] recovered [1] indices into cluster_state
+[2017-05-11 19:02:39,469][INFO ][cluster.routing.allocation] [Jean-Paul Beaubier] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4], [thesis_development][4]] ...]).

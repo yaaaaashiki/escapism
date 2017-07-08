@@ -1,0 +1,14 @@
+[2017-05-15 23:28:00,242][INFO ][node                     ] [Troll] version[2.4.3], pid[3973], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-15 23:28:00,244][INFO ][node                     ] [Troll] initializing ...
+[2017-05-15 23:28:01,598][INFO ][plugins                  ] [Troll] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-15 23:28:01,782][INFO ][env                      ] [Troll] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [308.9gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-15 23:28:01,782][INFO ][env                      ] [Troll] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-15 23:28:05,489][INFO ][node                     ] [Troll] initialized
+[2017-05-15 23:28:05,489][INFO ][node                     ] [Troll] starting ...
+[2017-05-15 23:28:05,706][INFO ][transport                ] [Troll] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-15 23:28:05,711][INFO ][discovery                ] [Troll] elasticsearch/1s4VFbIjRR2QYHLRZv4uXw
+[2017-05-15 23:28:08,763][INFO ][cluster.service          ] [Troll] new_master {Troll}{1s4VFbIjRR2QYHLRZv4uXw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-15 23:28:08,788][INFO ][http                     ] [Troll] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-15 23:28:08,788][INFO ][node                     ] [Troll] started
+[2017-05-15 23:28:09,863][INFO ][gateway                  ] [Troll] recovered [1] indices into cluster_state
+[2017-05-15 23:28:12,801][INFO ][cluster.routing.allocation] [Troll] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][3], [thesis_development][2], [thesis_development][3], [thesis_development][2]] ...]).

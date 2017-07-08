@@ -1,0 +1,18 @@
+[2017-05-19 23:12:25,943][INFO ][node                     ] [Scarecrow] version[2.4.3], pid[3844], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-19 23:12:25,946][INFO ][node                     ] [Scarecrow] initializing ...
+[2017-05-19 23:12:27,074][INFO ][plugins                  ] [Scarecrow] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-19 23:12:27,213][INFO ][env                      ] [Scarecrow] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.8gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-19 23:12:27,213][INFO ][env                      ] [Scarecrow] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-19 23:12:30,397][INFO ][node                     ] [Scarecrow] initialized
+[2017-05-19 23:12:30,398][INFO ][node                     ] [Scarecrow] starting ...
+[2017-05-19 23:12:30,641][INFO ][transport                ] [Scarecrow] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-19 23:12:30,647][INFO ][discovery                ] [Scarecrow] elasticsearch/lT4chAMIRReczV1kr1n5SA
+[2017-05-19 23:12:33,699][INFO ][cluster.service          ] [Scarecrow] new_master {Scarecrow}{lT4chAMIRReczV1kr1n5SA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-19 23:12:33,726][INFO ][http                     ] [Scarecrow] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-19 23:12:33,727][INFO ][node                     ] [Scarecrow] started
+[2017-05-19 23:12:34,166][INFO ][gateway                  ] [Scarecrow] recovered [1] indices into cluster_state
+[2017-05-19 23:12:35,452][INFO ][cluster.routing.allocation] [Scarecrow] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][0]] ...]).
+[2017-05-19 23:44:49,083][INFO ][node                     ] [Scarecrow] stopping ...
+[2017-05-19 23:44:49,119][INFO ][node                     ] [Scarecrow] stopped
+[2017-05-19 23:44:49,120][INFO ][node                     ] [Scarecrow] closing ...
+[2017-05-19 23:44:49,123][INFO ][node                     ] [Scarecrow] closed

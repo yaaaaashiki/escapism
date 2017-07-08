@@ -1,0 +1,18 @@
+[2017-05-12 19:17:52,884][INFO ][node                     ] [Jean-Paul Beaubier] stopping ...
+[2017-05-12 19:17:52,938][INFO ][node                     ] [Jean-Paul Beaubier] stopped
+[2017-05-12 19:17:52,938][INFO ][node                     ] [Jean-Paul Beaubier] closing ...
+[2017-05-12 19:17:52,946][INFO ][node                     ] [Jean-Paul Beaubier] closed
+[2017-05-12 22:01:05,971][INFO ][node                     ] [Kingo Sunen] version[2.4.3], pid[12612], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-12 22:01:05,972][INFO ][node                     ] [Kingo Sunen] initializing ...
+[2017-05-12 22:01:06,497][INFO ][plugins                  ] [Kingo Sunen] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-12 22:01:06,561][INFO ][env                      ] [Kingo Sunen] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [309gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-12 22:01:06,561][INFO ][env                      ] [Kingo Sunen] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-12 22:01:08,778][INFO ][node                     ] [Kingo Sunen] initialized
+[2017-05-12 22:01:08,778][INFO ][node                     ] [Kingo Sunen] starting ...
+[2017-05-12 22:01:08,962][INFO ][transport                ] [Kingo Sunen] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-12 22:01:08,967][INFO ][discovery                ] [Kingo Sunen] elasticsearch/kV7Bx88HTB2Io1h9NT1gCg
+[2017-05-12 22:01:12,022][INFO ][cluster.service          ] [Kingo Sunen] new_master {Kingo Sunen}{kV7Bx88HTB2Io1h9NT1gCg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-12 22:01:12,055][INFO ][http                     ] [Kingo Sunen] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-12 22:01:12,056][INFO ][node                     ] [Kingo Sunen] started
+[2017-05-12 22:01:12,274][INFO ][gateway                  ] [Kingo Sunen] recovered [1] indices into cluster_state
+[2017-05-12 22:01:13,284][INFO ][cluster.routing.allocation] [Kingo Sunen] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4]] ...]).

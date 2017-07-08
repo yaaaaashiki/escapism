@@ -1,0 +1,18 @@
+[2017-05-18 21:20:05,833][INFO ][node                     ] [Yukio] version[2.4.3], pid[12023], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-18 21:20:05,834][INFO ][node                     ] [Yukio] initializing ...
+[2017-05-18 21:20:07,034][INFO ][plugins                  ] [Yukio] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-18 21:20:07,130][INFO ][env                      ] [Yukio] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.8gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-18 21:20:07,130][INFO ][env                      ] [Yukio] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-18 21:20:10,577][INFO ][node                     ] [Yukio] initialized
+[2017-05-18 21:20:10,577][INFO ][node                     ] [Yukio] starting ...
+[2017-05-18 21:20:10,809][INFO ][transport                ] [Yukio] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-18 21:20:10,814][INFO ][discovery                ] [Yukio] elasticsearch/e20nizeEQjSXGWZ1_1E86g
+[2017-05-18 21:20:13,848][INFO ][cluster.service          ] [Yukio] new_master {Yukio}{e20nizeEQjSXGWZ1_1E86g}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-18 21:20:13,877][INFO ][http                     ] [Yukio] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-18 21:20:13,877][INFO ][node                     ] [Yukio] started
+[2017-05-18 21:20:14,355][INFO ][gateway                  ] [Yukio] recovered [1] indices into cluster_state
+[2017-05-18 21:20:16,383][INFO ][cluster.routing.allocation] [Yukio] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][2]] ...]).
+[2017-05-18 21:47:22,362][INFO ][node                     ] [Yukio] stopping ...
+[2017-05-18 21:47:24,476][INFO ][node                     ] [Yukio] stopped
+[2017-05-18 21:47:24,477][INFO ][node                     ] [Yukio] closing ...
+[2017-05-18 21:47:24,480][INFO ][node                     ] [Yukio] closed

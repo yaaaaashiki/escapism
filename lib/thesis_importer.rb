@@ -1,4 +1,5 @@
 require 'find'
+require 'open3'
 
 module ThesisImporter
   def upsert_all!
@@ -17,10 +18,10 @@ module ThesisImporter
                   thesis.url = "#{path.gsub(/\/index\.html/, "")}/#{a_element[:href]}"
                   thesis.labo = Labo.find_by(name: Labo.parse_labo_name(path))
 
-                  # thesis.urlに日本語があると死ぬかも
-                  # とりあえずubuntu16.04では戸部研の論文が死んだ
-                  # NOTE:要対応？？？
                   thesis.body = Thesis.extract_body(thesis.url)
+
+                  summariserName = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
+                  thesis.summary , err, status = Open3.capture3("python3 " + summariserName + " " + thesis.url)
 
                   if thesis.belongs_to_martin_labo?
                     thesis.title = td_element.content

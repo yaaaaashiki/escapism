@@ -1,0 +1,54 @@
+[2017-05-07 01:04:37,404][INFO ][node                     ] [Ghost Dancer] version[2.4.3], pid[27864], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-07 01:04:37,405][INFO ][node                     ] [Ghost Dancer] initializing ...
+[2017-05-07 01:04:38,450][INFO ][plugins                  ] [Ghost Dancer] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-07 01:04:38,613][INFO ][env                      ] [Ghost Dancer] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [309.5gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-07 01:04:38,613][INFO ][env                      ] [Ghost Dancer] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-07 01:04:42,254][INFO ][node                     ] [Ghost Dancer] initialized
+[2017-05-07 01:04:42,254][INFO ][node                     ] [Ghost Dancer] starting ...
+[2017-05-07 01:04:42,465][INFO ][transport                ] [Ghost Dancer] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-07 01:04:42,471][INFO ][discovery                ] [Ghost Dancer] elasticsearch/73AcjOD8SdmfEU4fft139Q
+[2017-05-07 01:04:45,507][INFO ][cluster.service          ] [Ghost Dancer] new_master {Ghost Dancer}{73AcjOD8SdmfEU4fft139Q}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-07 01:04:45,535][INFO ][http                     ] [Ghost Dancer] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-07 01:04:45,536][INFO ][node                     ] [Ghost Dancer] started
+[2017-05-07 01:04:45,925][INFO ][gateway                  ] [Ghost Dancer] recovered [1] indices into cluster_state
+[2017-05-07 01:04:47,216][INFO ][cluster.routing.allocation] [Ghost Dancer] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][3], [thesis_development][3]] ...]).
+[2017-05-07 02:43:46,258][INFO ][node                     ] [Ghost Dancer] stopping ...
+[2017-05-07 02:43:46,284][INFO ][node                     ] [Ghost Dancer] stopped
+[2017-05-07 02:43:46,284][INFO ][node                     ] [Ghost Dancer] closing ...
+[2017-05-07 02:43:46,287][INFO ][node                     ] [Ghost Dancer] closed
+[2017-05-07 03:12:55,324][INFO ][node                     ] [Corsair] version[2.4.3], pid[12795], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-07 03:12:55,345][INFO ][node                     ] [Corsair] initializing ...
+[2017-05-07 03:13:00,435][INFO ][plugins                  ] [Corsair] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-07 03:13:02,216][INFO ][env                      ] [Corsair] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [309.5gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-07 03:13:02,217][INFO ][env                      ] [Corsair] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-07 03:13:14,655][INFO ][node                     ] [Corsair] initialized
+[2017-05-07 03:13:14,655][INFO ][node                     ] [Corsair] starting ...
+[2017-05-07 03:13:15,144][INFO ][transport                ] [Corsair] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-07 03:13:15,188][INFO ][discovery                ] [Corsair] elasticsearch/1lF94E0iTg2o3tBggZbiHw
+[2017-05-07 03:13:18,273][INFO ][cluster.service          ] [Corsair] new_master {Corsair}{1lF94E0iTg2o3tBggZbiHw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-07 03:13:18,300][INFO ][http                     ] [Corsair] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-07 03:13:18,300][INFO ][node                     ] [Corsair] started
+[2017-05-07 03:13:18,669][INFO ][gateway                  ] [Corsair] recovered [1] indices into cluster_state
+[2017-05-07 03:13:20,517][INFO ][cluster.routing.allocation] [Corsair] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][2]] ...]).
+[2017-05-07 03:19:22,567][INFO ][node                     ] [Corsair] stopping ...
+[2017-05-07 03:19:22,595][INFO ][node                     ] [Corsair] stopped
+[2017-05-07 03:19:22,595][INFO ][node                     ] [Corsair] closing ...
+[2017-05-07 03:19:22,600][INFO ][node                     ] [Corsair] closed
+[2017-05-07 19:57:04,534][INFO ][node                     ] [Grim Reaper] version[2.4.3], pid[10236], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-07 19:57:04,534][INFO ][node                     ] [Grim Reaper] initializing ...
+[2017-05-07 19:57:04,968][INFO ][plugins                  ] [Grim Reaper] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-07 19:57:05,005][INFO ][env                      ] [Grim Reaper] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [309.2gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-07 19:57:05,005][INFO ][env                      ] [Grim Reaper] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-07 19:57:06,886][INFO ][node                     ] [Grim Reaper] initialized
+[2017-05-07 19:57:06,888][INFO ][node                     ] [Grim Reaper] starting ...
+[2017-05-07 19:57:06,992][INFO ][transport                ] [Grim Reaper] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-07 19:57:06,999][INFO ][discovery                ] [Grim Reaper] elasticsearch/eIL-KftmQdO5I1YJtcLTyA
+[2017-05-07 19:57:10,041][INFO ][cluster.service          ] [Grim Reaper] new_master {Grim Reaper}{eIL-KftmQdO5I1YJtcLTyA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-07 19:57:10,080][INFO ][http                     ] [Grim Reaper] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-07 19:57:10,081][INFO ][node                     ] [Grim Reaper] started
+[2017-05-07 19:57:10,239][INFO ][gateway                  ] [Grim Reaper] recovered [1] indices into cluster_state
+[2017-05-07 19:57:11,237][INFO ][cluster.routing.allocation] [Grim Reaper] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][3], [thesis_development][3]] ...]).
+[2017-05-07 21:04:53,015][INFO ][node                     ] [Grim Reaper] stopping ...
+[2017-05-07 21:04:53,097][INFO ][node                     ] [Grim Reaper] stopped
+[2017-05-07 21:04:53,097][INFO ][node                     ] [Grim Reaper] closing ...
+[2017-05-07 21:04:53,101][INFO ][node                     ] [Grim Reaper] closed

@@ -1,0 +1,18 @@
+[2017-06-04 15:47:07,604][INFO ][node                     ] [Graydon Creed] version[2.4.3], pid[3601], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-06-04 15:47:07,610][INFO ][node                     ] [Graydon Creed] initializing ...
+[2017-06-04 15:47:08,760][INFO ][plugins                  ] [Graydon Creed] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-06-04 15:47:08,878][INFO ][env                      ] [Graydon Creed] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.4gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-06-04 15:47:08,879][INFO ][env                      ] [Graydon Creed] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-06-04 15:47:11,981][INFO ][node                     ] [Graydon Creed] initialized
+[2017-06-04 15:47:11,981][INFO ][node                     ] [Graydon Creed] starting ...
+[2017-06-04 15:47:12,213][INFO ][transport                ] [Graydon Creed] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-06-04 15:47:12,217][INFO ][discovery                ] [Graydon Creed] elasticsearch/QRJeAFynRQKKTJTqNEayTQ
+[2017-06-04 15:47:15,244][INFO ][cluster.service          ] [Graydon Creed] new_master {Graydon Creed}{QRJeAFynRQKKTJTqNEayTQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-06-04 15:47:15,269][INFO ][http                     ] [Graydon Creed] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-06-04 15:47:15,269][INFO ][node                     ] [Graydon Creed] started
+[2017-06-04 15:47:15,815][INFO ][gateway                  ] [Graydon Creed] recovered [1] indices into cluster_state
+[2017-06-04 15:47:16,990][INFO ][cluster.routing.allocation] [Graydon Creed] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4]] ...]).
+[2017-06-04 16:17:46,001][INFO ][node                     ] [Graydon Creed] stopping ...
+[2017-06-04 16:17:46,033][INFO ][node                     ] [Graydon Creed] stopped
+[2017-06-04 16:17:46,033][INFO ][node                     ] [Graydon Creed] closing ...
+[2017-06-04 16:17:46,037][INFO ][node                     ] [Graydon Creed] closed

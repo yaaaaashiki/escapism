@@ -1,0 +1,18 @@
+[2017-05-09 20:31:54,748][INFO ][node                     ] [Bloodshed] version[2.4.3], pid[8290], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-09 20:31:54,749][INFO ][node                     ] [Bloodshed] initializing ...
+[2017-05-09 20:31:55,855][INFO ][plugins                  ] [Bloodshed] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-09 20:31:56,086][INFO ][env                      ] [Bloodshed] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [309.2gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-09 20:31:56,086][INFO ][env                      ] [Bloodshed] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-09 20:31:59,679][INFO ][node                     ] [Bloodshed] initialized
+[2017-05-09 20:31:59,680][INFO ][node                     ] [Bloodshed] starting ...
+[2017-05-09 20:31:59,958][INFO ][transport                ] [Bloodshed] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-09 20:31:59,963][INFO ][discovery                ] [Bloodshed] elasticsearch/tgxbuhVQQoqt-2pd-RMA4A
+[2017-05-09 20:32:03,001][INFO ][cluster.service          ] [Bloodshed] new_master {Bloodshed}{tgxbuhVQQoqt-2pd-RMA4A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-09 20:32:03,025][INFO ][http                     ] [Bloodshed] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-09 20:32:03,025][INFO ][node                     ] [Bloodshed] started
+[2017-05-09 20:32:03,355][INFO ][gateway                  ] [Bloodshed] recovered [1] indices into cluster_state
+[2017-05-09 20:32:04,528][INFO ][cluster.routing.allocation] [Bloodshed] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][4]] ...]).
+[2017-05-09 21:30:34,103][INFO ][node                     ] [Bloodshed] stopping ...
+[2017-05-09 21:30:34,196][INFO ][node                     ] [Bloodshed] stopped
+[2017-05-09 21:30:34,196][INFO ][node                     ] [Bloodshed] closing ...
+[2017-05-09 21:30:34,201][INFO ][node                     ] [Bloodshed] closed

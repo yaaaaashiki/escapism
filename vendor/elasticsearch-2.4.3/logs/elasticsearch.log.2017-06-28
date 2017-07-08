@@ -1,0 +1,18 @@
+[2017-06-28 00:00:32,579][INFO ][node                     ] [Skullfire] version[2.4.3], pid[21542], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-06-28 00:00:32,580][INFO ][node                     ] [Skullfire] initializing ...
+[2017-06-28 00:00:33,736][INFO ][plugins                  ] [Skullfire] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-06-28 00:00:33,876][INFO ][env                      ] [Skullfire] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [307.7gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-06-28 00:00:33,876][INFO ][env                      ] [Skullfire] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-06-28 00:00:37,345][INFO ][node                     ] [Skullfire] initialized
+[2017-06-28 00:00:37,346][INFO ][node                     ] [Skullfire] starting ...
+[2017-06-28 00:00:37,555][INFO ][transport                ] [Skullfire] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-06-28 00:00:37,561][INFO ][discovery                ] [Skullfire] elasticsearch/e2_1GQhAT5iWaceDA8p2xQ
+[2017-06-28 00:00:40,606][INFO ][cluster.service          ] [Skullfire] new_master {Skullfire}{e2_1GQhAT5iWaceDA8p2xQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-06-28 00:00:40,633][INFO ][http                     ] [Skullfire] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-06-28 00:00:40,633][INFO ][node                     ] [Skullfire] started
+[2017-06-28 00:00:41,040][INFO ][gateway                  ] [Skullfire] recovered [1] indices into cluster_state
+[2017-06-28 00:00:42,079][INFO ][cluster.routing.allocation] [Skullfire] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[theses][0], [theses][4], [theses][0]] ...]).
+[2017-06-28 00:13:14,289][INFO ][node                     ] [Skullfire] stopping ...
+[2017-06-28 00:13:14,321][INFO ][node                     ] [Skullfire] stopped
+[2017-06-28 00:13:14,321][INFO ][node                     ] [Skullfire] closing ...
+[2017-06-28 00:13:14,325][INFO ][node                     ] [Skullfire] closed

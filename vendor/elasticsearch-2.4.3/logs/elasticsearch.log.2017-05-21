@@ -1,0 +1,22 @@
+[2017-05-21 01:40:18,057][INFO ][node                     ] [Dionysus] stopping ...
+[2017-05-21 01:40:18,216][INFO ][node                     ] [Dionysus] stopped
+[2017-05-21 01:40:18,216][INFO ][node                     ] [Dionysus] closing ...
+[2017-05-21 01:40:18,242][INFO ][node                     ] [Dionysus] closed
+[2017-05-21 07:01:04,057][INFO ][node                     ] [Geirrodur] version[2.4.3], pid[5485], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-21 07:01:04,071][INFO ][node                     ] [Geirrodur] initializing ...
+[2017-05-21 07:01:05,213][INFO ][plugins                  ] [Geirrodur] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-21 07:01:05,342][INFO ][env                      ] [Geirrodur] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.7gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-21 07:01:05,343][INFO ][env                      ] [Geirrodur] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-21 07:01:09,118][INFO ][node                     ] [Geirrodur] initialized
+[2017-05-21 07:01:09,118][INFO ][node                     ] [Geirrodur] starting ...
+[2017-05-21 07:01:09,352][INFO ][transport                ] [Geirrodur] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-21 07:01:09,395][INFO ][discovery                ] [Geirrodur] elasticsearch/c2y1-wq_Q-qXLlOZmt05cA
+[2017-05-21 07:01:12,427][INFO ][cluster.service          ] [Geirrodur] new_master {Geirrodur}{c2y1-wq_Q-qXLlOZmt05cA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-21 07:01:12,455][INFO ][http                     ] [Geirrodur] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-21 07:01:12,455][INFO ][node                     ] [Geirrodur] started
+[2017-05-21 07:01:12,836][INFO ][gateway                  ] [Geirrodur] recovered [1] indices into cluster_state
+[2017-05-21 07:01:14,143][INFO ][cluster.routing.allocation] [Geirrodur] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][2]] ...]).
+[2017-05-21 08:00:12,523][INFO ][node                     ] [Geirrodur] stopping ...
+[2017-05-21 08:00:12,629][INFO ][node                     ] [Geirrodur] stopped
+[2017-05-21 08:00:12,629][INFO ][node                     ] [Geirrodur] closing ...
+[2017-05-21 08:00:12,675][INFO ][node                     ] [Geirrodur] closed

@@ -1,0 +1,320 @@
+[2017-07-02 13:29:11,653][INFO ][node                     ] [Kylun] version[2.4.3], pid[4472], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-07-02 13:29:11,659][INFO ][node                     ] [Kylun] initializing ...
+[2017-07-02 13:29:12,688][INFO ][plugins                  ] [Kylun] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-07-02 13:29:12,817][INFO ][env                      ] [Kylun] using [1] data paths, mounts [[/home (/dev/sda4)]], net usable_space [307.7gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-07-02 13:29:12,817][INFO ][env                      ] [Kylun] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-07-02 13:29:17,369][INFO ][node                     ] [Kylun] initialized
+[2017-07-02 13:29:17,369][INFO ][node                     ] [Kylun] starting ...
+[2017-07-02 13:29:17,727][INFO ][transport                ] [Kylun] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-07-02 13:29:17,732][INFO ][discovery                ] [Kylun] elasticsearch/w49H6JDcTCe8H0q4fI1JnQ
+[2017-07-02 13:29:20,771][INFO ][cluster.service          ] [Kylun] new_master {Kylun}{w49H6JDcTCe8H0q4fI1JnQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-07-02 13:29:20,800][INFO ][http                     ] [Kylun] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-07-02 13:29:20,801][INFO ][node                     ] [Kylun] started
+[2017-07-02 13:29:21,579][INFO ][gateway                  ] [Kylun] recovered [2] indices into cluster_state
+[2017-07-02 13:29:25,166][INFO ][cluster.routing.allocation] [Kylun] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[theses][0], [theses][0]] ...]).
+[2017-07-02 13:39:25,769][INFO ][cluster.metadata         ] [Kylun] [thesis_development] creating index, cause [api], templates [], shards [5]/[1], mappings [thesis]
+[2017-07-02 13:39:26,531][INFO ][cluster.routing.allocation] [Kylun] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[thesis_development][4]] ...]).
+[2017-07-02 14:38:47,393][DEBUG][action.search            ] [Kylun] [thesis_development][2], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=x3gLCC29REWSFbwSEhbPMA]: Failed to execute [org.elasticsearch.action.search.SearchRequest@123ecc91] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:38:47,395][DEBUG][action.search            ] [Kylun] [thesis_development][1], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=sQew7PcUQGicNcmcdhRpbA]: Failed to execute [org.elasticsearch.action.search.SearchRequest@123ecc91] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:38:47,395][DEBUG][action.search            ] [Kylun] [thesis_development][3], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=v-9aViYWQZaCykYJ42X44w]: Failed to execute [org.elasticsearch.action.search.SearchRequest@123ecc91]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:38:47,404][DEBUG][action.search            ] [Kylun] All shards failed for phase: [query]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:38:47,394][DEBUG][action.search            ] [Kylun] [thesis_development][4], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=9W8wV6_ySj6q2elYdLPVzw]: Failed to execute [org.elasticsearch.action.search.SearchRequest@123ecc91] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:38:47,393][DEBUG][action.search            ] [Kylun] [thesis_development][0], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=0XWHia7pSbecCeQZSoLV0Q]: Failed to execute [org.elasticsearch.action.search.SearchRequest@123ecc91] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"学習"}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:54:04,411][DEBUG][action.search            ] [Kylun] [thesis_development][1], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=sQew7PcUQGicNcmcdhRpbA]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3edc2f41] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:54:04,411][DEBUG][action.search            ] [Kylun] [thesis_development][4], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=9W8wV6_ySj6q2elYdLPVzw]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3edc2f41] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:54:04,411][DEBUG][action.search            ] [Kylun] [thesis_development][0], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=0XWHia7pSbecCeQZSoLV0Q]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3edc2f41]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:54:04,413][DEBUG][action.search            ] [Kylun] All shards failed for phase: [query]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:54:04,411][DEBUG][action.search            ] [Kylun] [thesis_development][3], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=v-9aViYWQZaCykYJ42X44w]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3edc2f41] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 14:54:04,411][DEBUG][action.search            ] [Kylun] [thesis_development][2], node[w49H6JDcTCe8H0q4fI1JnQ], [P], v[2], s[STARTED], a[id=x3gLCC29REWSFbwSEhbPMA]: Failed to execute [org.elasticsearch.action.search.SearchRequest@3edc2f41] lastShard [true]
+RemoteTransportException[[Kylun][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+Caused by: SearchParseException[failed to parse search source [{"query":{"multi_match":{"query":"機械"}},"filter":{"term":{"labo_id":7}},"sort":[{"_score":{"order":"desc"}}]}]]; nested: QueryParsingException[No fields specified for multi_match query];
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:873)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:667)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:633)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:377)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: [thesis_development] QueryParsingException[No fields specified for multi_match query]
+	at org.elasticsearch.index.query.MultiMatchQueryParser.parse(MultiMatchQueryParser.java:153)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:250)
+	at org.elasticsearch.index.query.IndexQueryParserService.innerParse(IndexQueryParserService.java:324)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:224)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:219)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:856)
+	... 12 more
+[2017-07-02 15:45:35,271][INFO ][node                     ] [Kylun] stopping ...
+[2017-07-02 15:45:35,317][INFO ][node                     ] [Kylun] stopped
+[2017-07-02 15:45:35,318][INFO ][node                     ] [Kylun] closing ...
+[2017-07-02 15:45:35,320][INFO ][node                     ] [Kylun] closed

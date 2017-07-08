@@ -1,0 +1,26 @@
+<section id="ciniipage" class="fadeout">
+  <div class="container fadein">
+    <div class="page-header">
+      <h1>cinii</h1>
+    </div>
+
+    <!-- 検索フォーム -->
+    <%= form_tag ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal" do %>
+        <div class="col-sm-9 col-xs-9 text-pos">
+          <%= search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'cinii 検索' %>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+          <%= submit_tag '検索', class: "button btn-pos" %>
+        </div>
+    <% end %>
+
+    <!-- 検索結果の表示 -->
+    <% if @results %>
+      <div class="ciniiResult">
+        <% @results.each do |result| %>
+          <div class="font-size-10"><%= link_to result["title"], "#{result["url"]}" %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

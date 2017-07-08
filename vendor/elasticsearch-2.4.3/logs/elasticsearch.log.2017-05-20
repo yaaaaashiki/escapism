@@ -1,0 +1,14 @@
+[2017-05-20 18:26:54,028][INFO ][node                     ] [Dionysus] version[2.4.3], pid[3959], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-20 18:26:54,029][INFO ][node                     ] [Dionysus] initializing ...
+[2017-05-20 18:26:55,108][INFO ][plugins                  ] [Dionysus] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-20 18:26:55,237][INFO ][env                      ] [Dionysus] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.8gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-20 18:26:55,237][INFO ][env                      ] [Dionysus] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-20 18:26:58,333][INFO ][node                     ] [Dionysus] initialized
+[2017-05-20 18:26:58,333][INFO ][node                     ] [Dionysus] starting ...
+[2017-05-20 18:26:58,616][INFO ][transport                ] [Dionysus] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-20 18:26:58,658][INFO ][discovery                ] [Dionysus] elasticsearch/h7czznfFRuaLNJrSYMC-Gw
+[2017-05-20 18:27:01,701][INFO ][cluster.service          ] [Dionysus] new_master {Dionysus}{h7czznfFRuaLNJrSYMC-Gw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-20 18:27:01,722][INFO ][http                     ] [Dionysus] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-20 18:27:01,723][INFO ][node                     ] [Dionysus] started
+[2017-05-20 18:27:02,154][INFO ][gateway                  ] [Dionysus] recovered [1] indices into cluster_state
+[2017-05-20 18:27:03,473][INFO ][cluster.routing.allocation] [Dionysus] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][1]] ...]).

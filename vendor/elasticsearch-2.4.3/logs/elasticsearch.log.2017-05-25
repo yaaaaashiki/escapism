@@ -1,0 +1,18 @@
+[2017-05-25 19:40:10,692][INFO ][node                     ] [Shadow-Hunter] version[2.4.3], pid[3487], build[d38a34e/2016-12-07T16:28:56Z]
+[2017-05-25 19:40:10,693][INFO ][node                     ] [Shadow-Hunter] initializing ...
+[2017-05-25 19:40:12,615][INFO ][plugins                  ] [Shadow-Hunter] modules [reindex, lang-expression, lang-groovy], plugins [analysis-kuromoji], sites []
+[2017-05-25 19:40:12,787][INFO ][env                      ] [Shadow-Hunter] using [1] data paths, mounts [[/home (/dev/sdb4)]], net usable_space [308.7gb], net total_space [328.8gb], spins? [possibly], types [ext4]
+[2017-05-25 19:40:12,787][INFO ][env                      ] [Shadow-Hunter] heap size [990.7mb], compressed ordinary object pointers [true]
+[2017-05-25 19:40:20,028][INFO ][node                     ] [Shadow-Hunter] initialized
+[2017-05-25 19:40:20,028][INFO ][node                     ] [Shadow-Hunter] starting ...
+[2017-05-25 19:40:20,483][INFO ][transport                ] [Shadow-Hunter] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2017-05-25 19:40:20,498][INFO ][discovery                ] [Shadow-Hunter] elasticsearch/GcCT1LvpThuTHglHQ4PBHw
+[2017-05-25 19:40:23,557][INFO ][cluster.service          ] [Shadow-Hunter] new_master {Shadow-Hunter}{GcCT1LvpThuTHglHQ4PBHw}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2017-05-25 19:40:23,602][INFO ][http                     ] [Shadow-Hunter] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2017-05-25 19:40:23,603][INFO ][node                     ] [Shadow-Hunter] started
+[2017-05-25 19:40:24,577][INFO ][gateway                  ] [Shadow-Hunter] recovered [1] indices into cluster_state
+[2017-05-25 19:40:27,641][INFO ][cluster.routing.allocation] [Shadow-Hunter] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[thesis_development][1], [thesis_development][1]] ...]).
+[2017-05-25 20:35:49,667][INFO ][node                     ] [Shadow-Hunter] stopping ...
+[2017-05-25 20:35:49,704][INFO ][node                     ] [Shadow-Hunter] stopped
+[2017-05-25 20:35:49,705][INFO ][node                     ] [Shadow-Hunter] closing ...
+[2017-05-25 20:35:49,709][INFO ][node                     ] [Shadow-Hunter] closed
