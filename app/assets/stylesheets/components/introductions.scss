@@ -160,6 +160,15 @@ body {
   display: none;
 }
 
+.background-wallpaper::before{
+  position: absolute;
+  width: 50%;
+  height: 400px;
+  filter: blur(2px);
+  -webkit-filter: blur(5px);
+  background-clip: content-box
+}
+
 
 
 
@@ -221,3 +230,34 @@ body {
   }
 }
 // ここまでカルーセル制御
+
+// スライドショー中の機能説明のためのクラス
+
+.carousel-caption {
+    position: absolute;
+    //top: 100px;
+    left: 130px;
+    width:40%;
+   height: 100%; 
+}
+
+.slide_h1 {
+    text-align: left;
+    color: beige;
+}
+
+.slide_p {
+    text-align: left;
+    color: beige;
+    font-size: 18px;
+}
+
+.slide_a {
+    color: beige;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.slide_a:link { color: beige; }
+.slide_a:visited { color: beige; }
+.slide_a:hover { color: #337ab7; }
+.slide_a:active { color: #337ab7; }

@@ -26,6 +26,9 @@ gem 'impressionist', '~> 1.5.1'
 # Term Frequency - Inverse Document Frequency in Ruby http://redwriteshere.com
 gem 'tf_idf'
 
+#template engine
+gem "slim"
+
 # Authentication
 # gem 'devise'
 # gem 'devise-i18n'

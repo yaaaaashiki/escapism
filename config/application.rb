@@ -24,6 +24,7 @@ module Escapism
     #when useing g command, make rspec file
     config.generators do |g|
       g.test_framework = "rspec"
+      g.template_engine :slim
       g.helper_specs = false
       g.view_specs = false
     end

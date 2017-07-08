@@ -7,6 +7,10 @@ class PathChecker
     self.common_thesis_path?(path) || self.martin_thesis_path?(path) || self.harada_thesis_path?(path) || self.sakuta_thesis_path?(path)
   end
 
+  def self.return_martin_labo_full_path(path)
+    path.gsub(/\.\//, "")
+  end
+
   private
 
     def self.common_thesis_path?(path)
@@ -14,7 +18,7 @@ class PathChecker
     end
 
     def self.martin_thesis_path?(path)
-      path.match(/.+_T\.pdf/)
+      path.match(/.+_[T|t]\.pdf/)
     end
 
     def self.harada_thesis_path?(path)

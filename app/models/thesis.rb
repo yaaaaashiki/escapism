@@ -95,6 +95,18 @@ class Thesis < ApplicationRecord
     @@LABO_THESIS_ROOT_DIRECTORY
   end
 
+  def self.LABO_2016_THESES
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2016theses')
+  end
+
+  def self.LABO_2015_THESES
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2015theses')
+  end
+
+  def self.LABO_2014_THESES
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2014theses')
+  end
+
   def self.SEARCH_BY_BODY
     @@SEARCH_BY_BODY
   end 

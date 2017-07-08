@@ -1,0 +1,28 @@
+h1
+  | 論文情報管理
+table
+  thead
+    tr
+      th
+        |  id 
+      th
+        |  タイトル 
+      th
+        |  執筆年度 
+      th
+        |  研究室ID 
+      th
+        |  著者ID 
+  tbody
+    - @theses.each do |thesis|
+      tr
+        td
+          = thesis.id
+        td
+          = link_to thesis.title, admin_thesis_path(thesis)
+        td
+          = thesis.year
+        td
+          = thesis.labo_id
+        td
+          = thesis.author_id
