@@ -3,7 +3,9 @@ require 'find'
 module FeaturesGetter
   def fetch(number_of_feature)
     thesis_wakati_array_per_labo = create_thesis_wakati_array_per_labo
+    puts 'calculating tf_idf par labo... '
     tf_idf_array_per_labo = create_tf_idf_array(thesis_wakati_array_per_labo)
+    puts 'extracting features par labo... '
     extract_labo_fatures(tf_idf_array_per_labo, number_of_feature)
   end
 
