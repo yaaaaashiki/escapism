@@ -96,15 +96,15 @@ class Thesis < ApplicationRecord
   end
 
   def self.LABO_2016_THESES
-    @@LABO_THESIS_ROOT_DIRECTORY.join('2016theses')
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2016theses').join('contents')
   end
 
   def self.LABO_2015_THESES
-    @@LABO_THESIS_ROOT_DIRECTORY.join('2015theses')
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2015theses').join('contents')
   end
 
   def self.LABO_2014_THESES
-    @@LABO_THESIS_ROOT_DIRECTORY.join('2014theses')
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2014theses').join('contents')
   end
 
   def self.SEARCH_BY_BODY
@@ -120,7 +120,7 @@ class Thesis < ApplicationRecord
   end 
 
   def belongs_to_martin_labo?
-    url.include?("duerst")
+    url.include?("durst")
   end
 
   def belongs_to_harada_labo?
