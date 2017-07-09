@@ -26,13 +26,12 @@ class_mapping = {label:idx for idx, label in enumerate(np.unique(thesis_data['la
 inv_class_mapping = {v: k for k, v in class_mapping.items()}
 thesis_data['labName'] = thesis_data['labName'].map(class_mapping)
 
-tagger = MeCab.Tagger("-Owakati")
+tagger = MeCab.Tagger("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd -Owakati")
 for i in range(len(thesis_data['text'])):
   thesis_data['text'].values[i] = tagger.parse(thesis_data['text'].values[i])
 
 thesis_data['text'] = thesis_data['text'].apply(preprocesor)
 
-# サンプル数196 train:test= 7:3 -> 138, 8:2 -> 164
 thesis_data = thesis_data.reindex(np.random.permutation(thesis_data.index))
 X_train = thesis_data.loc[:, 'text'].values
 Y_train = thesis_data.loc[:, 'labName'].values
@@ -48,6 +47,7 @@ parameters = {'clf__alpha': (1e-1, 1e-2, 1e-3),}
 
 gs_clf = GridSearchCV(text_clf, parameters, n_jobs=-1)
 
+print('creating classifire ...')
 gs_clf = gs_clf.fit(X_train, Y_train)
 
 clf = gs_clf.best_estimator_
@@ -67,3 +67,5 @@ pickle.dump(clf,
 pickle.dump(inv_class_mapping,
             open(os.path.join(dest, 'inv_class_mapping.pkl'), 'wb'),
             protocol=4)
+
+print('created!!')
