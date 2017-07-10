@@ -15,6 +15,7 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator, HTMLConverter, TextConverter
 from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 from pdfminer.pdfparser import PDFParser, PDFDocument
+from subprocess import Popen, PIPE
 
 
 BACHELOR = '''<div\s.+?><span\s.+?>[1-9][. ].*</span><span\s.+?>.+?\n<br></span></div>'''
@@ -24,6 +25,7 @@ MASTER_ID = '''：.+?(\d{8}).+?\n'''
 FOOTER = '''<div\s.+>(<span\s.+>[1-9]\s</span><span\s.+>(.|\n)+</span>)+</div>'''
 THESIS_DIR = '''../../thesis_data/ignore/'''
 TEACHER_NAME = ['原田実','Martin','小宮山摂','ロペズ','大原剛三','佐久田博司','鷲見和彦','戸辺義人']
+MeCab_DIR = '''echo `mecab-config --dicdir`"/mecab-ipadic-neologd"'''
 
 
 class AbstractableDoc(metaclass=ABCMeta):
@@ -199,7 +201,11 @@ class TextMining(metaclass=ABCMeta):
             形態素解析対象となる文字列。
 
         '''
-        mt = MeCab.Tagger("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd -Owakati")
+        terminal = Popen(MeCab_DIR, stdout=PIPE, stdin=PIPE, shell=True)
+        path_data, dummy = terminal.communicate()
+        str_data = path_data.decode('utf-8')
+        data = re.sub('\n','',str_data)
+        mt = MeCab.Tagger("-d " + data + " -Owakati")
         wordlist = mt.parse(data)
         self.token = wordlist.rstrip(" \n").split(" ")
 
