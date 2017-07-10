@@ -33,7 +33,6 @@ class Thesis < ApplicationRecord
   @@SEARCH_BY_TITLE = "1"
 
   @@LABO_THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data/ignore')
-  @@YHESIS_DIRECTORY_PAR_YEAR = %w[2014theses 2015theses 2016theses]
   index_name "thesis_#{Rails.env}"
   settings do
     mappings dynamic: 'false' do
@@ -96,15 +95,15 @@ class Thesis < ApplicationRecord
   end
 
   def self.LABO_2016_THESES
-    @@LABO_THESIS_ROOT_DIRECTORY.join('2016theses').join('contents')
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2016theses')
   end
 
   def self.LABO_2015_THESES
-    @@LABO_THESIS_ROOT_DIRECTORY.join('2015theses').join('contents')
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2015theses')
   end
 
   def self.LABO_2014_THESES
-    @@LABO_THESIS_ROOT_DIRECTORY.join('2014theses').join('contents')
+    @@LABO_THESIS_ROOT_DIRECTORY.join('2014theses')
   end
 
   def self.SEARCH_BY_BODY
@@ -115,12 +114,8 @@ class Thesis < ApplicationRecord
     @@SEARCH_BY_TITLE
   end
 
-  def self.YHESIS_DIRECTORY_PAR_YEAR
-    @@YHESIS_DIRECTORY_PAR_YEAR
-  end 
-
   def belongs_to_martin_labo?
-    url.include?("durst")
+    url.include?("duerst")
   end
 
   def belongs_to_harada_labo?

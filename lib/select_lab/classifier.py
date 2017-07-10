@@ -13,7 +13,7 @@ def preprocesor(text):
   return re.sub('[\W]+', ' ', text)
 
 def vectorize(texts):
-  tagger = MeCab.Tagger("-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd -Owakati")
+  tagger = MeCab.Tagger("-Owakati")
   for i in range(len(texts.values)):
     texts.values[i] = tagger.parse(texts.values[i])
   
