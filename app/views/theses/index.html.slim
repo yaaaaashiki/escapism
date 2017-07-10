@@ -1,0 +1,22 @@
+.container-fluid.fade-in
+  section#searchpage.fadeout.col-sm-9.col-xm-9
+    = render 'search_form'
+    - if @theses
+      = page_entries_info @theses, entry_name: Thesis.name
+      - @theses.each do |t|
+        .col-sm-offset-1.col-xs-offset-1
+          .page-header.width
+            h4
+              = t.year
+              span[style="margin-right: 100px;"]
+              = @author.find(t.author_id).name
+              span[style="margin-right: 100px;"]
+              = @labos.find(t.labo_id).name
+            h4
+              = link_to(t.title, thesis_path(t.id))
+          p.text-muted.search_summary
+            small
+              = t.summary
+      = paginate @theses
+  aside#right-nav-container.col-sm-3.col-xm-3
+    = render "sideber"

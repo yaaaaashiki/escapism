@@ -1,0 +1,54 @@
+@import "components/color";
+
+body {
+
+  .search-form{
+    position: relative; 
+    width: 100%;
+  }
+
+  .centerContents{
+    position: relative; 
+    width: 100%;
+    height:1000px;
+  }
+
+  #searchpage{
+   .page-header {
+      color: $goldenYellow;
+    }
+    .width {
+      width: 80%;
+    }
+    .textarea {
+      width: 100%;
+    }
+    .button {
+      background-color: transparent;
+      border: 2px solid $fog;
+      color: black;
+      width: 100%;
+      height: 34px;
+    }
+    .button:hover{
+      background-color: rgba(255, 255, 255, .2);
+    }
+    .search_summary{
+      overflow: hidden;
+      height: 4em;
+    }
+  }
+
+  #right-nav-container{
+    color: $goldenYellow;
+
+    .ranking{
+      font-size: 20px;
+      color: black;
+    }
+    .access, .thesis-title, .author, .labo-name{
+      font-size: 18px;
+      color: black;
+    }
+  }
+}

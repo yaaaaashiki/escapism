@@ -1,0 +1,61 @@
+$margin: 20px;
+$padding: 20px;
+
+.step-images {
+  text-align: center;
+  margin: 30px;
+  padding: $padding;
+}
+
+.form-setting {
+  $margin-form: 160px;
+  text-align: center;
+  background-color: rgba(255, 108, 0, 0.5);
+  border: 2px solid #f7f5f3;
+  box-shadow: 0 0 0 2px #ffd000;
+  color: black;
+  font-weight: bold;
+  margin-left: $margin-form;
+  margin-right: $margin-form;
+  padding: 20px;
+}
+
+.h2 {
+  display: inline-block;
+  color:white;
+}
+
+.test {
+  margin: $margin;
+  padding: $padding;
+}
+
+.text-field {
+  margin: $margin;
+  position: relative;
+}
+
+.button {
+  border-style: none;
+  background-color: #ff8c00;
+  color: #fff;
+}
+.button:hover {
+  background-color: #fff;
+  color: #ff8c00;
+  text-decoration: underline;
+}
+
+/* user registration */
+.h1 {
+  display: inline-block;
+  color:white;
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+
+.select-box {
+  margin: $margin;
+  position: relative;
+}
+

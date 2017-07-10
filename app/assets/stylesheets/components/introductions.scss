@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+body {
+  background: image-url("bg1.jpeg") fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#pageContents{
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: "MS PGothic", "Osaka", Arial, sans-serif;
+}
+
+.titleContent {
+  padding-top: 160px;
+  padding-bottom: 160px;
+  width: 100%;
+}
+
+.content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+}
+
+.container {
+  padding-left: 60px;
+}
+
+.image-caption{
+  position: relative;
+  height: 75px;
+}
+
+.icons{
+  position: relative;
+  height: 165px;
+  top: 10%; 
+  padding-left: 0px;
+  width: 100%;
+  margin-bottom: 0px;
+  li {
+    display: inline;
+  }
+}
+
+.icon-wrapper{
+  position: absolute;
+  width: 12%;
+  height: auto;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.recommend{
+  left: 12%;
+}
+
+.search{
+  left: 32%;
+}
+
+.comment{
+  left: 52%;
+}
+
+.cinii{
+  left: 72%;
+}
+
+.odd{
+  top: 15%;
+}
+
+.even{
+}
+
+.position{
+  position: absolute;
+  top: 320px;
+  right: 60px;
+}
+
+.laboName{
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+}
+
+.border-width{
+  border-bottom: solid 3px coral;
+}
+
+.laboProfessor {
+  font-size: 20px;
+}
+
+.laboKeyword {
+  margin-top: 30px;
+}
+
+.laboInfo {
+  font-size: 20px;
+}
+
+.navbar{
+  border: none;
+  opacity: 0.7;
+  margin: 0;
+  height: 100px;
+  padding-top: 30px;
+}
+
+.nav{
+  font-size: 20px;
+}
+
+.navbar-brand{
+  font-size: 30px;
+}
+
+.transparent-back {
+  color: #333;
+}
+
+.white-back {
+  background-color: rgba(45, 45, 45, 0.21);
+  color: #fff;
+}
+
+.black-back {
+  background-color: rgba(0, 3, 4, 0.58);
+  color: #fff;
+}
+
+.image-back {
+  position: relative;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  height: 300px;
+}
+
+.image-width {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  top: 0px;
+  height: 90%;
+}
+
+.image-content {
+  padding-top: 40px;
+  width: 100%;
+  height: 400px;
+}
+
+.mouseover_img {
+  display: none;
+}
+
+.background-wallpaper::before{
+  position: absolute;
+  width: 50%;
+  height: 400px;
+  filter: blur(2px);
+  -webkit-filter: blur(5px);
+  background-clip: content-box
+}
+
+
+
+
+/* スクロールでフェードイン */
+/* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
+.fade-in-down {
+ -webkit-animation-fill-mode: both;
+ -ms-animation-fill-mode:     both;
+ animation-fill-mode:         both;
+ -webkit-animation-duration: 1s;
+ -ms-animation-duration:     1s;
+ animation-duration:         1s;
+ -webkit-animation-name: fade-in-down;
+ animation-name:         fade-in-down;
+ visibility: visible !important;
+}
+
+@-webkit-keyframes fade-in-down {
+ 0%   { opacity: 0; -webkit-transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+ 0%   { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0);     -ms-transform: translateY(0);     transform: translateY(0); }
+}
+/* ここまでスクロールでフェードイン */
+
+// カルーセル制御
+.carousel{
+  height: 200px;
+  margin:auto;
+
+  .item {
+    height: 100%;
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+  }
+}
+
+@media (min-width: 320px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:200px;
+  }
+}
+// 下のheightをいじることで表示領域を変更できる
+@media (min-width: 768px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:400px;
+  }
+}
+// ここまでカルーセル制御
+
+// スライドショー中の機能説明のためのクラス
+
+.carousel-caption {
+    position: absolute;
+    //top: 100px;
+    left: 130px;
+    width:40%;
+   height: 100%; 
+}
+
+.slide_h1 {
+    text-align: left;
+    color: beige;
+}
+
+.slide_p {
+    text-align: left;
+    color: beige;
+    font-size: 18px;
+}
+
+.slide_a {
+    color: beige;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.slide_a:link { color: beige; }
+.slide_a:visited { color: beige; }
+.slide_a:hover { color: #337ab7; }
+.slide_a:active { color: #337ab7; }

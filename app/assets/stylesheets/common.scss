@@ -1,0 +1,190 @@
+$fade_time: .8s;
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity $fade_time ease;
+}
+
+.fade-in::after {
+  opacity: 0;
+  transition: opacity $fade_time ease;
+}
+
+.fade-out::after {
+  opacity: 1;
+}
+
+.red{
+  color: red;
+}
+
+.blue{
+  color: blue;
+}
+
+.skyblue{
+  color: skyblue;
+}
+
+.orange{
+  color: darkorange;
+}
+
+.coral{
+  color: coral;
+}
+
+.gray{
+  color: #333;
+}
+
+.white{
+  color: white;
+}
+
+.background-red{
+  color: red;
+  background-color: red;
+}
+
+.bottom-border{
+  border-bottom: solid 3px
+}
+
+.bottom-border-orange{
+  border-bottom: solid 3px darkorange
+}
+
+.font-size-10{
+  font-size: 10px;
+}
+
+.font-size-12{
+  font-size: 12px;
+}
+
+.font-size-14{
+  font-size: 14px;
+}
+
+.font-size-16{
+  font-size: 16px;
+}
+
+.font-size-20{
+  font-size: 20px;
+}
+
+.font-size-24{
+  font-size: 24px;
+}
+
+.font-size-25{
+  font-size: 25px;
+}
+
+.font-size-26{
+  font-size: 26px;
+}
+
+.font-size-30{
+  font-size: 30px;
+}
+
+.font-size-35{
+  font-size: 35px;
+}
+
+.font-size-40{
+  font-size: 40px;
+}
+
+.font-size-45{
+  font-size: 45px;
+}
+
+.font-size-50{
+  font-size: 50px;
+}
+
+.font-size-60{
+  font-size: 60px;
+}
+
+.font-size-80{
+  font-size: 80px;
+}
+
+.font-size-125{
+  font-size: 125px;
+}
+
+.clear-margin{
+  margin: 0;
+}
+
+.mar-to-100 {
+  margin-top: 100px;
+}
+
+.mar-ri-20 {
+  margin-right: 20px;
+}
+
+.mar-bo-30 {
+  margin-bottom: 30px;
+}
+
+.mar-bo-30 {
+  margin-bottom: 30px;
+}
+
+.pad-top-30 {
+  padding-top: 20px;
+}
+
+.pad-le-5 {
+  padding-left: 5px;
+}
+
+.pad-le-20 {
+  padding-left: 20px;
+}
+
+.pad-le-30 {
+  padding-left: 30px;
+}
+
+.pad-le-40 {
+  padding-left: 40px;
+}
+
+.pad-le-60 {
+  padding-left: 60px;
+}
+
+.pad-le-90 {
+  padding-left: 90px;
+}
+
+.pos-bot-5 {
+  bottom: 5px;
+}
+
+.pos-bot-10 {
+  bottom: 10px;
+}
+
+.underLine {
+// background: linear-gradient(transparent 70%, darkorange 70%);
+  border-bottom: solid 3px darkorange;
+}
