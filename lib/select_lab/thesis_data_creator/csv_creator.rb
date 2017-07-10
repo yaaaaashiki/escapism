@@ -10,16 +10,15 @@ module CSVCreator
     
     file.puts('text,labName')
 
-    # 以下の配列は論文がまとめられているディレクトリ名に対応
-    # 例) /thesis_data/ignore/labName[0]以下にduerst研の論文がある
-    labNames = %w(duerst harada komiyama lopez ohara sakuta sumi tobe) # yamaguchi)
-    labNames.each do |labName|
-      labDir = Rails.root.join('thesis_data/ignore/' + labName)
-      Find.find(labDir) do |path|
-        if path =~ /.*\.pdf/
-          data = ThesisData.new(path, labName)
-          file.puts(data.text + "," + data.labName)
-          puts('have written: ' + path)
+    Thesis.YHESIS_DIRECTORY_PAR_YEAR.each do |year|
+      Labo.ARRAY_LABO_DIRECTORY_NAMES.each do |labName|
+        labDir = Thesis.LABO_THESIS_ROOT_DIRECTORY.join(year, 'contents', labName)
+        Find.find(labDir) do |path|
+          if path =~ /.*\.pdf/
+            data = ThesisData.new(path, labName)
+            file.puts(data.text + "," + data.labName)
+            puts('have written: ' + path)
+          end
         end
       end
     end
