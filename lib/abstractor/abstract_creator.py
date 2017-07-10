@@ -10,7 +10,7 @@ import re
 import sys
 from time import sleep
 from abc import ABCMeta, abstractmethod
-from PyPDF2 import PdfFileWriter, PdfFileReader
+# from PyPDF2 import PdfFileWriter, PdfFileReader
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import PDFPageAggregator, HTMLConverter, TextConverter
 from pdfminer.layout import LAParams, LTTextBox, LTTextLine
@@ -470,8 +470,8 @@ def copy_list_into_dir(file_list,dir_path):
         num += 1
 
 
-def convert_pdf_to_html(path):
-    fp = open(path, 'rb')
+def convert_pdf_to_html(thesis_path,temp_path):
+    fp = open(thesis_path, 'rb')
     parser = PDFParser(fp)
     doc = PDFDocument()
     parser.set_document(doc)
@@ -479,7 +479,7 @@ def convert_pdf_to_html(path):
     doc.initialize('')
     rsrcmgr = PDFResourceManager()
     laparams = LAParams()
-    outfp = io.open('temp.html', 'wt', encoding='utf-8', errors='ignore')
+    outfp = io.open(temp_path, 'wt', encoding='utf-8', errors='ignore')
     # device = PDFPageAggregator(rsrcmgr, laparams=laparams)
     device = HTMLConverter(rsrcmgr, outfp, scale=1, layoutmode='normal',laparams=laparams, showpageno=False)
     interpreter = PDFPageInterpreter(rsrcmgr, device)
@@ -519,7 +519,8 @@ def convert_pdf_to_txt(path):
 
 
 def main(thesis):
-    # fdir = os.getcwd()
+    cdir = os.getcwd()
+    temp_path = cdir + '/temp.html'
     # os.chdir(THESIS_DIR)
     # file_list = glob.glob('**/*.pdf',recursive=True)
 
@@ -606,8 +607,8 @@ def main(thesis):
         # d = {'id':sid, 'name':name, 'abstract':abstract, 'directory':thesis}
         # instance = pd.DataFrame(d,columns=['id','name','abstract','directory'],index=[0])
         # database = database.append(instance,ignore_index=True)
-    convert_pdf_to_html(thesis)
-    html = open('temp.html','r')
+    convert_pdf_to_html(thesis,temp_path)
+    html = open(temp_path,'r')
     document = html.read()
     html.close()
     result = []
@@ -651,7 +652,7 @@ def main(thesis):
 
     else:
         sys.exit()
-    os.remove('temp.html')
+    os.remove(temp_path)
     if len(result) == 0:
         text = convert_pdf_to_txt(thesis)
         # print(text)
