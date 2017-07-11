@@ -2,4 +2,5 @@
   .ciniiResult
     - @results.compact.each do |result|
       .font-size-10
-        = link_to result["title"], "#{result["url"]}"
+        = link_to result["title"] , "#{result["url"]}"
+        = result["author"]

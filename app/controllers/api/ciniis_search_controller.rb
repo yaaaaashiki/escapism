@@ -16,9 +16,10 @@ class Api::CiniisSearchController < ApplicationController
     data = [] 
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
       title = article.at_css('div > dl > dt > a').text.strip
+      title = article.at_css('div > dl > dt > a').text.strip.gsub(/\<(:?\/)?b\>/, "") if title.include?("<b>")
       url = "http://ci.nii.ac.jp" + article.at_css('div > dl > dt > a')[:href]
-      author = article.at_css('p.item_subData.item_authordata')
-      author.text.gsub(/(\s|\t)+/, '') unless author.nil?
+      author = article.at_css('dd > p:first').children.to_s.strip
+      author.gsub(/(\s|\t)+/, '') unless author.nil?
       data[i] = {
         "title": title,
         "url": url,
