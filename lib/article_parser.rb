@@ -1,13 +1,22 @@
 class ArticleParser
     def self.return_title(element)
-      element.include?("<b>") ? remove_bold_tag(extract_title(element)) : extract_title(element)
+      title = extract_title(element)
+      title.include?("<b>") ? remove_bold_tag(title) : title
     end
 
     def self.extract_title(element)
       element.at_css('div > dl > dt > a').text.strip
     end
 
-    def self.remove_bold_tag(element)
-      element.text.strip.gsub(/\<(:?\/)?b\>/, "")
+    def self.remove_bold_tag(title)
+      title.strip.gsub(/\<(:?\/)?b\>/, "")
+    end
+
+    def self.return_url(element)
+      "http://ci.nii.ac.jp" + extract_url(element)
+    end
+
+    def self.extract_url(element)
+      element.at_css('div > dl > dt > a')[:href]
     end
 end

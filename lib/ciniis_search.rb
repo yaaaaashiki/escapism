@@ -16,7 +16,7 @@ class CiniisSearch
     data = [] 
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
       title = ArticleParser.return_title(article)
-      url = "http://ci.nii.ac.jp" + article.at_css('div > dl > dt > a')[:href]
+      url = ArticleParser.return_url(article) 
       author = article.at_css('dd > p:first').children.to_s.strip
       author.gsub(/(\s|\t)+/, '') unless author.nil?
       data[i] = {
