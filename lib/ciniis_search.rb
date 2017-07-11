@@ -17,8 +17,7 @@ class CiniisSearch
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
       title = ArticleParser.return_title(article)
       url = ArticleParser.return_url(article) 
-      author = article.at_css('dd > p:first').children.to_s.strip
-      author.gsub(/(\s|\t)+/, '') unless author.nil?
+      author = ArticleParser.return_author(article) 
       data[i] = {
         "title": title,
         "url": url,

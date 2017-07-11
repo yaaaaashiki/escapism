@@ -19,4 +19,13 @@ class ArticleParser
     def self.extract_url(element)
       element.at_css('div > dl > dt > a')[:href]
     end
+  
+    def self.return_author(element)
+      author = extract_author(element)  
+      author.nil? ? author : author.gsub(/(\s|\t)+/, '')
+    end
+
+    def self.extract_author(element)
+      element.at_css('dd > p:first').children.to_s.strip
+    end
 end
