@@ -202,3 +202,6 @@ build-iPhoneSimulator/
 .python-version
 
 /config/database.yml
+
+lib/select_lab/lab_classifier/pkl_objects/classifier.pkl
+lib/select_lab/lab_classifier

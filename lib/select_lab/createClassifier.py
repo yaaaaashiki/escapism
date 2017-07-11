@@ -48,6 +48,7 @@ parameters = {'clf__alpha': (1e-1, 1e-2, 1e-3),}
 
 gs_clf = GridSearchCV(text_clf, parameters, n_jobs=-1)
 
+print('creating classifire ...')
 gs_clf = gs_clf.fit(X_train, Y_train)
 
 clf = gs_clf.best_estimator_
@@ -67,3 +68,5 @@ pickle.dump(clf,
 pickle.dump(inv_class_mapping,
             open(os.path.join(dest, 'inv_class_mapping.pkl'), 'wb'),
             protocol=4)
+
+print('created!!')
