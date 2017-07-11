@@ -33,7 +33,7 @@ class CiniisController < ApplicationController
     end
 
     def create_results(array)
-      json = Api::CiniisSearchController.create_json(array)
+      json = CiniisSearch.create_json(array)
       parse_json(json)
     end
 end
