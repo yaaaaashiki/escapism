@@ -15,8 +15,8 @@ class Api::CiniisSearchController < ApplicationController
   def self.scraping(html)
     data = [] 
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
-      title = article.at_css('div > dl > dt > a').text.strip
-      title = article.at_css('div > dl > dt > a').text.strip.gsub(/\<(:?\/)?b\>/, "") if title.include?("<b>")
+      title = extract_title(article)
+      title = remove_bold_tag(title) if title.include?("<b>")
       url = "http://ci.nii.ac.jp" + article.at_css('div > dl > dt > a')[:href]
       author = article.at_css('dd > p:first').children.to_s.strip
       author.gsub(/(\s|\t)+/, '') unless author.nil?
@@ -35,6 +35,15 @@ class Api::CiniisSearchController < ApplicationController
     html = crawling(url_encoding(keyword))
     scraping(html)
   end
+  private
+
+    def self.extract_title(element)
+      element.at_css('div > dl > dt > a').text.strip
+    end
+
+    def self.remove_bold_tag(element)
+      element.text.strip.gsub(/\<(:?\/)?b\>/, "")
+    end
 end
 
 # テスト
