@@ -15,15 +15,8 @@ class CiniisSearch
   def self.scraping(html)
     data = [] 
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
-      title = ArticleParser.return_title(article)
-      url = ArticleParser.return_url(article) 
-      author = ArticleParser.return_author(article) 
-      data[i] = {
-        "title": title,
-        "url": url,
-        "author": author,
-      }
-    end
+      data[i] = ArticleParser.return_data(article)
+   end
     data.to_json
   end
   

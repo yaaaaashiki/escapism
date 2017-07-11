@@ -1,4 +1,15 @@
 class ArticleParser
+
+  def self.return_data(article)
+    data = {
+      "title": return_title(article),
+      "url": return_url(article) ,
+      "author": return_author(article),
+    }
+  end
+
+  private
+
     def self.return_title(element)
       title = extract_title(element)
       title.include?("<b>") ? remove_bold_tag(title) : title
