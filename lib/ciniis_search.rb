@@ -4,7 +4,7 @@ require 'open-uri'
 class CiniisSearch
   def self.url_encoding(keyword)
     # TODO: start=0で始めるかstart=変数にするかどうか検討が必要
-    URI.escape("http://ci.nii.ac.jp/search?q=#{keyword}&range=0&count=20&sortorder=1&type=0")
+    URI.escape("http://ci.nii.ac.jp/search?q=#{keyword}&range=0&count=5&sortorder=1&type=0")
   end
   
   def self.crawling(url)
