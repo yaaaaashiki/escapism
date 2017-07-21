@@ -22,9 +22,9 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #new" do
     context "exist Token in database" do
-      let(:token) { create(:token) }
-
-      before do 
+      before do
+        let(:token) { create(:token) }
+        binding.pry
         get :new, params: {token: token.token}
       end
 

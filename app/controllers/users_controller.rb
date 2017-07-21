@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:index, :new, :create]
-#  before_action :token_exists?, only:[:new]
+  before_action :token_exists?, only:[:new]
 
   def index
   end
