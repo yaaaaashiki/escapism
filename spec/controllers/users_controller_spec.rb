@@ -17,13 +17,12 @@ RSpec.describe UsersController, type: :controller do
  end
 
   describe "GET #new" do
-    context "exist Token in database" do
-      before do
-        let(:token) { create(:token) }
-        binding.pry
-        get :new, params: {token: token.token}
-      end
+    let(:token) { create(:token, mail_address_id: 3) }
+    before do
+      get :new, params: {token: token.token}
+    end
 
+    context "exist Token in database" do
       it "returns http redirect" do
         expect(response).to have_http_status(:redirect)
       end
