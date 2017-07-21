@@ -14,11 +14,7 @@ RSpec.describe UsersController, type: :controller do
     it "renders the index templete" do
       expect(response).to render_template(:index)
     end
-
-    it "assign true into @bookBack" do
-      expect(assigns(:bookBack)).to be true
-    end
-  end
+ end
 
   describe "GET #new" do
     context "exist Token in database" do
