@@ -23,6 +23,7 @@ FactoryGirl.define do
     username "user1"
     year 2016
     email "yaaaaaakishi@gmail.com"
+    labo 1
     salt "asdasdastr4325234324sdfds"
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
   end
@@ -30,6 +31,7 @@ FactoryGirl.define do
   factory :no_name_user, class: User do
     year 2016
     email "noname@gmail.com"
+    labo 2
     salt "asdasdastr4325234324sdfds"
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
   end
@@ -37,6 +39,16 @@ FactoryGirl.define do
   factory :no_mail_user, class: User do
     username "nomailuser"
     year 2016
+    labo 3
+    salt "asdasdastr4325234324sdfds"
+    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+  end
+
+  factory :it_aoyama_user, class: User do
+    username "it_aoyama_user"
+    year 2016
+    email "c5617146@aoyama.com"
+    labo 2
     salt "asdasdastr4325234324sdfds"
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
   end
