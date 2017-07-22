@@ -205,3 +205,6 @@ build-iPhoneSimulator/
 
 lib/select_lab/lab_classifier/pkl_objects/classifier.pkl
 lib/select_lab/lab_classifier
+
+# virtualenv
+venv
