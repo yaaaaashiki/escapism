@@ -13,8 +13,6 @@ class MailAddress < ApplicationRecord
   validate :address_form
   validate :aoyama_address
   
-#production 環境では上記正規表現. develop は作業用にバリなしで
-
   has_many :tokens
 
   def blank_address
