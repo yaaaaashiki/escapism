@@ -36,7 +36,7 @@ RSpec.describe SessionsController, type: :controller do
 
     context "login failed" do
       context "no database user" do
-        let(:it_aoyama_user) {build(:it_aoyama_user)}
+        let!(:it_aoyama_user) {build(:it_aoyama_user)}
         before do
           @it_aoyama_user_hash = attributes_for(:it_aoyama_user)
         end
@@ -53,7 +53,7 @@ RSpec.describe SessionsController, type: :controller do
       end
 
       context "database user" do
-        let(:it_aoyama_user) {create(:it_aoyama_user)}
+        let!(:it_aoyama_user) {create(:it_aoyama_user)}
         context "only input user name" do
           before do
             @user_hash_except_password = attributes_for(:it_aoyama_user)
@@ -72,7 +72,7 @@ RSpec.describe SessionsController, type: :controller do
         end
 
         context "only input password" do
-          let(:it_aoyama_user) {create(:it_aoyama_user)}
+          let!(:it_aoyama_user) {create(:it_aoyama_user)}
           before do
             @user_hash_except_username = attributes_for(:it_aoyama_user)
             @user_hash_except_username.delete(:username)
