@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :mail_address do
-    address "MyString"
+    address "c5617146@aoyama.jp"
   end
 end
