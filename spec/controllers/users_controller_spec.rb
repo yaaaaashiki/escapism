@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-
-
-
-  describe "GET #new" do
+ describe "GET #new" do
     let(:user) {create(:it_aoyama_user)}
     let!(:mail) {create(:mail_address)}
    
