@@ -15,14 +15,13 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "Post #create" do
     context "login success" do
-      let(:it_aoyama_user) {create(:it_aoyama_user)}
+      let!(:it_aoyama_user) {create(:it_aoyama_user)}
 
       context "it_aoyama_user" do
         before do
           @it_aoyama_user_hash = attributes_for(:it_aoyama_user)
         end
 
-######################↓↓↓↓↓↓↓↓↓↓要修正↓↓↓↓↓↓↓↓↓↓###############################
         it "returns http success" do
           post :create, params: {session: @it_aoyama_user_hash}
           expect(response).to have_http_status(:redirect)
@@ -32,8 +31,6 @@ RSpec.describe SessionsController, type: :controller do
           post :create, params: {session: @it_aoyama_user_hash}
           expect(response).to redirect_to(theses_path)
         end
-#######################↑↑↑↑↑↑↑↑↑↑要修正↑↑↑↑↑↑↑↑↑↑###############################
-
       end
     end
 

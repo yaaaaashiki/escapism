@@ -64,13 +64,13 @@ RSpec.describe UsersController, type: :controller do
 
 
 #######################↓↓↓↓↓↓↓↓↓↓要修正↓↓↓↓↓↓↓↓↓↓###############################
-      xit "returns http redirect" do
+      it "returns http redirect" do
         post :create, params: {user: @it_aoyama_user_hash}
         #success ?? redirect???
         expect(response).to have_http_status(:redirect)
       end
 
-      xit "redirect to users_url" do
+      it "redirect to users_url" do
         post :create, params: {user: @it_aoyama_user_hash}
         expect(response).to redirect_to(users_path)
       end

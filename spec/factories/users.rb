@@ -50,6 +50,6 @@ FactoryGirl.define do
     email "c5617146@aoyama.com"
     labo 2
     salt "asdasdastr4325234324sdfds"
-    crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+    password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
   end
 end
