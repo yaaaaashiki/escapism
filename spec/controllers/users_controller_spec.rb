@@ -43,7 +43,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "POST #create" do
     context "new user saved" do
-      let(:it_aoyama_user) {create(:it_aoyama_user)}
+      let(:it_aoyama_user) {build(:it_aoyama_user)}
       let!(:mail) {create(:mail_address)}
       let(:token) {create(:token)}
 

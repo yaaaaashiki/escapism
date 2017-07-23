@@ -69,3 +69,5 @@ bundle exec rails db:migrate:reset RAILS_ENV=test
 ```
 bundle exec rails spec 
 ```
+サーバサイド変更時にはテストが通ることを確認、またはテスト更新後コミットしてください
+
