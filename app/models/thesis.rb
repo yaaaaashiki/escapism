@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  body       :text(4294967295)
+#  summary    :text(65535)
 #  title      :text(65535)
 #  url        :text(65535)
 #  year       :integer
@@ -39,6 +40,7 @@ class Thesis < ApplicationRecord
     mappings dynamic: 'false' do
       indexes :id, index: 'not_analyzed'
       indexes :body, analyzer: 'kuromoji'
+      indexes :summary, index: 'not_analyzed'
       indexes :title, analyzer: 'kuromoji'
       indexes :url, index: 'not_analyzed'
       indexes :year, index: 'not_analyzed'
@@ -50,7 +52,7 @@ class Thesis < ApplicationRecord
   def as_indexed_json(options = {})
     attributes
       .symbolize_keys
-      .slice(:id, :body, :title, :url, :year, :labo_id, :author_id)
+      .slice(:id, :body, :summary, :title, :url, :year, :labo_id, :author_id)
   end
 
   def self.search_by_keyword(keyword, labo_id, field)

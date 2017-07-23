@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170606125027) do
 
   create_table "theses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.text     "body",       limit: 4294967295
+    t.text     "summary",    limit: 65535
     t.text     "title",      limit: 65535
     t.text     "url",        limit: 65535
     t.integer  "year"
