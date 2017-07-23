@@ -1,7 +1,8 @@
 class ArticleParser
 
-  def self.return_data(article)
+  def self.return_data(article, id)
     data = {
+      "id": id,
       "title": return_title(article),
       "url": return_url(article) ,
       "author": return_author(article),
