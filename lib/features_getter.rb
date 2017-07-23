@@ -3,7 +3,9 @@ require 'find'
 module FeaturesGetter
   def fetch(number_of_feature)
     thesis_wakati_array_per_labo = create_thesis_wakati_array_per_labo
+    puts 'calculating tf_idf par labo... '
     tf_idf_array_per_labo = create_tf_idf_array(thesis_wakati_array_per_labo)
+    puts 'extracting features par labo... '
     extract_labo_fatures(tf_idf_array_per_labo, number_of_feature)
   end
 
@@ -18,16 +20,17 @@ module FeaturesGetter
   end
   
   def create_labo_thesis_wakati_array(labo_name)
-    labo_dir = Thesis.LABO_THESIS_ROOT_DIRECTORY.join(labo_name)
     labo_thesis_wakati_array = []
-    Find.find(labo_dir) do |path|
-      if path =~ /.*\.pdf/
-        thesis_wakati_array = create_wakati_array(path)
-        labo_thesis_wakati_array.concat(thesis_wakati_array)
-        puts 'have read: ' + path 
+    Thesis.YHESIS_DIRECTORY_PAR_YEAR.each do |year|
+      labo_dir = Thesis.LABO_THESIS_ROOT_DIRECTORY.join(year, 'contents', labo_name)
+      Find.find(labo_dir) do |path|
+        if path =~ /.*\.pdf/
+          thesis_wakati_array = create_wakati_array(path)
+          labo_thesis_wakati_array.concat(thesis_wakati_array)		
+          puts 'have read: ' + path 		
+        end
       end
-    end
-
+    end    
     labo_thesis_wakati_array
   end
 

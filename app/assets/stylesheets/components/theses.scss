@@ -16,6 +16,9 @@ body {
   #searchpage{
    .page-header {
       color: $goldenYellow;
+      padding-bottom: 0px;
+      margin-bottom: 12px;
+      margin-top: 70px;
     }
     .width {
       width: 80%;
@@ -43,11 +46,11 @@ body {
     color: $goldenYellow;
 
     .ranking{
-      font-size: 20px;
+      font-size: 18px;
       color: black;
     }
     .access, .thesis-title, .author, .labo-name{
-      font-size: 18px;
+      font-size: 16px;
       color: black;
     }
   }

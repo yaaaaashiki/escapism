@@ -1,5 +1,14 @@
 - if @results
   .ciniiResult
+    .font-size-20
+      | 検索結果
+    br
     - @results.compact.each do |result|
-      .font-size-10
-        = link_to result["title"], "#{result["url"]}"
+      .font-size-16
+        .title
+          | タイトル :
+          = link_to result["title"] , "#{result["url"]}"
+        .author
+          | 著者 :
+          = result["author"]
+        br

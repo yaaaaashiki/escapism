@@ -34,14 +34,14 @@ $(".comment_title").css('font-size', '20px');
 $(".comment_list").find("p").css("font-size", "14px");
 
 /*男女比をjQueryで描画*/
-var dataset = [{"laboProfessor":"tobe", "man":4, "woman":6},
-                {"laboProfessor":"sumi", "man":14, "woman":1},
-                {"laboProfessor":"sakuta", "man":5, "woman":3},
-                {"laboProfessor":"komiyama", "man":9, "woman":2},
-                {"laboProfessor":"harada", "man":10, "woman":4},
-                {"laboProfessor":"lopez", "man":11, "woman":2},
-                {"laboProfessor":"ohara", "man":4, "woman":5},
-                {"laboProfessor":"durst", "man":13, "woman":0}
+var dataset = [{"laboProfessor":"tobe", "man":19, "woman":0},
+                {"laboProfessor":"sumi", "man":15, "woman":2},
+                {"laboProfessor":"sakuta", "man":13, "woman":1},
+                {"laboProfessor":"komiyama", "man":12, "woman":3},
+                {"laboProfessor":"harada", "man":15, "woman":5},
+                {"laboProfessor":"lopez", "man":16, "woman":5},
+                {"laboProfessor":"ohara", "man":17, "woman":0},
+                {"laboProfessor":"durst", "man":7, "woman":2}
                 ];
 for(var i=0;i<dataset.length;i++){
     var d = dataset[i];
