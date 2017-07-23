@@ -26,4 +26,8 @@ module CiniisHelper
   def display_contents?(object_id, page_number)
     page_number * PER_PAGE_NUM < object_id && object_id <= (page_number + 1) * PER_PAGE_NUM
   end
+
+  def from_recommend_labo?
+    !params[:feature].blank?
+  end
 end

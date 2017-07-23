@@ -18,6 +18,11 @@
 
     - @results.compact.each do |result|
       - if until_max_size(@results.length) && paginate_id?(result["id"])
-        => link_to pagination_number(result["id"]), ciniis_path(page_num: pagination_number(result["id"]),
-                                                               q: params[:q],
-                                                               commit:"検索")
+        - if from_recommend_labo?
+          => link_to pagination_number(result["id"]), ciniis_path(page_num: pagination_number(result["id"]),
+                                                                  q: session[:query],
+                                                                  commit:"CiNii+検索")
+        - else
+          => link_to pagination_number(result["id"]), ciniis_path(page_num: pagination_number(result["id"]),
+                                                                  q: params[:q],
+                                                                  commit:"検索")
