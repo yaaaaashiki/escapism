@@ -1,6 +1,9 @@
 require 'json'
 
 class CiniisController < ApplicationController
+
+  PER_PAGE_NUM = 4
+
   def index
     array = []
 
@@ -14,9 +17,12 @@ class CiniisController < ApplicationController
       end
 
       @results = create_results(array)
+      @page_number = params[:page_num].to_i
+
     elsif params[:q]
       array.push(params[:q])
       @results = create_results(array)
+      @page_number = params[:page_num].to_i
     end
   end
 
