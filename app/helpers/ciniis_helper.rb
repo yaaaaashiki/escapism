@@ -1,7 +1,7 @@
 module CiniisHelper
 
   PER_PAGE_NUM = 4
-  MAX_SIZE_NUM = 101
+  MAX_SIZE_NUM = 100
 
   def per_page_num
     PER_PAGE_NUM
@@ -20,7 +20,7 @@ module CiniisHelper
   end
 
   def until_max_size(result_length)
-    result_length / MAX_SIZE_NUM == 0
+    result_length / (MAX_SIZE_NUM + 1) == 0
   end
 
   def display_contents?(object_id, page_number)
