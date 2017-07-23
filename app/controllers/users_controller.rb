@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:index, :new, :create]
   before_action :token_exists?, only:[:new]
   before_action :post_params?, only:[:index]
-  before_action :set_user_create_params
+  before_action :init_user_create_session
 
   def index
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :year, :email, :password)
     end
 
-    def set_user_create_params
+    def init_user_create_session
       session[:user_create] = nil
     end
 
