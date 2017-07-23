@@ -14,5 +14,6 @@
     | アクセス数 : 
     = @thesis.access
   h1.font-size-20
-    | 要約文
-  = @thesis.summary
+    | 要約文 :
+  small
+  = display_abst_or_body(@thesis)

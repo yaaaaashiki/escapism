@@ -213,3 +213,4 @@ venv
 # abstractor temp files
 lib/abstractor/temp.html
 lib/abstractor/output.txt
+temp.html
