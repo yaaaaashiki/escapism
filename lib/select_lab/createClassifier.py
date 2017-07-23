@@ -9,6 +9,9 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.grid_search import GridSearchCV
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
+from subprocess import Popen, PIPE
+
+MeCab_DIR = '''echo `mecab-config --dicdir`"/mecab-ipadic-neologd"'''
 
 def preprocesor(text):
   return re.sub('[\W]+', ' ', text)
@@ -26,7 +29,11 @@ class_mapping = {label:idx for idx, label in enumerate(np.unique(thesis_data['la
 inv_class_mapping = {v: k for k, v in class_mapping.items()}
 thesis_data['labName'] = thesis_data['labName'].map(class_mapping)
 
-tagger = MeCab.Tagger("-Owakati")
+terminal = Popen(MeCab_DIR, stdout=PIPE, stdin=PIPE, shell=True)
+neologd_dir, dummy = terminal.communicate()
+neologd_dir = neologd_dir.decode('utf-8')
+neologd_dir = re.sub('\n','',neologd_dir)
+tagger = MeCab.Tagger("-d " + neologd_dir + " -Owakati")
 for i in range(len(thesis_data['text'])):
   thesis_data['text'].values[i] = tagger.parse(thesis_data['text'].values[i])
 
@@ -48,6 +55,7 @@ parameters = {'clf__alpha': (1e-1, 1e-2, 1e-3),}
 
 gs_clf = GridSearchCV(text_clf, parameters, n_jobs=-1)
 
+print('creating classifire ...')
 gs_clf = gs_clf.fit(X_train, Y_train)
 
 clf = gs_clf.best_estimator_
@@ -67,3 +75,5 @@ pickle.dump(clf,
 pickle.dump(inv_class_mapping,
             open(os.path.join(dest, 'inv_class_mapping.pkl'), 'wb'),
             protocol=4)
+
+print('created!!')

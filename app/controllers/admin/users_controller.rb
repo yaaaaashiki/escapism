@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  skip_before_filter :require_login, only: [:index, :new, :create]
+  skip_before_action :require_login, only: [:index, :new, :create]
   before_action :set_user, only: [:show, :update]
 
   def index

@@ -202,3 +202,14 @@ build-iPhoneSimulator/
 .python-version
 
 /config/database.yml
+
+# labo classifier temp files
+lib/select_lab/lab_classifier
+lib/select_lab/thesis_data.csv
+
+# virtualenv
+venv
+
+# abstractor temp files
+lib/abstractor/temp.html
+lib/abstractor/output.txt

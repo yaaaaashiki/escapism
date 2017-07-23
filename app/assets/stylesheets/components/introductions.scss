@@ -126,7 +126,7 @@ body {
 
 .white-back {
   background-color: rgba(45, 45, 45, 0.21);
-  color: #fff;
+  color: black;
 }
 
 .black-back {
@@ -208,7 +208,14 @@ body {
 
   img {
     position: absolute;
-    width: 100%;
+    max-width: 105%  !important;
+    width: 105%;
+    height: 105% !important;
+    top: -10px;
+    bottom: -10px;
+    right: -10px;
+    left: -10px;
+    filter: blur(5px);
   }
 }
 

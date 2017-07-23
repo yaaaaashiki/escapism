@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :comments
   belongs_to :labos
 
-#  validates :username, presence: true
-#  validates :year, presence: true
-#  validates :password, presence: true
+  validates :username, presence: true
+  validates :year, presence: true
+  validates :crypted_password, presence: true
 end
