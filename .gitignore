@@ -208,3 +208,7 @@ lib/select_lab/lab_classifier
 
 # virtualenv
 venv
+
+# abstractor
+lib/abstractor/temp.html
+lib/abstractor/output.txt

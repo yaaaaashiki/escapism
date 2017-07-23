@@ -5,6 +5,9 @@ import re
 import pickle
 import os
 import sys
+from subprocess import Popen, PIPE
+
+MeCab_DIR = '''echo `mecab-config --dicdir`"/mecab-ipadic-neologd"'''
 
 def tokenizer(text):
   return text.split()
@@ -13,7 +16,11 @@ def preprocesor(text):
   return re.sub('[\W]+', ' ', text)
 
 def vectorize(texts):
-  tagger = MeCab.Tagger("-Owakati")
+  terminal = Popen(MeCab_DIR, stdout=PIPE, stdin=PIPE, shell=True)
+  neologd_dir, dummy = terminal.communicate()
+  neologd_dir = neologd_dir.decode('utf-8')
+  neologd_dir = re.sub('\n','',neologd_dir)
+  tagger = MeCab.Tagger("-d " + neologd_dir + " -Owakati")
   for i in range(len(texts.values)):
     texts.values[i] = tagger.parse(texts.values[i])
   
