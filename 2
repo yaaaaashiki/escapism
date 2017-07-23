@@ -1,0 +1,27 @@
+- if @results
+  .ciniiResult
+    .font-size-20
+      | 検索結果
+    br
+    - @results.compact.each do |result|
+      - if result["id"] > @page_num * per_page_num && result["id"] <= (@page_num + 1) * per_page_num
+        .font-size-16
+          .title
+            | タイトル :
+            = link_to result["title"] , "#{result["url"]}"
+          .author
+            | 著者 :
+            = result["author"]
+          br
+  = form_tag(ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do
+    
+    - @results.compact.each do |result|
+      - if until_max_size(@results.length)
+        
+        
+        
+          = display_pagination_number(result["id"]) if paginate_id?(result["id"])
+          //= hidden_field :lab_id, @labo_id
+
+        
+
