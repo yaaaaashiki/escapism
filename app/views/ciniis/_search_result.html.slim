@@ -2,6 +2,8 @@
   .ciniiResult
     .font-size-20
       | 検索結果
+      =<> @results.length
+      |件
     br
     - @results.compact.each do |result|
       - if display_contents?(result["id"], @page_number)
