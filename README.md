@@ -14,7 +14,7 @@
 
 
 # System dependencies
-各種インストール方法はwikiを参照([開発環境構築](https://github.com/yaaaaashiki/Escapism/wiki/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89))
+各種インストール方法はwikiを参照([開発環境構築](https://github.com/yaaaaashiki/Escapism/wiki))
 * mysql 5.7以上
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
 * JAVA_HOMEの設定  
@@ -59,34 +59,6 @@ bundle exec rails db:create
 bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
-
-# database.yml
-Mac の方は以下を config/database.yml に記述
-```
-default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-
-development:
-  <<: *default
-  database: escapism_development
-
-test:
-  <<: *default
-  database: escapism_test 
-```
-
-その他の環境の方は
-```
-mysql_config --socket
-```
-上記の実行結果を config/database.yml の socket:
-に記述
-
 
 # Rspec を用いたテスト
 テスト用のデータベース作成

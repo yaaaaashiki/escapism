@@ -210,6 +210,6 @@ lib/select_lab/thesis_data.csv
 # virtualenv
 venv
 
-# abstractor
+# abstractor temp files
 lib/abstractor/temp.html
 lib/abstractor/output.txt
