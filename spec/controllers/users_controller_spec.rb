@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
 
   describe "GET #new" do
-    let(:it_aoyama_user) {create(:it_aoyama_user)}
     let!(:mail) {create(:mail_address)}
 
     context "exist Token in database" do

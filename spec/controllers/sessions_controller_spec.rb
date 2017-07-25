@@ -7,9 +7,15 @@ RSpec.describe SessionsController, type: :controller do
       get :new
       expect(response).to have_http_status(:success)
     end
+   
     it "renders the new templete" do
       get :new
       expect(response).to render_template(:new)
+    end
+
+    it "bookback status" do
+      get :new
+      expect(assigns(:bookBack)).to eq true
     end
   end
 
@@ -27,7 +33,7 @@ RSpec.describe SessionsController, type: :controller do
           expect(response).to have_http_status(:redirect)
         end
 
-        it "redirect the thesis templete" do
+        it "redirect the thesis path" do
           post :create, params: {session: @it_aoyama_user_hash}
           expect(response).to redirect_to(theses_path)
         end
@@ -54,6 +60,7 @@ RSpec.describe SessionsController, type: :controller do
 
       context "database user" do
         let!(:it_aoyama_user) {create(:it_aoyama_user)}
+
         context "only input user name" do
           before do
             @user_hash_except_password = attributes_for(:it_aoyama_user)
@@ -90,6 +97,29 @@ RSpec.describe SessionsController, type: :controller do
         end
 
       end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    let!(:it_aoyama_user) {create(:it_aoyama_user)}
+
+    before do
+      login_user it_aoyama_user
+    end
+
+    it "return http redirect" do
+      delete :destroy
+      expect(response).to have_http_status(:redirect)
+    end
+
+    it "redirect the root path" do
+      delete :destroy
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "logout success" do
+      delete :destroy
+      expect(session[:user_id]).to eq nil
     end
   end
 end
