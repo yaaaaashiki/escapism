@@ -22,6 +22,9 @@ class ThesesController < ApplicationController
       else
         @thesis.update_attribute(:access, @thesis.impressionist_count(:filter=>:all))
       end
+
+      @theses = Thesis.more_like_this(@thesis.id).page(params[:page]).per(4)
+      @author = Author.all
     end
 
     @labos = Labo.all

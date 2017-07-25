@@ -87,6 +87,21 @@ class Thesis < ApplicationRecord
     __elasticsearch__.search(search_definition)
   end
 
+  def self.more_like_this(thesis_id)
+    search_definition = Elasticsearch::DSL::Search.search {
+      query {
+        more_like_this {
+          fields %W{ title body }
+          like [
+            {_id: thesis_id}
+          ]
+        }
+      }
+    }
+    
+    __elasticsearch__.search(search_definition)
+  end
+
   def self.extract_body(absolute_thesis_path)
     data = Yomu.new(absolute_thesis_path)
     body = data.text

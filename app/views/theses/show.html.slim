@@ -1,9 +1,15 @@
-.container.fade-in
+.container-fluid.fade-in
   section#searchpage.fadeout
     = render 'search_form'
   .centerContents
     .col-sm-9.col-xm-9
       = render 'infomation'
       = render 'comment'
+      .row
+        .col-sm-offset-1.col-xs-offset-1
+          h1 
+            | 類似論文:
+        = render 'search_result'
     aside#right-nav-container.col-sm-3.col-xm-3
       = render 'sideber'
+      
