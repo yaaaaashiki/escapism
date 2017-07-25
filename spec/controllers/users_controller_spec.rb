@@ -2,29 +2,23 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
- describe "GET #new" do
-    let(:user) {create(:it_aoyama_user)}
+  describe "GET #new" do
+    let(:it_aoyama_user) {create(:it_aoyama_user)}
     let!(:mail) {create(:mail_address)}
-   
 
-#######################↓↓↓↓↓↓↓↓↓↓要修正↓↓↓↓↓↓↓↓↓↓###############################
     context "exist Token in database" do
-      #let(:token) {create(:token)}
-
-      xit "returns http success" do
-        #MailAddress id == 1 を向いてる
+      it "returns http success" do
+        token = Token.create(token: "Token135", mail_address_id: mail.id)
         get :new, params: {token: token.token}
         expect(response).to have_http_status(:success)
       end
-      xit "renders the new templete" do
-        #MailAddress id == 2 を向いてる
-        binding.pry
+
+      it "renders the new templete" do
+        token = Token.create(token: "Token135", mail_address_id: mail.id)
         get :new, params: {token: token.token}
         expect(response).to render_template(:new)
       end
     end
-#######################要修正###############################
-
 
     context "not exist Token in database" do
       let(:token) {build(:token)}
@@ -61,12 +55,8 @@ RSpec.describe UsersController, type: :controller do
         expect(session[:user_id]).to be assigns(:user).id
       end
 
-
-
-#######################↓↓↓↓↓↓↓↓↓↓要修正↓↓↓↓↓↓↓↓↓↓###############################
       it "returns http redirect" do
         post :create, params: {user: @it_aoyama_user_hash}
-        #success ?? redirect???
         expect(response).to have_http_status(:redirect)
       end
 
@@ -75,8 +65,6 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to redirect_to(users_path)
       end
     end
-#######################↑↑↑↑↑↑↑↑↑↑要修正↑↑↑↑↑↑↑↑↑↑###############################
-
 
     context "new user not saved" do
       context "no name" do
