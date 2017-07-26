@@ -17,4 +17,9 @@ FactoryGirl.define do
   factory :token do
     token "token123"
   end
+
+  factory :token_with_mail_id, class: Token do
+    token "hoge1123"
+    mail_address_id 1
+  end
 end

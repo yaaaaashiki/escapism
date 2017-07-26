@@ -14,5 +14,5 @@
 #
 
 class Token < ApplicationRecord
-  #validates :email, presence: true, uniqueness: true
+  validates :mail_address_id, presence: true, uniqueness: true
 end
