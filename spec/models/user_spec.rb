@@ -22,37 +22,48 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "Validation" do
-    let(:username) { "username" }
-    let(:year)     { 1 }
-    let(:email)    { "emailaddress" }
-
-    it "is valid with username and year and email" do
-      user = build(:user)
+    it "is valid at it aoyama user" do
+      user = build(:it_aoyama_user)
       expect(user).to be_valid
     end
 
+    it "is valid without labo" do
+      user = build(:no_labo_user)
+      expect(user).to be_valid
+    end
+
+    it "is not valid without email" do
+      user = build(:no_mail_user)
+      expect(user).not_to be_valid
+    end
+
     it "is not valid without username" do
-      user = User.new(
-        year: year,
-        email: email
-      )
+      user = build(:no_name_user)
       expect(user).not_to be_valid
     end
 
     it "is not valid without year" do
-      user = User.new(
-        username: username,
-        email: email
-      )
+      user = build(:no_year_user)
+      expect(user).not_to be_valid
+    end
+  
+    it "is not valid without password" do
+      user = build(:no_password_user)
+      expect(user).not_to be_valid
+    end
+  end
+
+  describe "Mail address uniqueness" do
+    let(:it_aoyama_user) {create(:it_aoyama_user)}
+    let(:user) {build(:user)}
+    
+    it "is not valid when two user post the same address" do
+      user.email = it_aoyama_user.email
       expect(user).not_to be_valid
     end
 
-    it "is not valid without email" do
-      user = User.new(
-        username: username,
-        year: year,
-      )
-      expect(user).not_to be_valid
+    it "is valid when two user post different e-mail addresses" do
+      expect(user).to be_valid
     end
   end
 end
