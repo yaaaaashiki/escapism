@@ -7,8 +7,9 @@
   height: 100px;
   padding-top: 30px;
 
-  .container {
-    padding-left: 20px;
+  .container-fluid {
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: $wineRed;
   }
 }
