@@ -224,7 +224,7 @@ body {
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:200px;
+    height:500px;
   }
 }
 // 下のheightをいじることで表示領域を変更できる
@@ -241,11 +241,9 @@ body {
 // スライドショー中の機能説明のためのクラス
 
 .carousel-caption {
-    position: absolute;
-    //top: 100px;
-    left: 130px;
-    width:40%;
-   height: 100%; 
+  left: 15%;
+  width:70%;
+  height: 100%;
 }
 
 .slide_h1 {
