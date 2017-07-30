@@ -6,6 +6,11 @@
   margin: 0;
   height: 100px;
   padding-top: 30px;
+
+  .container {
+    padding-left: 20px;
+    background-color: $wineRed;
+  }
 }
 
 .nav{
