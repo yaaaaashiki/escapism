@@ -22,7 +22,7 @@ section#recommendationpage.fadeout
         = form_tag(ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do
           .col-sm-12.col-xs-12
             - @feaures.each_with_index do |word, i|
-              .col-sm-2.col-xs-2
+              .col-md-2.col-sm-6.col-xs-6
                 = word
                 = check_box 'feature', i, {}, true, false
             = hidden_field :lab_id, @labo_id
