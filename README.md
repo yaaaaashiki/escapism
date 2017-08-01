@@ -17,17 +17,8 @@
 各種インストール方法はwikiを参照([開発環境構築](https://github.com/yaaaaashiki/Escapism/wiki))
 * mysql 5.7以上
 * java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
-* JAVA_HOMEの設定  
-(Javaをバージョン管理したかったらJenvを使用してください)
-* Python3  
-
-## Pythonのパッケージ
-- Pandas
-- NumPy
-- SciPy
-- MeCab
-- scikit-learn
-- nltk
+* Python3  
+などなど
 
 # 実行手順
 1. elasticsearh起動  
