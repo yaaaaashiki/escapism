@@ -214,3 +214,6 @@ venv
 lib/abstractor/temp.html
 lib/abstractor/output.txt
 temp.html
+
+#pdfminer
+vendor/pdfminer3k-master
