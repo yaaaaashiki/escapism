@@ -15,13 +15,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.valid? && @user.save  #  && MailAddress.find_by(address: params[:user][:email])
-      log_in @user
-      session[:user_create] = true
-      redirect_to users_path
-    else
-      render :new
-    end
+    @user.save!  #  && MailAddress.find_by(address: params[:user][:email])
+    log_in @user
+    session[:user_create] = true
+    redirect_to users_path
+  rescue ActiveRecord::RecordInvalid => e
+    @user = e.record
+    render :new, status: :bad_request
   end
 
   private
