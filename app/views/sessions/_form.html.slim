@@ -14,6 +14,6 @@
           hr.colorgraph
           br
           = form_for :session, url: sessions_path, html: {class: 'form-horizontal'} do |f|
-            = f.text_field :username, class: "form-control", placeholder: "ユーザ名"
+            = f.text_field :email, class: "form-control", placeholder: "メールアドレス"
             = f.password_field :password, class: "form-control", placeholder: "パスワード"
             = f.submit_tag "ログイン", class: "btn btn-lg btn-primary btn-block"

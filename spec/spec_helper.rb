@@ -13,8 +13,8 @@ def login_user_post(user = nil, route = nil, http_method = :post)
   user ||= @user
   route ||= sessions_url
   username_attr = user.sorcery_config.username_attribute_names.first
-  username = user.send(username_attr)
-  page.driver.send(http_method, route, { :"session" => {:"#{username_attr}" => username, :password => "password"}} )
+  email = user.send(username_attr)
+  page.driver.send(http_method, route, { :"session" => {:"#{username_attr}" => email, :password => "password"}} )
 end
   
   
