@@ -11,12 +11,12 @@ class Admin::SessionsController < AdminController
       redirect_to admin_url, notice: 'login succeed'
     else
       flash.now[:warning] = 'login failed'
-      render :new
+      render :new, status: :unauthorized
     end
   end
 
   def destroy
     admin_log_out
-    redirect_to admin_sign_in_url, notice: 'logoutt!'
+    redirect_to admin_sign_in_url, notice: 'Success logout'
   end
 end
