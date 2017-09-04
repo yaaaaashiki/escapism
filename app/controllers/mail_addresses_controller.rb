@@ -21,7 +21,6 @@ class MailAddressesController < ApplicationController
   end
 
   private
-
     def send_email(address)
       Admin::InviteUserMailer.invite(address, SUBJECT).deliver
     end

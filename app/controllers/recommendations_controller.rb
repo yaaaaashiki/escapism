@@ -15,10 +15,13 @@ class RecommendationsController < ApplicationController
   end
 
   private
-
     def predict(keyword = "")
       classifier = String(Rails.root.join('lib/select_lab/classifier.py'))
       out, err, status = Open3.capture3("python3 " + classifier + " " + keyword)
+      if err.present?
+        logger.error(err)
+        render_404
+      end
       out
     end
 end
