@@ -18,7 +18,7 @@
 class Comment < ApplicationRecord
   belongs_to :thesis
   belongs_to :user
-  validates :body, length: { in: 1..400 }
+  validates :body, length: { in: 20..400 }
   validates :user_id, presence: true
   validates :thesis_id, presence: true
 end
