@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
 #  rescue_from Exception, with: :render_500
 
   def render_404
-    render file: Rails.root.join('public/404.html.erb'), status: 404, layout: 'application', content_type: 'text/html'
+    render file: Rails.root.join('public/404.html.slim'), status: 404, layout: 'application', content_type: 'text/html'
   end
 
   def render_500
-    render file: Rails.root.join('public/500.html.erb'), status: 500, layout: 'application', content_type: 'text/html'
+    render file: Rails.root.join('public/500.html.slim'), status: 500, layout: 'application', content_type: 'text/html'
   end
 
   private

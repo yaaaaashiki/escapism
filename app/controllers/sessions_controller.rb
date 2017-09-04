@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   
   def new
     @user = User.new
-    @bookBack = true
   end
  
   def create
@@ -11,9 +10,8 @@ class SessionsController < ApplicationController
       log_in @user 
       redirect_to theses_url
     else
-      flash.now[:alert] = 'Login failed'
-      @bookBack = true
-      render :new 
+      flash.now[:alert] = 'Login failed. Please try again'
+      render :new, status: :unauthorized
     end
   end
  

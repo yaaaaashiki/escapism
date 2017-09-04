@@ -18,7 +18,7 @@ class Admin::UsersController < AdminController
     if @user.save
       redirect_to admin_users_url, notice: 'user created'
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 

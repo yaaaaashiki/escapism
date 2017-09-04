@@ -66,7 +66,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "new user not saved" do
-      context "no name" do
+      context "no name user" do
         let(:no_name_user) {build(:no_name_user)}
         let!(:mail) {create(:mail_address)}
         let(:token) {create(:token)}
@@ -82,17 +82,16 @@ RSpec.describe UsersController, type: :controller do
 
         it "returns http success" do
           post :create, params: {user: @no_name_user_hash}
-          expect(response).to have_http_status(:success)
+          expect(response).to have_http_status(:bad_request)
         end
 
         it "renders the new templete" do
           post :create, params: {user: @no_name_user_hash}
           expect(response).to render_template(:new)
         end
+      end
 
-     end
-
-      context "no mail" do
+      context "no mail address user" do
         let(:no_mail_user) { build(:no_mail_user) }
         let!(:mail) {create(:mail_address)}
         let(:token) {create(:token)}
@@ -108,7 +107,7 @@ RSpec.describe UsersController, type: :controller do
 
         it "returns http success" do
           post :create, params: {user: @no_mail_user_hash}
-          expect(response).to have_http_status(:success)
+          expect(response).to have_http_status(:bad_request)
         end
 
         it "renders the new templete" do

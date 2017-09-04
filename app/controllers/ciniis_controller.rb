@@ -9,8 +9,18 @@ class CiniisController < ApplicationController
 
     if params[:lab_id] && params[:feature] && !session[:query]
       labo = Labo.all.find(params[:lab_id].keys[0])
+      if labo.nil?
+        logger.error("Internal server error: CiniisController index action 11 lines: labo is undefined")
+        render_500
+      end
+
       labo_feature_array = labo.features.to_a
       feature_id_array = params[:feature].keys
+
+      if feature_id_array.blank?
+        logger.error("Bad request: CiniisController index action 18 lines: feature_id_array is undefined")
+        render_404
+      end
 
       feature_id_array.each do |id|
         array.push(labo_feature_array[id.to_i][0])

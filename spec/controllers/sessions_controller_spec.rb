@@ -13,10 +13,6 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to render_template(:new)
     end
 
-    it "bookback status" do
-      get :new
-      expect(assigns(:bookBack)).to eq true
-    end
   end
 
   describe "Post #create" do
@@ -49,7 +45,7 @@ RSpec.describe SessionsController, type: :controller do
 
         it "return http success" do
           post :create, params: {session: {user: @it_aoyama_user_hash}}
-          expect(response).to have_http_status(:success)
+          expect(response).to have_http_status(:unauthorized)
         end
 
         it "render new template" do
@@ -69,7 +65,7 @@ RSpec.describe SessionsController, type: :controller do
 
           it "return http success" do
             post :create, params: {session: {user: @user_hash_except_password}}
-            expect(response).to have_http_status(:success)
+            expect(response).to have_http_status(:unauthorized)
           end
 
           it "render new template" do
@@ -87,7 +83,7 @@ RSpec.describe SessionsController, type: :controller do
 
           it "return http success" do
             post :create, params: {session: {user: @user_hash_except_username}}
-            expect(response).to have_http_status(:success)
+            expect(response).to have_http_status(:unauthorized)
           end
 
           it "render new template" do
