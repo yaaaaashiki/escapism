@@ -1,5 +1,7 @@
 class ThesesController < ApplicationController
   before_action :init_set_popular_theses
+  before_action :init_flash_alert, only: [:index]
+  NOT_EXIST_THESES = 0
 
   def index
     @labo_id = params[:l]
@@ -28,17 +30,28 @@ class ThesesController < ApplicationController
 
       @theses = Thesis.more_like_this(@thesis.id).page(params[:page]).per(4)
       @author = Author.all
+    else
+      logger.error("Internal server error: ThesesController show action 20 lines: @theses is undefined")
+      render_500
     end
 
     @labos = Labo.all
   end
 
   def download
-    thesis = Thesis.find params[:id]
+    thesis = Thesis.find(params[:id])
+    if thesis.nil?
+      logger.error("Internal server error: ThesesController show action 20 lines: @theses is undefined")
+      render_500
+    end
     send_file(thesis.url, disposition: :inline)
   end
 
   private
+    def init_flash_alert
+      flash[:alert] = nil
+    end
+
     def init_set_popular_theses
       @popular_theses = Thesis.all.order(access: :desc).limit(5)
     end
@@ -48,6 +61,6 @@ class ThesesController < ApplicationController
     end
 
     def not_exist_theses(theses)
-      theses.size == 0
+      theses.size == NOT_EXIST_THESES
     end
 end
