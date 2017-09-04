@@ -17,7 +17,7 @@ class CiniisController < ApplicationController
       labo_feature_array = labo.features.to_a
       feature_id_array = params[:feature].keys
 
-      if feature_id_array.empty?
+      if feature_id_array.blank?
         logger.error("Bad request: CiniisController index action 18 lines: feature_id_array is undefined")
         render_404
       end
