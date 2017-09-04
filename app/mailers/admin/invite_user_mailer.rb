@@ -4,12 +4,11 @@ class Admin::InviteUserMailer < ApplicationMailer
     @registraion_url = new_user_url + "/" + token 
 
     mail_address_id = MailAddress.find_by(address: to).id
-    if Token.create!(token: token, mail_address_id: mail_address_id)
-      mail(to: to, subject: subject)
-    else
-      flash[:alert] = 'You should have got another token. So please confirm mail box and use the token'
-      render_500
-    end
+    Token.create!(token: token, mail_address_id: mail_address_id)
+    mail(to: to, subject: subject)
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:alert] = e.record
+    render_500
   end
 
   private

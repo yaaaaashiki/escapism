@@ -4,14 +4,14 @@ class RecommendationsController < ApplicationController
   def index
     if params[:q]
       predicted_lab_name = predict(params[:q])
-      if predicted_lab_name.nil?
+      if predicted_lab_name.empty?
         logger.error("Bad request: RecommendationController index action 6 lines: predicted_lab_name is undefined")
         render_404
       end
       predicted_lab_name.gsub!(/[\r\n]/, "")
       @lab_name = Labo.LABO_HASH.key(predicted_lab_name)
 
-      if @lab_name.nil?
+      if @lab_name.empty?
         logger.error("Internal server error: RecommendationController index action 12 lines: @lab_name is undefined")
         render_500
       end

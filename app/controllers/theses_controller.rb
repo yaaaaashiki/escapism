@@ -57,7 +57,7 @@ class ThesesController < ApplicationController
     end
 
     def search_theses?(query, labo_id, field)
-      query.present? || (labo_id.to_i != Labo.NO_LABO_ID && labo_id.present?) || field.present?
+      query.present? || (labo_id.present? && labo_id.to_i != Labo.NO_LABO_ID) || field.present?
     end
 
     def not_exist_theses(theses)
