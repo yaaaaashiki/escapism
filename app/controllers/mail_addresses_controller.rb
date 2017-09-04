@@ -12,11 +12,9 @@ class MailAddressesController < ApplicationController
 
   def create
     @mail = MailAddress.new(address: params[:address][:name])
-    if @mail.valid?
-      @mail.save!
-      send_email(params[:address][:name])
-      redirect_to mail_addresses_path
-    end
+    @mail.save!
+    send_email(params[:address][:name])
+    redirect_to mail_addresses_path
   rescue ActiveRecord::RecordInvalid => e
     @mail = e.record
     render :new, status: :bad_request
