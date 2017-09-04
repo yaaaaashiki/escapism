@@ -10,5 +10,5 @@
 
 class Author < ApplicationRecord
   has_many :theses
-  validates :name, length: { in: 1..15 }
+  validates :name, length: { in: 1..50 }
 end
