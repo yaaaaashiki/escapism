@@ -30,6 +30,12 @@ class Thesis < ApplicationRecord
   has_many :comments
   has_one :word_count
 
+  validates :title, presence: true
+  validates :url, presence: true, uniqueness: true
+  validates :year, presence: true
+  validates :labo_id, presence: true
+  validates :author_id, presence: true
+
   @@SEARCH_BY_BODY = "0"
   @@SEARCH_BY_TITLE = "1"
 
