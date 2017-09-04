@@ -23,10 +23,9 @@ class User < ApplicationRecord
   has_many :comments
   belongs_to :labos
 
-  validates :username, presence: true, length: { minimum: 5}, uniquness: true
+  validates :username, presence: true, uniqueness: true, length: { minimum: 6 }
   validates :year, presence: true
   validates :email, presence: true, uniqueness: true
   validates :crypted_password, presence: true
   validates :salt, presence: true
-  validates :password, length: { minimum: 8 }
 end
