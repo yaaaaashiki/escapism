@@ -5,8 +5,11 @@ class ThesesController < ApplicationController
     @labo_id = params[:l]
     query = params[:q]
     @search_field = params[:f]
-    if query.present? || @labo_id.to_i != Labo.NO_LABO_ID
+    if search_theses?(query, @labo_id, @search_field)
       @theses = Thesis.search_by_keyword(query, @labo_id, @search_field).page(params[:page]).per(4)
+      if not_exist_theses(@theses)
+        flash[:alert] = 'Matching theses was not found. Try again'
+      end
     end
 
     @author = Author.all
@@ -40,4 +43,11 @@ class ThesesController < ApplicationController
       @popular_theses = Thesis.all.order(access: :desc).limit(5)
     end
 
+    def search_theses?(query, labo_id, field)
+      query.present? || (labo_id.to_i != Labo.NO_LABO_ID && !labo_id.nil?) || !field.nil?
+    end
+
+    def not_exist_theses(theses)
+      theses.size == 0
+    end
 end
