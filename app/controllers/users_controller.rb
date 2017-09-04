@@ -10,15 +10,25 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     mail_address_id = Token.find_by(token: params[:token]).mail_address_id
+    if mail_address_id.nil?
+      logger.error("Bad request: UserController new action 12 lines: mail_address_id is undefined")
+      render_404
+    end
     session[:email] = MailAddress.find(mail_address_id).address
+    if session[:email].nil?
+      logger.error("Bad request: UserController new action 17 lines: session[:email] is undefined")
+      render_404
+    end
   end
 
   def create
     @user = User.new(user_params)
-    @user.save!  #  && MailAddress.find_by(address: params[:user][:email])
-    log_in @user
-    session[:user_create] = true
-    redirect_to users_path
+    if @user.valid?
+      @user.save!  # && MailAddress.find_by(address: params[:user][:email])
+      log_in @user
+      session[:user_create] = true
+      redirect_to users_path
+    end
   rescue ActiveRecord::RecordInvalid => e
     @user = e.record
     render :new, status: :bad_request
