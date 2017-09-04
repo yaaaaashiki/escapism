@@ -13,7 +13,7 @@ class Admin::ThesesController < AdminController
     if @thesis.update(thesis_params)
       redirect_to admin_theses_url
     else
-      render :edit
+      render :show, status: :bad_request
     end
   end
 
