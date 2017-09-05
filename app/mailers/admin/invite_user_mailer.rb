@@ -4,11 +4,8 @@ class Admin::InviteUserMailer < ApplicationMailer
     @registraion_url = new_user_url + "/" + token 
 
     mail_address_id = MailAddress.find_by(address: to).id
-    Token.create!(token: token, mail_address_id: mail_address_id)
+    Token.create(token: token, mail_address_id: mail_address_id)
     mail(to: to, subject: subject)
-  rescue ActiveRecord::RecordInvalid => e
-    flash[:alert] = e.record
-    render_500
   end
 
   private
