@@ -12,6 +12,11 @@ class ThesesController < ApplicationController
     @labo_id = params[:l]
     query = params[:q]
     @search_field = params[:f]
+    if params[:f] && params_invalid?(params[:f])
+      render_404
+      return
+    end
+   
     if search_theses?(query, @labo_id, @search_field)
       @theses = Thesis.search_by_keyword(query, @labo_id, @search_field).page(params[:page]).per(4)
       if not_exist_theses(@theses)
@@ -87,5 +92,9 @@ class ThesesController < ApplicationController
 
     def check_size_show(params)
       invalid_size?(params[:id]) || invalid_size?(params[:page])
+    end
+
+    def params_invalid?(search_field)
+      search_field != Thesis.SEARCH_BY_BODY && search_field != Thesis.SEARCH_BY_TITLE
     end
 end
