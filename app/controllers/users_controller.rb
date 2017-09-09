@@ -13,11 +13,13 @@ class UsersController < ApplicationController
     if mail_address_id.nil?
       logger.error("Bad request: UserController new action 12 lines: mail_address_id is undefined")
       render_404
+      return
     end
     session[:email] = MailAddress.find(mail_address_id).address
     if session[:email].nil?
       logger.error("Bad request: UserController new action 17 lines: session[:email] is undefined")
       render_404
+      return
     end
   end
 
