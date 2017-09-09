@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   MAX_LINES = 10
 
-
   def create
     @thesis = Thesis.find(params[:thesis_id])
     if @thesis.nil?
