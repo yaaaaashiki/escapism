@@ -1,0 +1,19 @@
+h1
+  | ユーザパスワード編集ページ
+h4
+  = @user.username
+ul
+  li
+    | ID : 
+    = @user.id
+  li
+    | 氏名 : 
+    = @user.username
+  li
+    | パスワード : 
+    = @user.crypted_password
+= form_for [:admin, @user], :url => admin_password_path(@user.id), method: :patch do |f|
+  h4
+    | パスワード: 
+    = f.text_field :password
+  = f.submit "データ更新", name: "update-btn",  class: "btn"

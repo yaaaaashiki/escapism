@@ -10,7 +10,12 @@ $(window).on('load', function(){
 });
 
 $(function() {
+
   $('a').on('click', function(e) {
+    if ($(this).attr('target') == '_blank' || $(this).attr('target') == '_new') {
+      return true;
+    }
+
     if(!$(this).hasClass('carousel-control')) {
       $('body').addClass('fade-out');
       url = $(this).attr('href');
@@ -35,10 +40,5 @@ $(function() {
     $(this).removeClass("bottom-border");
   });
 
-   $('.l-footerNav ul li').mouseover(function() {
-    $(this).addClass("bottom-border-orange");
-  }).mouseout(function() {
-    $(this).removeClass("bottom-border-orange");
-  });
-
 });
+

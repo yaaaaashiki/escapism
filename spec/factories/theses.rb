@@ -3,6 +3,8 @@
 # Table name: theses
 #
 #  id         :integer          not null, primary key
+#  body       :text(4294967295)
+#  summary    :text(65535)
 #  title      :text(65535)
 #  url        :text(65535)
 #  year       :integer

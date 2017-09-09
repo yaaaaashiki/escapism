@@ -1,0 +1,11 @@
+.container
+  = render :partial => 'shared/error_messages', :locals => { object: @mail }
+  .step-images
+    = image_tag("sign_in/step1.png", :width=> "80%", :height => "auto")
+  .form-setting
+    h2.h2
+      | 青学メールアドレスを入力してください
+    = form_tag('/mail_addresses') do
+      = text_field :address, :name, :class => "text-field", :placeholder => "aoyama email address", :size => "60"
+      br
+      = submit_tag :submit, :class => "button"

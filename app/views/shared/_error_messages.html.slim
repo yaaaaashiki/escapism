@@ -1,0 +1,9 @@
+- if object.errors.any?
+  #error_explanation
+    h3.red
+      = object.errors.count
+      |  件のエラーが発生しました
+    ul
+      - object.errors.full_messages.each do |error_message|
+        li.red
+          = error_message

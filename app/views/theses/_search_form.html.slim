@@ -1,0 +1,48 @@
+.col-sm-offset-1.col-xs-offset-1.page-header.width
+  h1
+    | 論文検索
+= form_tag(theses_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do
+  .row.mar-bo-30
+    .col-sm-offset-1.col-xs-offset-1.col-sm-7.col-xs-7
+      = search_field_tag(:q, params[:q], class: 'form-control textarea', placeholder: 'キーワード')
+    .col-sm-2.col-xs-3
+      = submit_tag('検索', class: "button btn-pos")
+  .row
+    - if @search_field == Thesis.SEARCH_BY_BODY || @search_field.blank?
+      .col-md-offset-1.col-sm-offset-1.col-xs-offset-1.col-md-3.col-sm-5.col-xs-5
+        label
+          = radio_button_tag(:f, Thesis.SEARCH_BY_BODY, true)
+          | 本文検索
+      .col-md-offset-1.col-sm-offset-1.col-xs-offset-1.col-md-3.col-sm-5.col-xs-5
+        label
+          = radio_button_tag(:f, Thesis.SEARCH_BY_TITLE)
+          | タイトル検索
+    - elsif @search_field == Thesis.SEARCH_BY_TITLE
+      .col-md-offset-1.col-sm-offset-1.col-xs-offset-1.col-md-3.col-sm-5.col-xs-5
+        label
+          = radio_button_tag(:f, Thesis.SEARCH_BY_BODY)
+          | 本文検索
+      .col-md-offset-1.col-sm-offset-1.col-xs-offset-1.col-md-3.col-sm-5.col-xs-5
+        label
+          = radio_button_tag(:f, Thesis.SEARCH_BY_TITLE, true)
+          | タイトル検索
+  .row
+    - @labos.each do | l |
+      .col-md-offset-1.col-sm-offset-1.col-xs-offset-1.col-md-3.col-sm-5.col-xs-5
+        - if @labo_id.to_i == l.id
+          label
+            = radio_button_tag(:l, l.id, true)
+            = l.name
+        - else
+          label
+            = radio_button_tag(:l, l.id)
+            = l.name
+    .col-md-offset-1.col-sm-offset-1.col-xs-offset-1.col-md-3.col-sm-5.col-xs-5
+      - if @labo_id.to_i == Labo.NO_LABO_ID || @labo_id.blank?
+        label.clear-btn
+          = radio_button_tag(:l, Labo.NO_LABO_ID, true)
+          | 未選択
+      - else
+        label.clear-btn
+          = radio_button_tag(:l, Labo.NO_LABO_ID)
+          | 未選択

@@ -1,0 +1,12 @@
+= stylesheet_link_tag 'error_pages'
+.container
+  .error-contents
+    .upperContents
+      .font-size-125.errorNum
+        | 404
+      .errorEn.font-size-26
+        | PAGE NOT FOUND
+    .lowerContents
+      h1.font-size-20
+        | お探しのページは見つかりませんでした。
+      = link_to 'トップページへ戻る', root_path

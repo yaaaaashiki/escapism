@@ -1,0 +1,50 @@
+aside.main-sidebar
+  section.sidebar
+    .user-panel
+      .pull-left.image
+        img.img-circle[src="/assets/kana.jpg" alt="User Image"]
+      .pull-left.info
+        p
+          | Kana Nishino
+        - if admin_logged_in?
+          a[href="#"]
+            i.fa.fa-circle.text-success
+            |  Online
+        - else
+          a[href="#"]
+            i.fa.fa-circle.text-failure
+            |  Offline
+    form.sidebar-form[action="#" method="get"]
+      .input-group
+        input.form-control[type="text" name="q" placeholder="Search..."]
+        span.input-group-btn
+          button#search-btn.btn.btn-flat[type="submit" name="search"]
+            i.fa.fa-search
+    ul.sidebar-menu
+      li.header
+        | HEADER
+      li.active
+        a[href="/admin/users/new"]
+          i.fa.fa-link
+          span
+            | User Creation
+      li.active
+        a[href="/admin/users/new"]
+          i.fa.fa-link
+          span
+            | Invite User
+      li.active
+        a[href="/admin/users"]
+          i.fa.fa-link
+          span
+            | Edit User' Info
+      li.active
+        a[href="/admin/theses"]
+          i.fa.fa-link
+          span
+            | Edit Thesis' Info
+      li.active
+        a[href="/admin/passwords"]
+          i.fa.fa-link
+          span
+            | update user password

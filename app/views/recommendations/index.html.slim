@@ -1,0 +1,29 @@
+section#recommendationpage.fadeout
+  .container.fadein
+    .page-header
+      h1
+        | 研究室のおすすめ
+    = form_tag recommendations_path, method: :get, enforce_utf8: false, class: "form-horizontal" do
+      .col-sm-9.col-xs-9.text-pos
+        = search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'キーワード(やりたいこと)'
+      .col-sm-3.col-xs-3
+        = submit_tag '検索', class: "button btn-pos"
+    - if @lab_name
+      .page-header.col-sm-12.col-xs-12
+        h4
+          | やりたいことからおすすめする研究室
+      p.col-sm-12.col-xs-12
+        = @lab_name
+      - if @feaures
+        .page-header.col-sm-12.col-xs-12
+          h4
+            = @lab_name
+            | のキーワード
+        = form_tag(ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do
+          .col-sm-12.col-xs-12
+            - @feaures.each_with_index do |word, i|
+              .col-md-2.col-sm-6.col-xs-6
+                = word
+                = check_box 'feature', i, {}, true, false
+            = hidden_field :lab_id, @labo_id
+            = submit_tag('CiNii 検索', class: "button btn-pos")

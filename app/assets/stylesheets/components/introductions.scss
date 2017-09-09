@@ -27,6 +27,56 @@ body {
   padding-left: 60px;
 }
 
+.image-caption{
+  position: relative;
+  height: 75px;
+}
+
+.icons{
+  position: relative;
+  height: 165px;
+  top: 10%; 
+  padding-left: 0px;
+  width: 100%;
+  margin-bottom: 0px;
+  li {
+    display: inline;
+  }
+}
+
+.icon-wrapper{
+  position: absolute;
+  width: 12%;
+  height: auto;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.recommend{
+  left: 12%;
+}
+
+.search{
+  left: 32%;
+}
+
+.comment{
+  left: 52%;
+}
+
+.cinii{
+  left: 72%;
+}
+
+.odd{
+  top: 15%;
+}
+
+.even{
+}
+
 .position{
   position: absolute;
   top: 320px;
@@ -76,13 +126,51 @@ body {
 
 .white-back {
   background-color: rgba(45, 45, 45, 0.21);
-  color: #fff;
+  color: black;
 }
 
 .black-back {
   background-color: rgba(0, 3, 4, 0.58);
   color: #fff;
 }
+
+.image-back {
+  position: relative;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  height: 300px;
+}
+
+.image-width {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  top: 0px;
+  height: 90%;
+}
+
+.image-content {
+  padding-top: 40px;
+  width: 100%;
+  height: 400px;
+}
+
+.mouseover_img {
+  display: none;
+}
+
+.background-wallpaper::before{
+  position: absolute;
+  width: 50%;
+  height: 400px;
+  filter: blur(2px);
+  -webkit-filter: blur(5px);
+  background-clip: content-box
+}
+
+
+
 
 /* スクロールでフェードイン */
 /* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
@@ -120,7 +208,14 @@ body {
 
   img {
     position: absolute;
-    height: 100%;
+    max-width: 105%  !important;
+    width: 105%;
+    height: 105% !important;
+    top: -10px;
+    bottom: -10px;
+    right: -10px;
+    left: -10px;
+    filter: blur(5px);
   }
 }
 
@@ -129,7 +224,7 @@ body {
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:200px;
+    height:500px;
   }
 }
 // 下のheightをいじることで表示領域を変更できる
@@ -142,3 +237,32 @@ body {
   }
 }
 // ここまでカルーセル制御
+
+// スライドショー中の機能説明のためのクラス
+
+.carousel-caption {
+  left: 15%;
+  width:70%;
+  height: 100%;
+}
+
+.slide_h1 {
+    text-align: left;
+    color: beige;
+}
+
+.slide_p {
+    text-align: left;
+    color: beige;
+    font-size: 18px;
+}
+
+.slide_a {
+    color: beige;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.slide_a:link { color: beige; }
+.slide_a:visited { color: beige; }
+.slide_a:hover { color: #337ab7; }
+.slide_a:active { color: #337ab7; }

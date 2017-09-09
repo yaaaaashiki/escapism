@@ -1,0 +1,28 @@
+- if @results
+  .ciniiResult
+    .font-size-20
+      | 検索結果
+      =<> @results.length
+      |件
+    br
+    - @results.compact.each do |result|
+      - if display_contents?(result["id"], @page_number)
+        .font-size-16
+          .title
+            | タイトル :
+            = link_to result["title"] , "#{result["url"]}", target: :_blank
+          .author
+            | 著者 :
+            = result["author"]
+          br
+
+    - @results.compact.each do |result|
+      - if until_max_size(@results.length) && paginate_id?(result["id"])
+        - if from_recommend_labo?
+          => link_to pagination_number(result["id"]), ciniis_path(page_num: pagination_number(result["id"]),
+                                                                  q: session[:query],
+                                                                  commit:"CiNii+検索")
+        - else
+          => link_to pagination_number(result["id"]), ciniis_path(page_num: pagination_number(result["id"]),
+                                                                  q: params[:q],
+                                                                  commit:"検索")

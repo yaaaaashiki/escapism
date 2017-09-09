@@ -1,0 +1,21 @@
+.mar-to-100
+  h1
+    | 人気の論文
+  - @popular_theses.each_with_index do |thesis, i|
+    .page-header
+      span.ranking
+        |  第 
+        = i + 1
+        |  位 
+      span.access
+        |  アクセス数 
+        = thesis.access
+      .thesis-title
+        |  論文 : 
+        = link_to(thesis.title, thesis_path(thesis))
+      .author
+        |  著者 : 
+        = thesis.author.name
+      .labo-name
+        |  研究室 : 
+        = @labos.find(thesis.labo_id).name

@@ -1,18 +1,17 @@
 require 'find'
 
 module FeaturesGetter
-  LABO_NAMES = %w(duerst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
-  THESIS_ROOT_PATH = 'thesis_data/ignore/'
-
   def fetch(number_of_feature)
     thesis_wakati_array_per_labo = create_thesis_wakati_array_per_labo
+    puts 'calculating tf_idf par labo... '
     tf_idf_array_per_labo = create_tf_idf_array(thesis_wakati_array_per_labo)
+    puts 'extracting features par labo... '
     extract_labo_fatures(tf_idf_array_per_labo, number_of_feature)
   end
 
   def create_thesis_wakati_array_per_labo
     thesis_wakati_array_per_labo = []
-    LABO_NAMES.each do |labo_name|
+    Labo.ARRAY_LABO_DIRECTORY_NAMES.each do |labo_name|
       labo_thesis_wakati_array = create_labo_thesis_wakati_array(labo_name)
       thesis_wakati_array_per_labo.push(labo_thesis_wakati_array)
     end
@@ -21,16 +20,17 @@ module FeaturesGetter
   end
   
   def create_labo_thesis_wakati_array(labo_name)
-    labo_dir = Rails.root.join(THESIS_ROOT_PATH + labo_name)
     labo_thesis_wakati_array = []
-    Find.find(labo_dir) do |path|
-      if path =~ /.*\.pdf/
-        thesis_wakati_array = create_wakati_array(path)
-        labo_thesis_wakati_array.concat(thesis_wakati_array)
-        puts 'have read: ' + path 
+    Thesis.YHESIS_DIRECTORY_PAR_YEAR.each do |year|
+      labo_dir = Thesis.LABO_THESIS_ROOT_DIRECTORY.join(year, 'contents', labo_name)
+      Find.find(labo_dir) do |path|
+        if path =~ /.*\.pdf/
+          thesis_wakati_array = create_wakati_array(path)
+          labo_thesis_wakati_array.concat(thesis_wakati_array)		
+          puts 'have read: ' + path 		
+        end
       end
-    end
-
+    end    
     labo_thesis_wakati_array
   end
 
@@ -72,7 +72,7 @@ module FeaturesGetter
 
   def extract_labo_fatures(tf_idf_array_per_labo, number_of_feature)
     labo_features = {}
-    tf_idf_array_per_labo.zip(LABO_NAMES) do |tf_idf, labo_name|
+    tf_idf_array_per_labo.zip(Labo.ARRAY_LABO_DIRECTORY_NAMES) do |tf_idf, labo_name|
       labo_features[labo_name] = extract_feature(tf_idf, number_of_feature)
     end
 

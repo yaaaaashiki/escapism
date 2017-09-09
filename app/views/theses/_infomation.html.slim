@@ -1,0 +1,19 @@
+.mar-to-100.col-sm-offset-1.col-xs-offset-1
+  h1.font-size-25
+    = link_to @thesis.title, download_path(@thesis), method: :post
+  h1.font-size-20
+    | 著者 : 
+    = @thesis.author.name
+  h1.font-size-20
+    | 研究室 : 
+    = @thesis.labo.name
+  h1.font-size-20
+    | 執筆年度 : 
+    = @thesis.year
+  h1.font-size-20
+    | アクセス数 : 
+    = @thesis.access
+  h1.font-size-20
+    | 要約文 :
+  small
+  = display_abst_or_body(@thesis)

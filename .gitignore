@@ -194,7 +194,6 @@ build-iPhoneSimulator/
 /thesis_data/ignore/
 /lib/select_lab/thesis_data.csv
 
-
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -295,3 +294,28 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# .ruby_version
+.ruby-version
+
+# .python_version
+.python-version
+
+/config/database.yml
+
+# labo classifier temp files
+lib/select_lab/lab_classifier
+lib/select_lab/thesis_data.csv
+
+# virtualenv
+venv
+
+# abstractor temp files
+lib/abstractor/temp.html
+lib/abstractor/output.txt
+temp.html
+
+#pdfminer
+vendor/pdfminer3k-master
+vendor/pdfminer3k
+

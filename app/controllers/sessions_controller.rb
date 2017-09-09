@@ -3,17 +3,15 @@ class SessionsController < ApplicationController
   
   def new
     @user = User.new
-    @bookBack = true
   end
  
   def create
-    if @user = login(params[:session][:username], params[:session][:password])
+    if @user = login(params[:session][:email], params[:session][:password])
       log_in @user 
       redirect_to theses_url
     else
-      flash.now[:alert] = 'Login failed'
-      @bookBack = true
-      render :new 
+      flash.now[:alert] = 'Login failed. Please try again.'
+      render :new, status: :unauthorized
     end
   end
  

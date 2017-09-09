@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta[charset="UTF-8"]
+    title
+      | AdminLTE 2 | Log in
+    meta[content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"]
+    link[href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"]
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body.login-page
+    .login-box
+      .login-logo
+        a[href="/"]
+          b
+            | Admin
+          | LTE
+      .login-box-body
+        p.login-box-msg
+          | Sign in to start your session
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group.has-feedback
+            = f.text_field :email, class: 'form-control', autofocus: true
+            span.glyphicon.glyphicon-envelope.form-control-feedback
+          .form-group.has-feedback
+            = f.password_field :password, class: 'form-control', autocomplete: 'off'
+            span.glyphicon.glyphicon-lock.form-control-feedback
+          .row
+            .col-xs-8
+              .checkbox.icheck
+                label
+                  input[type="checkbox"]
+                  |  Remember Me 
+            .col-xs-4
+              = f.submit 'Log in', class: 'btn btn-primary btn-block btn-flat'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
