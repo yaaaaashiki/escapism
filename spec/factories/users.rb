@@ -37,7 +37,7 @@ FactoryGirl.define do
   end
 
   factory :no_mail_user, class: User do
-    username "no_mail_user"
+    username "no_mail"
     year 2016
     labo 3
     salt "asdasdastr4325234324sdfds"
@@ -45,7 +45,7 @@ FactoryGirl.define do
   end
 
   factory :no_year_user, class: User do
-    username "no_year_user"
+    username "no_year"
     email "c5617146@aoyama.com"
     labo 2
     salt "asdasdastr4325234324sdfds"
@@ -53,7 +53,7 @@ FactoryGirl.define do
   end
 
   factory :no_labo_user, class: User do
-    username "no_labo_user"
+    username "no_labo"
     year 2016
     email "c5617146@aoyama.com"
     salt "asdasdastr4325234324sdfds"
@@ -61,7 +61,7 @@ FactoryGirl.define do
   end
 
   factory :no_password_user, class: User do
-    username "no_password_user"
+    username "no_pass"
     year 2016
     email "c5617146@aoyama.com"
     labo 2
@@ -69,7 +69,7 @@ FactoryGirl.define do
   end
 
   factory :it_aoyama_user, class: User do
-    username "it_aoyama_user"
+    username "it_aoyama"
     year 2016
     email "c5617146@aoyama.com"
     labo 2
