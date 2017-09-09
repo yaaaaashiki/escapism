@@ -20,7 +20,7 @@
 
 FactoryGirl.define do
   factory :user do
-    username "user1"
+    username "user_1"
     year 2016
     email "yaaaaaakishi@gmail.com"
     labo 1

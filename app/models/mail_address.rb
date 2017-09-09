@@ -12,6 +12,8 @@ class MailAddress < ApplicationRecord
   validate :blank_address
   validate :address_form
   validate :aoyama_address
+
+  validates :address, uniqueness: true
   
   has_many :tokens
 
