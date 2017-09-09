@@ -24,6 +24,8 @@ class Labo < ApplicationRecord
   has_many :theses
   serialize :features
 
+  validates :name, presence: true
+
   def self.NO_LABO_ID
     @@NO_LABO_ID
   end

@@ -10,7 +10,7 @@ class ThesesController < ApplicationController
     if search_theses?(query, @labo_id, @search_field)
       @theses = Thesis.search_by_keyword(query, @labo_id, @search_field).page(params[:page]).per(4)
       if not_exist_theses(@theses)
-        flash[:alert] = 'Matching theses was not found. Try again'
+        flash[:alert] = 'Matching theses was not found. Try again.'
       end
     end
 

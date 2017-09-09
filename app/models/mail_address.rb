@@ -12,18 +12,20 @@ class MailAddress < ApplicationRecord
   validate :blank_address
   validate :address_form
   validate :aoyama_address
+
+  validates :address, uniqueness: true
   
   has_many :tokens
 
   def blank_address
-    errors[:base] << "please input mail address" if address.blank?
+    errors[:base] << "please input mail address." if address.blank?
   end
 
   def address_form
-    errors[:base] << "not mail address form" unless address.match(/\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/)
+    errors[:base] << "you input invalid mail address." unless address.match(/\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/)
   end
 
   def aoyama_address
-    errors[:base] << "not aoyama mail address form" unless address.match(/[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama(?:\.ac)?\.jp/)
+    errors[:base] << "you input invalid aoyama mail address." unless address.match(/[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama(?:\.ac)?\.jp/)
   end
 end

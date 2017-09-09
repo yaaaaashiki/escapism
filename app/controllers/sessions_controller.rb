@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       log_in @user 
       redirect_to theses_url
     else
-      flash.now[:alert] = 'Login failed. Please try again'
+      flash.now[:alert] = 'Login failed. Please try again.'
       render :new, status: :unauthorized
     end
   end
