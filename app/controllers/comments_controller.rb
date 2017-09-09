@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  EMPTY = 0
 
   def create
     @thesis = Thesis.find(params[:thesis_id])
@@ -8,12 +7,7 @@ class CommentsController < ApplicationController
       render_500
     end
 
-    if empty?(comment_params[:body]) || only_newline?(comment_params[:body])
-      redirect_to thesis_path(@thesis)
-      return
-    end
-
-    @comment = @thesis.comments.create(body: comment_params[:body], user_id: session[:user_id])
+    @comment = @thesis.comments.create(body: trim_multiple_newlines(comment_params[:body]), user_id: session[:user_id])
     redirect_to thesis_path(@thesis)
   end
   
@@ -22,11 +16,7 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body)
     end
 
-    def empty?(comment)
-      comment.length == EMPTY
-    end
-
-    def only_newline?(comment)
-      empty?(comment.gsub(/\R/, ""))
+    def trim_multiple_newlines(comment)
+      comment.gsub(/\R{2,}/,"\n")
     end
 end
