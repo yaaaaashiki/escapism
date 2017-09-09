@@ -24,7 +24,6 @@ class User < ApplicationRecord
   belongs_to :labos
 
   validates :username, presence: true, uniqueness: true, length: { in: 1..10 }
-
   validates :year, presence: true
   validates :email, presence: true, uniqueness: true
   validates :crypted_password, presence: true
