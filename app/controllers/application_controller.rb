@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/404.html.slim'), status: 404, layout: 'application', content_type: 'text/html'
   end
 
+  def render_414
+    render file: Rails.root.join('public/414.html.slim'), status: 414, layout: 'application', content_type: 'text/html'
+  end
+
   def render_500
     render file: Rails.root.join('public/500.html.slim'), status: 500, layout: 'application', content_type: 'text/html'
   end
