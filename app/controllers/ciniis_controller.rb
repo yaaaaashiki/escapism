@@ -7,7 +7,7 @@ class CiniisController < ApplicationController
   def index
     array = []
 
-    if invalid_size?(params)
+    if check_size(params)
       render_414
       return
     end
@@ -71,7 +71,7 @@ class CiniisController < ApplicationController
       params[:lab_id].blank? && params[:feature].blank? && params[:q].blank?
     end
 
-    def invalid_size?(params)
-      check_size?(params[:q]) || check_size?(params[:feature]) || check_size?(params[:page_num]) || check_size?(params[:lab_id])
+    def check_size(params)
+      invalid_size?(params[:q]) || invalid_size?(params[:feature]) || invalid_size?(params[:page_num]) || invalid_size?(params[:lab_id])
     end
 end

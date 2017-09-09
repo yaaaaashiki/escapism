@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/500.html.slim'), status: 500, layout: 'application', content_type: 'text/html'
   end
 
-  def check_size?(params)
+  def invalid_size?(params)
     params.length >= MAX_REQUEST_SIZE if params.present?
   end
 

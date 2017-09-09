@@ -2,6 +2,11 @@ class CommentsController < ApplicationController
   MAX_LINES = 10
 
   def create
+    if invalid_size?(params[:thesis_id])
+      render_414
+      return
+    end
+
     @thesis = Thesis.find(params[:thesis_id])
     if @thesis.nil?
       logger.error("Internal server error: CommentsController create action 3 lines: @theses is undefined")
