@@ -7,8 +7,8 @@ class ThesesController < ApplicationController
     @labo_id = params[:l]
     query = params[:q]
     @search_field = params[:f]
-    if params[:f]
-      render_404 if params_invalid?(params[:f])
+    if params[:f] && params_invalid?(params[:f])
+      render_404
     end
    
     if search_theses?(query, @labo_id, @search_field)
@@ -69,6 +69,6 @@ class ThesesController < ApplicationController
     end
 
     def params_invalid?(search_field)
-      search_field != "0" && search_field != "1" 
+      search_field != Thesis.SEARCH_BY_BODY && search_field != Thesis.SEARCH_BY_TITLE
     end
 end
