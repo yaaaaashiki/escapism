@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
       render_500
     end
 
-    if multiple_lines?(trim_multiple_newlines(comment_params[:body]))
+    if invalid?(comment_params[:body])
       redirect_to thesis_path(@thesis)
       return
     end
 
-    @comment = @thesis.comments.create(body: trim_multiple_newlines(comment_params[:body]), user_id: session[:user_id])
+    @comment = @thesis.comments.create(body: comment_params[:body], user_id: session[:user_id])
     redirect_to thesis_path(@thesis)
   end
   
@@ -22,12 +22,8 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body)
     end
 
-    def trim_multiple_newlines(comment)
-      comment.gsub(/\R{2,}/,"\n")
-    end
-
-    def multiple_lines?(comment)
-      if comment.scan(/\R/).size >= MAX_LINES
+    def invalid?(comment)
+      if comment.scan(/\R/).size > MAX_LINES || comment.strip.blank?
         return true
       end
       return false

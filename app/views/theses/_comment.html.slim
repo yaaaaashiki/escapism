@@ -16,7 +16,7 @@
     = form_for [@thesis, @thesis.comments.build] do |f|
       .form-group
         .col-sm-11
-          = f.text_area :body, class: "form-control", placeholder: "コメント"
+          = f.text_area :body, class: "form-control", placeholder: "コメント(10行以下, 20文字以上, 400文字以下)"
       .form-group
         .col-sm-11
           = f.submit class: "btn btn-primary btn-block"
