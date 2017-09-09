@@ -26,3 +26,8 @@
           => link_to pagination_number(result["id"]), ciniis_path(page_num: pagination_number(result["id"]),
                                                                   q: params[:q],
                                                                   commit:"検索")
+- else
+  .ciniiResult
+    .font-size-20
+      | 検索結果
+      |0件
