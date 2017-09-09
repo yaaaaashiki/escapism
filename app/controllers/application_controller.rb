@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   protect_from_forgery with: :exception
   before_action :require_login
+  MAX_REQUEST_SIZE = 200
 #  rescue_from ActiveRecord::RecordNotFound, with: :render_404
 #  rescue_from ActionController::RoutingError, with: :render_404
 #  rescue_from Exception, with: :render_500
@@ -18,6 +19,10 @@ class ApplicationController < ActionController::Base
 
   def render_500
     render file: Rails.root.join('public/500.html.slim'), status: 500, layout: 'application', content_type: 'text/html'
+  end
+
+  def too_large_request?(params)
+      params[:q].length >= MAX_REQUEST_SIZE if params[:q].present?
   end
 
   private
