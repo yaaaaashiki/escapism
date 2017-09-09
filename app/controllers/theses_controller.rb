@@ -33,6 +33,7 @@ class ThesesController < ApplicationController
     else
       logger.error("Internal server error: ThesesController show action 20 lines: @theses is undefined")
       render_500
+      return
     end
 
     @labos = Labo.all
@@ -43,6 +44,7 @@ class ThesesController < ApplicationController
     if thesis.nil?
       logger.error("Internal server error: ThesesController show action 20 lines: @theses is undefined")
       render_500
+      return
     end
     send_file(thesis.url, disposition: :inline)
   end

@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     if @thesis.nil?
       logger.error("Internal server error: CommentsController create action 3 lines: @theses is undefined")
       render_500
+      return
     end
 
     if invalid?(comment_params[:body])
