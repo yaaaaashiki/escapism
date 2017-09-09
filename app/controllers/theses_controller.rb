@@ -9,6 +9,7 @@ class ThesesController < ApplicationController
     @search_field = params[:f]
     if params[:f] && params_invalid?(params[:f])
       render_404
+      return
     end
    
     if search_theses?(query, @labo_id, @search_field)
