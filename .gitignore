@@ -218,3 +218,6 @@ temp.html
 #pdfminer
 vendor/pdfminer3k-master
 vendor/pdfminer3k
+
+#rubymine
+.idea
