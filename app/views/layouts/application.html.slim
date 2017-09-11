@@ -7,8 +7,10 @@ html.centering-wrapper-block[lang="ja"]
     title
       | Escapism
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag params[:controller]
     = stylesheet_link_tag "headers"
+    = stylesheet_link_tag "footers"
+    = stylesheet_link_tag params[:controller]
+    
     = csrf_meta_tags
     = favicon_link_tag
   body
@@ -63,7 +65,6 @@ html.centering-wrapper-block[lang="ja"]
                     = link_to "Sign Up", new_mail_address_path
                   li
                     = link_to "Login", login_path
-    = stylesheet_link_tag "footers"
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = javascript_include_tag 'footers', 'data-turbolinks-track' => true
     = javascript_include_tag params[:controller]

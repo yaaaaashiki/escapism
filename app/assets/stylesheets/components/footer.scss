@@ -1,62 +1,58 @@
 @import "components/color";
 
 #footer {
-  background-color: #2b2b2b;
+  background-color: $ironBlack;
   color: white;
-}
 
-.l-footerNav{
-  background-color: #2b2b2b;
-  padding: 30px 0;
+  .l-footerNav {
+    padding: 30px 0;
+  
+    a {
+      color: inherit;
+    }
+  
+    a:hover, a:focus {
+      color: $goldenYellow;
+      text-decoration: none;
+    }
+  
+    .active {
+      a, a:focus, a:hover {
+        color: $goldenYellow;
+        background-color: inherit;
+      }
+    }
 
-  a {
-    color: white;
+    .l-container {
+      overflow: hidden;
+      box-sizing: content-box;
+      -webkit-box-sizing: content-box;
+      padding: 0 7%;
+
+      .m-navigation {
+        ul {
+          float: right;
+          padding-right: 60px;
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+          letter-spacing: -1em;
+          word-spacing: -1em;
+
+          li {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 22px;
+            letter-spacing: normal;
+            word-spacing: normal;
+            margin-left: 40px;
+          }
+  
+          li:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
   }
-
-  a:hover,
-  a:focus {
-    color: $goldenYellow;
-    text-decoration: none;
-  }
-
-  .active>a,
-  .active>a:focus,
-  .active>a:hover {
-    color: $goldenYellow;
-    background-color: inherit;
-  }
-}
-
-.l-container {
-  overflow: hidden;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  padding: 0 7%;
-}
-
-.m-navigation li {
-  display: inline-block;
-  vertical-align: top;
-  font-size: 22px;
-  letter-spacing: normal;
-  word-spacing: normal;
-  margin-left: 40px;
-}
-
-.m-navigation li:first-child {
-  margin-left: 0;
-}
-
-.m-navigation--center ul {
-  float: right;
-  padding-right: 60px;
-}
-
-.m-navigation ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  // font-size: 0;
-  letter-spacing: -1em;
-  word-spacing: -1em;
 }

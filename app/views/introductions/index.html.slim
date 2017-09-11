@@ -80,30 +80,30 @@
         h1
           | システムの機能
       ul.icons
-        a[href="recommendations" alt=""]
-          li.icon-wrapper.recommend.odd
-            = image_tag("introduction/recommendation_image.png",:class => "default_img", :width=> "100%" )
-            = image_tag("introduction/HR_recommendation_image.png", :class=>"mouseover_img", :width=> "100%" )
+        li.icon-wrapper.recommend.odd
+          a[href="recommendations"]
+            = image_tag("introduction/recommendation_image.png",:class => "default_img")
+            = image_tag("introduction/HR_recommendation_image.png", :class=>"mouseover_img")
             .text-center
               | 研究室推薦
-        a[href="theses" alt=""]
-          li.icon-wrapper.search.even
-            = image_tag("introduction/search_image.png", :width=> "100%", :class => "default_img" )
-            = image_tag("introduction/HR_search_image.png", :class=>"mouseover_img", :width=> "100%" )
+        li.icon-wrapper.search.even
+          a[href="theses"]
+            = image_tag("introduction/search_image.png", :class => "default_img" )
+            = image_tag("introduction/HR_search_image.png", :class=>"mouseover_img")
             .text-center
               | 論文検索
-        a[href="theses" alt=""]
-          li.icon-wrapper.comment.odd
-            = image_tag("introduction/comment_image.png",:class => "default_img", :width=> "100%")
-            = image_tag("introduction/HR_comment_image.png", :class=>"mouseover_img", :width=> "100%" )
+        li.icon-wrapper.comment.odd
+          a[href="theses"]
+            = image_tag("introduction/comment_image.png",:class => "default_img")
+            = image_tag("introduction/HR_comment_image.png", :class=>"mouseover_img")
             .text-center
               | 先輩からの
             .text-center
               | コメント
-        a[href="ciniis" alt=""]
-          li.icon-wrapper.cinii.even
-            = image_tag("introduction/CiNii_image.png",:class => "default_img", :width=> "100%")
-            = image_tag("introduction/HR_CiNii_image.png", :class=>"mouseover_img", :width=> "100%" )
+        li.icon-wrapper.cinii.even
+          a[href="ciniis"]
+            = image_tag("introduction/CiNii_image.png",:class => "default_img")
+            = image_tag("introduction/HR_CiNii_image.png", :class=>"mouseover_img")
             .text-center
               | CiNii連動
   .container.content.black-back
@@ -209,7 +209,7 @@
     .fade-in-down-wait
       .laboName
         span.font-size-35.clear-margin.border-width
-          | 小宮山研究室</> 
+          | 小宮山研究室
       .laboInfo
         .col-sm-5
           .laboProfessor
