@@ -12,7 +12,6 @@ class ChatRoomsChannel < ApplicationCable::Channel
     Message.create!(body: message['body'], user_id: current_user.id)
     ActionCable.server.broadcast 'chatrooms_channel', body: message['body']
   rescue ActiveRecord::RecordInvalid => e
-    #TODO: error hanling
-    logger.error(e.record.errors)
+    logger.error("Bad request: ChatRoomsChannel post action 11 lines: Cannot create message #{e.record.error}")
   end
 end
