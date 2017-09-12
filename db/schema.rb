@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20170912032302) do
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.text     "content",    limit: 65535
+    t.text     "body",       limit: 65535
+    t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "theses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -129,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170912032302) do
 
   add_foreign_key "comments", "theses"
   add_foreign_key "comments", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "theses", "authors"
   add_foreign_key "theses", "labos"
   add_foreign_key "word_counts", "theses"
