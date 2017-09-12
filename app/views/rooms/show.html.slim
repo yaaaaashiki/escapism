@@ -1,3 +1,7 @@
 h1 chat room
 .messages
   = render @messages
+
+form
+  label say something
+  input type="text" data-behavior="room_speaker"
