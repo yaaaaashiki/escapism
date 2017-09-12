@@ -8,7 +8,7 @@ class ChatRoomsChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-   def speak(data)
-    ActionCable.server.broadcast 'chatrooms_channel', message: data['message']
+   def post(message)
+    ActionCable.server.broadcast 'chatrooms_channel', body: message['body']
   end
 end

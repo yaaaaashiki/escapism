@@ -7,21 +7,21 @@ App.chatrooms = App.cable.subscriptions.create("ChatRoomsChannel", {
     // Called when the subscription has been terminated by the server
   },
 
-  received: function(data) {
-    alert(data['message']);
+  received: function(message) {
+    alert(message['body']);
     // Called when there's incoming data on the websocket for this channel
   },
 
-  speak: function(message) {
-    return this.perform('speak', {
-      message: message
+  post: function(message) {
+    return this.perform('post', {
+      body: message
     });
   }
 });
 
 $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
   if (event.keyCode === 13) {
-    App.room.speak(event.target.value);
+    App.room.post(event.target.value);
     event.target.value = '';
     return event.preventDefault();
   }
