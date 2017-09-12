@@ -1,6 +1,6 @@
 App.room = App.cable.subscriptions.create("RoomChannel", {
   connected: function() {
-    // Called when the subscription is ready for use on the server
+    //Called when the subscription is ready for use on the server
   },
 
   disconnected: function() {
@@ -8,10 +8,12 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
   },
 
   received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
+    return alert(data['message']);
   },
 
-  speak: function() {
-    return this.perform('speak');
+  speak: function(message) {
+    return this.perform('speak',{
+      message: message
+    });
   }
 });

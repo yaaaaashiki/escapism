@@ -15,3 +15,4 @@
 //= require bootstrap-sprockets
 //= require common
 //= require footerFixed
+//= require cable
