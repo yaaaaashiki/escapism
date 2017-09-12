@@ -1,4 +1,15 @@
-App.chatrooms = App.cable.subscriptions.create("ChatRoomsChannel", {
+App.chatrooms = App.cable.subscriptions.create(
+  {
+    channel: "ChatRoomsChannel",
+    room_id: $("#chatroom").data('room_id')
+  },
+  {
+  room_id: function(){
+    var messages;
+    messages = $('#messages');
+    return message.data('room_id');
+  },
+
   connected: function() {
     // Called when the subscription is ready for use on the server
   },

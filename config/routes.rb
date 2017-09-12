@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
-  get 'labos/:id/chatrooms' => 'labos/chatrooms#index'
+  get 'labos/:lab_id/chatrooms' => 'labos/chatrooms#index'
 
   namespace :admin do
     get '/' => 'dashboard#index'
