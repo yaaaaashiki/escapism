@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = @user.set_role
     @user.save!  # && MailAddress.find_by(address: params[:user][:email])
     log_in @user
     session[:user_create] = true
@@ -50,4 +51,5 @@ class UsersController < ApplicationController
     def token_exists?
       redirect_to root_path unless Token.exists?(token: params[:token])
     end
+
 end
