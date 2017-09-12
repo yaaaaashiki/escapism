@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def set_role
     Date.today.year - self.year >= THIRD_YEAR ? LABO_STUDENT : NONE_LABO_STUDENT
   end
+
+  def get_role_name
+    self.role == LABO_STUDENT ? "研究生" : "学生"
+  end
 end

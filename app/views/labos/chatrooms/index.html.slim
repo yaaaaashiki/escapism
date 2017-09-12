@@ -7,7 +7,9 @@
 
   .hogehoge
     - @messages.each do |message|
-      = message.user_id
+      = @users.find(message.user_id).username
+      = @users.find(message.user_id).get_role_name
       = message.body
+      = message.created_at
       br
 

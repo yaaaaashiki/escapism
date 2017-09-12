@@ -6,5 +6,6 @@ class Labos::ChatroomsController < ApplicationController
       return
     end
     @messages = Message.all
+    @users = User.all
   end
 end

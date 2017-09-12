@@ -11,5 +11,8 @@ class ChatRoomsChannel < ApplicationCable::Channel
   def post(message)
     Message.create!(body: message['body'], user_id: current_user.id)
     ActionCable.server.broadcast 'chatrooms_channel', body: message['body']
+  rescue ActiveRecord::RecordInvalid => e
+    #TODO: error hanling
+    logger.error(e.record.errors)
   end
 end
