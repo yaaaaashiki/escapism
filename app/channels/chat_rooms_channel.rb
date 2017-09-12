@@ -9,6 +9,7 @@ class ChatRoomsChannel < ApplicationCable::Channel
   end
 
    def post(message)
+    Message.create!(body: message['body'], user_id: 1)
     ActionCable.server.broadcast 'chatrooms_channel', body: message['body']
    end
 end

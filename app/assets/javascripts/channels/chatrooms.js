@@ -8,7 +8,7 @@ App.chatrooms = App.cable.subscriptions.create("ChatRoomsChannel", {
   },
 
   received: function(message) {
-    alert(message['body']);
+    //alert(message['body']);
     // Called when there's incoming data on the websocket for this channel
   },
 
