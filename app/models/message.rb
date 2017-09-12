@@ -16,6 +16,10 @@
 #
 
 class Message < ApplicationRecord
+  belongs_to :user
+  belongs_to :labo
+  validates :body, length: { in: 1..400 }
+
   def belongs_to_labo?(lab_id)
     self.labo_id == lab_id
   end
