@@ -1,0 +1,6 @@
+ja:
+  time:
+    formats:
+      default: ! '%m/%d'
+      second: ! '%m月%d日(%a) %H時%M分%S秒 %z'
+      minute: ! '%m月%d日 %H:%M'
