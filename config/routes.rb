@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'rooms/show' => 'rooms#show'
 
   root 'introductions#index'
 
+  get 'rooms/show' => 'rooms#show'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
+  get 'labos/:id/chatrooms' => 'labos/chatrooms#index'
 
   namespace :admin do
     get '/' => 'dashboard#index'
