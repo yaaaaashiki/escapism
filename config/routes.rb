@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   resources :ciniis, only: [:index, :show]
 
   get '*path', controller: 'application', action: 'render_404'
+
+  mount ActionCable.server => '/cable'
 end
