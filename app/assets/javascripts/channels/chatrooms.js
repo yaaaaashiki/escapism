@@ -1,3 +1,14 @@
+function formatToSlash(date){
+  const yearHyphen = 5;
+  const secondDigit = 13;
+
+  date = date.slice(yearHyphen);
+  date = date.replace("-", "/");
+  date = date.replace("T", " ");
+  date = date.slice(0, -secondDigit);
+  return date
+}
+
 App.chatrooms = App.cable.subscriptions.create(
   {
     channel: "ChatRoomsChannel",
@@ -13,8 +24,14 @@ App.chatrooms = App.cable.subscriptions.create(
     },
 
     received: function(message) {
-      console.log(message);
-      $("div .hogehoge").append(`<div>${message['body']}<div>`);
+      const createdAt = formatToSlash(message['object']['created_at']);
+
+      $("div .hogehoge").append(`
+                                  <span>${message['object']['name']}<span>
+                                  <span>${message['object']['role']}<span>
+                                  <span>${message['object']['body']}<span>
+                                  <span>${createdAt}<span>
+                               `);
       // Called when there's incoming data on the websocket for this channel
     },
 

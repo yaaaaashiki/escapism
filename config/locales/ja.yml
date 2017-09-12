@@ -2,5 +2,5 @@ ja:
   time:
     formats:
       default: ! '%m/%d'
-      second: ! '%m月%d日(%a) %H時%M分%S秒 %z'
-      minute: ! '%m月%d日 %H:%M'
+      second: ! '%m/%d %H:%M%:S %z'
+      minute: ! '%m/%d %H:%M'
