@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rooms/show' => 'rooms#show'
+
   root 'introductions#index'
 
   get 'login' => 'sessions#new'
