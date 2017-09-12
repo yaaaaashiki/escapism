@@ -1,10 +1,13 @@
-= @labo.name
+.container
+  = @labo.name
 
-form
-  label say something
-  input type="text" data-behavior="chatroom"
+  form
+    label say something
+    input type="text" data-behavior="chatroom"
 
-.hogehoge
-  - @messages.each do |message|
-    = message.body
+  .hogehoge
+    - @messages.each do |message|
+      = message.user_id
+      = message.body
+      br
 

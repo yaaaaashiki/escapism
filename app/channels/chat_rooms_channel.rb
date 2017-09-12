@@ -8,8 +8,8 @@ class ChatRoomsChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-   def post(message)
-    Message.create!(body: message['body'], user_id: 1)
+  def post(message)
+    Message.create!(body: message['body'], user_id: current_user.id)
     ActionCable.server.broadcast 'chatrooms_channel', body: message['body']
-   end
+  end
 end
