@@ -222,5 +222,6 @@ vendor/pdfminer3k
 #rubymine
 .idea
 
-#radis
+#redis binary dump (dump.rdb) files
 app/dump.rdb
+*.rdb
