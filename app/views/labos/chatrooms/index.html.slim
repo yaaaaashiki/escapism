@@ -3,7 +3,7 @@
 
   form
     label say something
-    input type="text" data-behavior="chatroom"
+    input type="text" data-behavior="chatroom_#{params[:lab_id]}"
 
   .hogehoge
     - @messages.each do |message|

@@ -19,7 +19,7 @@ App.chatrooms = App.cable.subscriptions.create(
   },
 
   received: function(message) {
-    //alert(message['body']);
+    alert(message['body']);
     // Called when there's incoming data on the websocket for this channel
   },
 
@@ -30,7 +30,7 @@ App.chatrooms = App.cable.subscriptions.create(
   }
 });
 
-$(document).on('keypress', '[data-behavior~=chatroom]', function(event) {
+$(document).on('keypress', `[data-behavior~=chatroom_${$("#chatroom").data('room_id')}]`, function(event) {
   if (event.keyCode === 13) {
     App.chatrooms.post(event.target.value);
     event.target.value = '';
