@@ -19,9 +19,9 @@ App.chatrooms = App.cable.subscriptions.create("ChatRoomsChannel", {
   }
 });
 
-$(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
+$(document).on('keypress', '[data-behavior~=chatroom]', function(event) {
   if (event.keyCode === 13) {
-    App.room.post(event.target.value);
+    App.chatrooms.post(event.target.value);
     event.target.value = '';
     return event.preventDefault();
   }

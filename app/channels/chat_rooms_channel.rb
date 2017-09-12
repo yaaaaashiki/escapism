@@ -10,5 +10,5 @@ class ChatRoomsChannel < ApplicationCable::Channel
 
    def post(message)
     ActionCable.server.broadcast 'chatrooms_channel', body: message['body']
-  end
+   end
 end
