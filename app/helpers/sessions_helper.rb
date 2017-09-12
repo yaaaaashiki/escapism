@@ -2,6 +2,7 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
+    cookies.signed[:user_id] = user.id
   end
 
  def admin_log_in(user)
@@ -22,6 +23,7 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
+    cookies.signed[:user_id] = nil
     @current_user = nil
   end
 
