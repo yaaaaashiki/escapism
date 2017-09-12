@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20170912032302) do
     t.integer  "year"
     t.string   "email",            null: false
     t.integer  "labo"
+    t.integer  "role"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
