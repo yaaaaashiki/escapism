@@ -5,5 +5,6 @@ class Labos::ChatroomsController < ApplicationController
       render_404
       return
     end
+    @messages = Message.all
   end
 end
