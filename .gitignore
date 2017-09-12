@@ -221,3 +221,6 @@ vendor/pdfminer3k
 
 #rubymine
 .idea
+
+#radis
+app/dump.rdb
