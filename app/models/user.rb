@@ -44,4 +44,16 @@ class User < ApplicationRecord
   def get_role_name
     self.role == LABO_STUDENT ? "研究生" : "学生"
   end
+
+  def get_role_id
+    self.role == LABO_STUDENT ? LABO_STUDENT : NONE_LABO_STUDENT
+  end
+
+   def labo_student?
+      self.get_role_id == User::LABO_STUDENT
+   end
+
+   def belongs_to_this_labo?(room_id)
+     self.labo == room_id
+   end
 end
