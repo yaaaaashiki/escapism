@@ -9,8 +9,9 @@
   .hogehoge
     - @messages.each do |message|
       - next unless message.belongs_to_labo?(params[:lab_id].to_i)
-      =<> @users.find(message.user_id).username
-      =<> @users.find(message.user_id).get_role_name
+      - send_user = @users.find(message.user_id)
+      =<> send_user.username
+      =<> send_user.get_role_name
       =<> message.body
       =<> l message.created_at ,format: :minute
       br
