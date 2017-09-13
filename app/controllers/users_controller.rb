@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.role = @user.set_role
+    @user.role = @user.get_role
     @user.save!  # && MailAddress.find_by(address: params[:user][:email])
     log_in @user
     session[:user_create] = true

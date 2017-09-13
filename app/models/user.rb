@@ -37,7 +37,7 @@ class User < ApplicationRecord
   NONE_LABO_STUDENT = 2
   THIRD_YEAR = 3
 
-  def set_role
+  def get_role
     Date.today.year - self.year >= THIRD_YEAR ? LABO_STUDENT : NONE_LABO_STUDENT
   end
 

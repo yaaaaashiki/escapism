@@ -73,28 +73,28 @@ RSpec.describe User, type: :model do
       context "2013 year students" do
         let(:user) {build(:y2013user)}
         it "is confirmed to work corectlly" do
-          expect(user.set_role == User::LABO_STUDENT).to be_truthy
+          expect(user.get_role == User::LABO_STUDENT).to be_truthy
         end
       end
 
       context "2014 year students" do
         let(:user) {build(:y2014user)}
         it "is confirmed to work corectlly" do
-          expect(user.set_role == User::LABO_STUDENT).to be_truthy
+          expect(user.get_role == User::LABO_STUDENT).to be_truthy
         end
       end
 
       context "2015 year students" do
         let(:user) {build(:y2015user)}
         it "is confirmed to work corectlly" do
-          expect(user.set_role == User::LABO_STUDENT).to be_falsey
+          expect(user.get_role == User::LABO_STUDENT).to be_falsey
         end
       end
 
       context "2016 year students" do
         let(:user) {build(:y2016user)}
         it "is confirmed to work corectlly" do
-          expect(user.set_role == User::LABO_STUDENT).to be_falsey
+          expect(user.get_role == User::LABO_STUDENT).to be_falsey
         end
       end
     end
