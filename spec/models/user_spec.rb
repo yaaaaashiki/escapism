@@ -67,4 +67,36 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
   end
+
+  describe "Confirm user role" do
+    context "set role function" do
+      context "2013 year students" do
+        let(:user) {build(:y2013user)}
+        it "is confirmed for set role name function return labo student" do
+          expect(user.set_role == User::LABO_STUDENT).to be_truthy
+        end
+      end
+
+      context "2014 year students" do
+        let(:user) {build(:y2014user)}
+        it "is confirmed for set role name function return labo student" do
+          expect(user.set_role == User::LABO_STUDENT).to be_truthy
+        end
+      end
+
+      context "2015 year students" do
+        let(:user) {build(:y2015user)}
+        it "is confirmed for set role name function return labo student" do
+          expect(user.set_role == User::LABO_STUDENT).to be_falsey
+        end
+      end
+
+      context "2016 year students" do
+        let(:user) {build(:y2016user)}
+        it "is confirmed for set role name function return labo student" do
+          expect(user.set_role == User::LABO_STUDENT).to be_falsey
+        end
+      end
+    end
+  end
 end
