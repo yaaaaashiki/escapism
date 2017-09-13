@@ -2,7 +2,11 @@ function formatToSlash(ctime){
   const yearHyphen = 5;
   const secondDigit = 13;
 
-  date = ctime.slice(yearHyphen).replace("-", "/").replace("T", " ").slice(0, -secondDigit);
+  date = ctime.slice(yearHyphen)
+              .replace("-", "/")
+              .replace("T", " ")
+              .slice(0, -secondDigit);
+
   return date
 }
 
