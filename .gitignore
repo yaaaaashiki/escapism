@@ -225,3 +225,4 @@ vendor/pdfminer3k
 #redis binary dump (dump.rdb) files
 app/dump.rdb
 *.rdb
+dump.rdb
