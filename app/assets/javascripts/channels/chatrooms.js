@@ -1,11 +1,8 @@
-function formatToSlash(date){
+function formatToSlash(ctime){
   const yearHyphen = 5;
   const secondDigit = 13;
 
-  date = date.slice(yearHyphen);
-  date = date.replace("-", "/");
-  date = date.replace("T", " ");
-  date = date.slice(0, -secondDigit);
+  date = ctime.slice(yearHyphen).replace("-", "/").replace("T", " ").slice(0, -secondDigit);
   return date
 }
 
@@ -31,6 +28,7 @@ App.chatrooms = App.cable.subscriptions.create(
                                   <span>${message['object']['role']}<span>
                                   <span>${message['object']['body']}<span>
                                   <span>${createdAt}<span>
+                                  <br>
                                `);
       // Called when there's incoming data on the websocket for this channel
     },
