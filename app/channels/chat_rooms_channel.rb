@@ -14,21 +14,19 @@ class ChatRoomsChannel < ApplicationCable::Channel
       return
     end
 
-    @message = Message.create!(body: message['body'], user_id: current_user.id, labo_id: params[:room_id])
+    new_message = Message.create!(body: message['body'], user_id: current_user.id, labo_id: params[:room_id])
 
-    ActionCable.server.broadcast "chatrooms_channel_#{params[:room_id]}", object: create_message_hash(@message)
+    ActionCable.server.broadcast "chatrooms_channel_#{params[:room_id]}", object: create_message_hash(new_message)
   rescue ActiveRecord::RecordInvalid => e
     logger.error("Bad request: ChatRoomsChannel post action 11 lines: Cannot create message #{e.record.error}")
   end
 
   def create_message_hash(message)
-    send_user = User.all.find(message.user_id)
-    hash = {
-             name: send_user.username,
-             role: send_user.get_role_name,
-             body: message.body,
-             created_at: message.created_at
-           }
-    hash
+    {
+      name: current_user.username,
+      role: current_user.get_role_name,
+      body: message.body,
+      created_at: message.created_at
+    }
   end
 end
