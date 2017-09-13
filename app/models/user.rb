@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
    def labo_student?
-      self.get_role_id == User::LABO_STUDENT
+      self.get_role_id == LABO_STUDENT
    end
 
    def belongs_to_this_labo?(room_id)
