@@ -51,5 +51,4 @@ class UsersController < ApplicationController
     def token_exists?
       redirect_to root_path unless Token.exists?(token: params[:token])
     end
-
 end
