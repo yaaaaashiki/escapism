@@ -32,7 +32,6 @@ App.chatrooms = App.cable.subscriptions.create(
                                   <span>${createdAt}<span>
                                   <br>
                                `);
-
     },
 
     post: function(message) {
