@@ -1,7 +1,9 @@
 @import "components/color";
 
+$backgroundColor: $ironBlack;
+
 #footer {
-  background-color: $ironBlack;
+  background-color: $backgroundColor;
   color: white;
 
   .l-footerNav {
@@ -36,11 +38,17 @@
       
           .nav {
             font-size: 22px;
-      
-            a, a:hover, a:focus {
-              color: white;
+
+            li {
+              // マウスオーバー時の項目のズレを防ぐためボーダーを設定
+              // commom.css.scssのbottom-borderと同じ太さ
+              border-bottom: solid 3px $backgroundColor;
+
+              a:hover, a:focus {
+                color: white;
+              }
             }
-      
+
             .active {
               a, a:focus, a:hover {
                 color: $goldenYellow;
