@@ -40,7 +40,7 @@ html.centering-wrapper-block[lang="ja"]
       .l-footerNav
         .l-container.l-container--full.pad-le-40
           nav.m-navigation.m-navigation--center
-            .col-sm-5.
+            .col-sm-5
               span.font-size-25
                 a.white[href="/"]
                   | 論文検索支援システム escapism
@@ -48,23 +48,17 @@ html.centering-wrapper-block[lang="ja"]
                 small.pad-le-5
                   | Copyright © 2017 論文検索支援システム escapism All rights reserved.
             .col-sm-7.pad-top-30.pos-bot-5
-              ul
-                li
-                  = link_to "TOP", "/"
-                - if logged_in?
-                  li
-                    = link_to "Recommend Lab", recommendations_path
-                  li
-                    = link_to "CiNii", ciniis_path
-                  li
-                    = link_to "Search", theses_path
-                  li
-                    = link_to "Logout", logout_path, {method: :post}
-                - else
-                  li
-                    = link_to "Sign Up", new_mail_address_path
-                  li
-                    = link_to "Login", login_path
+              = nav_bar fluid: true do
+                = menu_group pull: :right do
+                  = menu_item "TOP", root_path
+                  - if logged_in?
+                    = menu_item "Recommend Lab", recommendations_path
+                    = menu_item "CiNii", ciniis_path
+                    = menu_item "Search", theses_path
+                    = menu_item "Logout", logout_path, {method: :post}
+                  - else
+                    = menu_item "Sign Up", new_mail_address_path
+                    = menu_item "Login", login_path
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = javascript_include_tag 'footers', 'data-turbolinks-track' => true
     = javascript_include_tag params[:controller]

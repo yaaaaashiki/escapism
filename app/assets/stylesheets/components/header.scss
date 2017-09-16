@@ -1,39 +1,41 @@
 @import 'components/color';
 
-.navbar {
-  border: none;
-  margin: 0;
-  height: 100px;
-  padding-top: 30px;
-  color: $goldenYellow;
-  background-color: $wineRed;
+.navigate-anchor {
+  .navbar {
+    border: none;
+    margin: 0;
+    height: 100px;
+    padding-top: 30px;
+    color: $goldenYellow;
+    background-color: $wineRed;
 
-  .container-fluid {
-    padding-left: 5%;
-    padding-right: 5%;
-    background-color: inherit;
+    .container-fluid {
+      padding-left: 5%;
+      padding-right: 5%;
+      background-color: inherit;
 
-    .navbar-brand {
-      font-size: 25px;
-      font-weight: bolder;
-    }
+      .navbar-brand {
+        font-size: 25px;
+        font-weight: bolder;
+      }
 
-    .navbar-brand, .navbar-brand:focus, .navbar-brand:hover {
-      color: white;
-    }
-
-    .nav {
-      font-size: 22px;
-      font-weight: normal;
-
-      a, a:hover, a:focus {
+      .navbar-brand, .navbar-brand:focus, .navbar-brand:hover {
         color: white;
       }
 
-      .active {
-        a, a:focus, a:hover {
-          color: $goldenYellow;
-          background-color: inherit;
+      .nav {
+        font-size: 22px;
+        font-weight: normal;
+
+        a, a:hover, a:focus {
+          color: white;
+        }
+
+        .active {
+          a, a:focus, a:hover {
+            color: $goldenYellow;
+            background-color: inherit;
+          }
         }
       }
     }
