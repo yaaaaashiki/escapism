@@ -1,11 +1,12 @@
-.success-field{
-  position: relative;
-  height: 400px;
-  width: 100%;
-}
+.success-field {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
 
-.success-field{
-  position: absolute;
-  top: 300px;
-  width: 100%;
+  a, a:hover, a:focus {
+    border: none;
+    color: $ironBlack;
+    background-color: $goldenYellow;
+  }
 }
