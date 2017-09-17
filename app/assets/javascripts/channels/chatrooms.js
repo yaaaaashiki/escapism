@@ -10,6 +10,10 @@ function formatToSlash(ctime){
   return date
 }
 
+function escapeHTML(val){
+  return $('<div />').text(val).html();
+};
+
 App.chatrooms = App.cable.subscriptions.create(
   {
     channel: "ChatRoomsChannel",
@@ -47,7 +51,7 @@ App.chatrooms = App.cable.subscriptions.create(
 
 $(document).on('keypress', `[data-behavior~=chatroom_${$("#chatroom").data('room_id')}]`, function(event) {
   if (event.keyCode === 13) {
-    App.chatrooms.post(event.target.value);
+    App.chatrooms.post(escapeHTML(event.target.value));
     event.target.value = '';
     return event.preventDefault();
   }
