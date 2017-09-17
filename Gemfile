@@ -111,6 +111,9 @@ gem 'yomu', '0.1.5'
 # understandable model 
 gem 'annotate'
 
+# AP server
+gem 'puma'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
