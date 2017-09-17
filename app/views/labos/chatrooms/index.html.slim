@@ -8,7 +8,6 @@
 
   .hogehoge
     - @message_users.each do |message_user|
-      - next unless message_user["labo_id"] == (params[:lab_id].to_i)
       =<> message_user["username"]
       =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
       =<> message_user["body"]
