@@ -1,7 +1,9 @@
 @import "components/color";
 
+$backgroundColor: $ironBlack;
+
 #footer {
-  background-color: $ironBlack;
+  background-color: $backgroundColor;
   color: white;
 
   .l-footerNav {
@@ -30,26 +32,28 @@
       padding: 0 7%;
 
       .m-navigation {
-        ul {
-          float: right;
-          padding-right: 60px;
-          margin: 0;
-          padding: 0;
-          list-style-type: none;
-          letter-spacing: -1em;
-          word-spacing: -1em;
-
-          li {
-            display: inline-block;
-            vertical-align: top;
+        .navbar {
+          border: none;
+          background-color: inherit;
+      
+          .nav {
             font-size: 22px;
-            letter-spacing: normal;
-            word-spacing: normal;
-            margin-left: 40px;
-          }
-  
-          li:first-child {
-            margin-left: 0;
+
+            li {
+              // マウスオーバー時の項目のズレを防ぐためボーダーを設定
+              // commom.css.scssのbottom-borderと同じ太さ
+              border-bottom: solid 3px $backgroundColor;
+
+              a:hover, a:focus {
+                color: white;
+              }
+            }
+
+            .active {
+              a, a:focus, a:hover {
+                color: $goldenYellow;
+              }
+            }
           }
         }
       }
