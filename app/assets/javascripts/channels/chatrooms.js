@@ -2,7 +2,7 @@ function formatToSlash(ctime){
   const yearHyphen = 5;
   const secondDigit = 13;
 
-  date = ctime.slice(yearHyphen)
+  let date = ctime.slice(yearHyphen)
               .replace("-", "/")
               .replace("T", " ")
               .slice(0, -secondDigit);
@@ -11,7 +11,7 @@ function formatToSlash(ctime){
 }
 
 function escapeHTML(body){
-  return $('<span />').text(body).html();
+  return $('<span><span />').text(body).html();
 };
 
 App.chatrooms = App.cable.subscriptions.create(
@@ -29,13 +29,11 @@ App.chatrooms = App.cable.subscriptions.create(
     received: function(message) {
       const createdAt = formatToSlash(message['object']['created_at']);
 
-      $("div .hogehoge").append(`
-                                  <span>${message['object']['name']}<span>
-                                  <span>${message['object']['role']}<span>
-                                  <span>${message['object']['body']}<span>
-                                  <span>${createdAt}<span>
-                                  <br>
-                               `);
+      $("div .hogehoge").append(escapeHTML(message['object']['name'] + ' '))
+                        .append(escapeHTML(message['object']['role'] + ' '))
+                        .append(escapeHTML(message['object']['body'] + ' '))
+                        .append(escapeHTML(createdAt))
+                        .append('<br />');
     },
 
     post: function(message) {
@@ -48,7 +46,7 @@ App.chatrooms = App.cable.subscriptions.create(
 
 $(document).on('keypress', `[data-behavior~=chatroom_${$("#chatroom").data('room_id')}]`, function(event) {
   if (event.keyCode === 13) {
-    App.chatrooms.post(escapeHTML(event.target.value));
+    App.chatrooms.post(event.target.value);
     event.target.value = '';
     return event.preventDefault();
   }
