@@ -21,11 +21,9 @@ App.chatrooms = App.cable.subscriptions.create(
   },
   {
     connected: function() {
-      // Called when the subscription is ready for use on the server
     },
 
     disconnected: function() {
-      // Called when the subscription has been terminated by the server
     },
 
     received: function(message) {
@@ -38,7 +36,6 @@ App.chatrooms = App.cable.subscriptions.create(
                                   <span>${createdAt}<span>
                                   <br>
                                `);
-      // Called when there's incoming data on the websocket for this channel
     },
 
     post: function(message) {
