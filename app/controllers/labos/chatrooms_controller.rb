@@ -5,7 +5,8 @@ class Labos::ChatroomsController < ApplicationController
       render_404
       return
     end
-    @messages = Message.all
-    @users = User.all
+    @message_users = ActiveRecord::Base.connection.select_all("select messages.labo_id, users.labo, users.username, messages.body, messages.created_at
+                                                               from messages join users
+                                                               on messages.user_id = users.id").to_hash
   end
 end
