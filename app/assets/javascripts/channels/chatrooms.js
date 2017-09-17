@@ -10,8 +10,8 @@ function formatToSlash(ctime){
   return date
 }
 
-function escapeHTML(val){
-  return $('<div />').text(val).html();
+function escapeHTML(body){
+  return $('<span />').text(body).html();
 };
 
 App.chatrooms = App.cable.subscriptions.create(
