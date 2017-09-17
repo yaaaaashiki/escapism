@@ -226,3 +226,6 @@ vendor/pdfminer3k
 app/dump.rdb
 *.rdb
 dump.rdb
+
+/node_modules
+/.eslintrc.json
