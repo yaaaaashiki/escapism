@@ -5,13 +5,9 @@
     .col-sm-offset-1.col-xs-offset-1
       .page-header.width
         h4
-          - @labos.each do |l|
-            = l.name if l.id == t.labo_id
+          = t.labo.name
           span[style="margin-right: 50px;"]
-          - @author.each do |a|
-            - if a.id == t.author_id
-              = a.name
-              - break
+          = t.author.name
         h4
           = link_to(t.title, thesis_path(t.id))
         h5.gray

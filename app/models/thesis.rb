@@ -52,6 +52,13 @@ class Thesis < ApplicationRecord
       indexes :year, index: 'not_analyzed'
       indexes :labo_id, index: 'not_analyzed'
       indexes :author_id, index: 'not_analyzed'
+      indexes :labo do
+        indexes :name, index: 'not_analyzed'
+      end
+
+      indexes :author do
+        indexes :name, index: 'not_analyzed'
+      end
     end
   end
 
@@ -59,6 +66,8 @@ class Thesis < ApplicationRecord
     attributes
       .symbolize_keys
       .slice(:id, :body, :summary, :title, :url, :year, :labo_id, :author_id)
+      .merge(labo: { name: labo.name })
+      .merge(author: { name: author.name })
   end
 
   def self.search_by_keyword(keyword, labo_id, field)
