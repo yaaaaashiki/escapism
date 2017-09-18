@@ -21,7 +21,6 @@ class UsersController < ApplicationController
       render_404
       return
     end
-    @labos = Labo.all
   end
 
   def create
@@ -31,9 +30,11 @@ class UsersController < ApplicationController
       labo = Labo.all.find(labo_password_params[:id])
       if !labo.authoricate(labo_password_params[:password])
         render :new, status: :bad_request
+        return
       end
     else
       render :new, status: :bad_request
+      return
     end
     @user.save!  # && MailAddress.find_by(address: params[:user][:email])
     log_in @user
