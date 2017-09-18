@@ -15,7 +15,6 @@ table
         td
           = labo.id
         td
-          = labo.name
-          /= link_to labo.name, admin_password_path(user)
+          = link_to labo.name, admin_labo_path(labo)
         td
           = labo.crypted_password
