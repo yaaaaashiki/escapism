@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 20170912032302) do
   create_table "labos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name",                           null: false
     t.text     "features",         limit: 65535
-    t.string   "crypted_password", limit: 32,    null: false
-    t.string   "salt",             limit: 32,    null: false
-    t.string   "string",           limit: 32,    null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "string"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
