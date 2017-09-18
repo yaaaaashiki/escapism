@@ -7,6 +7,7 @@
 #  year             :integer
 #  email            :string(255)      not null
 #  labo             :integer
+#  role             :integer
 #  crypted_password :string(255)
 #  salt             :string(255)
 #  created_at       :datetime
@@ -64,6 +65,38 @@ RSpec.describe User, type: :model do
 
     it "is valid when two user post different e-mail addresses" do
       expect(user).to be_valid
+    end
+  end
+
+  describe "Confirm user role" do
+    context "Set role function" do
+      context "2013 year students" do
+        let(:user) {build(:y2013user)}
+        it "is confirmed to work corectlly" do
+          expect(user.get_role == User::LABO_STUDENT).to be_truthy
+        end
+      end
+
+      context "2014 year students" do
+        let(:user) {build(:y2014user)}
+        it "is confirmed to work corectlly" do
+          expect(user.get_role == User::LABO_STUDENT).to be_truthy
+        end
+      end
+
+      context "2015 year students" do
+        let(:user) {build(:y2015user)}
+        it "is confirmed to work corectlly" do
+          expect(user.get_role == User::LABO_STUDENT).to be_falsey
+        end
+      end
+
+      context "2016 year students" do
+        let(:user) {build(:y2016user)}
+        it "is confirmed to work corectlly" do
+          expect(user.get_role == User::LABO_STUDENT).to be_falsey
+        end
+      end
     end
   end
 end

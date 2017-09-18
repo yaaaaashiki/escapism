@@ -42,6 +42,18 @@ body {
   li {
     display: inline;
   }
+
+  .default_img {
+    width: 100%;
+  }
+
+  .mouseover_img {
+    width: 100%;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .icon-wrapper{
@@ -102,14 +114,6 @@ body {
 
 .laboInfo {
   font-size: 20px;
-}
-
-.navbar{
-  border: none;
-  opacity: 0.7;
-  margin: 0;
-  height: 100px;
-  padding-top: 30px;
 }
 
 .nav{
