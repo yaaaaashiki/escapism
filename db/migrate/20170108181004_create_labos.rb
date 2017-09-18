@@ -4,7 +4,7 @@ class CreateLabos < ActiveRecord::Migration[5.0]
       t.string :name, :null => false
       t.text :features
       t.string :crypted_password
-      t.string :salt, :string
+      t.string :salt
       t.timestamps
     end
   end

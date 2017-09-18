@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20170912032302) do
     t.text     "features",         limit: 65535
     t.string   "crypted_password"
     t.string   "salt"
-    t.string   "string"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
