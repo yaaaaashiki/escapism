@@ -4,7 +4,7 @@
     l.id = i
     l.name = Labo.ARRAY_LABO_NAMES[i-1]
     l.salt = "asdasdastr4325234324sdfds"
-    l.crypted_password = Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+    l.crypted_password = Labo.crypt_password("password", "asdasdastr4325234324sdfds")
   end
 end
 
