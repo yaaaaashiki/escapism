@@ -1,18 +1,20 @@
-- if @theses_labos_authors
+- if @theses
   .col-sm-offset-1.col-xs-offset-1.col-sm-7.col-xs-7
     = page_entries_info @theses, entry_name: Thesis.name
-  - @theses_labos_authors.each do |t|
+  - @theses.each do |t|
     .col-sm-offset-1.col-xs-offset-1
       .page-header.width
         h4
-          = t["labo_name"]
+          / = t["labo_name"]
+          = @labos.find(t.labo_id).name
           span[style="margin-right: 50px;"]
-          = t["author_name"]
+          / = t["author_name"]
+          = @author.find(t.author_id).name
         h4
-          = link_to(t["title"], thesis_path(t["id"]))
+          = link_to(t.title(), thesis_path(t.id()))
         h5.gray
           | 執筆年度 :
-          = t["year"]
+          = t.year()
           | 年
       p.text-muted.search_summary
         small

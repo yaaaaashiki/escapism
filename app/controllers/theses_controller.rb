@@ -14,15 +14,16 @@ class ThesesController < ApplicationController
    
     if search_theses?(query, @labo_id, @search_field)
       @theses = Thesis.search_by_keyword(query, @labo_id, @search_field).page(params[:page]).per(4)
-      @theses_labos_authors = ActiveRecord::Base.connection.select_all("select theses.id, theses.title, theses.body, theses.summary, theses.year, labos.name as labo_name, authors.name as author_name
-                                                                        from theses inner join labos on theses.labo_id = labos.id
-                                                                                    inner join authors on theses.author_id = authors.id
-                                                                       ").to_hash
-      if not_exist_theses(@theses_labos_authors)
+      # @theses_labos_authors = ActiveRecord::Base.connection.select_all("select theses.id, theses.title, theses.body, theses.summary, theses.year, labos.name as labo_name, authors.name as author_name
+      #                                                                   from theses inner join labos on theses.labo_id = labos.id
+      #                                                                               inner join authors on theses.author_id = authors.id
+      #                                                                  ").to_hash
+      # if not_exist_theses(@theses_labos_authors)
+      if not_exist_theses(@theses)
         flash[:alert] = 'Matching theses was not found. Try again.'
       end
     end
-
+    @author = Author.all
     @labos = Labo.all
   end
 
