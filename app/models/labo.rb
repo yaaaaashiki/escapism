@@ -12,6 +12,7 @@
 #  updated_at       :datetime         not null
 #
 
+require 'digest/md5'
 class Labo < ApplicationRecord
   @@SYMBOL_LABO_NAMES = %i(sumi durst sakuta ohara komiyama tobe harada lopez )
   @@ARRAY_LABO_DIRECTORY_NAMES = %w(durst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
@@ -63,5 +64,26 @@ class Labo < ApplicationRecord
     elsif path.include?("tobe")
       '戸辺研究室'
     end
+  end
+
+  def authoricate(name, password)
+    return false if Labo.crypt_password(password, self.salt) != self.crypted_password
+    true
+  end
+  
+  def before_create
+    self.salt = Labo.new_salt
+    self.crypted_password = Labo.crypt_password(self.password, self.salt)
+  end
+  
+  private
+  
+  def self.crypt_password(password, salt)
+    Digest::MD5.hexdigest(password + salt)
+  end
+  
+  def self.new_salt
+    s = rand.to_s.tr('+', '.')
+    s[0, if s.size > 32 then 32 else s.size end]
   end
 end
