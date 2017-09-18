@@ -13,10 +13,10 @@
               = a.name
               - break
         h4
-          = link_to(t.title(), thesis_path(t.id()))
+          = link_to(t.title, thesis_path(t.id))
         h5.gray
           | 執筆年度 :
-          = t.year()
+          = t.year
           | 年
       p.text-muted.search_summary
         small
@@ -26,4 +26,4 @@
 - else
   - if flash[:alert]
     = flash[:alert]
-
+    
