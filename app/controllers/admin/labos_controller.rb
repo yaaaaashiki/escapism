@@ -1,5 +1,5 @@
 class Admin::LabosController < AdminController
-  before_action :set_labo, only: [:show, :update, :crypted_password_params]
+  before_action :set_labo, only: [:show, :update]
 
   def index
     @labos = Labo.all
@@ -9,7 +9,7 @@ class Admin::LabosController < AdminController
   end
 
   def update
-    if @labo.update(crypted_password_params(params[:id]))
+    if @labo.update(crypted_password_params)
       redirect_to admin_labos_url
     else
       render :edit
@@ -21,10 +21,10 @@ class Admin::LabosController < AdminController
       @labo = Labo.find(params[:id])
     end
 
-    def crypted_password_params(id)
+    def crypted_password_params
       password = params.require(:labo).permit(:password)[:password]
-      @labo.set_salt
-      salted = Labo.crypt_password(password, @labo.salt)
-      {crypted_password: salted}
+      salt = Labo.create_salt
+      salted = Labo.crypt_password(password, salt)
+      {crypted_password: salted, salt: salt}
     end
 end

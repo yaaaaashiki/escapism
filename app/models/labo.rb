@@ -71,7 +71,7 @@ class Labo < ApplicationRecord
   end
   
   def before_create
-    self.salt = Labo.new_salt
+    self.salt = Labo.create_salt
     self.crypted_password = Labo.crypt_password(self.password, self.salt)
   end
   
@@ -79,12 +79,8 @@ class Labo < ApplicationRecord
     Digest::MD5.hexdigest(password + salt)
   end
   
-  def self.new_salt
+  def self.create_salt
     s = rand.to_s.tr('+', '.')
     s[0, if s.size > 32 then 32 else s.size end]
-  end
-
-  def set_salt
-    self.salt = Labo.new_salt
   end
 end
