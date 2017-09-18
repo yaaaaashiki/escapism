@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :show, :create, :update]
     resources :theses, only: [:index, :show, :update]
     resources :passwords, only: [:index, :new, :show, :update]
+    resources :labos, only: [:index, :new, :show, :update]
   end
 
   resources :theses, only: [:show, :index] do

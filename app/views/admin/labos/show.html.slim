@@ -1,0 +1,19 @@
+h1
+  | 研究室パスワード編集ページ
+h4
+  = @labo.name
+ul
+  li
+    | ID :
+    = @labo.id
+  li
+    | 氏名 :
+    = @labo.name
+  li
+    | パスワード :
+    = @labo.crypted_password
+= form_for [:admin, @labo], :url => admin_labo_path(@labo.id), method: :patch do |f|
+  h4
+    | パスワード:
+    = f.password_field :password
+  = f.submit "データ更新", name: "update-btn",  class: "btn"
