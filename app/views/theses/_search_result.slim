@@ -5,9 +5,13 @@
     .col-sm-offset-1.col-xs-offset-1
       .page-header.width
         h4
-          = @labos.find(t.labo_id).name
+          - @labos.each do |l|
+            = l.name if l.id == t.labo_id
           span[style="margin-right: 50px;"]
-          = @author.find(t.author_id).name
+          - @author.each do |a|
+            - if a.id == t.author_id
+              = a.name
+              - break
         h4
           = link_to(t.title, thesis_path(t.id))
         h5.gray
@@ -22,4 +26,4 @@
 - else
   - if flash[:alert]
     = flash[:alert]
-
+    

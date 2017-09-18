@@ -9,13 +9,13 @@
         |  位 
       span.access
         |  アクセス数 
-        = thesis.access
+        = thesis["access"]
       .thesis-title
         |  論文 : 
-        = link_to(thesis.title, thesis_path(thesis))
+        = link_to(thesis["title"], thesis_path(thesis["id"]))
       .author
         |  著者 : 
-        = thesis.author.name
+        = thesis["author_name"]
       .labo-name
         |  研究室 : 
-        = @labos.find(thesis.labo_id).name
+        = thesis["labo_name"]

@@ -18,7 +18,6 @@ class ThesesController < ApplicationController
         flash[:alert] = 'Matching theses was not found. Try again.'
       end
     end
-
     @author = Author.all
     @labos = Labo.all
   end
@@ -60,7 +59,17 @@ class ThesesController < ApplicationController
     end
 
     def init_set_popular_theses
-      @popular_theses = Thesis.all.order(access: :desc).limit(5)
+      @popular_theses = Thesis.connection.select_all('select T1.id, T1.access, T1.title, authors.name as author_name, labos.name as labo_name
+                                                      from (
+                                                        select *
+                                                        from theses
+                                                        order by access desc
+                                                        limit 5
+                                                      ) T1 inner join authors on (
+                                                        T1.author_id = authors.id
+                                                      ) inner join labos on (
+                                                        T1.labo_id = labos.id
+                                                      )')
     end
 
     def search_theses?(query, labo_id, field)
