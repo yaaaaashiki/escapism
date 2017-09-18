@@ -120,4 +120,25 @@ FactoryGirl.define do
     salt "asdasdastr4325234324sdfds"
     password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
   end
+
+  #For creating user_controller's user_params testdata
+  #This hash should be fourth field.
+  factory :post_params_it_aoyama_user, class: User do
+    username "it_aoyama"
+    year 2016
+    email "c5617146@aoyama.com"
+    password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+  end
+
+  factory :post_params_no_name_user, class: User do
+    year 2016
+    email "noname@gmail.com"
+    password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+  end
+
+  factory :post_params_no_mail_user, class: User do
+    username "no_mail"
+    year 2016
+    password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+  end
 end

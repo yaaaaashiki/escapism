@@ -18,7 +18,7 @@ class ThesesController < ApplicationController
         flash[:alert] = 'Matching theses was not found. Try again.'
       end
     end
-    @author = Author.all
+
     @labos = Labo.all
   end
 

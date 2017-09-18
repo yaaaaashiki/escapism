@@ -40,7 +40,8 @@ class Thesis < ApplicationRecord
   @@SEARCH_BY_TITLE = "1"
 
   @@LABO_THESIS_ROOT_DIRECTORY = Rails.root.join('thesis_data/ignore')
-  @@YHESIS_DIRECTORY_PAR_YEAR = %w[2014theses 2015theses 2016theses]
+  #@@YHESIS_DIRECTORY_PAR_YEAR = %w[2014theses 2015theses 2016theses]
+  @@YHESIS_DIRECTORY_PAR_YEAR = %w[2016theses]
   index_name "thesis_#{Rails.env}"
   settings do
     mappings dynamic: 'false' do
@@ -52,6 +53,13 @@ class Thesis < ApplicationRecord
       indexes :year, index: 'not_analyzed'
       indexes :labo_id, index: 'not_analyzed'
       indexes :author_id, index: 'not_analyzed'
+      indexes :labo do
+        indexes :name, index: 'not_analyzed'
+      end
+
+      indexes :author do
+        indexes :name, index: 'not_analyzed'
+      end
     end
   end
 
@@ -59,6 +67,8 @@ class Thesis < ApplicationRecord
     attributes
       .symbolize_keys
       .slice(:id, :body, :summary, :title, :url, :year, :labo_id, :author_id)
+      .merge(labo: { name: labo.name })
+      .merge(author: { name: author.name })
   end
 
   def self.search_by_keyword(keyword, labo_id, field)
