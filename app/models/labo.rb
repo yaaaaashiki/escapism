@@ -65,7 +65,7 @@ class Labo < ApplicationRecord
     end
   end
 
-  def authoricate(name, password)
+  def authoricate(password)
     return false if Labo.crypt_password(password, self.salt) != self.crypted_password
     true
   end

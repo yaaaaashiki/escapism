@@ -14,4 +14,7 @@
       br
       = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
       br
+
+      = f.collection_select :labo, Labo.all, :id, :name
+      = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
       = f.submit class: "button"
