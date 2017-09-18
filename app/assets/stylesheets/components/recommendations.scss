@@ -1,8 +1,10 @@
 .container {
     margin-bottom: 4%;
 
-    .feature {
-        margin-top: 4%;
-        margin-bottom: 4%;
+    .features {
+        .feature, .button {
+            margin-top: 4%;
+            margin-bottom: 4%;
+        }
     }
 }
