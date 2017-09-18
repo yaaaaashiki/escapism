@@ -4,3 +4,12 @@ ja:
       default: ! '%m/%d'
       second: ! '%m/%d %H:%M%:S %z'
       minute: ! '%m/%d %H:%M'
+
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前ページ"
+      next: "次ページ &rsaquo;"
+      truncate: "..."
