@@ -1,0 +1,6 @@
+ja:
+  time:
+    formats:
+      default: ! '%m/%d'
+      second: ! '%m/%d %H:%M%:S %z'
+      minute: ! '%m/%d %H:%M'
