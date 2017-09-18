@@ -14,11 +14,6 @@ class ThesesController < ApplicationController
    
     if search_theses?(query, @labo_id, @search_field)
       @theses = Thesis.search_by_keyword(query, @labo_id, @search_field).page(params[:page]).per(4)
-      # @theses_labos_authors = ActiveRecord::Base.connection.select_all("select theses.id, theses.title, theses.body, theses.summary, theses.year, labos.name as labo_name, authors.name as author_name
-      #                                                                   from theses inner join labos on theses.labo_id = labos.id
-      #                                                                               inner join authors on theses.author_id = authors.id
-      #                                                                  ").to_hash
-      # if not_exist_theses(@theses_labos_authors)
       if not_exist_theses(@theses)
         flash[:alert] = 'Matching theses was not found. Try again.'
       end
@@ -64,7 +59,17 @@ class ThesesController < ApplicationController
     end
 
     def init_set_popular_theses
-      @popular_theses = Thesis.all.order(access: :desc).limit(5)
+      @popular_theses = Thesis.connection.select_all('select T1.id, T1.access, T1.title, authors.name as author_name, labos.name as labo_name
+                                                      from (
+                                                        select *
+                                                        from theses
+                                                        order by access desc
+                                                        limit 5
+                                                      ) T1 inner join authors on (
+                                                        T1.author_id = authors.id
+                                                      ) inner join labos on (
+                                                        T1.labo_id = labos.id
+                                                      )')
     end
 
     def search_theses?(query, labo_id, field)
