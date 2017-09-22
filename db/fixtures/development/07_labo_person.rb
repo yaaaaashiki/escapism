@@ -1,6 +1,6 @@
 16.times do |i|
   i += 1
-  LaboPeople.seed(:id) do |l|
+  LaboPerson.seed(:id) do |l|
     if (i % 2 == 1)
       l.id = i / 2 + 1
     else

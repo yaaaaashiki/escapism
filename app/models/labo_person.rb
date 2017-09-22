@@ -1,0 +1,2 @@
+class LaboPerson < ApplicationRecord
+end
