@@ -36,22 +36,22 @@ $(function() {
   const labPropertyJSONArray = <%= lab_properies_json_array %>;
 
   for(let i = 0; i < labPropertyJSONArray.length; i++){
-    let d = labPropertyJSONArray[i];
-    let $genderRatioText = $("#gender_ratio_text_" + d.laboProfessor);
-    let $genderRatioRect = $("#gender_ratio_rect_" + d.laboProfessor);
+    let labProperty = labPropertyJSONArray[i];
+    let $genderRatioText = $("#gender_ratio_text_" + labProperty.laboProfessor);
+    let $genderRatioRect = $("#gender_ratio_rect_" + labProperty.laboProfessor);
     let $svg = $(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
     let $rectMan = $(document.createElementNS("http://www.w3.org/2000/svg", "rect"));
     let $rectWoman = $(document.createElementNS("http://www.w3.org/2000/svg", "rect"));
     let $width = $genderRatioRect.width();
 
-    $genderRatioText.text("男女比 " + d.man + ":" + d.woman);
+    $genderRatioText.text("男女比 " + labProperty.man + ":" + labProperty.woman);
     $svg.attr({
       width: $width * (2 / 3),
       height: barGraphWidth
     });
 
     $rectMan.attr({
-      width: $width * (d.man / (d.man + d.woman)) * (2 / 3),
+      width: $width * (labProperty.man / (labProperty.man + labProperty.woman)) * (2 / 3),
       height: barGraphWidth,
       x: 0,
       y: 0,
@@ -59,9 +59,9 @@ $(function() {
     });
 
     $rectWoman.attr({
-      width: $width * (d.woman / (d.man + d.woman)) * (2 / 3),
+      width: $width * (labProperty.woman / (labProperty.man + labProperty.woman)) * (2 / 3),
       height: barGraphWidth,
-      x: $width * (d.man / (d.man + d.woman)) * (2 / 3),
+      x: $width * (labProperty.man / (labProperty.man + labProperty.woman)) * (2 / 3),
       y: 0,
       fill: "#F5A9F2"
     });
