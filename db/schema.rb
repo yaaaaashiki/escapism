@@ -61,14 +61,14 @@ ActiveRecord::Schema.define(version: 20170922141919) do
     t.index ["user_id"], name: "index_impressions_on_user_id", using: :btree
   end
 
-  create_table "labo_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "labo_properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "labo_id"
     t.integer  "year"
     t.integer  "gender"
     t.integer  "number_of_people"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["labo_id"], name: "index_labo_people_on_labo_id", using: :btree
+    t.index ["labo_id"], name: "index_labo_properties_on_labo_id", using: :btree
   end
 
   create_table "labos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 20170922141919) do
 
   add_foreign_key "comments", "theses"
   add_foreign_key "comments", "users"
-  add_foreign_key "labo_people", "labos"
+  add_foreign_key "labo_properties", "labos"
   add_foreign_key "messages", "labos"
   add_foreign_key "messages", "users"
   add_foreign_key "theses", "authors"

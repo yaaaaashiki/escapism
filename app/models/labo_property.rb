@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: labo_people
+# Table name: labo_properties
 #
 #  id               :integer          not null, primary key
 #  labo_id          :integer
@@ -12,8 +12,8 @@
 #
 # Indexes
 #
-#  index_labo_people_on_labo_id  (labo_id)
+#  index_labo_properties_on_labo_id  (labo_id)
 #
 
-class LaboPerson < ApplicationRecord
+class LaboProperty < ApplicationRecord
 end

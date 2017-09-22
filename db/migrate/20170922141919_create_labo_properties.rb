@@ -1,6 +1,6 @@
-class CreateLaboPeople < ActiveRecord::Migration[5.0]
+class CreateLaboProperties < ActiveRecord::Migration[5.0]
   def change
-    create_table :labo_people do |t|
+    create_table :labo_properties do |t|
       t.references :labo, foreign_key: true
       t.integer :year
       t.integer :gender
