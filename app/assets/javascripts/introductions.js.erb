@@ -1,3 +1,20 @@
+<%
+  gender_kind = 2
+  lab_persons = LaboPerson.all
+  labs = Labo.all
+  lab_persons_array = []
+
+  lab_persons.each_slice(gender_kind) do |lab_man, lab_waman|
+    lab_hash = {
+                 "laboProfessor": labs.find(lab_man.labo_id).get_english_name,
+                 "man": lab_man.number_of_people,
+                 "woman": lab_waman.number_of_people
+               }
+    lab_persons_array.push(lab_hash)
+  end
+  lab_persons_json_array = lab_persons_array.to_json
+%>
+
 /* スクロールでフェードイン */
 /* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
 $('.fade-in-down-wait').css('visibility','hidden');
@@ -12,51 +29,13 @@ $(window).scroll(function() {
   });
 });
 
-<%
-  lab_persons = LaboPerson.all
-  labs = Labo.all
-  lab_persons_array = []
-
-  lab_persons.each_slice(2) do |lab_man, lab_waman|
-    lab_hash = {
-                 lab_id: lab_man.labo_id,
-                 lab_name: labs.find(lab_man.labo_id).get_english_name,
-                 man: lab_man.number_of_people,
-                 woman: lab_waman.number_of_people
-               }
-    lab_persons_array.push(lab_hash)
-  end
-%>
-
 $(function() {
 
   const barGraphWidth = 28;
+  const labPropertyJSONArray = <%= lab_persons_json_array %>;
 
-  $(".icons img").mouseover(function(){
-    if($(this).hasClass("default_img")){
-      $(this).hide();
-      $(this).next().show();
-    }
-  }).mouseout(function(){
-     if($(this).hasClass("mouseover_img")){
-      $(this).hide();
-      $(this).prev().show();
-    }
-  });
-
-  let dataset = [
-                  {"laboProfessor":"sumi", "man":15, "woman":2},
-                  {"laboProfessor":"durst", "man":7, "woman":2},
-                  {"laboProfessor":"sakuta", "man":13, "woman":1},
-                  {"laboProfessor":"ohara", "man":17, "woman":0},
-                  {"laboProfessor":"komiyama", "man":12, "woman":3},
-                  {"laboProfessor":"tobe", "man":19, "woman":0},
-                  {"laboProfessor":"harada", "man":15, "woman":5},
-                  {"laboProfessor":"lopez", "man":16, "woman":5}
-                ];
-
-  for(let i = 0; i < dataset.length; i++){
-    let d = dataset[i];
+  for(let i = 0; i < labPropertyJSONArray.length; i++){
+    let d = labPropertyJSONArray[i];
     let $genderRatioText = $("#gender_ratio_text_" + d.laboProfessor);
     let $genderRatioRect = $("#gender_ratio_rect_" + d.laboProfessor);
     let $svg = $(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
@@ -90,6 +69,18 @@ $(function() {
     $svg.append($rectWoman);
     $genderRatioRect.append($svg);
   }
+
+  $(".icons img").mouseover(function(){
+    if($(this).hasClass("default_img")){
+      $(this).hide();
+      $(this).next().show();
+    }
+  }).mouseout(function(){
+     if($(this).hasClass("mouseover_img")){
+      $(this).hide();
+      $(this).prev().show();
+    }
+  });
 });
 
 
