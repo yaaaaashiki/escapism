@@ -1,18 +1,19 @@
 <%
   gender_kind = 2
-  lab_persons = LaboPerson.all
+  lab_properies = LaboPerson.all
   labs = Labo.all
-  lab_persons_array = []
+  lab_properies_array = []
 
-  lab_persons.each_slice(gender_kind) do |lab_man, lab_waman|
-    lab_hash = {
-                 "laboProfessor": labs.find(lab_man.labo_id).get_english_name,
-                 "man": lab_man.number_of_people,
-                 "woman": lab_waman.number_of_people
-               }
-    lab_persons_array.push(lab_hash)
+  lab_properies.each_slice(gender_kind) do |lab_man, lab_waman|
+    lab_property_hash = {
+                          laboProfessor: labs.find(lab_man.labo_id).get_english_name,
+                          man: lab_man.number_of_people,
+                          woman: lab_waman.number_of_people
+                        }
+    lab_properies_array.push(lab_property_hash)
   end
-  lab_persons_json_array = lab_persons_array.to_json
+
+  lab_properies_json_array = lab_properies_array.to_json
 %>
 
 /* スクロールでフェードイン */
@@ -32,7 +33,7 @@ $(window).scroll(function() {
 $(function() {
 
   const barGraphWidth = 28;
-  const labPropertyJSONArray = <%= lab_persons_json_array %>;
+  const labPropertyJSONArray = <%= lab_properies_json_array %>;
 
   for(let i = 0; i < labPropertyJSONArray.length; i++){
     let d = labPropertyJSONArray[i];
