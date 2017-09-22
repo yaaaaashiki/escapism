@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912032302) do
+ActiveRecord::Schema.define(version: 20170922134523) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "username",        null: false
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20170912032302) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
     t.index ["user_id"], name: "index_impressions_on_user_id", using: :btree
+  end
+
+  create_table "labo_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.integer "labo_id"
+    t.integer "year"
+    t.integer "gender"
+    t.integer "number_of_people"
+    t.index ["labo_id"], name: "index_labo_people_on_labo_id", using: :btree
   end
 
   create_table "labos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -135,6 +143,7 @@ ActiveRecord::Schema.define(version: 20170912032302) do
 
   add_foreign_key "comments", "theses"
   add_foreign_key "comments", "users"
+  add_foreign_key "labo_people", "labos"
   add_foreign_key "messages", "labos"
   add_foreign_key "messages", "users"
   add_foreign_key "theses", "authors"
