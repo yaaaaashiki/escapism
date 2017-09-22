@@ -13,8 +13,8 @@
 
 require 'digest/md5'
 class Labo < ApplicationRecord
-  @@SYMBOL_LABO_NAMES = %i(sumi durst sakuta ohara komiyama tobe harada lopez )
-  @@ARRAY_LABO_DIRECTORY_NAMES = %w(durst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
+  @@SYMBOL_LABO_NAMES = %i(sumi durst sakuta ohara komiyama tobe harada lopez)
+  @@ARRAY_LABO_DIRECTORY_NAMES = %w(sumi durst sakuta ohara komiyama tobe harada lopez) # yamaguchi)
   @@ARRAY_LABO_NAMES = ['鷲見研究室', 'Dürst 研究室', '佐久田研究室', '大原研究室', '小宮山研究室', '戸辺研究室', '原田研究室', 'lopez 研究室']
   @@LABO_HASH = {'鷲見研究室' => 'sumi'  , 'Dürst 研究室' => 'durst'  , '佐久田研究室' => 'sakuta'   ,
               '大原研究室' => 'ohara' , '小宮山研究室' => 'komiyama', '戸辺研究室'   => 'tobe'     ,
@@ -82,5 +82,9 @@ class Labo < ApplicationRecord
   def self.create_salt
     s = rand.to_s.tr('+', '.')
     s[0, if s.size > 32 then 32 else s.size end]
+  end
+
+  def get_english_name
+    @@ARRAY_LABO_DIRECTORY_NAMES[self.id - 1]
   end
 end

@@ -2,9 +2,9 @@
   i += 1
   LaboPerson.seed(:id) do |l|
     if (i % 2 == 1)
-      l.id = i / 2 + 1
+      l.labo_id = i / 2 + 1
     else
-      l.id = i / 2
+      l.labo_id = i / 2
     end
     l.year = 2017
     l.gender = i % 2

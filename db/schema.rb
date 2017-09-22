@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922134523) do
+ActiveRecord::Schema.define(version: 20170922141919) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "username",        null: false
@@ -62,10 +62,12 @@ ActiveRecord::Schema.define(version: 20170922134523) do
   end
 
   create_table "labo_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.integer "labo_id"
-    t.integer "year"
-    t.integer "gender"
-    t.integer "number_of_people"
+    t.integer  "labo_id"
+    t.integer  "year"
+    t.integer  "gender"
+    t.integer  "number_of_people"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["labo_id"], name: "index_labo_people_on_labo_id", using: :btree
   end
 

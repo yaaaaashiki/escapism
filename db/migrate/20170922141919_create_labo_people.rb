@@ -1,4 +1,4 @@
-class CreateLaboPerson < ActiveRecord::Migration[5.0]
+class CreateLaboPeople < ActiveRecord::Migration[5.0]
   def change
     create_table :labo_people do |t|
       t.references :labo, foreign_key: true
