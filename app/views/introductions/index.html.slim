@@ -1,5 +1,5 @@
 #pageContents
-  #carousel-example-generic.carousel.slide[data-ride="carousel" data-interval="100000000000000000"]
+  #carousel-example-generic.carousel.slide[data-ride="carousel" data-interval="1000000"]
     ol.carousel-indicators
       li.active[data-target="#carousel-example-generic" data-slide-to="0"]
       li[data-target="#carousel-example-generic" data-slide-to="1"]
@@ -64,8 +64,24 @@
         = image_tag("introduction/slide1.jpg")
         .carousel-caption
           h1.slide_h1
-            | コメント機能
-          p
+            a.slide_a[href="https://github.com/yaaaaashiki/Escapism"]
+              | 一緒に開発してみたい人募集中
+          p.slide_p
+            |  本アプリケーションは Ruby と Python で書かれています。
+            br
+            |  フレームワークは Ruby on Rails を使用していて、機械学習やクローリングなどを行っています。
+            br
+            |  一緒に開発したい人は、ぜひ声をかけてください。
+            br
+            br
+            |  また Escapism では、様々なバグ報告も募集しています。
+            br
+            |  もし追加してほしい機能やバグがあれば、
+            br 
+            |  気軽に 
+            = link_to "GitHub", "https://github.com/yaaaaashiki/Escapism"
+            |  の issue に記入お願いします。
+
     a.left.carousel-control
       span.glyphicon.glyphicon-chevron-left
       span.sr-only
