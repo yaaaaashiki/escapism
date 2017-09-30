@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912032302) do
+ActiveRecord::Schema.define(version: 20170606125027) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "username",        null: false
@@ -77,16 +77,6 @@ ActiveRecord::Schema.define(version: 20170912032302) do
     t.index ["address"], name: "index_mail_addresses_on_address", unique: true, using: :btree
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.text     "body",       limit: 65535
-    t.integer  "user_id"
-    t.integer  "labo_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["labo_id"], name: "index_messages_on_labo_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
-  end
-
   create_table "theses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.text     "body",       limit: 4294967295
     t.text     "summary",    limit: 65535
@@ -135,8 +125,6 @@ ActiveRecord::Schema.define(version: 20170912032302) do
 
   add_foreign_key "comments", "theses"
   add_foreign_key "comments", "users"
-  add_foreign_key "messages", "labos"
-  add_foreign_key "messages", "users"
   add_foreign_key "theses", "authors"
   add_foreign_key "theses", "labos"
   add_foreign_key "word_counts", "theses"
