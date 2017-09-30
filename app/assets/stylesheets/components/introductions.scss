@@ -250,7 +250,11 @@ body {
   height: 100%;
   a {
     color: beige;
-    border-bottom: medium solid beige;
+    text-decoration: none;
+    box-shadow: 0 10px 4px -8px #777777;
+    &:hover{
+      color: beige;
+    }
   }
 }
 
