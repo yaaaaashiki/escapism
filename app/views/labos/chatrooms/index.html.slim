@@ -1,61 +1,60 @@
 .container
-  .container
-    .labo-field
-      h1
-        = @labo.name
-    - if current_user.labo == User::LABO_STUDENT
-      .labo-student-messages-field
-        - @message_users.each do |message_user|
-          - if message_user["labo"] == User::LABO_STUDENT
-            .labo-student-message
-              .user-status
-                =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
-              .user-name
-                =<> message_user["username"]
-              .message-body
-                =<> message_user["body"]
-              .create-at
-                =<> l message_user["created_at"] ,format: :minute
-              br
-          - else
-            .none-labo-student-message
-              .user-status
-                =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
-              .user-name
-                =<> message_user["username"]
-              .message-body
-                =<> message_user["body"]
-              .create-at
-                =<> l message_user["created_at"] ,format: :minute
-              br
-    - else
-      .none-labo-student-messages-field
-        - @message_users.each do |message_user|
-          - if message_user["labo"] == User::LABO_STUDENT
-            .labo-student-message
-              .user-status
-                =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
-              .user-name
-                =<> message_user["username"]
-              .message-body
-                =<> message_user["body"]
-              .create-at
-                =<> l message_user["created_at"] ,format: :minute
-              br
-          - else
-            .none-labo-student-message
-              .user-status
-                =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
-              .user-name
-                =<> message_user["username"]
-              .message-body
-                =<> message_user["body"]
-              .create-at
-                =<> l message_user["created_at"] ,format: :minute
-              br
-    .input-field
-      form
-        input type="text" data-behavior="chatroom_#{params[:lab_id]}"
-        label submit
+  .labo-field
+    h1
+      = @labo.name
+  - if current_user.labo == User::LABO_STUDENT
+    .labo-student-messages-field
+      - @message_users.each do |message_user|
+        - if message_user["labo"] == User::LABO_STUDENT
+          .labo-student-message
+            .user-status
+              =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
+            .user-name
+              =<> message_user["username"]
+            .message-body
+              =<> message_user["body"]
+            .create-at
+              =<> l message_user["created_at"] ,format: :minute
+            br
+        - else
+          .none-labo-student-message
+            .user-status
+              =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
+            .user-name
+              =<> message_user["username"]
+            .message-body
+              =<> message_user["body"]
+            .create-at
+              =<> l message_user["created_at"] ,format: :minute
+            br
+  - else
+    .none-labo-student-messages-field
+      - @message_users.each do |message_user|
+        - if message_user["labo"] == User::LABO_STUDENT
+          .labo-student-message
+            .user-status
+              =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
+            .user-name
+              =<> message_user["username"]
+            .message-body
+              =<> message_user["body"]
+            .create-at
+              =<> l message_user["created_at"] ,format: :minute
+            br
+        - else
+          .none-labo-student-message
+            .user-status
+              =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
+            .user-name
+              =<> message_user["username"]
+            .message-body
+              =<> message_user["body"]
+            .create-at
+              =<> l message_user["created_at"] ,format: :minute
+            br
+  .input-field
+    form
+      input type="text" data-behavior="chatroom_#{params[:lab_id]}"
+      label submit
 
 #chatroom data-room_id="#{params[:lab_id]}"
