@@ -249,7 +249,8 @@ body {
   width:70%;
   height: 100%;
   a {
-    color: darkorange;
+    color: beige;
+    border-bottom: medium solid beige;
   }
 }
 
@@ -267,7 +268,6 @@ body {
 .slide_a {
     color: beige;
     cursor: pointer;
-    text-decoration: underline;
 }
 .slide_a:link { color: beige; }
 .slide_a:visited { color: beige; }
