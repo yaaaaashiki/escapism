@@ -64,24 +64,23 @@
         = image_tag("introduction/slide1.jpg")
         .carousel-caption
           h1.slide_h1
-            a.slide_a[href="https://github.com/yaaaaashiki/Escapism"]
+            a.slide_a[href="https://github.com/yaaaaashiki/Escapism" target="_blank"]
               | 一緒に開発してみたい人募集中
           p.slide_p
             |  本アプリケーションは Ruby と Python で書かれています。
             br
             |  フレームワークは Ruby on Rails を使用していて、機械学習やクローリングなどを行っています。
             br
-            |  一緒に開発したい人は、ぜひ声をかけてください。
+            |  一緒に開発してみたい人は、ぜひ声をかけてください。
             br
             br
             |  また Escapism では、様々なバグ報告も募集しています。
             br
             |  もし追加してほしい機能やバグがあれば、
             br 
-            |  気軽に 
-            = link_to "GitHub", "https://github.com/yaaaaashiki/Escapism"
-            |  の issue に記入お願いします。
-
+            |  気軽に本アプリの 
+            = link_to "GitHub上の issue ", "https://github.com/yaaaaashiki/Escapism/issues", :target=>["_blank"]
+            |  に記入をお願いします。
     a.left.carousel-control
       span.glyphicon.glyphicon-chevron-left
       span.sr-only
