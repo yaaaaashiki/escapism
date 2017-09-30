@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
-  get 'labos/:lab_id/chatrooms' => 'labos/chatrooms#index', :as => :chatrooms
 
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -32,6 +31,4 @@ Rails.application.routes.draw do
   resources :ciniis, only: [:index, :show]
 
   get '*path', controller: 'application', action: 'render_404'
-
-  mount ActionCable.server => '/cable'
 end
