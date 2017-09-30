@@ -7,23 +7,21 @@
       - @message_users.each do |message_user|
         - if message_user["role"] == User::LABO_STUDENT
           .labo-student-message
-            .user-info
+            .message-info
               =<> message_user["username"]
               =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
             .message-body
               =<> message_user["body"]
-            .create-at
-              =<> l message_user["created_at"] ,format: :minute
             br
         - else
           .none-labo-student-message
-            .user-info
+            .message-info
               =<> message_user["username"]
               =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
             .message-body
               =<> message_user["body"]
-            .create-at
-              =<> l message_user["created_at"] ,format: :minute
             br
       .input-field
         form
@@ -34,23 +32,21 @@
       - @message_users.each do |message_user|
         - if message_user["role"] == User::LABO_STUDENT
           .labo-student-message
-            .user-info
+            .message-info
               =<> message_user["username"]
               =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
             .message-body
               =<> message_user["body"]
-            .create-at
-              =<> l message_user["created_at"] ,format: :minute
             br
         - else
           .none-labo-student-message
-            .user-info
+            .message-info
               =<> message_user["username"]
               =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
             .message-body
               =<> message_user["body"]
-            .create-at
-              =<> l message_user["created_at"] ,format: :minute
             br
       .input-field
         form
