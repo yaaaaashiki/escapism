@@ -8,6 +8,11 @@ class UsersController < ApplicationController
   end
  
   def new
+    if invalid_size?(params[:token])
+      render_414
+      return
+    end
+
     @user = User.new
     mail_address_id = Token.find_by(token: params[:token]).mail_address_id
     if mail_address_id.nil?
