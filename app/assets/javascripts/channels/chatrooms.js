@@ -3,9 +3,9 @@ function formatToSlash(ctime){
   const secondDigit = 13;
 
   let date = ctime.slice(yearHyphen)
-              .replace("-", "/")
-              .replace("T", " ")
-              .slice(0, -secondDigit);
+                  .replace("-", "/")
+                  .replace("T", " ")
+                  .slice(0, -secondDigit);
 
   return date
 }
@@ -29,7 +29,7 @@ App.chatrooms = App.cable.subscriptions.create(
     received: function(message) {
       const createdAt = formatToSlash(message['object']['created_at']);
 
-      $("div .hogehoge").append(escapeHTML(message['object']['name'] + ' '))
+      $("div .message_contents").append(escapeHTML(message['object']['name'] + ' '))
                         .append(escapeHTML(message['object']['role'] + ' '))
                         .append(escapeHTML(message['object']['body'] + ' '))
                         .append(escapeHTML(createdAt))
