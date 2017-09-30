@@ -1,0 +1,19 @@
+.container {
+    margin-bottom: 4%;
+}
+
+.labo-student-messages-field {
+  position: relative;
+  .labo-student-message {
+    position: absolute;
+    right: 0px; 
+  }
+}
+
+.none-labo-student-messages-field {
+  position: relative ;
+  .none-labo-student-message {
+    position: absolute;
+    right: 0px; 
+  }
+}

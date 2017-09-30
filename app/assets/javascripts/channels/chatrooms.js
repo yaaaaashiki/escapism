@@ -29,11 +29,11 @@ App.chatrooms = App.cable.subscriptions.create(
     received: function(message) {
       const createdAt = formatToSlash(message['object']['created_at']);
 
-      $("div .message_contents").append(escapeHTML(message['object']['name'] + ' '))
-                        .append(escapeHTML(message['object']['role'] + ' '))
-                        .append(escapeHTML(message['object']['body'] + ' '))
-                        .append(escapeHTML(createdAt))
-                        .append('<br />');
+      $("div .container").append(escapeHTML(message['object']['name'] + ' '))
+                         .append(escapeHTML(message['object']['role'] + ' '))
+                         .append(escapeHTML(message['object']['body'] + ' '))
+                         .append(escapeHTML(createdAt))
+                         .append('<br />');
     },
 
     post: function(message) {
