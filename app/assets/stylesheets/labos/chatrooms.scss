@@ -2,18 +2,20 @@
     margin-bottom: 4%;
 }
 
+.labo-student-message .none-labo-student-message {
+  width: 100%;
+}
+ 
 .labo-student-messages-field {
-  position: relative;
+  overflow: hidden;
   .labo-student-message {
-    position: absolute;
-    right: 0px; 
+    text-align: right; 
   }
 }
 
 .none-labo-student-messages-field {
-  position: relative ;
-  .none-labo-student-message {
-    position: absolute;
-    right: 0px; 
+  overflow: hidden;
+  .labo-student-message {
+    text-align: right; 
   }
 }

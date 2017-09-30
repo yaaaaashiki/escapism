@@ -6,20 +6,20 @@
     .labo-student-messages-field
       - @message_users.each do |message_user|
         - if message_user["role"] == User::LABO_STUDENT
-          div class="labo-student-message#{message_user.id}"
-            .user-status
-              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+          .labo-student-message
+            .user-info
               =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
             .message-body
               =<> message_user["body"]
             .create-at
               =<> l message_user["created_at"] ,format: :minute
             br
         - else
-          div class="none-labo-student-message#{message_user.id}"
-            .user-status
-              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+          .none-labo-student-message
+            .user-info
               =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
             .message-body
               =<> message_user["body"]
             .create-at
@@ -33,20 +33,20 @@
     .none-labo-student-messages-field
       - @message_users.each do |message_user|
         - if message_user["role"] == User::LABO_STUDENT
-          div class="labo-student-message#{message_user.id}"
-            .user-status
-              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+          .labo-student-message
+            .user-info
               =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
             .message-body
               =<> message_user["body"]
             .create-at
               =<> l message_user["created_at"] ,format: :minute
             br
         - else
-          div class="none-labo-student-message#{message_user.id}"
-            .user-status
-              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+          .none-labo-student-message
+            .user-info
               =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
             .message-body
               =<> message_user["body"]
             .create-at
