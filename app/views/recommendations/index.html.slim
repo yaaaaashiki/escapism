@@ -20,10 +20,11 @@ section#recommendationpage.fadeout
             = @lab_name
             | のキーワード
         = form_tag(ciniis_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do
-          .col-sm-12.col-xs-12
+          .col-sm-12.col-xs-12.features
             - @feaures.each_with_index do |word, i|
-              .col-md-2.col-sm-6.col-xs-6
-                = word
-                = check_box 'feature', i, {}, true, false
+              .col-md-2.col-sm-6.col-xs-6.feature
+                label
+                  = word
+                  = check_box 'feature', i, {}, true, false
             = hidden_field :lab_id, @labo_id
             = submit_tag('CiNii 検索', class: "button btn-pos")

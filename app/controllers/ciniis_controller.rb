@@ -33,16 +33,15 @@ class CiniisController < ApplicationController
         array.push(labo_feature_array[id.to_i][0])
       end
 
-      @results = create_results(array)
-      @page_number = params[:page_num].to_i
-
+      results = create_results(array)
       session[:query] = array[0]
     elsif params[:q] || session[:query]
       array.push(params[:q])
       array.push(session[:query])
-      @results = create_results(array)
-      @page_number = params[:page_num].to_i
+      results = create_results(array)
     end
+ 
+    @results = Kaminari.paginate_array(results.compact).page(params[:page]).per(PER_PAGE_NUM) if results.present?
   end
 
   def show

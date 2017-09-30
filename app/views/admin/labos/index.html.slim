@@ -1,0 +1,20 @@
+h1
+  | 研究室パスワード情報管理
+table
+  thead
+    tr
+      th
+        |  id
+      th
+        |  研究室名
+      th
+        |  パスワード
+  tbody
+    - @labos.each do |labo|
+      tr
+        td
+          = labo.id
+        td
+          = link_to labo.name, admin_labo_path(labo)
+        td
+          = labo.crypted_password

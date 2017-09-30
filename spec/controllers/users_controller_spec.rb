@@ -41,7 +41,7 @@ RSpec.describe UsersController, type: :controller do
       let(:token) {create(:token)}
 
       before do
-        @it_aoyama_user_hash = attributes_for(:it_aoyama_user)
+        @it_aoyama_user_hash = attributes_for(:post_params_it_aoyama_user)
       end
 
       it "new user saved" do
@@ -72,7 +72,7 @@ RSpec.describe UsersController, type: :controller do
         let(:token) {create(:token)}
 
         before do
-          @no_name_user_hash = attributes_for(:no_name_user)
+          @no_name_user_hash = attributes_for(:post_params_no_name_user)
         end
 
         it "new user not saved" do
@@ -97,7 +97,7 @@ RSpec.describe UsersController, type: :controller do
         let(:token) {create(:token)}
 
         before do
-          @no_mail_user_hash = attributes_for(:no_mail_user)
+          @no_mail_user_hash = attributes_for(:post_params_no_mail_user)
         end
 
         it "new user not saved" do

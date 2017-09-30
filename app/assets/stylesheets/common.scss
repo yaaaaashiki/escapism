@@ -57,7 +57,7 @@ body::after {
 }
 
 .bottom-border{
-  border-bottom: solid 3px
+  border-bottom: solid 3px !important;
 }
 
 .bottom-border-orange{
@@ -185,6 +185,5 @@ body::after {
 }
 
 .underLine {
-// background: linear-gradient(transparent 70%, darkorange 70%);
   border-bottom: solid 3px darkorange;
 }

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'introductions#index'
 
+  get 'rooms/show' => 'rooms#show'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get 'users/new/:token' => 'users#new'
   get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
+  get 'labos/:lab_id/chatrooms' => 'labos/chatrooms#index', :as => :chatrooms
 
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :show, :create, :update]
     resources :theses, only: [:index, :show, :update]
     resources :passwords, only: [:index, :new, :show, :update]
+    resources :labos, only: [:index, :new, :show, :update]
   end
 
   resources :theses, only: [:show, :index] do
@@ -29,4 +32,6 @@ Rails.application.routes.draw do
   resources :ciniis, only: [:index, :show]
 
   get '*path', controller: 'application', action: 'render_404'
+
+  mount ActionCable.server => '/cable'
 end

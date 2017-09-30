@@ -30,6 +30,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = @user.get_role
+    if strong_params[:labo_password].present? || strong_params[:labo].present?
+      labo = Labo.all.find(labo_password_params[:id])
+      if !labo.authoricate(labo_password_params[:password])
+        render :new, status: :bad_request
+        return
+      end
+    end
     @user.save!  # && MailAddress.find_by(address: params[:user][:email])
     log_in @user
     session[:user_create] = true
@@ -40,8 +48,26 @@ class UsersController < ApplicationController
   end
 
   private
+    def strong_params
+      params.require(:user).permit(:username, :year, :email, :password, :labo, :labo_password)
+    end
+
     def user_params
-      params.require(:user).permit(:username, :year, :email, :password)
+      params = strong_params
+      {
+        username: params[:username],
+        year: params[:year],
+        email: params[:email],
+        password: params[:password]
+      }
+    end
+
+    def labo_password_params
+      params = strong_params
+      {
+        id: params[:labo],
+        password: params[:labo_password]
+      }
     end
 
     def init_user_create_session

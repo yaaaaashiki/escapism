@@ -218,3 +218,14 @@ temp.html
 #pdfminer
 vendor/pdfminer3k-master
 vendor/pdfminer3k
+
+#rubymine
+.idea
+
+#redis binary dump (dump.rdb) files
+app/dump.rdb
+*.rdb
+dump.rdb
+
+/node_modules
+/.eslintrc.json

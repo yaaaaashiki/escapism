@@ -7,6 +7,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_mail_addresses_on_address  (address) UNIQUE
+#
 
 class MailAddress < ApplicationRecord
   validate :blank_address
