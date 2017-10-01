@@ -201,7 +201,7 @@ build-iPhoneSimulator/
 # .python_version
 .python-version
 
-/config/database.yml
+#/config/database.yml
 
 # labo classifier temp files
 lib/select_lab/lab_classifier
