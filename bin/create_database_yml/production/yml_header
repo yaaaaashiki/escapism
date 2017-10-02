@@ -1,0 +1,7 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: <%= ENV['RAILS_DATABASE_USER'] %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+  socket: 

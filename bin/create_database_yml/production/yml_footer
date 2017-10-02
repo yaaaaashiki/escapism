@@ -1,0 +1,6 @@
+
+production:
+  <<: *default
+  database: escapism_production
+  username: <%= ENV['RAILS_DATABASE_USER'] %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
