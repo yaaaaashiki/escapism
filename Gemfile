@@ -5,7 +5,7 @@ gem 'rails', '5.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 # AP server
-# gem 'puma'
+gem 'puma'
 
 # Use Unicorn as the app server
 gem 'unicorn'
