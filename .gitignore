@@ -229,3 +229,5 @@ dump.rdb
 
 /node_modules
 /.eslintrc.json
+
+/public/assets
