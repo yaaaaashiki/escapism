@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 worker_processes 4
 
+user 'escapism_admin'
+
 listen File.expand_path('tmp/unicorn.sock')
 pid File.expand_path('tmp/unicorn.pid')
 
