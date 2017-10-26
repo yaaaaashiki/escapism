@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 worker_processes 4
 
+# 要変更：unicornを実行するユーザの指定
 user 'escapism_admin'
 
 listen File.expand_path('tmp/unicorn.sock')
