@@ -58,7 +58,8 @@ class UsersController < ApplicationController
         username: params[:username],
         year: params[:year],
         email: params[:email],
-        password: params[:password]
+        password: params[:password],
+        labo: params[:labo]
       }
     end
 
