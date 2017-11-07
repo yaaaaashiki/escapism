@@ -6,7 +6,9 @@
       | Register
     = form_for @user do |f|
       = render :partial => 'shared/error_messages', :locals => { object: @user }
-      = f.select :year, [*(1990..2100)], :class => "select-box", include_blank: "year"
+      | 入学年度
+      = f.select :year, [*(2000..2020)], :class => "select-box", include_blank: "year"
+      br
       = session[:email]
       = f.hidden_field :email, :value => session[:email]
       br
@@ -14,7 +16,9 @@
       br
       = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
       br
-
+      | 研究室に入っている方のみ、以下のフォームに入力してください.
+      br
+      br
       = f.collection_select :labo, Labo.all, :id, :name
       = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
       = f.submit class: "button"
