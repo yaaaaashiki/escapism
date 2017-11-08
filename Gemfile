@@ -119,3 +119,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
 end
+
+group :production do 
+  gem 'google-analytics-rails'
+end
+
