@@ -38,10 +38,6 @@ class User < ApplicationRecord
   THIRD_YEAR = 3
   MARCH = 3
 
-  def get_role
-    get_now_year - self.year >= THIRD_YEAR ? LABO_STUDENT : NONE_LABO_STUDENT
-  end
-
   def get_now_year
     if Date.today.month <= MARCH
       return Date.today.year - 1
