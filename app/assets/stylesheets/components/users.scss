@@ -12,3 +12,10 @@
     background-color: $goldenYellow;
   }
 }
+
+#new_user {
+  #labo_selecter {
+    // 研究室に所属しているユーザ以外には非表示
+    display: none;
+  }
+}

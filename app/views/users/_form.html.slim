@@ -6,23 +6,26 @@
       | Register
     = form_for @user do |f|
       = render :partial => 'shared/error_messages', :locals => { object: @user }
-      | 入学年度
-      = f.select :year, [*(2000..2020)], :class => "select-box", include_blank: "year"
       br
+      | メールドレス：
       = session[:email]
-      br
-      | 現在の学年
-      = f.select :role, [["研究生", User::LABO_STUDENT], ["下級生", User::NONE_LABO_STUDENT]], :class => "select-box", include_blank: "学年"
-      = f.hidden_field :email, :value => session[:email]
       br
       = f.text_field :username, :class => "text-field", placeholder: "username", :size => "60"
       br
       = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
       br
-      | 上記にて"研究生"を選択した方のみ、以下のフォームに入力してください.
+      | 研究室に所属していますか？
+      = f.radio_button :role, User::LABO_STUDENT, {id: "user_role_labo_student"}
+      | はい
+      = f.radio_button :role, User::NONE_LABO_STUDENT, {id: "user_role_not_labo_student"}
+      | いいえ
+      
+      = f.hidden_field :email, :value => session[:email]
       br
+
+      #labo_selecter
+        = f.collection_select :labo, Labo.all, :id, :name, include_blank: "研究室名を選んでください"
+        = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
+      
       br
-      //TODO 現状常に labo=1 がフォームで飛ばされる
-      = f.collection_select :labo, Labo.all, :id, :name
-      = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
       = f.submit class: "button"
