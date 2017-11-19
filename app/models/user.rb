@@ -4,7 +4,6 @@
 #
 #  id               :integer          not null, primary key
 #  username         :string(255)      not null
-#  year             :integer
 #  email            :string(255)      not null
 #  labo             :integer
 #  role             :integer
@@ -22,29 +21,20 @@
 require 'date'
 
 class User < ApplicationRecord
+  validate :role_presence
+
   authenticates_with_sorcery!
   has_many :comments
   belongs_to :labos
 
   validates :username, presence: true, uniqueness: true, length: { in: 1..10 }
-  validates :year, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :role, presence: true, length: { in: 1..2 }
   validates :crypted_password, presence: true
   validates :salt, presence: true
 
   LABO_STUDENT = 1
   NONE_LABO_STUDENT = 2
-  THIRD_YEAR = 3
   MARCH = 3
-
-  def get_now_year
-    if Date.today.month <= MARCH
-      return Date.today.year - 1
-    else
-      return Date.today.year
-    end
-  end
 
   def get_role_name
     self.role == LABO_STUDENT ? "研究生" : "学生"
@@ -56,5 +46,9 @@ class User < ApplicationRecord
 
    def belongs_to_this_labo?(room_id)
      self.labo == room_id
+   end
+
+   def role_presence
+    errors[:base] << "研究室への所属有無を選択してください．" unless role.to_i == NONE_LABO_STUDENT || role.to_i == LABO_STUDENT
    end
 end
