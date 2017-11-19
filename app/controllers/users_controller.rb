@@ -40,7 +40,9 @@ class UsersController < ApplicationController
     else
       @user.labo = nil
     end
-    @user.save!  # && MailAddress.find_by(address: params[:user][:email])
+    @user.save!
+    delete_token()
+
     log_in @user
     session[:user_create] = true
     redirect_to users_path
@@ -84,5 +86,10 @@ class UsersController < ApplicationController
 
     def token_exists?
       redirect_to root_path unless Token.exists?(token: params[:token])
+    end
+
+    def delete_token
+      mail_address_id = MailAddress.find_by(address: @user.email).id
+      Token.find_by(mail_address_id: mail_address_id).destroy()
     end
 end
