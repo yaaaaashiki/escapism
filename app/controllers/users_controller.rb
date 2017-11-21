@@ -90,6 +90,6 @@ class UsersController < ApplicationController
 
     def delete_token
       mail_address_id = MailAddress.find_by(address: @user.email).id
-      Token.find_by(mail_address_id: mail_address_id).destroy()
+      Token.find_by(mail_address_id: mail_address_id).destroy
     end
 end
