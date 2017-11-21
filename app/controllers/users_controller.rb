@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       @user.labo = nil
     end
     @user.save!
-    delete_token()
+    delete_token
 
     log_in @user
     session[:user_create] = true
