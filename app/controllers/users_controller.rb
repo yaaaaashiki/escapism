@@ -55,9 +55,8 @@ class UsersController < ApplicationController
       session[:user_create] = true
       redirect_to users_path
     rescue ActiveRecord::RecordInvalid => e
-      logger.error(e.class)
-      logger.error(e.message)
-      logger.error(e.backtrace.join("\n"))
+      ErrorUtil.print_error_info(e)
+      @user = e.record
       render :new, status: :bad_request
   end
 
