@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
 
     @user = User.new
-    mail_address_id = Token.find_by(token: params[:token]).mail_address_id
+    mail_address_id = Token.find_by!(token: params[:token]).mail_address_id
     if mail_address_id.nil?
       logger.error("Bad request: UserController new action 12 lines: mail_address_id is undefined")
       render_404
@@ -30,27 +30,35 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.role = strong_params[:role].to_i
-    if @user.role == User::LABO_STUDENT
-      labo = Labo.all.find(labo_password_params[:id])
+    if @user.labo_student?
+      labo = Labo.find_by(id: labo_password_params[:id])
+      if labo.nil?
+        @user.errors[:base] << "所属している研究室を選択してください。"
+        render :new, status: :bad_request
+        return
+      end
+
       if !labo.authoricate(labo_password_params[:password])
+        @user.errors[:base] << "研究室のパスワードが誤っています。"
         render :new, status: :bad_request
         return
       end
     else
-      @user.labo = nil
+      @user.labo = Labo::NO_LABO_ID
     end
-    @user.save!
-    delete_token
 
-    log_in @user
-    session[:user_create] = true
-    redirect_to users_path
-  rescue ActiveRecord::RecordInvalid => e
-    @user = e.record
-    render :new, status: :bad_request
-  rescue ActiveRecord::RecordNotFound => e
-    render :new, status: :bad_request
+    ActiveRecord::Base.transaction do
+      @user.save!
+      delete_token!
+    end
+      log_in @user
+      session[:user_create] = true
+      redirect_to users_path
+    rescue ActiveRecord::RecordInvalid => e
+      logger.error(e.class)
+      logger.error(e.message)
+      logger.error(e.backtrace.join("\n"))
+      render :new, status: :bad_request
   end
 
   private
@@ -64,7 +72,8 @@ class UsersController < ApplicationController
         username: params[:username],
         email: params[:email],
         password: params[:password],
-        labo: params[:labo]
+        labo: params[:labo],
+        role: params[:role]
       }
     end
 
@@ -88,8 +97,8 @@ class UsersController < ApplicationController
       redirect_to root_path unless Token.exists?(token: params[:token])
     end
 
-    def delete_token
-      mail_address_id = MailAddress.find_by(address: @user.email).id
-      Token.find_by(mail_address_id: mail_address_id).destroy
+    def delete_token!
+      mail_address = MailAddress.find_by!(address: @user.email)
+      Token.find_by!(mail_address_id: mail_address.id).destroy!
     end
 end

@@ -21,7 +21,7 @@ class Labo < ApplicationRecord
               '原田研究室' => 'harada', 'Lopez 研究室'  => 'lopez'   , # '山口研究室'   => 'yamaguchi',
   }
 
-  @@NO_LABO_ID = -1
+  NO_LABO_ID = -1
 
   has_many :users
   has_many :theses
@@ -30,7 +30,7 @@ class Labo < ApplicationRecord
   validates :name, presence: true
 
   def self.NO_LABO_ID
-    @@NO_LABO_ID
+    NO_LABO_ID
   end
 
   def self.ARRAY_LABO_NAMES
