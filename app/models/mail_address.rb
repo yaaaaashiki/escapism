@@ -27,9 +27,9 @@ class MailAddress < ApplicationRecord
     index = address.index('@')
     if !index.nil?
       username = address.slice(0..index)
-      shortAddress = username + "aoyama.jp"
-      longAddress = username + "aoyama.ac.jp"
-      errors[:base] << "そのアドレスは既に使用されています．" unless !MailAddress.exists?(address: longAddress) && !MailAddress.exists?(address: shortAddress)
+      short_address = username + "aoyama.jp"
+      long_address = username + "aoyama.ac.jp"
+      errors[:base] << "そのアドレスは既に使用されています．" unless !MailAddress.exists?(address: long_address) && !MailAddress.exists?(address: short_address)
     end
   end
 
