@@ -34,9 +34,6 @@ class MailAddress < ApplicationRecord
   end
 
   def convert_addrss_to_half_lower_case
-    if address.present?
-      address.downcase!
-      address.tr!('０-９ａ-ｚ', '0-9a-z')
-    end
+      self.address = StringUtil.to_half_width_lowercase(self.address) if self.address.present?
   end
 end

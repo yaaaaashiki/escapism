@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
  
   def create
-    if @user = login(params[:session][:email].downcase, params[:session][:password])
+    if @user = login(StringUtil.to_half_width_lowercase(params[:session][:email]), params[:session][:password])
       log_in @user 
       redirect_to theses_url
     else
