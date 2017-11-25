@@ -4,8 +4,6 @@ ja:
       default: ! '%m/%d'
       second: ! '%m/%d %H:%M%:S %z'
       minute: ! '%m/%d %H:%M'
-
-ja:
   views:
     pagination:
       first: "&laquo; 最初"
@@ -13,8 +11,6 @@ ja:
       previous: "&lsaquo; 前ページ"
       next: "次ページ &rsaquo;"
       truncate: "..."
-
-ja:
   errors:
       messages:
         inclusion: "は一覧にありません。"
