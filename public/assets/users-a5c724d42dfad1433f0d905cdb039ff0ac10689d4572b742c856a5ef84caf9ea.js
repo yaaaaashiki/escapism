@@ -1,1 +1,0 @@
-$(function(){setInterval(function(){$("div .before-image-left").fadeToggle(3e3),$("div .after-image-left").fadeToggle(3e3),$("div .before-image-right").fadeToggle(3e3),$("div .after-image-right").fadeToggle(3e3)},3e3)});
