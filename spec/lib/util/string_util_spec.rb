@@ -2,11 +2,11 @@ describe StringUtil do
   describe '#to_half_width_lowercase(from_str)' do
     describe 'error cases' do
       it 'when argument is a nil' do
-        expect{StringUtil.to_half_width_lowercase(nil)}.to raise_error(NoMethodError)
+        expect{StringUtil.to_half_width_lowercase(nil)}.to raise_error(ArgumentError)
       end
 
       it 'when argument is a Object' do
-        expect{StringUtil.to_half_width_lowercase(Object)}.to raise_error(NoMethodError)
+        expect{StringUtil.to_half_width_lowercase(Object)}.to raise_error(ArgumentError)
       end
     end
 
@@ -27,7 +27,11 @@ describe StringUtil do
         expect(StringUtil.to_half_width_lowercase("日本語")).to eq "日本語"
       end
 
-      it 'when argument is half width space' do
+      it 'when argument is a empty string' do
+        expect(StringUtil.to_half_width_lowercase("")).to eq ""
+      end
+
+      it 'when argument is a half width space' do
         expect(StringUtil.to_half_width_lowercase(" ")).to eq " "
       end
 
