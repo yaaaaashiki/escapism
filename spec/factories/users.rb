@@ -73,8 +73,10 @@ FactoryGirl.define do
   #This hash should be fourth field.
   factory :post_params_it_aoyama_user, class: User do
     username "it_aoyama"
-    email "c5617146@aoyama.com"
-    password Sorcery::CryptoProviders::BCrypt.encrypt("password", "asdasdastr4325234324sdfds")
+    email "c5617146@aoyama.jp"
+    labo Labo::NO_LABO_ID
+    role User::NONE_LABO_STUDENT
+    password "password"
   end
 
   factory :post_params_no_name_user, class: User do
