@@ -12,15 +12,19 @@ describe StringUtil do
 
     describe 'normal cases' do
       it 'when argument is a half width lowercase string' do
-        expect(StringUtil.to_half_width_lowercase("half_width_lowercase")).to eq "half_width_lowercase"
+        expect(StringUtil.to_half_width_lowercase("half width lowercase")).to eq "half width lowercase"
       end
 
-      it 'when argument is a uppercase string' do
-        expect(StringUtil.to_half_width_lowercase("UPPERCASE")).to eq "uppercase"
+      it 'when argument is a half width uppercase string' do
+        expect(StringUtil.to_half_width_lowercase("HALF WIDTH UPPERCASE")).to eq "half width uppercase"
       end
 
-      it 'when argument is a full width string' do
-        expect(StringUtil.to_half_width_lowercase("ｆｕｌｌ　ｗｉｄｔｈ")).to eq "full width"
+      it 'when argument is a full width lowercase string' do
+        expect(StringUtil.to_half_width_lowercase("ｆｕｌｌ　ｗｉｄｔｈ　ｌｏｗｅｒｃａｓｅ")).to eq "full width lowercase"
+      end
+
+      it 'when argument is a full width uppercase string' do
+        expect(StringUtil.to_half_width_lowercase("ＦＵＬＬ ＷＩＤＴＨ ＵＰＰＥＲＣＡＳＥ")).to eq "full width uppercase"
       end
 
       it 'when argument is a japanese string' do
