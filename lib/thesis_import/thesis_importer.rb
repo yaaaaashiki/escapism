@@ -24,10 +24,9 @@ module ThesisImporter
 
               thesis.body = Thesis.extract_body(thesis.url)
 
-              # summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
-              # thesis.summary , err, status = Open3.capture3("python3 " + summariser_name + " " + thesis.url)
-              thesis.summary = ""
-              
+              summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
+              thesis.summary , err, status = Open3.capture3("python3 " + summariser_name + " " + thesis.url)
+
               if thesis.belongs_to_martin_labo?
                 thesis.title = td_element.content
               elsif thesis.belongs_to_harada_labo?
