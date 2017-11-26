@@ -22,17 +22,12 @@ module ThesisImporter
               thesis.url = calculate_url(thesis_base_path, a_element[:href])
               thesis.labo = Labo.find_by(name: Labo.parse_labo_name(path))
 
-
-
               thesis.body = Thesis.extract_body(thesis.url)
 
-              summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
-              thesis.summary , err, status = Open3.capture3("python3 " + summariser_name + " " + thesis.url)
-
-
-
-
-
+              # summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
+              # thesis.summary , err, status = Open3.capture3("python3 " + summariser_name + " " + thesis.url)
+              thesis.summary = ""
+              
               if thesis.belongs_to_martin_labo?
                 thesis.title = td_element.content
               elsif thesis.belongs_to_harada_labo?
