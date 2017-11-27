@@ -10,9 +10,6 @@ ul
     | 氏名 : 
     = @user.username
   li
-    | 入学年度 : 
-    = @user.year
-  li
     | Email : 
     = @user.email
   li
@@ -25,9 +22,6 @@ ul
   h4
     | 氏名 : 
     = f.text_field :username, :size=>"30", :value => @user.username
-  h4
-    | 入学年度 : 
-    = f.number_field :year
   h4
     | Email : 
     = f.text_field :email, :size=>"50"

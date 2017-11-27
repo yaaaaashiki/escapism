@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'thesis/download/:id' => 'theses#download', :as => :download
   get 'users/new/:token' => 'users#new'
-  get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
 
   namespace :admin do
