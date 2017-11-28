@@ -119,7 +119,7 @@ class Thesis < ApplicationRecord
 
   def self.extract_body(absolute_thesis_path)
     data = Yomu.new(absolute_thesis_path)
-    body = data.text
+    body = data.text.unicode_normalize(:nfkc)
     body.gsub(/\r\n|\n|\r/, "")
   end
 
