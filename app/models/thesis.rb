@@ -28,7 +28,6 @@ class Thesis < ApplicationRecord
   belongs_to :author
   belongs_to :labo
   has_many :comments
-  has_one :word_count
 
   validates :title, presence: true
   validates :url, presence: true, uniqueness: true
