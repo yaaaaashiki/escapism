@@ -36,7 +36,7 @@ module FeaturesGetter
 
   def create_wakati_array(text_path)
     data = Yomu.new(text_path)
-    wakati_text = parse_wakati(data.text)
+    wakati_text = parse_wakati(data.text.unicode_normalize(:nfkc))
     cleaned_wakati_text = clean_wakati_text(wakati_text)
     cleaned_wakati_text.split(' ')
   end
