@@ -13,11 +13,11 @@
 
 require 'digest/md5'
 class Labo < ApplicationRecord
-  @@ARRAY_LABO_DIRECTORY_NAMES = %w(durst harada komiyama lopez ohara sakuta sumi tobe ) # yamaguchi)
-  @@ARRAY_LABO_NAMES = ['鷲見研究室', 'Dürst 研究室', '佐久田研究室', '大原研究室', '小宮山研究室', '戸辺研究室', '原田研究室', 'Lopez 研究室']
+  @@ARRAY_LABO_DIRECTORY_NAMES = %w(durst harada komiyama lopez ohara sakuta sumi tobe yamaguchi)
+  @@ARRAY_LABO_NAMES = ['鷲見研究室', 'Dürst 研究室', '佐久田研究室', '大原研究室', '小宮山研究室', '戸辺研究室', '原田研究室', 'Lopez 研究室', '山口研究室']
   @@LABO_HASH = {'鷲見研究室' => 'sumi'  , 'Dürst 研究室' => 'durst'  , '佐久田研究室' => 'sakuta'   ,
               '大原研究室' => 'ohara' , '小宮山研究室' => 'komiyama', '戸辺研究室'   => 'tobe'     ,
-              '原田研究室' => 'harada', 'Lopez 研究室'  => 'lopez'   , # '山口研究室'   => 'yamaguchi',
+              '原田研究室' => 'harada', 'Lopez 研究室'  => 'lopez'   , '山口研究室'   => 'yamaguchi',
   }
 
   NO_LABO_ID = -1
@@ -61,6 +61,8 @@ class Labo < ApplicationRecord
       '鷲見研究室'
     elsif path.include?("tobe")
       '戸辺研究室'
+    elsif path.include?("yamaguchi")
+      '山口研究室'
     end
   end
 
