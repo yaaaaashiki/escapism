@@ -166,4 +166,8 @@ class Thesis < ApplicationRecord
   def belongs_to_sakuta_bachelor_thesis?
     url.include?("sakuta") && url.include?("undergraduate")
   end
+
+  def belongs_to_yamaguchi_labo?
+    url.include?("yamaguchi")
+  end
 end
