@@ -76,6 +76,7 @@ class Thesis < ApplicationRecord
         if keyword.present?
           multi_match {
             query keyword
+            operator 'and'
 
             if field == @@SEARCH_BY_BODY
               fields %W{ body }
