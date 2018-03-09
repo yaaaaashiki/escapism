@@ -41,6 +41,7 @@ gem "slim"
 # gem 'devise-i18n'
 gem 'sorcery'
 gem 'cancancan'
+gem 'open_uri_redirections'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

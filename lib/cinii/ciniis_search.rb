@@ -1,5 +1,6 @@
 require 'uri'
 require 'open-uri'
+require 'open_uri_redirections'
 
 class CiniisSearch
   MAX_SEARCH_SIZE = 100
@@ -11,7 +12,7 @@ class CiniisSearch
   
   def self.crawling(url)
     # TODO: 取得できなかった場合のError処理をどうしようか検討が必要
-    Nokogiri::HTML.parse(open(url))
+    Nokogiri::HTML.parse(open(url, :allow_redirections => :all))
   end
   
   def self.scraping(html)
