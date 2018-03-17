@@ -1,0 +1,17 @@
+.container
+  h1
+    = @labo.name
+
+  form
+    label say something
+    input type="text" data-behavior="chatroom_#{params[:lab_id]}"
+
+  .hogehoge
+    - @message_users.each do |message_user|
+      =<> message_user["username"]
+      =<> message_user["labo"] == User::LABO_STUDENT ? "研究生" : "学生"
+      =<> message_user["body"]
+      =<> l message_user["created_at"] ,format: :minute
+      br
+
+#chatroom data-room_id="#{params[:lab_id]}"
