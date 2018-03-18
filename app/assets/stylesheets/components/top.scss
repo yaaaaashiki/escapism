@@ -1,3 +1,4 @@
+@charset "utf-8";
 @import "variables/variables";
 
 /* ここからブロック要素内のブロック要素の上下左右センタリング */
@@ -25,51 +26,6 @@
   font-weight: bold;
   color: #111;
 }
-
-#rootpage{
-
-
-  box-sizing: border-box;
-  border: 0;
-  position: absolute;
-  top: 5%;          //header の height を % 表示にしておく
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 95%;
-  background-color: #CE5973;
-
-
-  #rootContents{
-    margin-top: 10%;
-    height: 60%;
-    .kana{
-       position: absolute;
-       box-sizing: content-box;
-       opacity: 0.9;
-       z-index: -100;
-       border: dotted 2px black;
-       height: 100%;
-       width: 80%;
-     }
-    .before-image-height{
-      height: 90%;
-    }
-    .after-image-height{
-      height: 90%;
-      
-    }
-    .after-image-right{
-       height: 100%;
-       display: none;
-     }
-    .after-image-left{
-       height: 100%;
-       display: none;
-     }
-  }
-}
-
 
 p .demo{
  z-index: 10000;
