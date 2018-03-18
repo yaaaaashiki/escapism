@@ -44,12 +44,12 @@ RSpec.describe SessionsController, type: :controller do
         end
 
         it "return http success" do
-          post :create, params: {session: {user: @it_aoyama_user_hash}}
+          post :create, params: {session: @it_aoyama_user_hash}
           expect(response).to have_http_status(:unauthorized)
         end
 
         it "render new template" do
-          post :create, params: {session: {user: @it_aoyama_user_hash}}
+          post :create, params: {session: @it_aoyama_user_hash}
           expect(response).to render_template(:new)
         end
       end
@@ -64,12 +64,12 @@ RSpec.describe SessionsController, type: :controller do
           end
 
           it "return http success" do
-            post :create, params: {session: {user: @user_hash_except_password}}
+            post :create, params: {session: @user_hash_except_password}
             expect(response).to have_http_status(:unauthorized)
           end
 
           it "render new template" do
-            post :create, params: {session: {user: @user_hash_except_password}}
+            post :create, params: {session: @user_hash_except_password}
             expect(response).to render_template(:new)
           end
         end
@@ -77,21 +77,20 @@ RSpec.describe SessionsController, type: :controller do
         context "only input password" do
           let!(:it_aoyama_user) {create(:it_aoyama_user)}
           before do
-            @user_hash_except_username = attributes_for(:it_aoyama_user)
-            @user_hash_except_username.delete(:username)
+            @user_hash_except_email = attributes_for(:it_aoyama_user)
+            @user_hash_except_email.update(email: "") # ブラウザからメールが入力されない場合は空文字が来る
           end
 
           it "return http success" do
-            post :create, params: {session: {user: @user_hash_except_username}}
+            post :create, params: {session: @user_hash_except_email}
             expect(response).to have_http_status(:unauthorized)
           end
 
           it "render new template" do
-            post :create, params: {session: {user: @user_hash_except_username}}
+            post :create, params: {session: @user_hash_except_email}
             expect(response).to render_template(:new)
           end
         end
-
       end
     end
   end

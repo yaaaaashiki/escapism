@@ -8,8 +8,6 @@ table
       th
         |  氏名 
       th
-        |  入学年度 
-      th
         |  email 
       th
         |  研究室ID 
@@ -20,8 +18,6 @@ table
           = user.id
         td
           = link_to user.username, admin_user_path(user)
-        td
-          = user.year
         td
           = user.email
         td

@@ -36,11 +36,11 @@ class Admin::UsersController < AdminController
     end
 
     def user_params
-      params.require(:user).permit(:username, :year, :email, :password, :labo)
+      params.require(:user).permit(:username, :email, :password, :labo)
     end
 
     def except_password_user_params
-      params.require(:user).permit(:username, :year, :email, :labo)
+      params.require(:user).permit(:username, :email, :labo)
     end
 end
 

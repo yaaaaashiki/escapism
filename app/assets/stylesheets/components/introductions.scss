@@ -248,6 +248,14 @@ body {
   left: 15%;
   width:70%;
   height: 100%;
+  a {
+    color: beige;
+    text-decoration: none;
+    box-shadow: 0 10px 4px -8px #777777;
+    &:hover{
+      color: beige;
+    }
+  }
 }
 
 .slide_h1 {
@@ -264,7 +272,6 @@ body {
 .slide_a {
     color: beige;
     cursor: pointer;
-    text-decoration: underline;
 }
 .slide_a:link { color: beige; }
 .slide_a:visited { color: beige; }

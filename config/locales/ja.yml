@@ -4,8 +4,6 @@ ja:
       default: ! '%m/%d'
       second: ! '%m/%d %H:%M%:S %z'
       minute: ! '%m/%d %H:%M'
-
-ja:
   views:
     pagination:
       first: "&laquo; 最初"
@@ -13,3 +11,35 @@ ja:
       previous: "&lsaquo; 前ページ"
       next: "次ページ &rsaquo;"
       truncate: "..."
+  errors:
+    messages:
+      inclusion: "は一覧にありません。"
+      exclusion: "は予約されています。"
+      invalid: "が不正な値です。"
+      confirmation: "が一致しません。"
+      accepted: "を承諾してください。"
+      empty: "が記入されていません。"
+      blank: "が記入されていません。"
+      too_long: "は%{count}文字以内で記入してください。"
+      too_short: "は%{count}文字以上で記入してください。"
+      wrong_length: "は%{count}文字で記入してください。"
+      taken: "はすでに使用されています。"
+      not_a_number: "は数値で入力してください。"
+      greater_than: "は%{count}より大きい値を指定してください。"
+      greater_than_or_equal_to: "は%{count}以上の値を指定してください。"
+      equal_to: "は%{count}を指定してください。"
+      less_than: "は%{count}より小さい値を指定してください。"
+      less_than_or_equal_to: "は%{count}以下の値を指定してください。"
+      odd: "は奇数を指定してください。"
+      even: "は偶数を指定してください。"
+      # Append your own errors here or at the model/attributes scope.
+    
+  activerecord:
+    models:
+      user: ユーザ
+      # Overrides default messages
+
+    attributes:
+      user:
+        username: ユーザ名
+      # Overrides model and default messages.
