@@ -4,6 +4,11 @@ class ThesesController < ApplicationController
   NOT_EXIST_THESES = 0
 
   def index
+    if check_size_index(params)
+      render_414
+      return
+    end
+
     @labo_id = params[:l]
     query = params[:q]
     @search_field = params[:f]
@@ -23,6 +28,11 @@ class ThesesController < ApplicationController
   end
 
   def show
+    if check_size_show(params)
+      render_414
+      return
+    end
+
     @thesis = Thesis.find(params[:id])
     if @thesis
       impressionist(@thesis)
@@ -44,6 +54,11 @@ class ThesesController < ApplicationController
   end
 
   def download
+    if invalid_size?(params[:id])
+      render_414
+      return
+    end
+
     thesis = Thesis.find(params[:id])
     if thesis.nil?
       logger.error("Internal server error: ThesesController show action 20 lines: @theses is undefined")
@@ -78,6 +93,14 @@ class ThesesController < ApplicationController
 
     def not_exist_theses(theses)
       theses.size == NOT_EXIST_THESES
+    end
+
+    def check_size_index(params)
+      invalid_size?(params[:q]) || invalid_size?(params[:l]) || invalid_size?(params[:f])
+    end
+
+    def check_size_show(params)
+      invalid_size?(params[:id]) || invalid_size?(params[:page])
     end
 
     def params_invalid?(search_field)
