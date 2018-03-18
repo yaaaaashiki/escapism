@@ -9,12 +9,16 @@ Labo.ARRAY_LABO_NAMES.size.times do |i|
 end
 
 # ファイルからfeature_hashを取得
-# 計算し直すときは以下の一行を使用
+FEATURE_HASH_PATH = "lib/feature_getter/feature_hash.json";
+# 計算し直すときは以下を使用
 # feature_hash = FeaturesGetter.fetch(4)
+# File.open(FEATURE_HASH_PATH, 'w') do |file|
+#   JSON.dump(feature_hash, file)
+# end
 # 実行時間の目安：論文3年分で約1時間
 # (計測した環境：vagrant経由Ubuntu16.04，メモリ3GB，CPU2.4GHz1コア)
 feature_hash = {}
-File.open("lib/feature_getter/feature_hash.json") do |file|
+File.open(FEATURE_HASH_PATH) do |file|
   feature_hash = JSON.load(file)
 end
 
