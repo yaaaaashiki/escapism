@@ -1,0 +1,12 @@
+= stylesheet_link_tag 'error_pages'
+.container
+  .error-contents
+    .upperContents
+      .font-size-125.errorNum
+        | 414
+      .errorEn.font-size-26
+        | Request-URI Too Large
+    .lowerContents
+      h1.font-size-20
+        | リクエストURIが長すぎるため拒否しました。
+      = link_to 'トップページへ戻る', root_path

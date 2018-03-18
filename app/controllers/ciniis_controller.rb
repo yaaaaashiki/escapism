@@ -7,6 +7,11 @@ class CiniisController < ApplicationController
   def index
     array = []
 
+    if check_size(params)
+      render_414
+      return
+    end
+
     if params[:lab_id] && params[:feature] && !session[:query]
       labo = Labo.all.find(params[:lab_id].keys[0])
       if labo.nil?
@@ -65,4 +70,7 @@ class CiniisController < ApplicationController
       params[:lab_id].blank? && params[:feature].blank? && params[:q].blank?
     end
 
+    def check_size(params)
+      invalid_size?(params[:q]) || invalid_size?(params[:feature]) || invalid_size?(params[:page_num]) || invalid_size?(params[:lab_id])
+    end
 end

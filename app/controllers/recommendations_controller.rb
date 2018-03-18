@@ -2,6 +2,11 @@ require 'open3'
 
 class RecommendationsController < ApplicationController
   def index
+    if invalid_size?(params[:q])
+      render_414
+      return
+    end
+
     if params[:q]
       predicted_lab_name = predict(params[:q])
       if predicted_lab_name.blank?
