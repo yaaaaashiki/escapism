@@ -227,7 +227,10 @@ app/dump.rdb
 *.rdb
 dump.rdb
 
+/public/assets
+
+# files for using eslint in vscode
 /node_modules
 /.eslintrc.json
-
-/public/assets
+package.json
+package-lock.json 
