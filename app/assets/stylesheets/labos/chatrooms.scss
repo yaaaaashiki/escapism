@@ -1,0 +1,21 @@
+.container {
+    margin-bottom: 4%;
+}
+
+.labo-student-message .none-labo-student-message {
+  width: 100%;
+}
+ 
+.labo-student-messages-field {
+  overflow: hidden;
+  .labo-student-message {
+    text-align: right; 
+  }
+}
+
+.none-labo-student-messages-field {
+  overflow: hidden;
+  .labo-student-message {
+    text-align: right; 
+  }
+}

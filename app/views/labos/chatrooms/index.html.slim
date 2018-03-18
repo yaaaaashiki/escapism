@@ -1,0 +1,57 @@
+.container
+  .labo-field
+    h1
+      = @labo.name
+  - if current_user.role == User::LABO_STUDENT
+    .labo-student-messages-field
+      - @message_users.each do |message_user|
+        - if message_user["role"] == User::LABO_STUDENT
+          .labo-student-message
+            .message-info
+              =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
+            .message-body
+              =<> message_user["body"]
+            br
+        - else
+          .none-labo-student-message
+            .message-info
+              =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
+            .message-body
+              =<> message_user["body"]
+            br
+      .input-field
+        form
+          label Enterキーで送信
+          input type="text" data-behavior="chatroom_#{params[:lab_id]}"
+
+  - else
+    .none-labo-student-messages-field
+      - @message_users.each do |message_user|
+        - if message_user["role"] == User::LABO_STUDENT
+          .labo-student-message
+            .message-info
+              =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
+            .message-body
+              =<> message_user["body"]
+            br
+        - else
+          .none-labo-student-message
+            .message-info
+              =<> message_user["username"]
+              =<> message_user["role"] == User::LABO_STUDENT ? "研究生" : "学生"
+              =<> l message_user["created_at"] ,format: :minute
+            .message-body
+              =<> message_user["body"]
+            br
+      .input-field
+        form
+          label Enterキーで送信
+          input type="text" data-behavior="chatroom_#{params[:lab_id]}"
+
+#chatroom data-room_id="#{params[:lab_id]}"
