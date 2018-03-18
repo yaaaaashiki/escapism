@@ -5,12 +5,12 @@ module ThesisImporter
   def upsert_all!(theses_year_dir)
     Find.find(theses_year_dir) do |path|
       next unless PathChecker.index_html_path?(path)
-      
+
       index_html = HTMLParser.parse_html_object(path)
       written_year = HTMLParser.parse_written_year(index_html)
 
-      thesis_base_path = path.gsub(/\/index\.html/, "")
-
+      thesis_base_path = path.gsub(/\/index\.html?/, "")
+      
       index_html.css('tr').each do |tr_element|
         tr_element.css('td').each do |td_element|
           td_element.css('a').each do |a_element|
@@ -31,14 +31,20 @@ module ThesisImporter
                 thesis.title = td_element.content
               elsif thesis.belongs_to_harada_labo?
                 thesis.title = fetch_just_thesis_title(td_element.previous.content)
-              elsif thesis.belongs_to_sakuta_bachelor_thesis?
+              elsif thesis.belongs_to_sakuta_bachelor_thesis? || thesis.belongs_to_yamaguchi_labo?
                 thesis.title = fetch_just_thesis_title(td_element.previous.previous.content)
-              else
+              else 
                 thesis.title = fetch_just_thesis_title(td_element.content)
               end
 
               ActiveRecord::Base.transaction do
-                author_name = fetch_just_name(tr_element.css('td')[1].content)
+                author_name = ""
+                if thesis.belongs_to_yamaguchi_labo?
+                  author_name = fetch_just_name(tr_element.css('b')[0].content)
+                else
+                  author_name = fetch_just_name(tr_element.css('td')[1].content)
+                end
+
                 author = Author.find_by(name: author_name)
                 if author.nil?
                   author = Author.create!(name: author_name)
