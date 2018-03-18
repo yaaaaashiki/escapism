@@ -17,6 +17,6 @@
 
 FactoryGirl.define do
   factory :message do
-    content "MyText"
+    body "MyText"
   end
 end

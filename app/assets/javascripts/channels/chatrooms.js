@@ -1,4 +1,4 @@
-function formatToSlash(ctime){
+function formatToSlash(ctime) {
   const yearHyphen = 5;
   const secondDigit = 13;
 
@@ -29,7 +29,7 @@ App.chatrooms = App.cable.subscriptions.create(
     received: function(message) {
       const createdAt = formatToSlash(message['object']['created_at']);
 
-      $("div .container").append(escapeHTML(message['object']['name'] + ' '))
+      $(".container").append(escapeHTML(message['object']['name'] + ' '))
                          .append(escapeHTML(message['object']['role'] + ' '))
                          .append(escapeHTML(message['object']['body'] + ' '))
                          .append(escapeHTML(createdAt))
@@ -51,4 +51,3 @@ $(document).on('keypress', `[data-behavior~=chatroom_${$("#chatroom").data('room
     return event.preventDefault();
   }
 });
-

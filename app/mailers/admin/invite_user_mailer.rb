@@ -5,6 +5,12 @@ class Admin::InviteUserMailer < ApplicationMailer
 
     mail_address_id = MailAddress.find_by(address: to).id
     Token.create(token: token, mail_address_id: mail_address_id)
+
+    if Rails.env != 'production'
+      # ユーザ登録ページのURL送信用のgmailに送信する
+      to = ENV['USER_NAME']
+    end
+
     mail(to: to, subject: subject)
   end
 

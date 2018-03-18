@@ -25,8 +25,9 @@
             br
       .input-field
         form
+          label Enterキーで送信
           input type="text" data-behavior="chatroom_#{params[:lab_id]}"
-          label submit
+
   - else
     .none-labo-student-messages-field
       - @message_users.each do |message_user|
@@ -50,7 +51,7 @@
             br
       .input-field
         form
+          label Enterキーで送信
           input type="text" data-behavior="chatroom_#{params[:lab_id]}"
-          label submit
 
 #chatroom data-room_id="#{params[:lab_id]}"

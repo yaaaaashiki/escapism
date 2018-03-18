@@ -1,14 +1,8 @@
 @import "components/color";
 
-.success-field {
-  font-size: 25px;
-  text-align: center;
-  margin-top: 4%;
-  margin-bottom: 4%;
-
-  a, a:hover, a:focus {
-    border: none;
-    color: $ironBlack;
-    background-color: $goldenYellow;
+#new_user {
+  #labo_selecter {
+    // 研究室に所属しているユーザ以外には非表示
+    display: none;
   }
 }

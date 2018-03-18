@@ -28,7 +28,6 @@ class Thesis < ApplicationRecord
   belongs_to :author
   belongs_to :labo
   has_many :comments
-  has_one :word_count
 
   validates :title, presence: true
   validates :url, presence: true, uniqueness: true
@@ -77,6 +76,7 @@ class Thesis < ApplicationRecord
         if keyword.present?
           multi_match {
             query keyword
+            operator 'and'
 
             if field == @@SEARCH_BY_BODY
               fields %W{ body }
@@ -120,7 +120,7 @@ class Thesis < ApplicationRecord
 
   def self.extract_body(absolute_thesis_path)
     data = Yomu.new(absolute_thesis_path)
-    body = data.text
+    body = data.text.unicode_normalize(:nfkc)
     body.gsub(/\r\n|\n|\r/, "")
   end
 
