@@ -29,25 +29,10 @@
         = label_tag :other, 'その他(任意)'
         .form-group
           = label_tag :file, 'ファイル(任意):'
-          = select_tag :file, "", prompt: :選択してください, class: 'form-control'
+          = select_tag :file_relative_path, "", prompt: :選択してください, class: 'form-control'
 
         .form-group
           = label_tag :file_name, 'ファイル名(任意):'
           = text_field :other, :file_name, class: 'form-control'
   
   = submit_tag :送信, class: 'btn btn-primary'
-
-/ TODO:以下を実装する
-/ <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-/ <script>
-/   $('#directory').change(event => {
-/     let placeholder = $('<option>', {text: '選択してください'});
-/     let selectMenu = $('[id^=select_menu]').empty()
-/                                             .append(placeholder);
-/     for (let file of event.target.files) {
-/       let relativePath = file.webkitRelativePath;
-/       let option = $('<option>', {value: relativePath, text: relativePath});
-/       selectMenu.append(option);
-/     }
-/   });
-/ </script>
