@@ -1,11 +1,11 @@
-= form_tag admin_theses_path, multipart: true, id: :theses_form do
+= form_tag admin_theses_path, multipart: false, id: :theses_form do
   .form-group
     = label_tag :year, '年度(必須):'
     = select_tag :year, options_for_select(@year_options), prompt: '選択してください', class: 'form-control', required: true
 
   .form-group
     = label_tag :labo, '研究室名(必須):'
-    = collection_select :labo, :name, @labos, :id, :name, {prompt: '選択してください'}, {class: 'form-control', required: true}
+    = collection_select :labo, :id, @labos, :id, :name, {prompt: '選択してください'}, {class: 'form-control', required: true}
 
   .form-group
     = label_tag :directory, '論文ファイルのフォルダ(必須):'
@@ -41,10 +41,10 @@
             .form-group[class="theses_others_#{i}"]
               .form-group
                 = label "theses[#{i}][others][#{j}][url]", :file, 'ファイル(任意):'
-                = select_tag "theses[#{i}][others][#{i}][url]", "", prompt: :選択してください, class: 'form-control'
+                = select_tag "theses[#{i}][others][#{j}][url]", "", prompt: :選択してください, class: 'form-control'
 
               .form-group
-                = label "theses[#{i}][others][#{i}][name]", :file_name, 'ファイル名(任意):'
-                = text_field "theses[#{i}][others][#{i}][name]", :file_name, class: 'form-control'
+                = label "theses[#{i}][others][#{j}]", :name, 'ファイル名(任意):'
+                = text_field "theses[#{i}][others][#{j}]", :name, class: 'form-control'
 
   = submit_tag :送信, class: 'btn btn-primary'
