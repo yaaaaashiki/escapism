@@ -6,7 +6,7 @@ class Admin::ThesesController < AdminController
   end
 
   def create
-    binding.pry
+    # binding.pry
   end
 
   def new
