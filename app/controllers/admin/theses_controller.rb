@@ -5,7 +5,12 @@ class Admin::ThesesController < AdminController
     @theses = Thesis.all
   end
 
+  def create
+    binding.pry
+  end
+
   def new
+    @theses = []
     @year_options = []
     today_year = Date.today.year
     (-1..1).each do |i|
@@ -13,6 +18,18 @@ class Admin::ThesesController < AdminController
     end
 
     @labos = Labo.all
+
+    @number_of_registration_options = []
+    @max_number_of_registration = 20
+    (1..@max_number_of_registration).each do |i|
+      @number_of_registration_options << [i, i]
+    end
+
+    @number_of_registration_others_options = []
+    @max_number_of_registration_others_options = 4
+    (1..@max_number_of_registration_others_options).each do |i|
+      @number_of_registration_others_options << [i, i]
+    end
   end
 
   def show
