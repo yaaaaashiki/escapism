@@ -1,8 +1,18 @@
 class Admin::ThesesController < AdminController
   before_action :set_thesis, only: [:show, :update]
 
-  def index 
+  def index
     @theses = Thesis.all
+  end
+
+  def new
+    @year_options = []
+    today_year = Date.today.year
+    (-1..1).each do |i|
+      @year_options << [today_year + i, today_year + i]
+    end
+
+    @labos = Labo.all
   end
 
   def show
