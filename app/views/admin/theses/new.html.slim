@@ -1,7 +1,7 @@
-= form_tag admin_theses_path do
+= form_tag admin_theses_path, multipart: true, id: :theses_form do
   .form-group
     = label_tag :year, '年度(必須):'
-    = select_tag :year, options_for_select(@year_options), prompt: :選択してください, class: 'form-control', required: true
+    = select_tag :year, options_for_select(@year_options), prompt: '選択してください', class: 'form-control', required: true
 
   .form-group
     = label_tag :labo, '研究室名(必須):'
@@ -9,30 +9,42 @@
 
   .form-group
     = label_tag :directory, '論文ファイルのフォルダ(必須):'
-    = file_field_tag :directory, webkitdirectory: "", required: true
+    = file_field_tag 'directory[]', webkitdirectory: "", required: true
 
-  .form-group.box.box-primary.box-body
-    .form-group
-      = label_tag :thesis_relative_path, '論文(必須):'
-      = select_tag :thesis_relative_path, "", prompt: :選択してください, class: 'form-control', required: true
+  .form-group
+    = label_tag :number_of_registration, '登録数(必須):'
+    = select_tag :number_of_registration, options_for_select(@number_of_registration_options), prompt: :選択してください, class: 'form-control', required: true
 
-    .form-group
+  - @max_number_of_registration.times do |i|
+    .thesis_form.form-group.box.box-primary.box-body
       .form-group
-        = label_tag :title, 'タイトル(必須):'
-        = text_field :thesis, :title, class: 'form-control', required: true
-
-      .form-group
-        = label_tag :author_name, '著者名(必須):'
-        = text_field :thesis, :author_name, class: 'form-control', required: true
+        = label "theses[#{i}]", :url, '論文(必須):'
+        = select "theses[#{i}]", :url, [], {prompt: '選択してください'}, {class: 'form-control'}
 
       .form-group
-        = label_tag :other, 'その他(任意)'
         .form-group
-          = label_tag :file, 'ファイル(任意):'
-          = select_tag :file_relative_path, "", prompt: :選択してください, class: 'form-control'
+          = label "theses[#{i}]", :title, 'タイトル(必須):'
+          = text_field "theses[#{i}]",:title, class: 'form-control'
 
         .form-group
-          = label_tag :file_name, 'ファイル名(任意):'
-          = text_field :other, :file_name, class: 'form-control'
-  
+          = label "theses[#{i}]", :author_name, '著者名(必須):'
+          = text_field "theses[#{i}]", :author_name, class: 'form-control'
+
+        .form-group
+          = label_tag :others, 'その他(任意)'
+
+          .form-group
+            = label "theses[#{i}][others][number_of_registration]", '登録数(必須):'
+            = select_tag "theses[#{i}][others][number_of_registration]", options_for_select(@number_of_registration_others_options), prompt: :選択してください, class: 'form-control'
+
+          - @max_number_of_registration_others_options.times do |j|
+            .form-group[class="theses_others_#{i}"]
+              .form-group
+                = label "theses[#{i}][others][#{j}][url]", :file, 'ファイル(任意):'
+                = select_tag "theses[#{i}][others][#{i}][url]", "", prompt: :選択してください, class: 'form-control'
+
+              .form-group
+                = label "theses[#{i}][others][#{i}][name]", :file_name, 'ファイル名(任意):'
+                = text_field "theses[#{i}][others][#{i}][name]", :file_name, class: 'form-control'
+
   = submit_tag :送信, class: 'btn btn-primary'
