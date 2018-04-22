@@ -9,10 +9,12 @@
 
   .form-group
     = label_tag :directory, '論文ファイルのフォルダ(必須):'
+    small 変更すると次以降の項目がリセットされます。
     = file_field_tag 'directory[]', webkitdirectory: "", required: true
 
   .form-group
     = label_tag :number_of_registration, '登録数(必須):'
+    small 変更すると次以降の項目がリセットされます。
     = select_tag :number_of_registration, options_for_select(@number_of_registration_options), prompt: :選択してください, class: 'form-control', required: true
 
   - @max_number_of_registration.times do |i|
@@ -35,6 +37,7 @@
 
           .form-group
             = label "theses[#{i}][others][number_of_registration]", '登録数(必須):'
+            small 変更すると次以降の項目がリセットされます。
             = select_tag "theses[#{i}][others][number_of_registration]", options_for_select(@number_of_registration_others_options), prompt: :選択してください, class: 'form-control'
 
           - @max_number_of_registration_others_options.times do |j|
