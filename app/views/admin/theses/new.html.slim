@@ -1,4 +1,4 @@
-= form_tag admin_theses_path, multipart: false, id: :theses_form do
+= form_tag admin_theses_path, multipart: true, id: :theses_form do
   .form-group
     = label_tag :year, '年度(必須):'
     = select_tag :year, options_for_select(@year_options), prompt: '選択してください', class: 'form-control', required: true
