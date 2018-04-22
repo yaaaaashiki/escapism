@@ -6,7 +6,19 @@ class Admin::ThesesController < AdminController
   end
 
   def create
-    # binding.pry
+    year = params[:year]
+    labo_id = params[:labo][:id]
+    directory = params[:directory]
+    number_of_registration = params[:number_of_registration]
+    theses_information = params[:theses]
+    
+    Thesis.bulk_save_from_admin_theses_new(year, labo_id, directory, number_of_registration, theses_information)
+    
+    directory.each do |file|
+      file.close true
+    end
+    
+    redirect_to admin_theses_path
   end
 
   def new
