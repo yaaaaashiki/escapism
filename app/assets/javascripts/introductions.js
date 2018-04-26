@@ -15,12 +15,12 @@ $(window).scroll(function() {
 $(function() {
 
   $(".icons img").mouseover(function(){
-    if($(this).hasClass("default_img")){
+    if($(this).hasClass("default-img")){
       $(this).hide();
       $(this).next().show();
     }
   }).mouseout(function(){
-     if($(this).hasClass("mouseover_img")){
+     if($(this).hasClass("mouseover-img")){
       $(this).hide();
       $(this).prev().show();
     }
@@ -30,8 +30,8 @@ $(function() {
 
 
 /*フォントサイズや色の変更*/
-$(".comment_title").css('font-size', '20px');
-$(".comment_list").find("p").css("font-size", "14px");
+$(".comment-title").css('font-size', '20px');
+$(".comment-list").find("p").css("font-size", "14px");
 
 /*男女比をjQueryで描画*/
 var dataset = [{"laboProfessor":"tobe", "man":19, "woman":0},

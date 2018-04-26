@@ -6,12 +6,12 @@ body {
   background-repeat: no-repeat;
 }
 
-#pageContents{
+#page-contents{
   background-color: rgba(255, 255, 255, 0.4);
   font-family: "MS PGothic", "Osaka", Arial, sans-serif;
 }
 
-.titleContent {
+.title-content {
   padding-top: 160px;
   padding-bottom: 160px;
   width: 100%;
@@ -43,11 +43,11 @@ body {
     display: inline;
   }
 
-  .default_img {
+  .default-img {
     width: 100%;
   }
 
-  .mouseover_img {
+  .mouseover-img {
     width: 100%;
   }
 
@@ -95,7 +95,7 @@ body {
   right: 60px;
 }
 
-.laboName{
+.labo-name{
   letter-spacing: 6px;
   margin-bottom: 30px;
 }
@@ -104,15 +104,15 @@ body {
   border-bottom: solid 3px coral;
 }
 
-.laboProfessor {
+.labo-professor {
   font-size: 20px;
 }
 
-.laboKeyword {
+.labo-keyword {
   margin-top: 30px;
 }
 
-.laboInfo {
+.labo-info {
   font-size: 20px;
 }
 
@@ -160,7 +160,7 @@ body {
   height: 400px;
 }
 
-.mouseover_img {
+.mouseover-img {
   display: none;
 }
 
@@ -258,22 +258,22 @@ body {
   }
 }
 
-.slide_h1 {
+.slide-h1 {
     text-align: left;
     color: beige;
 }
 
-.slide_p {
+.slide-p {
     text-align: left;
     color: beige;
     font-size: 18px;
 }
 
-.slide_a {
+.slide-a {
     color: beige;
     cursor: pointer;
 }
-.slide_a:link { color: beige; }
-.slide_a:visited { color: beige; }
-.slide_a:hover { color: #337ab7; }
-.slide_a:active { color: #337ab7; }
+.slide-a:link { color: beige; }
+.slide-a:visited { color: beige; }
+.slide-a:hover { color: #337ab7; }
+.slide-a:active { color: #337ab7; }
