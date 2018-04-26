@@ -1,5 +1,4 @@
 class Admin::PasswordsController < ApplicationController
-  before_action :set_user, only: [:show, :update]
 
   def index
     @users = User.all
