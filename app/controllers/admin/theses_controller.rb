@@ -1,5 +1,4 @@
 class Admin::ThesesController < AdminController
-  skip_before_action :require_login, only: [:index, :show, :update]
   before_action :set_thesis, only: [:show, :update]
 
   def index 
