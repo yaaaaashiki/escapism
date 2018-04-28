@@ -17,8 +17,10 @@ class Admin::ThesesController < AdminController
     directory.each do |file|
       file.close true
     end
-    
-    redirect_to admin_theses_path
+
+    # ↓これいる？？www
+    path = Thesis.crate_index_html(year, labo_id, number_of_registration, theses_information)
+    send_file path, :filename => 'index.html', disposition: :attachment
   end
 
   def new

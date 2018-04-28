@@ -50,4 +50,4 @@
                 = label "theses[#{i}][others][#{j}]", :name, 'ファイル名(任意):'
                 = text_field "theses[#{i}][others][#{j}]", :name, class: 'form-control'
 
-  = submit_tag :送信, class: 'btn btn-primary'
+  = submit_tag :送信, {id: :submit, class: 'btn btn-primary'}

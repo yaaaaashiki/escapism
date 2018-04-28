@@ -191,6 +191,94 @@ class Thesis < ApplicationRecord
     Thesis.__elasticsearch__.import
   end
 
+  def self.crate_index_html(year, labo_id, number_of_registration, theses_information)
+    # NOTE: テンプレートを外部ファイルにしたほうがいいけどどこに置く？？？？？
+    # しかもslimじゃないwww
+    template = <<TEMPLATE
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= year %>年度<%= labo.name %>研究室修士・卒業論文</title>
+
+  <style>
+    body{
+      margin: 3em 5%;
+    }
+
+    table{
+      border-collapse: collapse;
+      empty-cells: show;
+    }
+
+    table,th,td{
+      border: solid thin black;
+    }
+
+    th{
+      color:white;
+      background-color:black;
+    }
+
+    th,td{
+      padding: 0.3em;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= year %>年度<%= labo.name %>研究室修士・卒業論文</h1>
+
+  <table summary="<%= year %>年度<%= labo.name %>研究室卒業論文・修士論文">
+    <thead>
+      <tr>
+        <th>学位</th>
+        <th>氏名</th>
+        <th>論文</th>
+        <th>その他</th>
+      </tr>
+    </thead>
+    
+    <% number_of_registration.to_i.times do |i| %>
+      <tr>
+        <td>TODO: 学士 or 修士を頑張ってだす</td>
+        <td><%= theses_information[i.to_s][:author_name] %></td>
+        <td>
+          <a href="<%= theses_information[i.to_s][:url].sub(/(.*?)\\//, '') %>">
+            <%= theses_information[i.to_s][:title] %>
+          </a>
+        </td>
+        <td>
+          <% theses_information[i.to_s][:others][:number_of_registration].to_i.times do |j| %>
+            <a href="<%= theses_information[i.to_s][:others][j.to_s][:url].sub(/(.*?)\\//, '') %>">
+              <%= theses_information[i.to_s][:others][j.to_s][:name] %>
+            </a>
+            <% if j < (theses_information[i.to_s][:others][:number_of_registration].to_i - 1) %>
+              ・
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</body>
+</html>
+TEMPLATE
+
+    labo = Labo.find labo_id
+    
+    erb = ERB.new template, nil, "%"
+    contents = erb.result binding
+
+    thesis_absolute_pash = @@LABO_THESIS_ROOT_DIRECTORY + year + 'contents' + Labo.LABO_HASH[labo.name] + 'index.html'
+    File.open(thesis_absolute_pash, "w") do |f| 
+      f.puts contents
+    end
+
+    thesis_absolute_pash
+  end
+
   def belongs_to_martin_labo?
     url.include?("durst")
   end
