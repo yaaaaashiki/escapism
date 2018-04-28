@@ -1,4 +1,12 @@
 $(function() {
+  function clearThesisForm() {
+    $('.thesis_form input').val('');
+    $('.thesis_form select').val(0);
+    $('#number_of_registration').val(0);
+    $('[class*=theses_others]').hide();
+    $('.thesis_form').hide();
+  }
+
   $('#directory_').change(event => {
     let placeholder = $('<option>', {text: '選択してください'});
     let selectMenu = $('[id*=url]').empty()
@@ -9,11 +17,7 @@ $(function() {
       selectMenu.append(option);
     }
 
-    $('.thesis_form input').val('');
-    $('.thesis_form select').val(0);
-    $('#number_of_registration').val(0);
-    $('[class*=theses_others]').hide();
-    $('.thesis_form').hide();
+    clearThesisForm();
   });
 
   $('#number_of_registration').change(function() {
@@ -47,4 +51,9 @@ $(function() {
     forms.find('select').val(0);
   });
   $('[class*=theses_others]').hide();
+
+  $('#submit').click(function() {
+    clearThesisForm();
+    $('#theses_form select').val(0);
+  });
 });
