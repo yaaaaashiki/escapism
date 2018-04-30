@@ -1,0 +1,23 @@
+.container
+  .step-images
+    = image_tag("sign_in/step3.png")
+  .form-setting
+    h1.h1
+      | Sign Up
+    = form_for @admin_user do |f|
+      = render :partial => 'shared/error_messages', :locals => { object: @admin_user }
+      br
+      = f.text_field :username, :class => "text-field", placeholder: "username", :size => "60"
+      br
+      = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
+      br
+      | 研究室に所属していますか？
+      = f.radio_button :role, User::LABO_STUDENT, {id: "user_role_labo_student"}
+      | はい
+      = f.radio_button :role, User::NONE_LABO_STUDENT, {id: "user_role_not_labo_student"}
+      | いいえ
+      
+      = f.hidden_field :email, :value => session[:email]
+      br
+
+      = f.submit "上記の内容で登録", class: "button"
