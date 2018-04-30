@@ -48,7 +48,7 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
-# Rspec を用いたテスト
+# Test with Rspec 
 Create database for test environment 
 ```
 bundle exec rails db:migrate:reset RAILS_ENV=test
