@@ -19,7 +19,7 @@ class Admin::ThesesController < AdminController
     end
 
     # ↓これいる？？www
-    path = Thesis.crate_index_html(year, labo_id, number_of_registration, theses_information)
+    path = IndexHtmlCreator.create(year, labo_id, number_of_registration, theses_information)
     send_file path, :filename => 'index.html', disposition: :attachment
   end
 

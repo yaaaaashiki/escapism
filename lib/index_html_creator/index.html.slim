@@ -1,0 +1,52 @@
+doctype html
+html lang="ja"
+  head
+    meta charset="UTF-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta http-equiv="X-UA-Compatible" content="ie=edge"
+    title #{year}年度#{labo.name}研究室修士・卒業論文
+    css:
+      body{
+        margin: 3em 5%;
+      }
+
+      table{
+        border-collapse: collapse;
+        empty-cells: show;
+      }
+
+      table,th,td{
+        border: solid thin black;
+      }
+
+      th{
+        color:white;
+        background-color:black;
+      }
+
+      th,td{
+        padding: 0.3em;
+      }
+
+  body
+    h1 #{year}年度#{labo.name}研究室修士・卒業論文
+
+    table summary="#{year}年度#{labo.name}研究室卒業論文・修士論文"
+      thead
+        tr
+          th 学位
+          th 氏名
+          th 論文
+          th その他
+      
+      - number_of_registration.to_i.times do |i|
+        tr
+          td TODO: 学士 or 修士を頑張ってだす
+          td #{theses_information[i.to_s][:author_name]}
+          td
+            a href="#{theses_information[i.to_s][:url].sub(/(.*?)\//, "")}" #{theses_information[i.to_s][:title]}
+          td
+            - theses_information[i.to_s][:others][:number_of_registration].to_i.times do |j|
+              a href="#{theses_information[i.to_s][:others][j.to_s][:url].sub(/(.*?)\//, "")}" #{theses_information[i.to_s][:others][j.to_s][:name]}
+              - if j < (theses_information[i.to_s][:others][:number_of_registration].to_i - 1)
+                | ・
