@@ -51,9 +51,4 @@ $(function() {
     forms.find('select').val(0);
   });
   $('[class*=theses_others]').hide();
-
-  $('#submit').click(function() {
-    clearThesisForm();
-    $('#theses_form select').val(0);
-  });
 });
