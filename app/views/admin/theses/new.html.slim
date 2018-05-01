@@ -24,6 +24,10 @@
         = select "theses[#{i}]", :url, [], {prompt: '選択してください'}, {class: 'form-control'}
 
       .form-group
+        = label "theses[#{i}]", :category, '学位(必須):'
+        = select "theses[#{i}]", :category, ['博士', '修士', '学士'], {prompt: '選択してください'}, {class: 'form-control'}
+
+      .form-group
         .form-group
           = label "theses[#{i}]", :title, 'タイトル(必須):'
           = text_field "theses[#{i}]",:title, class: 'form-control'
@@ -36,18 +40,18 @@
           = label_tag :others, 'その他(任意)'
 
           .form-group
-            = label "theses[#{i}][others][number_of_registration]", '登録数(必須):'
+            = label "theses[#{i}][others][number_of_registration]", '登録数(任意):'
             small 変更すると次以降の項目がリセットされます。
             = select_tag "theses[#{i}][others][number_of_registration]", options_for_select(@number_of_registration_others_options), prompt: :選択してください, class: 'form-control'
 
           - @max_number_of_registration_others_options.times do |j|
-            .form-group[class="theses_others_#{i}"]
+            .form-group.box.box-info.box-body class="theses_others_#{i}"
               .form-group
-                = label "theses[#{i}][others][#{j}][url]", :file, 'ファイル(任意):'
+                = label "theses[#{i}][others][#{j}][url]", :file, 'ファイル(必須):'
                 = select_tag "theses[#{i}][others][#{j}][url]", "", prompt: :選択してください, class: 'form-control'
 
               .form-group
-                = label "theses[#{i}][others][#{j}]", :name, 'ファイル名(任意):'
+                = label "theses[#{i}][others][#{j}]", :name, 'ファイル名(必須):'
                 = text_field "theses[#{i}][others][#{j}]", :name, class: 'form-control'
 
   = submit_tag :送信, {id: :submit, class: 'btn btn-primary'}

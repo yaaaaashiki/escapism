@@ -41,7 +41,7 @@ html lang="ja"
       
       - number_of_registration.to_i.times do |i|
         tr
-          td TODO: 学士 or 修士を頑張ってだす
+          td #{theses_information[i.to_s][:category]}
           td #{theses_information[i.to_s][:author_name]}
           td
             a href="#{theses_information[i.to_s][:url].sub(/(.*?)\//, "")}" #{theses_information[i.to_s][:title]}
