@@ -12,7 +12,7 @@ class Admin::ThesesController < AdminController
     number_of_registration = params[:number_of_registration]
     theses_information = params[:theses]
     
-    Thesis.bulk_save_from_admin_theses_new(year, labo_id, directory, number_of_registration, theses_information)
+    Thesis.save_from_admin_theses_new(year, labo_id, directory, number_of_registration, theses_information)
     
     directory.each do |file|
       file.close true

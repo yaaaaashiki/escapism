@@ -152,7 +152,7 @@ class Thesis < ApplicationRecord
     @@YHESIS_DIRECTORY_PAR_YEAR
   end
 
-  def self.bulk_save_from_admin_theses_new(year, labo_id, directory, number_of_registration, theses_information)
+  def self.save_from_admin_theses_new(year, labo_id, directory, number_of_registration, theses_information)
     theses = []
     labo = Labo.find labo_id
 
@@ -184,11 +184,8 @@ class Thesis < ApplicationRecord
       summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
       thesis.summary, err, status = Open3.capture3("python3 " + summariser_name + " " + thesis_absolute_pash)
 
-      theses << thesis
+      thesis.save
     end
-
-    Thesis.import theses
-    Thesis.__elasticsearch__.import
   end
 
   def belongs_to_martin_labo?
