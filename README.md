@@ -35,7 +35,7 @@ etc...
     ```
 
 # Gem install
-Execute the following command if there is no bundler bundler
+Execute the following command if there is no bundler
 ```bash
 gem install bundler
 bundle install --path vendor/bundle
