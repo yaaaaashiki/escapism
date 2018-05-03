@@ -4,4 +4,12 @@ default: &default
   pool: 5
   username: <%= ENV['RAILS_DATABASE_USER'] %>
   password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
-  socket: 
+  socket: <% %x(mysql_config --socket).chomp %>
+
+development:
+  <<: *default
+  database: escapism_development
+
+test:
+  <<: *default
+  database: escapism_test
