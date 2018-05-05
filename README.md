@@ -35,13 +35,10 @@ etc...
     ```
 
 # Gem install
-```
-bundle _1.12.5_  install --path vendor/bundle
-```
-Execute the following command if there is no bundler bundler 1.12.5.
+Execute the following command if there is no bundler
 ```bash
-gem install bundler -v 1.12.5
-bundle _1.12.5_  install --path vendor/bundle
+gem install bundler
+bundle install --path vendor/bundle
 ```
 
 # Database creation
