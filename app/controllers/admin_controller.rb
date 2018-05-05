@@ -3,7 +3,6 @@ class AdminController < ApplicationController
   protect_from_forgery with: :exception
   layout 'admin_lte_2'
   before_action :authenticate_admin_user!
-  skip_before_action :require_login
   include SessionsHelper
   
   def current_admin_user
