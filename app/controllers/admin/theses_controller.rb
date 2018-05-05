@@ -1,6 +1,9 @@
 class Admin::ThesesController < AdminController
   before_action :set_thesis, only: [:show, :update]
 
+  MAX_NUMBER_OF_REGISTRATION = 20
+  MAX_NUMBER_OF_REGISTRATION_OTHERS_OPTIONS = 4 
+
   def index
     @theses = Thesis.all
   end
@@ -33,13 +36,13 @@ class Admin::ThesesController < AdminController
     @labos = Labo.all
 
     @number_of_registration_options = []
-    @max_number_of_registration = 20
+    @max_number_of_registration = MAX_NUMBER_OF_REGISTRATION
     (1..@max_number_of_registration).each do |i|
       @number_of_registration_options << [i, i]
     end
 
     @number_of_registration_others_options = []
-    @max_number_of_registration_others_options = 4
+    @max_number_of_registration_others_options = MAX_NUMBER_OF_REGISTRATION_OTHERS_OPTIONS
     (1..@max_number_of_registration_others_options).each do |i|
       @number_of_registration_others_options << [i, i]
     end
