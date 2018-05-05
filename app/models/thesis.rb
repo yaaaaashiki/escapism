@@ -180,8 +180,7 @@ class Thesis < ApplicationRecord
       thesis.author_id = author.id
       thesis.body = extract_body thesis_absolute_pash
 
-      # TODO: MAKE NEXT TWO LINES DRY!! (以下の2行がthesis_importerと重複してるけど許して(*ﾉω・*)ﾃﾍ)
-      summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
+      summariser_name = String(Rails.root.join('lib/text_summarizer/summarizer.py'))
       thesis.summary, err, status = Open3.capture3("python3 " + summariser_name + " " + thesis_absolute_pash)
 
       thesis.save
