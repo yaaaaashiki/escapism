@@ -18,9 +18,8 @@ class Admin::ThesesController < AdminController
       file.close true
     end
 
-    # ↓これいる？？www
-    path = IndexHtmlCreator.create(year, labo_id, number_of_registration, theses_information)
-    send_file path, :filename => 'index.html', disposition: :attachment
+    # path = IndexHtmlCreator.create(year, labo_id, number_of_registration, theses_information)
+    # send_file path, :filename => 'index.html', disposition: :attachment
   end
 
   def new
