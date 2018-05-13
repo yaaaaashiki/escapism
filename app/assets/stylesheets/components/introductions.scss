@@ -32,6 +32,28 @@ body {
   height: 75px;
 }
 
+.mouseover-img {
+  display: none;
+}
+
+// スライドショー中の機能説明のためのクラス
+
+.carousel-caption {
+  left: 15%;
+  width: 70%;
+  height: 100%;
+
+  a {
+    color: beige;
+    text-decoration: none;
+    box-shadow: 0 10px 4px -8px #777;
+
+    &:hover {
+      color: beige;
+    }
+  }
+}
+
 .icons {
   position: relative;
   height: 165px;
@@ -163,10 +185,6 @@ body {
   height: 400px;
 }
 
-.mouseover-img {
-  display: none;
-}
-
 .background-wallpaper::before {
   position: absolute;
   width: 50%;
@@ -262,24 +280,6 @@ body {
   }
 }
 // ここまでカルーセル制御
-
-// スライドショー中の機能説明のためのクラス
-
-.carousel-caption {
-  left: 15%;
-  width: 70%;
-  height: 100%;
-
-  a {
-    color: beige;
-    text-decoration: none;
-    box-shadow: 0 10px 4px -8px #777;
-
-    &:hover {
-      color: beige;
-    }
-  }
-}
 
 .slide-h1 {
   text-align: left;
