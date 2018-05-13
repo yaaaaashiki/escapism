@@ -194,13 +194,6 @@ build-iPhoneSimulator/
 /thesis_data/ignore/
 /lib/select_lab/thesis_data.csv
 
-
-# .ruby_version
-.ruby-version
-
-# .python_version
-.python-version
-
 # labo classifier temp files
 lib/select_lab/lab_classifier
 lib/select_lab/thesis_data.csv
