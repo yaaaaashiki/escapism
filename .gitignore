@@ -223,5 +223,3 @@ dump.rdb
 # files for using eslint in vscode
 /node_modules
 /.eslintrc.json
-package.json
-package-lock.json
