@@ -19,7 +19,9 @@
         font-weight: bolder;
       }
 
-      .navbar-brand .navbar-brand:focus .navbar-brand:hover {
+      .navbar-brand,
+      .navbar-brand:focus,
+      .navbar-brand:hover {
         color: white;
       }
 
@@ -27,12 +29,16 @@
         font-size: 22px;
         font-weight: normal;
 
-        a a:hover a:focus {
+        a,
+        a:hover,
+        a:focus {
           color: white;
         }
 
         .active {
-          a a:focus a:hover {
+          a,
+          a:focus,
+          a:hover {
             color: $goldenYellow;
             background-color: inherit;
           }
