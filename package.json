@@ -1,0 +1,9 @@
+{
+  "name": "escapism",
+  "version": "1.0.1",
+  "private": true,
+  "devDependencies": {
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0"
+  }
+}

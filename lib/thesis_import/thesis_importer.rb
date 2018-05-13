@@ -1,5 +1,4 @@
 require 'find'
-require 'open3'
 
 module ThesisImporter
   def upsert_all!(theses_year_dir)
@@ -10,7 +9,7 @@ module ThesisImporter
       written_year = HTMLParser.parse_written_year(index_html)
 
       thesis_base_path = path.gsub(/\/index\.html?/, "")
-      
+
       index_html.css('tr').each do |tr_element|
         tr_element.css('td').each do |td_element|
           td_element.css('a').each do |a_element|
@@ -21,11 +20,8 @@ module ThesisImporter
               thesis.year = written_year
               thesis.url = calculate_url(thesis_base_path, a_element[:href])
               thesis.labo = Labo.find_by(name: Labo.parse_labo_name(path))
-
               thesis.body = Thesis.extract_body(thesis.url)
-
-              summariser_name = String(Rails.root.join('lib/abstractor/abstract_creator.py'))
-              thesis.summary , err, status = Open3.capture3("python3 " + summariser_name + " " + thesis.url)
+              thesis.summary = Summarizer.summarize thesis.body
 
               if thesis.belongs_to_martin_labo?
                 thesis.title = td_element.content

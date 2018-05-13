@@ -194,15 +194,6 @@ build-iPhoneSimulator/
 /thesis_data/ignore/
 /lib/select_lab/thesis_data.csv
 
-
-# .ruby_version
-.ruby-version
-
-# .python_version
-.python-version
-
-/config/database.yml
-
 # labo classifier temp files
 lib/select_lab/lab_classifier
 lib/select_lab/thesis_data.csv
@@ -232,5 +223,3 @@ dump.rdb
 # files for using eslint in vscode
 /node_modules
 /.eslintrc.json
-package.json
-package-lock.json

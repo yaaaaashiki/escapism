@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  skip_before_action :require_login
   protect_from_forgery with: :exception
   layout 'admin_lte_2'
   before_action :authenticate_admin_user!
@@ -13,9 +14,9 @@ class AdminController < ApplicationController
 
   private
 
-  def authenticate_admin_user!
-    if session[:admin_user_id].nil?
-      redirect_to admin_sign_in_path, notice: 'Please login'
+    def authenticate_admin_user!
+      if session[:admin_user_id].nil?
+        redirect_to admin_sign_in_path, notice: 'Please login'
+      end
     end
-  end
 end

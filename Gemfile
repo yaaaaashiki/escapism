@@ -81,6 +81,8 @@ gem 'elasticsearch-dsl', '0.1.5'
 # Read text and metadata from files and documents (.doc, .docx, .pages, .odt, .rtf, .pdf) http://github.com/Erol/yomu
 gem 'yomu', '0.1.5'
 
+# Extraction of the ActiveRecord::Base#import functionality from ar-extensions for Rails 3 and beyond
+gem 'activerecord-import', '~> 0.15.0'
 
 # understandable model 
 gem 'annotate'

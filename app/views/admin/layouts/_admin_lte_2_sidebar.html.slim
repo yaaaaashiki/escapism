@@ -1,19 +1,5 @@
 aside.main-sidebar
   section.sidebar
-    .user-panel
-      .pull-left.image
-        img.img-circle[src="/assets/kana.jpg" alt="User Image"]
-      .pull-left.info
-        p
-          | Kana Nishino
-        - if admin_logged_in?
-          a[href="#"]
-            i.fa.fa-circle.text-success
-            |  Online
-        - else
-          a[href="#"]
-            i.fa.fa-circle.text-failure
-            |  Offline
     form.sidebar-form[action="#" method="get"]
       .input-group
         input.form-control[type="text" name="q" placeholder="Search..."]
@@ -43,6 +29,11 @@ aside.main-sidebar
           i.fa.fa-link
           span
             | Edit Thesis' Info
+      li.active
+        a[href="/admin/theses/new"]
+          i.fa.fa-link
+          span
+            | Add new theses 
       li.active
         a[href="/admin/passwords"]
           i.fa.fa-link

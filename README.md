@@ -1,62 +1,63 @@
 # Escapism
- 青山学院大学・大学院 情報テクノロジー学科・知能情報コース 卒業・修士論文検索システム
+Graduation Theses Search System for Students Belonging to Follows
+* Intelligence Information Course
+* Department of Integrated Information Technology
 
 # Ruby version
 
 * 2.3.0
 
-
 # Rails version
 
 * 5.0.0
 
-
 # System dependencies
-各種インストール方法はwikiを参照([開発環境構築](https://github.com/yaaaaashiki/Escapism/wiki))
-* mysql 5.7以上
-* java7以上のJDK(oracleJDKとopenJDKのどちらでも可)
-* Python3  
-などなど
+About installation, refer to wiki ([Development Environment Construction](https://github.com/yaaaaashiki/Escapism/wiki)).
+* MySQL 5.7 or higher
+* Java Development Kit 7 or higher
+* Python3  
+etc...
 
-# 実行手順
-1. elasticsearh起動  
-  wiki参照[Elasticsearchの初期設定と使用法](https://github.com/yaaaaashiki/Escapism/wiki/Elasticsearch%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%81%A8%E4%BD%BF%E7%94%A8%E6%B3%95)
-2. gem install (Gemfileに変更がなければ飛ばして良い)  
-  (以下に記述)
-3. Database creation (dbディレクトリ以下のファイルに変更がなければ飛ばして良い)  
-  (以下に記述)
-4. 起動  
-  以下を実行
+# Execution procedure
+1. Start up Elasticsearh  
+  Refer to wiki ([How to Initialize and Use Elasticsearch](https://github.com/yaaaaashiki/Escapism/wiki/Elasticsearch%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%81%A8%E4%BD%BF%E7%94%A8%E6%B3%95)).
+
+2. Install gem (only when you execute this app for the first time, or someone changed Gemfile)  
+  (See described section below)
+
+3. Create database (only when you execute this app for the first time, or someone changed files in db directory)  
+  (See described section below)
+
+4. Start up this app  
+  Execute the following command.
     ```
       bundle exec rails s
     ```
 
-# Gem install 
-```
-bundle _1.12.5_  install --path vendor/bundle
-```
-もし，bundler 1.12.5がなかったら以下のコマンドを打つ
+# Gem install
+Execute the following command if there is no bundler
 ```bash
-gem install bundler -v 1.12.5
-bundle _1.12.5_  install --path vendor/bundle
+gem install bundler
+bundle install --path vendor/bundle
 ```
 
 # Database creation
-以下のコマンドをターミナルで打つ
+Execute the following command.
 ```
 bundle exec rails db:create
 bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
-# Rspec を用いたテスト
-テスト用のデータベース作成
+# Test with Rspec 
+Create database for test environment.
 ```
 bundle exec rails db:migrate:reset RAILS_ENV=test
 ```
-テストの実行
+Execute test.
 ```
 bundle exec rails spec 
 ```
-サーバサイド変更時にはテストが通ることを確認、またはテスト更新後コミットしてください
-
+Be sure that tests are all succeed, when you do the follows
+- you change server side code
+- commit after updateing test code.
