@@ -6,7 +6,7 @@ body {
   background-repeat: no-repeat;
 }
 
-#page-contents{
+#page-contents {
   background-color: rgba(255, 255, 255, 0.4);
   font-family: "MS PGothic", "Osaka", Arial, sans-serif;
 }
@@ -27,18 +27,19 @@ body {
   padding-left: 60px;
 }
 
-.image-caption{
+.image-caption {
   position: relative;
   height: 75px;
 }
 
-.icons{
+.icons {
   position: relative;
   height: 165px;
-  top: 10%; 
-  padding-left: 0px;
+  top: 10%;
+  //padding-left: 0px;
   width: 100%;
-  margin-bottom: 0px;
+  //margin-bottom: 0px;
+
   li {
     display: inline;
   }
@@ -56,51 +57,53 @@ body {
   }
 }
 
-.icon-wrapper{
+.icon-wrapper {
   position: absolute;
   width: 12%;
   height: auto;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
-.recommend{
+.recommend {
   left: 12%;
 }
 
-.search{
+.search {
   left: 32%;
 }
 
-.comment{
+.comment {
   left: 52%;
 }
 
-.cinii{
+.cinii {
   left: 72%;
 }
 
-.odd{
+.odd {
   top: 15%;
 }
 
-.even{
+/*
+.even {
 }
+*/
 
-.position{
+.position {
   position: absolute;
   top: 320px;
   right: 60px;
 }
 
-.labo-name{
+.labo-name {
   letter-spacing: 6px;
   margin-bottom: 30px;
 }
 
-.border-width{
+.border-width {
   border-bottom: solid 3px coral;
 }
 
@@ -116,11 +119,11 @@ body {
   font-size: 20px;
 }
 
-.nav{
+.nav {
   font-size: 20px;
 }
 
-.navbar-brand{
+.navbar-brand {
   font-size: 30px;
 }
 
@@ -140,7 +143,7 @@ body {
 
 .image-back {
   position: relative;
-  top: 0px;
+  //top: 0px;
   background-color: rgba(0, 0, 0, 0.88);
   color: #fff;
   height: 300px;
@@ -150,7 +153,7 @@ body {
   position: relative;
   width: 80%;
   margin: auto;
-  top: 0px;
+  //top: 0px;
   height: 90%;
 }
 
@@ -164,47 +167,47 @@ body {
   display: none;
 }
 
-.background-wallpaper::before{
+.background-wallpaper::before {
   position: absolute;
   width: 50%;
   height: 400px;
   filter: blur(2px);
   -webkit-filter: blur(5px);
-  background-clip: content-box
+  background-clip: content-box;
 }
 
-
-
-
 /* スクロールでフェードイン */
+
 /* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
+
 .fade-in-down {
- -webkit-animation-fill-mode: both;
- -ms-animation-fill-mode:     both;
- animation-fill-mode:         both;
- -webkit-animation-duration: 1s;
- -ms-animation-duration:     1s;
- animation-duration:         1s;
- -webkit-animation-name: fade-in-down;
- animation-name:         fade-in-down;
- visibility: visible !important;
+  -webkit-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fade-in-down;
+  animation-name: fade-in-down;
+  visibility: visible !important;
 }
 
 @-webkit-keyframes fade-in-down {
- 0%   { opacity: 0; -webkit-transform: translateY(-20px); }
- 100% { opacity: 1; -webkit-transform: translateY(0); }
+  0% { opacity: 0; -webkit-transform: translateY(-20px); }
+  100% { opacity: 1; -webkit-transform: translateY(0); }
 }
 
 @keyframes fade-in-down {
- 0%   { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
- 100% { opacity: 1; -webkit-transform: translateY(0);     -ms-transform: translateY(0);     transform: translateY(0); }
+  0% { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
+  100% { opacity: 1; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
 }
+
 /* ここまでスクロールでフェードイン */
 
 // カルーセル制御
-.carousel{
+.carousel {
   height: 200px;
-  margin:auto;
+  margin: auto;
 
   .item {
     height: 100%;
@@ -212,7 +215,7 @@ body {
 
   img {
     position: absolute;
-    max-width: 105%  !important;
+    max-width: 105% !important;
     width: 105%;
     height: 105% !important;
     top: -10px;
@@ -228,7 +231,7 @@ body {
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:500px;
+    height: 500px;
   }
 }
 // 下のheightをいじることで表示領域を変更できる
@@ -237,7 +240,7 @@ body {
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:400px;
+    height: 400px;
   }
 }
 // ここまでカルーセル制御
@@ -246,32 +249,34 @@ body {
 
 .carousel-caption {
   left: 15%;
-  width:70%;
+  width: 70%;
   height: 100%;
+
   a {
     color: beige;
     text-decoration: none;
-    box-shadow: 0 10px 4px -8px #777777;
-    &:hover{
+    box-shadow: 0 10px 4px -8px #777;
+
+    &:hover {
       color: beige;
     }
   }
 }
 
 .slide-h1 {
-    text-align: left;
-    color: beige;
+  text-align: left;
+  color: beige;
 }
 
 .slide-p {
-    text-align: left;
-    color: beige;
-    font-size: 18px;
+  text-align: left;
+  color: beige;
+  font-size: 18px;
 }
 
 .slide-a {
-    color: beige;
-    cursor: pointer;
+  color: beige;
+  cursor: pointer;
 }
 .slide-a:link { color: beige; }
 .slide-a:visited { color: beige; }

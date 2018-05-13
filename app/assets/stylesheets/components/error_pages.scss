@@ -1,26 +1,32 @@
 @import 'components/color';
 
-.error-contents{
+.error-contents {
   text-align: center;
   width: 100%;
   margin-top: 4%;
   margin-bottom: 4%;
-  .upper-contents{
+
+  .upper-contents {
     color: $gray-8;
-    .error-num{
+
+    .error-num {
       font-weight: 200;
     }
-    .error-en{
+
+    .error-en {
       width: 100%;
       font-weight: 120;
     }
   }
-  .lower-contents{
+
+  .lower-contents {
     color: $gray-2;
-    a{
+
+    a {
       color: $gray-2;
     }
-    a:hover{
+
+    a:hover {
       color: $goldenYellow;
     }
   }
