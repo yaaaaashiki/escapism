@@ -53,13 +53,13 @@ $backgroundColor: $ironBlack;
               a:focus {
                 color: white;
               }
-            }
 
-            .active {
-              a,
-              a:focus,
-              a:hover {
-                color: $goldenYellow;
+              .active {
+                a,
+                a:focus,
+                a:hover {
+                  color: $goldenYellow;
+                }
               }
             }
           }
