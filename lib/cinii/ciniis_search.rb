@@ -16,7 +16,7 @@ class CiniisSearch
   end
   
   def self.scraping(html)
-    data = [] 
+    data = []
     html.css('#itemlistbox > ul > li').each_with_index do |article, i|
       data[i] = ArticleParser.return_data(article, i + 1)
    end
