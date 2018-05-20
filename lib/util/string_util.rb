@@ -7,4 +7,11 @@ class StringUtil
     tmp = from_str.tr('０-９ａ-ｚＡ-Ｚ！”＃＄％＆’（）＝ー～＾｜￥｀＠｛「＋；＊：｝」＜，＞．？・＿、。　', '0-9a-zA-Z!"#$%&\'()=ー~^|￥`@{「+;*:}」<,>.?・_、。 ')
     tmp.downcase
   end
+
+  def self.convert_to_shell_script_safe_from(text)
+    return text.gsub(/\r|\n|\r\n/, '')
+               .tr("!\"#$%&'()=~\^|`@{[+;*:}]<,>.?/_", "！”＃＄％＆’（）＝～＾｜｀＠｛「＋；＊：｝」＜、＞．？・＿")
+               .gsub(/-/, '－')
+               .gsub(/\\/, '￥')
+  end
 end
