@@ -1,7 +1,24 @@
 - if @results
-  .font-size-20 検索結果#{@results.count * @results.total_pages}件
-  == render partial: 'result', collection: @results
-  = paginate @results
+  .ciniiResult
+    .font-size-20
+      | 検索結果
+      = @results.count * @results.total_pages
+      | 件
+    br
+    - @results.each do |result|
+      .font-size-16
+        .title
+          | タイトル :
+          = link_to result["title"] , "#{result["url"]}", target: :_blank
+        .author
+          | 著者 :
+          = result["author"]
+        br
+
+    = paginate @results
 
 - else
-  font-size-20 検索結果0件
+  .ciniiResult
+    .font-size-20
+      | 検索結果
+      | 0件
