@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :mail_addresses, only: [:index, :new, :create]
   resources :users, only: [:index, :new, :create]
-  resources :ciniis, only: [:index, :show]
+  resources :ciniis, only: [:index]
 
   get '*path', controller: 'application', action: 'render_404'
 end
