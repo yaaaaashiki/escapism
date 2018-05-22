@@ -187,3 +187,10 @@ body::after {
 .underLine {
   border-bottom: solid 3px darkorange;
 }
+
+// NOTE:レールに乗らないcss実装への嫌がらせ
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}

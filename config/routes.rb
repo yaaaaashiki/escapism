@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :theses, only: [:index, :new, :show, :create, :update]
     resources :passwords, only: [:index, :new, :show, :update]
     resources :labos, only: [:index, :new, :show, :update]
+
+    resource :admin_user, only: [:create, :new, :edit, :update, :destroy]
   end
 
   resources :theses, only: [:show, :index] do
