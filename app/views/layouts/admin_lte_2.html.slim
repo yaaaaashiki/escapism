@@ -5,7 +5,7 @@ html
     title
       | Escapism
     meta[content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"]
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track' => true
     link[href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"]
     link[href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"]
     = stylesheet_link_tag params[:controller]
@@ -89,5 +89,5 @@ html
               p
                 |  Some information about this general settings option 
     .control-sidebar-bg[style="position: fixed; height: auto;"]
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = javascript_include_tag 'admin/application', 'data-turbolinks-track' => true
   = javascript_include_tag params[:controller]
