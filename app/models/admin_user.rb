@@ -10,5 +10,6 @@
 #
 
 class AdminUser < ApplicationRecord
+  validates :username, presence: true, uniqueness: true, length: { in: 1..30 }
   has_secure_password
 end

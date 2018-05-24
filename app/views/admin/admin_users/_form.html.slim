@@ -10,8 +10,8 @@
             - @admin_user.errors.full_messages.each do |msg|
               li #{msg}
 
-      = f.text_field :username, label: 'ユーザ名(必須：半角英数30文字以下)', maxlength: 30, :required => true
-      = f.password_field :password, label: 'パスワード(必須：半角英数8文字～30文字)', minlength: 8, maxlength: 30, :required => true
+      = f.text_field :username, label: 'ユーザ名(必須：30文字以下)', minlength: 1, maxlength: 30, :required => true
+      = f.password_field :password, label: 'パスワード(必須：8文字～30文字)', minlength: 8, maxlength: 30, :required => true
       = f.password_field :password_confirmation, label: 'パスワード(再入力)', minlength: 8, maxlength: 30, :required => true
 
     .box-footer
