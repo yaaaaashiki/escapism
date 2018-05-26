@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:index, :new, :create]
+  skip_before_action :require_login, only: [:new, :create]
   before_action :token_exists?, only:[:new]
-  before_action :post_params?, only:[:index]
-  before_action :init_user_create_session
 
-  def index
-  end
- 
   def new
     if invalid_size?(params[:token])
       render_414
@@ -20,6 +15,8 @@ class UsersController < ApplicationController
       render_404
       return
     end
+
+    # NOTE:↓これセッションに入れる意味なくね？？ @user.emailに入れればいいのでは？？
     session[:email] = MailAddress.find(mail_address_id).address
     if session[:email].nil?
       logger.error("Bad request: UserController new action 17 lines: session[:email] is undefined")
@@ -51,9 +48,9 @@ class UsersController < ApplicationController
       @user.save!
       delete_token!
     end
-      log_in @user
-      session[:user_create] = true
-      redirect_to users_path
+
+    login(user.email, user_params[:password])
+    redirect_to root_path
     rescue ActiveRecord::RecordInvalid => e
       ErrorUtil.print_error_info(e)
       @user = e.record
@@ -82,14 +79,6 @@ class UsersController < ApplicationController
         id: params[:labo],
         password: params[:labo_password]
       }
-    end
-
-    def init_user_create_session
-      session[:user_create] = nil
-    end
-
-    def post_params?
-      redirect_to root_path if session[:user_create].nil?
     end
 
     def token_exists?

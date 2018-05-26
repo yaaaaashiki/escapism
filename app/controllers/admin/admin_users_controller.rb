@@ -1,4 +1,4 @@
-class Admin::AdminUsersController < AdminController
+class Admin::AdminUsersController < Admin::AdminController
   def create
     @admin_user = AdminUser.new(admin_user_params)
 

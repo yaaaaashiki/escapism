@@ -1,4 +1,4 @@
-class Admin::ThesesController < AdminController
+class Admin::ThesesController < Admin::AdminController
   before_action :set_thesis, only: [:show, :update]
 
   MAX_NUMBER_OF_REGISTRATION = 20
