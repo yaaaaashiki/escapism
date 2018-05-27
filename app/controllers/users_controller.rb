@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:index, :new, :create]
   before_action :token_exists?, only:[:new]
 
   def new
@@ -49,8 +49,8 @@ class UsersController < ApplicationController
       delete_token!
     end
 
-    login(user.email, user_params[:password])
-    redirect_to root_path
+    login(@user.email, user_params[:password])
+    redirect_to users_path
     rescue ActiveRecord::RecordInvalid => e
       ErrorUtil.print_error_info(e)
       @user = e.record
