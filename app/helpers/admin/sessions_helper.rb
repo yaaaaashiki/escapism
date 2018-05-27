@@ -15,4 +15,16 @@ module Admin::SessionsHelper
     session.delete(:admin_user_id)
     @current_admin_user = nil
   end
+
+  def redirect_back_or(url, flash_hash = {})
+    redirect_to(session[:return_to_urll] || url, flash_hash)
+    session[:return_to_urll] = nil
+  end
+
+  def require_admin_login
+    unless admin_logged_in?
+      session[:return_to_urll] = request.url if request.get? && !request.xhr?
+      redirect_to admin_sign_in_path, alert: 'ログインしてください'
+    end
+  end
 end

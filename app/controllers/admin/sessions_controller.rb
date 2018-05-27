@@ -8,7 +8,7 @@ class Admin::SessionsController < Admin::AdminController
     admin_user = AdminUser.find_by(username: params[:session][:username])
     if admin_user && admin_user.authenticate(params[:session][:password])
       admin_log_in(admin_user)
-      redirect_back_or_to_admin_url(admin_url, notice: 'login succeed')
+      redirect_back_or(admin_url, notice: 'login succeed')
     else
       flash.now[:warning] = 'ユーザ名またはパスワードに誤りがあります。'
       render :new, status: :unauthorized
