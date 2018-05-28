@@ -8,7 +8,7 @@
       = render :partial => 'shared/error_messages', :locals => { object: @user }
       br
       | メールアドレス：
-      = session[:email]
+      = @user.email
       br
       = f.text_field :username, :class => "text-field", placeholder: "username", :size => "60"
       br
@@ -20,7 +20,7 @@
       = f.radio_button :role, User::NONE_LABO_STUDENT, {id: "user_role_not_labo_student"}
       | いいえ
       
-      = f.hidden_field :email, :value => session[:email]
+      = f.hidden_field :email, :value => @user.email
       br
 
       #labo_selecter
