@@ -1,0 +1,8 @@
+/ flush[:key] = value 設定時のkeyが
+/ success、info、warning、dangerのいずれかなら色付きの背景で表示される
+- flash_message.each do |message_type, message|
+  / noticeとalertのときはレイアウトファイルの中で処理(redirect_roの引数に指定したとき用)
+  - unless message_type == 'notice' || message_type == 'alert'
+    div[class="alert alert-#{message_type} alert-dismissible"]
+      = message
+      button.close [type="button" data-dismiss="alert" aria-hidden="true"] ×

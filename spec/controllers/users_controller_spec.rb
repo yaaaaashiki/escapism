@@ -51,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "logged in" do
         post :create, params: {user: @it_aoyama_user_hash}
-        expect(session[:user_id]).to be assigns(:user).id
+        expect(session[:user_id]).to eq assigns(:user).id.to_s
       end
 
       it "returns http redirect" do

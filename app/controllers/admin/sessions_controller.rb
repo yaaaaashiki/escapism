@@ -1,16 +1,16 @@
-class Admin::SessionsController < AdminController
-  skip_before_action :authenticate_admin_user!
+class Admin::SessionsController < Admin::AdminController
+  skip_before_action :require_admin_login
 
   def new
   end
 
   def create
-    @admin_user = AdminUser.find_by(username: params[:username])
-    if @admin_user && @admin_user.authenticate(params[:password])
-      admin_log_in @admin_user
-      redirect_to admin_url, notice: 'login succeed'
+    admin_user = AdminUser.find_by(username: params[:session][:username])
+    if admin_user && admin_user.authenticate(params[:session][:password])
+      admin_log_in(admin_user)
+      redirect_back_or(admin_url, notice: 'login succeed')
     else
-      flash.now[:warning] = 'login failed'
+      flash.now[:warning] = 'ユーザ名またはパスワードに誤りがあります。'
       render :new, status: :unauthorized
     end
   end
