@@ -9,19 +9,16 @@ class Summarizer
   @@mecab = Natto::MeCab.new(output_format_type: :wakati, dicdir: MECAB_DIR)
 
   def self.summarize(text)
-    # NOTE:いい感じに変換する方法ないかな？？
-    text_for_summarize = text.gsub(/\r|\n|\r\n/, '')
-                             .tr("!\"#$%&'()=~\^|`@{[+;*:}]<,>.?/_", "！”＃＄％＆’（）＝～＾｜｀＠｛「＋；＊：｝」＜、＞．？・＿")
-                             .gsub(/-/, '－')
-                             .gsub(/\\/, '￥')
-                             .gsub(/[。．.]/, '. ')
+    text_for_summarize = StringUtil.convert_to_shell_script_safe_from(text).gsub(/[。．.]/, '. ')
 
     wakati_text_for_summarize = @@mecab.parse(text_for_summarize)
 
     command = SUMMARIZE_COMMAND + " \"#{wakati_text_for_summarize[0, MAX_SUMMARIZEABLE_WORD_COUNT]}\""
     summary, err, status = Open3.capture3 command
 
-    raise err if err.blank? == false
+    if err.present?
+      raise err
+    end
 
     summary.gsub(/\s/, "")
   end
