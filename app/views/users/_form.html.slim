@@ -23,7 +23,7 @@
       = f.hidden_field :email, :value => session[:email]
       br
 
-      #labo_selecter
+      #labo-selecter
         = f.collection_select :labo, Labo.all, :id, :name, include_blank: "研究室名を選んでください"
         = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
       

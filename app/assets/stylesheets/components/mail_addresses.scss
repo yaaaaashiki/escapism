@@ -13,7 +13,7 @@
       height: auto;
     }
   }
-  
+
   .form-setting {
     text-align: center;
     background-color: rgba(255, 108, 0, 0.5);
@@ -22,33 +22,33 @@
     color: black;
     font-weight: bold;
     padding: 3%;
-  
+
     @media (min-width: 320px) {
       width: 100%;
       margin: 0;
     }
-  
+
     @media (min-width: 768px) {
       width: 60%;
       margin-left: 20%;
     }
-  
+
     .h2 {
       display: inline-block;
-      color:white;
+      color: white;
     }
-    
+
     .text-field {
       margin: 3%;
       width: 90%;
     }
-  
+
     .button {
       border-style: none;
       background-color: #ff8c00;
       color: #fff;
     }
-  
+
     .button:hover {
       background-color: #fff;
       color: #ff8c00;
@@ -60,7 +60,7 @@
 /* user registration */
 .h1 {
   display: inline-block;
-  color:white;
+  color: white;
   font-size: 45px;
   margin-bottom: 3%;
 }

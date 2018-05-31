@@ -54,10 +54,21 @@ Create database for test environment.
 ```
 bundle exec rails db:migrate:reset RAILS_ENV=test
 ```
-Execute test.
+Execute the test.
 ```
 bundle exec rails spec 
 ```
 Be sure that tests are all succeed, when you do the follows
 - you change server side code
 - commit after updateing test code.
+
+# Test with stylelint
+This app check the stylesheet syntax with stylelint.
+Run the tests when running this app's server.
+So We want you to create Pull Request after confirming the tests are all succeed.
+
+Execute the test.
+```
+bundle exec rails server
+```
+If puma's server is runnig, all tests are succeed.
