@@ -1,8 +1,9 @@
 @charset "utf-8";
+
 @import "variables/variables";
 
 /* ここからブロック要素内のブロック要素の上下左右センタリング */
-.centering-contents-block { /* センタリングしたいブロックにつける*/
+.centering-contents-block { /* センタリングしたいブロックにつける */
   position: absolute;
   top: 0;
   right: 0;
@@ -27,17 +28,17 @@
   color: #111;
 }
 
-p .demo{
- z-index: 10000;
- position: absolute;
- left: 80%;
- top: 90%;
+p .demo {
+  z-index: 10000;
+  position: absolute;
+  left: 80%;
+  top: 90%;
 }
 
-div .image{
- position: absolute;
- left: 20%;
- top: 90%;
- height: 30%;
- width: 30%;
+div .image {
+  position: absolute;
+  left: 20%;
+  top: 90%;
+  height: 30%;
+  width: 30%;
 }
