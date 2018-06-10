@@ -1,7 +1,7 @@
 .col-sm-offset-1.col-xs-offset-1.page-header.width
   h1
     | 論文検索
-= form_tag(theses_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline") do
+= form_tag(theses_path, method: :get, enforce_utf8: false, class: "form-horizontal form-inline",id: 'search-form') do
   .row.mar-bo-30
     .col-sm-offset-1.col-xs-offset-1.col-sm-7.col-xs-7
       = search_field_tag(:q, params[:q], class: 'form-control textarea', placeholder: 'キーワード')
