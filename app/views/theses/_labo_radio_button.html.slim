@@ -1,0 +1,6 @@
+label.labo-selector-radio-button
+  - if labo_radio_button.id == @labo_id.to_i
+    = radio_button_tag(:l, labo_radio_button.id, true)
+  - else
+    = radio_button_tag(:l, labo_radio_button.id, false)
+  = labo_radio_button.name

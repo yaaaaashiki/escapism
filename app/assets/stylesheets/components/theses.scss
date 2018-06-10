@@ -1,11 +1,6 @@
 @import "components/color";
 
 body {
-  .search-form {
-    position: relative;
-    width: 100%;
-  }
-
   .center-contents {
     position: relative;
     width: 100%;
@@ -66,5 +61,17 @@ body {
     text-align: center;
     margin-top: 30px;
     margin-bottom: -30px;
+  }
+}
+
+.labo-selector {
+  display: flex;
+  flex-flow: row wrap;
+  // bootstrapの.col-[target]-offset-1と同じマージン
+  // スマホで見たときにマージンが大きすぎる気がするけど放置www
+  margin-left: 8.33333333%;
+
+  &-radio-button {
+    margin: 8px 16px 8px 0;
   }
 }
