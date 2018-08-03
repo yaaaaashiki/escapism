@@ -1,4 +1,4 @@
-class Admin::PasswordsController < AdminController
+class Admin::PasswordsController < Admin::AdminController
   before_action :set_user, only: [:show, :update]
 
   def index

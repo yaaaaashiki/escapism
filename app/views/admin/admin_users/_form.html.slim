@@ -1,23 +1,18 @@
-.container
-  .step-images
-    = image_tag("sign_in/step3.png")
-  .form-setting
-    h1.h1
-      | Sign Up
-    = form_for @admin_user do |f|
-      = render :partial => 'shared/error_messages', :locals => { object: @admin_user }
-      br
-      = f.text_field :username, :class => "text-field", placeholder: "username", :size => "60"
-      br
-      = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
-      br
-      | 研究室に所属していますか？
-      = f.radio_button :role, User::LABO_STUDENT, {id: "user_role_labo_student"}
-      | はい
-      = f.radio_button :role, User::NONE_LABO_STUDENT, {id: "user_role_not_labo_student"}
-      | いいえ
-      
-      = f.hidden_field :email, :value => session[:email]
-      br
+.box.box-primary
+  = bootstrap_form_for @admin_user, url: admin_admin_user_path do |f|
+    .box-body
+      - if @admin_user.errors.any?
+        .alert.alert-warning.alert-dismissible
+          h4
+            i.icon.fa.fa-warning #{@admin_user.errors.count}件のエラーが発生しました
+            button.close [type="button" data-dismiss="alert" aria-hidden="true"] ×
+          ul
+            - @admin_user.errors.full_messages.each do |msg|
+              li #{msg}
 
-      = f.submit "上記の内容で登録", class: "button"
+      = f.text_field :username, label: 'ユーザ名(必須：30文字以下)', minlength: 1, maxlength: 30, :required => true
+      = f.password_field :password, label: 'パスワード(必須：8文字～30文字)', minlength: 8, maxlength: 30, :required => true
+      = f.password_field :password_confirmation, label: 'パスワード(再入力)', minlength: 8, maxlength: 30, :required => true
+
+    .box-footer
+      = f.submit '送信', class: 'btn btn-primary'

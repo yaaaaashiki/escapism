@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
  
   def create
     if @user = login(StringUtil.to_half_width_lowercase(params[:session][:email]), params[:session][:password])
-      log_in @user 
-      redirect_to theses_url
+      redirect_back_or_to(theses_url)
     else
       flash.now[:alert] = 'ログインに失敗しました。もう一度入力してください'
       render :new, status: :unauthorized
