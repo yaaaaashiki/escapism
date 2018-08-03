@@ -1,0 +1,12 @@
+.col-sm-offset-1.col-xs-offset-1
+  .page-header.width
+    h4
+      = search_result_item.labo.name
+      span[style="margin-right: 50px;"]
+      = search_result_item.author.name
+    h4
+      = link_to(search_result_item.title, thesis_path(search_result_item.id))
+    h5.gray 執筆年度 : #{search_result_item.year} 年
+  p.text-muted.search-summary
+    small
+      = display_abst_or_body(search_result_item)
