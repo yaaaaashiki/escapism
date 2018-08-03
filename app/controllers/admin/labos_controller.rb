@@ -1,4 +1,4 @@
-class Admin::LabosController < AdminController
+class Admin::LabosController < Admin::AdminController
   before_action :set_labo, only: [:show, :update]
 
   def index

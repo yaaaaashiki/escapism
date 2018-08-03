@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 @import "components/color";
 
 $backgroundColor: $ironBlack;
@@ -8,18 +10,21 @@ $backgroundColor: $ironBlack;
 
   .l-footerNav {
     padding: 30px 0;
-  
+
     a {
       color: inherit;
     }
-  
-    a:hover, a:focus {
+
+    a:hover,
+    a:focus {
       color: $goldenYellow;
       text-decoration: none;
     }
-  
+
     .active {
-      a, a:focus, a:hover {
+      a,
+      a:focus,
+      a:hover {
         color: $goldenYellow;
         background-color: inherit;
       }
@@ -35,7 +40,7 @@ $backgroundColor: $ironBlack;
         .navbar {
           border: none;
           background-color: inherit;
-      
+
           .nav {
             font-size: 22px;
 
@@ -44,14 +49,17 @@ $backgroundColor: $ironBlack;
               // commom.css.scssのbottom-borderと同じ太さ
               border-bottom: solid 3px $backgroundColor;
 
-              a:hover, a:focus {
+              a:hover,
+              a:focus {
                 color: white;
               }
-            }
 
-            .active {
-              a, a:focus, a:hover {
-                color: $goldenYellow;
+              .active {
+                a,
+                a:focus,
+                a:hover {
+                  color: $goldenYellow;
+                }
               }
             }
           }

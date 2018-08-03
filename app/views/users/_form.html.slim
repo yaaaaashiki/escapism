@@ -3,18 +3,29 @@
     = image_tag("sign_in/step3.png")
   .form-setting
     h1.h1
-      | Register
+      | Sign Up
     = form_for @user do |f|
       = render :partial => 'shared/error_messages', :locals => { object: @user }
-      = f.select :year, [*(1990..2100)], :class => "select-box", include_blank: "year"
-      = session[:email]
-      = f.hidden_field :email, :value => session[:email]
+      br
+      | メールアドレス：
+      = @user.email
       br
       = f.text_field :username, :class => "text-field", placeholder: "username", :size => "60"
       br
       = f.password_field :password, class: "text-field", placeholder: "password", :size => "60"
       br
+      | 研究室に所属していますか？
+      = f.radio_button :role, User::LABO_STUDENT, {id: "user_role_labo_student"}
+      | はい
+      = f.radio_button :role, User::NONE_LABO_STUDENT, {id: "user_role_not_labo_student"}
+      | いいえ
+      
+      = f.hidden_field :email, :value => @user.email
+      br
 
-      = f.collection_select :labo, Labo.all, :id, :name
-      = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
-      = f.submit class: "button"
+      #labo-selecter
+        = f.collection_select :labo, Labo.all, :id, :name, include_blank: "研究室名を選んでください"
+        = f.password_field :labo_password, class: "text-field", placeholder: "lab's password", :size => "60"
+      
+      br
+      = f.submit "上記の内容で登録", class: "button"

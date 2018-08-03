@@ -4,7 +4,6 @@
 #
 #  id               :integer          not null, primary key
 #  username         :string(255)      not null
-#  year             :integer
 #  email            :string(255)      not null
 #  labo             :integer
 #  role             :integer
@@ -42,11 +41,6 @@ RSpec.describe User, type: :model do
       user = build(:no_name_user)
       expect(user).not_to be_valid
     end
-
-    it "is not valid without year" do
-      user = build(:no_year_user)
-      expect(user).not_to be_valid
-    end
   
     it "is not valid without password" do
       user = build(:no_password_user)
@@ -65,38 +59,6 @@ RSpec.describe User, type: :model do
 
     it "is valid when two user post different e-mail addresses" do
       expect(user).to be_valid
-    end
-  end
-
-  describe "Confirm user role" do
-    context "Set role function" do
-      context "2013 year students" do
-        let(:user) {build(:y2013user)}
-        it "is confirmed to work corectlly" do
-          expect(user.get_role == User::LABO_STUDENT).to be_truthy
-        end
-      end
-
-      context "2014 year students" do
-        let(:user) {build(:y2014user)}
-        it "is confirmed to work corectlly" do
-          expect(user.get_role == User::LABO_STUDENT).to be_truthy
-        end
-      end
-
-      context "2015 year students" do
-        let(:user) {build(:y2015user)}
-        it "is confirmed to work corectlly" do
-          expect(user.get_role == User::LABO_STUDENT).to be_falsey
-        end
-      end
-
-      context "2016 year students" do
-        let(:user) {build(:y2016user)}
-        it "is confirmed to work corectlly" do
-          expect(user.get_role == User::LABO_STUDENT).to be_falsey
-        end
-      end
     end
   end
 end

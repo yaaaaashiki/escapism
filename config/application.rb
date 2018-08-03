@@ -32,9 +32,12 @@ module Escapism
       g.view_specs = false
     end
 
-
-    config.autoload_paths += %W(#{config.root}/lib)  #追加
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]  #追加
+    if Rails.env == 'production'
+      config.paths.add 'lib', eager_load: true
+    else
+      config.autoload_paths += %W(#{config.root}/lib)  #追加
+      config.autoload_paths += Dir["#{config.root}/lib/**/"]  #追加
+    end
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true

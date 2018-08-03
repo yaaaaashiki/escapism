@@ -13,23 +13,27 @@
 #
 
 class MailAddress < ApplicationRecord
-  validate :blank_address
-  validate :address_form
+  before_validation :convert_addrss_to_half_lower_case
   validate :aoyama_address
-
-  validates :address, uniqueness: true
+  validate :unique_address
   
   has_many :tokens
 
-  def blank_address
-    errors[:base] << "please input mail address." if address.blank?
-  end
-
-  def address_form
-    errors[:base] << "you input invalid mail address." unless address.match(/\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/)
-  end
-
   def aoyama_address
-    errors[:base] << "you input invalid aoyama mail address." unless address.match(/[a|c]5(?:6|8)1\d(?:0|1)\d{2}@aoyama(?:\.ac)?\.jp/)
+    errors[:base] << "青山メールのアドレスを入力してください。" unless address.match(/(?:c56|a58)\d{2}(?:0|1)\d{2}@aoyama(?:\.ac)?\.jp/)
+  end
+
+  def unique_address
+    index = address.index('@')
+    if !index.nil?
+      username = address.slice(0..index)
+      short_address = username + "aoyama.jp"
+      long_address = username + "aoyama.ac.jp"
+      errors[:base] << "そのアドレスは既に使用されています．" unless !MailAddress.exists?(address: long_address) && !MailAddress.exists?(address: short_address)
+    end
+  end
+
+  def convert_addrss_to_half_lower_case
+      self.address = StringUtil.to_half_width_lowercase(self.address) if self.address.present?
   end
 end

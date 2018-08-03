@@ -7,9 +7,7 @@ Rails.application.routes.draw do
 
   get 'thesis/download/:id' => 'theses#download', :as => :download
   get 'users/new/:token' => 'users#new'
-  get 'visual' => 'visual#index'
   get 'recommendations' => 'recommendations#index'
-  get 'labos/:lab_id/chatrooms' => 'labos/chatrooms#index', :as => :chatrooms
 
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -17,9 +15,11 @@ Rails.application.routes.draw do
     post '/sign_in' => 'sessions#create'
     get '/sign_out' => 'sessions#destroy'
     resources :users, only: [:index, :new, :show, :create, :update]
-    resources :theses, only: [:index, :show, :update]
+    resources :theses, only: [:index, :new, :show, :create, :update]
     resources :passwords, only: [:index, :new, :show, :update]
     resources :labos, only: [:index, :new, :show, :update]
+
+    resource :admin_user, only: [:create, :new, :edit, :update, :destroy]
   end
 
   resources :theses, only: [:show, :index] do
@@ -29,9 +29,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :mail_addresses, only: [:index, :new, :create]
   resources :users, only: [:index, :new, :create]
-  resources :ciniis, only: [:index, :show]
+  resources :ciniis, only: [:index]
 
   get '*path', controller: 'application', action: 'render_404'
-
-  mount ActionCable.server => '/cable'
 end

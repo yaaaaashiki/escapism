@@ -1,19 +1,5 @@
 aside.main-sidebar
   section.sidebar
-    .user-panel
-      .pull-left.image
-        img.img-circle[src="/assets/kana.jpg" alt="User Image"]
-      .pull-left.info
-        p
-          | Kana Nishino
-        - if admin_logged_in?
-          a[href="#"]
-            i.fa.fa-circle.text-success
-            |  Online
-        - else
-          a[href="#"]
-            i.fa.fa-circle.text-failure
-            |  Offline
     form.sidebar-form[action="#" method="get"]
       .input-group
         input.form-control[type="text" name="q" placeholder="Search..."]
@@ -21,35 +7,38 @@ aside.main-sidebar
           button#search-btn.btn.btn-flat[type="submit" name="search"]
             i.fa.fa-search
     ul.sidebar-menu
-      li.header
-        | HEADER
+      li.header HEADER
       li.active
         a[href="/admin/users/new"]
           i.fa.fa-link
-          span
-            | User Creation
-      li.active
-        a[href="/admin/users/new"]
-          i.fa.fa-link
-          span
-            | Invite User
+          span ユーザ作成
       li.active
         a[href="/admin/users"]
           i.fa.fa-link
-          span
-            | Edit User' Info
+          span ユーザ情報編集
       li.active
         a[href="/admin/theses"]
           i.fa.fa-link
-          span
-            | Edit Thesis' Info
+          span 論文情報編集
+      li.active
+        a[href="/admin/theses/new"]
+          i.fa.fa-link
+          span 新規論文追加
       li.active
         a[href="/admin/passwords"]
           i.fa.fa-link
-          span
-            | update user password
+          span ユーザのパスワード更新 
       li.active
         a[href="/admin/labos"]
           i.fa.fa-link
-          span
-            | update lab password
+          span 研究室のパスワード更新
+      li.treeview
+        a href="#"
+          i.fa.fa-link
+          span Adminユーザ管理
+          i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li
+            = link_to '新規登録', new_admin_admin_user_path
+          li
+            = link_to 'ユーザ名・パスワード変更', edit_admin_admin_user_path

@@ -1,8 +1,0 @@
-
-development:
-  <<: *default
-  database: escapism_development
-
-test:
-  <<: *default
-  database: escapism_test

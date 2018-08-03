@@ -1,5 +1,5 @@
 $(function() {
-  $("[id^=l]").change(function() {
-    $("form").submit();
+  $('[id^=l]').change(function() {
+    $('#search-form').submit();
   });
 });

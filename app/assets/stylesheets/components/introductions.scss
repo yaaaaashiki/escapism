@@ -6,12 +6,12 @@ body {
   background-repeat: no-repeat;
 }
 
-#pageContents{
+#page-contents {
   background-color: rgba(255, 255, 255, 0.4);
   font-family: "MS PGothic", "Osaka", Arial, sans-serif;
 }
 
-.titleContent {
+.title-content {
   padding-top: 160px;
   padding-bottom: 160px;
   width: 100%;
@@ -27,100 +27,56 @@ body {
   padding-left: 60px;
 }
 
-.image-caption{
-  position: relative;
-  height: 75px;
-}
+// スライドショー中の機能説明のためのクラス
 
-.icons{
-  position: relative;
-  height: 165px;
-  top: 10%; 
-  padding-left: 0px;
-  width: 100%;
-  margin-bottom: 0px;
-  li {
-    display: inline;
-  }
+.carousel-caption {
+  left: 15%;
+  width: 70%;
+  height: 100%;
 
-  .default_img {
-    width: 100%;
-  }
-
-  .mouseover_img {
-    width: 100%;
-  }
-
-  a:hover {
+  a {
+    color: beige;
     text-decoration: none;
+    box-shadow: 0 10px 4px -8px #777;
+
+    &:hover {
+      color: beige;
+    }
   }
 }
 
-.icon-wrapper{
-  position: absolute;
-  width: 12%;
-  height: auto;
-}
-
-.text-center{
-  text-align: center;
-}
-
-.recommend{
-  left: 12%;
-}
-
-.search{
-  left: 32%;
-}
-
-.comment{
-  left: 52%;
-}
-
-.cinii{
-  left: 72%;
-}
-
-.odd{
-  top: 15%;
-}
-
-.even{
-}
-
-.position{
+.position {
   position: absolute;
   top: 320px;
   right: 60px;
 }
 
-.laboName{
+.labo-name {
   letter-spacing: 6px;
   margin-bottom: 30px;
 }
 
-.border-width{
+.border-width {
   border-bottom: solid 3px coral;
 }
 
-.laboProfessor {
+.labo-professor {
   font-size: 20px;
 }
 
-.laboKeyword {
+.labo-keyword {
   margin-top: 30px;
 }
 
-.laboInfo {
+.labo-info {
   font-size: 20px;
 }
 
-.nav{
+.nav {
   font-size: 20px;
 }
 
-.navbar-brand{
+.navbar-brand {
   font-size: 30px;
 }
 
@@ -138,73 +94,65 @@ body {
   color: #fff;
 }
 
-.image-back {
-  position: relative;
-  top: 0px;
-  background-color: rgba(0, 0, 0, 0.88);
-  color: #fff;
-  height: 300px;
-}
-
-.image-width {
-  position: relative;
-  width: 80%;
-  margin: auto;
-  top: 0px;
-  height: 90%;
-}
-
-.image-content {
-  padding-top: 40px;
-  width: 100%;
-  height: 400px;
-}
-
-.mouseover_img {
-  display: none;
-}
-
-.background-wallpaper::before{
+.background-wallpaper::before {
   position: absolute;
   width: 50%;
   height: 400px;
   filter: blur(2px);
   -webkit-filter: blur(5px);
-  background-clip: content-box
+  background-clip: content-box;
 }
 
-
-
-
 /* スクロールでフェードイン */
+
 /* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
+
 .fade-in-down {
- -webkit-animation-fill-mode: both;
- -ms-animation-fill-mode:     both;
- animation-fill-mode:         both;
- -webkit-animation-duration: 1s;
- -ms-animation-duration:     1s;
- animation-duration:         1s;
- -webkit-animation-name: fade-in-down;
- animation-name:         fade-in-down;
- visibility: visible !important;
+  -webkit-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fade-in-down;
+  animation-name: fade-in-down;
+  visibility: visible !important;
 }
 
 @-webkit-keyframes fade-in-down {
- 0%   { opacity: 0; -webkit-transform: translateY(-20px); }
- 100% { opacity: 1; -webkit-transform: translateY(0); }
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
 }
 
 @keyframes fade-in-down {
- 0%   { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
- 100% { opacity: 1; -webkit-transform: translateY(0);     -ms-transform: translateY(0);     transform: translateY(0); }
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
+
 /* ここまでスクロールでフェードイン */
 
 // カルーセル制御
-.carousel{
+.carousel {
   height: 200px;
-  margin:auto;
+  margin: auto;
 
   .item {
     height: 100%;
@@ -212,7 +160,7 @@ body {
 
   img {
     position: absolute;
-    max-width: 105%  !important;
+    max-width: 105% !important;
     width: 105%;
     height: 105% !important;
     top: -10px;
@@ -228,7 +176,7 @@ body {
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:500px;
+    height: 500px;
   }
 }
 // 下のheightをいじることで表示領域を変更できる
@@ -237,36 +185,68 @@ body {
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:400px;
+    height: 400px;
   }
 }
 // ここまでカルーセル制御
 
-// スライドショー中の機能説明のためのクラス
-
-.carousel-caption {
-  left: 15%;
-  width:70%;
-  height: 100%;
+.slide-h1 {
+  text-align: left;
+  color: beige;
 }
 
-.slide_h1 {
-    text-align: left;
-    color: beige;
+.slide-p {
+  text-align: left;
+  color: beige;
+  font-size: 18px;
 }
 
-.slide_p {
-    text-align: left;
-    color: beige;
-    font-size: 18px;
+.slide-a {
+  color: beige;
+  cursor: pointer;
 }
+.slide-a:link { color: beige; }
+.slide-a:visited { color: beige; }
+.slide-a:hover { color: #337ab7; }
+.slide-a:active { color: #337ab7; }
 
-.slide_a {
-    color: beige;
-    cursor: pointer;
-    text-decoration: underline;
+.function {
+  width: 100%;
+  padding: 24px;
+  background-color: rgba(0, 0, 0, 0.88);
+
+  &-title {
+    margin: 16px;
+    text-align: center;
+    color: white;
+  }
+
+  &-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: space-around;
+
+    &-item {
+      flex-basis: 200px;
+      margin: 8px;
+
+      &-link {
+        &-img {
+          width: 100%;
+        }
+
+        &-caption {
+          text-align: center;
+          color: white;
+        }
+      }
+
+      &-link:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
-.slide_a:link { color: beige; }
-.slide_a:visited { color: beige; }
-.slide_a:hover { color: #337ab7; }
-.slide_a:active { color: #337ab7; }

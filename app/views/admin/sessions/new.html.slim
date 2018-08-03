@@ -1,7 +1,6 @@
-= bootstrap_form_tag do |f|
-  #nav
-    - if admin_logged_in?
-      = link_to "Logout", controller:"admin/sessions", action:"destroy"
-  = f.text_field :username, autofocus: true, icon: "envelope"
-  = f.password_field :password, autocomplete: "off", icon: "lock"
+h1 サインイン
+= bootstrap_form_for :session, url: admin_sign_in_path do |f|
+  == render partial: 'admin/shared/flash_message', object: flash
+  = f.text_field :username, label: 'ユーザ名', require: true
+  = f.password_field :password, label: 'パスワード', autocomplete: "off", require: true
   = f.submit 'ログイン', class: 'btn btn-primary'

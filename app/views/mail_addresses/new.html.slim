@@ -4,7 +4,7 @@
     = image_tag("sign_in/step1.png")
   .form-setting
     h2.h2
-      | 青学メールアドレスを入力してください
+      | 青学メールのアドレスを入力してください
     = form_tag('/mail_addresses') do
       = text_field :address, :name, :class => "text-field", :placeholder => "aoyama email address", :size => "60"
       br

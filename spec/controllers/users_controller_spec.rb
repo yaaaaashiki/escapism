@@ -38,10 +38,10 @@ RSpec.describe UsersController, type: :controller do
     context "new user saved" do
       let(:it_aoyama_user) {build(:it_aoyama_user)}
       let!(:mail) {create(:mail_address)}
-      let(:token) {create(:token)}
 
       before do
         @it_aoyama_user_hash = attributes_for(:post_params_it_aoyama_user)
+        Token.create(token: "Token135", mail_address_id: mail.id)
       end
 
       it "new user saved" do
@@ -51,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "logged in" do
         post :create, params: {user: @it_aoyama_user_hash}
-        expect(session[:user_id]).to be assigns(:user).id
+        expect(session[:user_id]).to eq assigns(:user).id.to_s
       end
 
       it "returns http redirect" do

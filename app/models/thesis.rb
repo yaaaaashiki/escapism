@@ -28,7 +28,6 @@ class Thesis < ApplicationRecord
   belongs_to :author
   belongs_to :labo
   has_many :comments
-  has_one :word_count
 
   validates :title, presence: true
   validates :url, presence: true, uniqueness: true
@@ -77,6 +76,7 @@ class Thesis < ApplicationRecord
         if keyword.present?
           multi_match {
             query keyword
+            operator 'and'
 
             if field == @@SEARCH_BY_BODY
               fields %W{ body }
@@ -120,7 +120,7 @@ class Thesis < ApplicationRecord
 
   def self.extract_body(absolute_thesis_path)
     data = Yomu.new(absolute_thesis_path)
-    body = data.text
+    body = data.text.unicode_normalize(:nfkc)
     body.gsub(/\r\n|\n|\r/, "")
   end
 
@@ -152,6 +152,41 @@ class Thesis < ApplicationRecord
     @@YHESIS_DIRECTORY_PAR_YEAR
   end
 
+  def self.save_from_admin_theses_new(year, labo_id, directory, number_of_registration, theses_information)
+    theses = []
+    labo = Labo.find labo_id
+
+    number_of_registration.to_i.times do |i|
+      thesis_meta_data = theses_information[i.to_s]
+      author = Author.find_or_create_by name: thesis_meta_data[:author_name]
+
+      thesis_absolute_pash = ''
+      directory.each do |file|
+        if file.headers.include? thesis_meta_data[:url]
+          # NOTE:Labo.LABO_HASH[labo.name]使うよりデータベースに研究室の英名を入れたほうが使いやすい気がする
+          thesis_absolute_pash = (@@LABO_THESIS_ROOT_DIRECTORY + year + 'contents' + Labo.LABO_HASH[labo.name] + thesis_meta_data[:url].sub(/(.*?)\//, "")).to_s
+          thesis_absolute_dir = thesis_absolute_pash.sub(/\/[^\/]*$/, '')
+          FileUtils.mkdir_p thesis_absolute_dir if Dir.exists?(thesis_absolute_dir) == false
+          FileUtils.cp file.path, thesis_absolute_pash
+          break
+        end
+      end
+
+      thesis = Thesis.new
+      thesis.year = year
+      thesis.title = thesis_meta_data[:title]
+      thesis.url = thesis_absolute_pash
+      thesis.labo_id = labo.id
+      thesis.author_id = author.id
+      thesis.body = extract_body thesis_absolute_pash
+
+      summariser_name = String(Rails.root.join('lib/text_summarizer/summarizer.py'))
+      thesis.summary, err, status = Open3.capture3("python3 " + summariser_name + " " + thesis_absolute_pash)
+
+      thesis.save
+    end
+  end
+
   def belongs_to_martin_labo?
     url.include?("durst")
   end
@@ -166,5 +201,9 @@ class Thesis < ApplicationRecord
 
   def belongs_to_sakuta_bachelor_thesis?
     url.include?("sakuta") && url.include?("undergraduate")
+  end
+
+  def belongs_to_yamaguchi_labo?
+    url.include?("yamaguchi")
   end
 end

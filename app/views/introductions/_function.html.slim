@@ -1,0 +1,7 @@
+.function
+  h1.function-title システムの機能
+  ul.function-list
+    == render(partial: 'function_list_item', collection: [{anchor_link_path: recommendations_path, image_path: 'introduction/recommendation_image.png', image_path_onmouseover: 'introduction/HR_recommendation_image.png', caption: '研究室推薦'},
+                                                          {anchor_link_path: theses_path, image_path: 'introduction/search_image.png', image_path_onmouseover: 'introduction/HR_search_image.png', caption: '論文検索'},
+                                                          {anchor_link_path: root_path, image_path: 'introduction/comment_image.png', image_path_onmouseover: 'introduction/HR_comment_image.png', caption: '先輩からのコメント (実装中)'},
+                                                          {anchor_link_path: ciniis_path, image_path: 'introduction/CiNii_image.png', image_path_onmouseover: 'introduction/HR_CiNii_image.png', caption: 'CiNii連動'},])
