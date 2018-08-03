@@ -12,23 +12,6 @@ $(window).scroll(function() {
   });
 });
 
-$(function() {
-
-  $(".icons img").mouseover(function(){
-    if($(this).hasClass("default-img")){
-      $(this).hide();
-      $(this).next().show();
-    }
-  }).mouseout(function(){
-     if($(this).hasClass("mouseover-img")){
-      $(this).hide();
-      $(this).prev().show();
-    }
-  });
-
-});
-
-
 /*フォントサイズや色の変更*/
 $(".comment-title").css('font-size', '20px');
 $(".comment-list").find("p").css("font-size", "14px");

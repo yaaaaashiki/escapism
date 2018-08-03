@@ -27,15 +27,6 @@ body {
   padding-left: 60px;
 }
 
-.image-caption {
-  position: relative;
-  height: 75px;
-}
-
-.mouseover-img {
-  display: none;
-}
-
 // スライドショー中の機能説明のためのクラス
 
 .carousel-caption {
@@ -53,66 +44,6 @@ body {
     }
   }
 }
-
-.icons {
-  position: relative;
-  height: 165px;
-  top: 10%;
-  //padding-left: 0px;
-  width: 100%;
-  //margin-bottom: 0px;
-
-  li {
-    display: inline;
-  }
-
-  .default-img {
-    width: 100%;
-  }
-
-  .mouseover-img {
-    width: 100%;
-  }
-
-  a:hover {
-    text-decoration: none;
-  }
-}
-
-.icon-wrapper {
-  position: absolute;
-  width: 12%;
-  height: auto;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.recommend {
-  left: 12%;
-}
-
-.search {
-  left: 32%;
-}
-
-.comment {
-  left: 52%;
-}
-
-.cinii {
-  left: 72%;
-}
-
-.odd {
-  top: 15%;
-}
-
-/*
-.even {
-}
-*/
 
 .position {
   position: absolute;
@@ -161,28 +92,6 @@ body {
 .black-back {
   background-color: rgba(0, 3, 4, 0.58);
   color: #fff;
-}
-
-.image-back {
-  position: relative;
-  //top: 0px;
-  background-color: rgba(0, 0, 0, 0.88);
-  color: #fff;
-  height: 300px;
-}
-
-.image-width {
-  position: relative;
-  width: 80%;
-  margin: auto;
-  //top: 0px;
-  height: 90%;
-}
-
-.image-content {
-  padding-top: 40px;
-  width: 100%;
-  height: 400px;
 }
 
 .background-wallpaper::before {
@@ -300,3 +209,44 @@ body {
 .slide-a:visited { color: beige; }
 .slide-a:hover { color: #337ab7; }
 .slide-a:active { color: #337ab7; }
+
+.function {
+  width: 100%;
+  padding: 24px;
+  background-color: rgba(0, 0, 0, 0.88);
+
+  &-title {
+    margin: 16px;
+    text-align: center;
+    color: white;
+  }
+
+  &-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: space-around;
+
+    &-item {
+      flex-basis: 200px;
+      margin: 8px;
+
+      &-link {
+        &-img {
+          width: 100%;
+        }
+
+        &-caption {
+          text-align: center;
+          color: white;
+        }
+      }
+
+      &-link:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

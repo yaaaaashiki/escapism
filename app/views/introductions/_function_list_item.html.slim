@@ -1,0 +1,4 @@
+li.function-list-item
+  = link_to(function_list_item[:anchor_link_path], class: "function-list-item-link")
+    = image_tag(function_list_item[:image_path], onmouseover: "this.src='#{asset_path(function_list_item[:image_path_onmouseover])}'", onmouseout: "this.src='#{asset_path(function_list_item[:image_path])}'", class: "function-list-item-link-img")
+    .function-list-item-link-caption #{function_list_item[:caption]}

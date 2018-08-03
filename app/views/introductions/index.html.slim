@@ -92,39 +92,7 @@
       span.glyphicon.glyphicon-chevron-right
       span.sr-only
         | Next
-  .image-content.image-back
-    .image-width
-      .image-caption.text-center
-        h1
-          | システムの機能
-      ul.icons
-        li.icon-wrapper.recommend.odd
-          a[href="recommendations"]
-            = image_tag("introduction/recommendation_image.png",:class => "default-img")
-            = image_tag("introduction/HR_recommendation_image.png", :class=>"mouseover-img")
-            .text-center
-              | 研究室推薦
-        li.icon-wrapper.search.even
-          a[href="theses"]
-            = image_tag("introduction/search_image.png", :class => "default-img" )
-            = image_tag("introduction/HR_search_image.png", :class=>"mouseover-img")
-            .text-center
-              | 論文検索
-        li.icon-wrapper.comment.odd
-          = image_tag("introduction/comment_image.png",:class => "default-img")
-          = image_tag("introduction/HR_comment_image.png", :class=>"mouseover-img")
-          .text-center
-            | 先輩からの
-          .text-center
-            | コメント
-          .text-center
-            | (実装中) 
-        li.icon-wrapper.cinii.even
-          a[href="ciniis"]
-            = image_tag("introduction/CiNii_image.png",:class => "default-img")
-            = image_tag("introduction/HR_CiNii_image.png", :class=>"mouseover-img")
-            .text-center
-              | CiNii連動
+  == render('function')
   .container.content.black-back
     .fade-in-down-wait
       .labo-name
