@@ -6,36 +6,46 @@ aside.main-sidebar
         span.input-group-btn
           button#search-btn.btn.btn-flat[type="submit" name="search"]
             i.fa.fa-search
-    ul.sidebar-menu
+    ul.sidebar-menu.tree[data-widget="tree"]
       li.header HEADER
-      li.active
-        a[href="/admin/users/new"]
+      li.treeview
+        a href="/admin"
           i.fa.fa-link
-          span ユーザ作成
-      li.active
-        a[href="/admin/users"]
-          i.fa.fa-link
-          span ユーザ情報編集
-      li.active
-        a[href="/admin/theses"]
-          i.fa.fa-link
-          span 論文情報編集
-      li.active
-        a[href="/admin/theses/new"]
-          i.fa.fa-link
-          span 新規論文追加
-      li.active
-        a[href="/admin/passwords"]
-          i.fa.fa-link
-          span ユーザのパスワード更新 
-      li.active
-        a[href="/admin/labos"]
-          i.fa.fa-link
-          span 研究室のパスワード更新
+          span トップ
       li.treeview
         a href="#"
           i.fa.fa-link
-          span Adminユーザ管理
+          span 論文情報管理
+          i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li
+            = link_to '一覧', admin_theses_path
+          li
+            = link_to '新規登録', new_admin_thesis_path
+      li.treeview
+        a href="#"
+          i.fa.fa-link
+          span ユーザ情報管理
+          i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li
+            = link_to '一覧', admin_users_path
+          li
+            = link_to 'パスワード一覧', admin_passwords_path
+          li
+            = link_to '新規登録', new_admin_user_path
+      li.treeview
+        a href="#"
+          i.fa.fa-link
+          span 研究室情報管理
+          i.fa.fa-angle-left.pull-right
+        ul.treeview-menu
+          li
+            = link_to '一覧', admin_labos_path
+      li.treeview
+        a href="#"
+          i.fa.fa-link
+          span Adminユーザ情報管理
           i.fa.fa-angle-left.pull-right
         ul.treeview-menu
           li
