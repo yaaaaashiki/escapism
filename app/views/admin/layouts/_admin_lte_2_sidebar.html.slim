@@ -8,47 +8,9 @@ aside.main-sidebar
             i.fa.fa-search
     ul.sidebar-menu.tree[data-widget="tree"]
       li.header HEADER
-      li.treeview
-        a href="/admin"
-          i.fa.fa-link
-          span トップ
-      li.treeview
-        a href="#"
-          i.fa.fa-link
-          span 論文情報管理
-          i.fa.fa-angle-left.pull-right
-        ul.treeview-menu
-          li
-            = link_to '一覧', admin_theses_path
-          li
-            = link_to '新規登録', new_admin_thesis_path
-      li.treeview
-        a href="#"
-          i.fa.fa-link
-          span ユーザ情報管理
-          i.fa.fa-angle-left.pull-right
-        ul.treeview-menu
-          li
-            = link_to '一覧', admin_users_path
-          li
-            = link_to 'パスワード一覧', admin_passwords_path
-          li
-            = link_to '新規登録', new_admin_user_path
-      li.treeview
-        a href="#"
-          i.fa.fa-link
-          span 研究室情報管理
-          i.fa.fa-angle-left.pull-right
-        ul.treeview-menu
-          li
-            = link_to '一覧', admin_labos_path
-      li.treeview
-        a href="#"
-          i.fa.fa-link
-          span Adminユーザ情報管理
-          i.fa.fa-angle-left.pull-right
-        ul.treeview-menu
-          li
-            = link_to '新規登録', new_admin_admin_user_path
-          li
-            = link_to 'ユーザ名・パスワード変更', edit_admin_admin_user_path
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_theses_path, label: '論文情報管理', items: [{label: '一覧', path: admin_theses_path}, {label: '新規登録', path: new_admin_thesis_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_users_path, label: 'ユーザ情報管理', items: [{label: '一覧', path: admin_users_path}, {label: '新規登録', path: new_admin_user_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_passwords_path, label: 'ユーザパスワード管理', items: [{label: '一覧', path: admin_passwords_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_labos_path, label: '研究室情報管理', items: [{label: '一覧', path: admin_labos_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_admin_user_path, label: 'Adminユーザ情報管理', items: [{label: '新規登録', path: new_admin_admin_user_path}, {label: 'ユーザ名・パスワード変更', path: edit_admin_admin_user_path}]}
+

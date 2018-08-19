@@ -1,0 +1,18 @@
+- if request.path_info.start_with? path_prefix
+  li.treeview.active
+    a href="#"
+      i.fa.fa-link
+      span #{label}
+      i.fa.fa-angle-left.pull-right
+    ul.treeview-menu
+      - items.each do |item|
+        = render partial: 'admin/layouts/sidebar_item', locals: {label: item[:label], path: item[:path]}
+- else
+  li.treeview
+    a href="#"
+      i.fa.fa-link
+      span #{label}
+      i.fa.fa-angle-left.pull-right
+    ul.treeview-menu
+      - items.each do |item|
+        = render partial: 'admin/layouts/sidebar_item', locals: {label: item[:label], path: item[:path]}

@@ -1,0 +1,6 @@
+- if path == request.path_info
+  li.active
+    = link_to label, path
+- else
+  li
+    = link_to label, path
