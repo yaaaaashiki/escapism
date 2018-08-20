@@ -6,39 +6,11 @@ aside.main-sidebar
         span.input-group-btn
           button#search-btn.btn.btn-flat[type="submit" name="search"]
             i.fa.fa-search
-    ul.sidebar-menu
+    ul.sidebar-menu.tree[data-widget="tree"]
       li.header HEADER
-      li.active
-        a[href="/admin/users/new"]
-          i.fa.fa-link
-          span ユーザ作成
-      li.active
-        a[href="/admin/users"]
-          i.fa.fa-link
-          span ユーザ情報編集
-      li.active
-        a[href="/admin/theses"]
-          i.fa.fa-link
-          span 論文情報編集
-      li.active
-        a[href="/admin/theses/new"]
-          i.fa.fa-link
-          span 新規論文追加
-      li.active
-        a[href="/admin/passwords"]
-          i.fa.fa-link
-          span ユーザのパスワード更新 
-      li.active
-        a[href="/admin/labos"]
-          i.fa.fa-link
-          span 研究室のパスワード更新
-      li.treeview
-        a href="#"
-          i.fa.fa-link
-          span Adminユーザ管理
-          i.fa.fa-angle-left.pull-right
-        ul.treeview-menu
-          li
-            = link_to '新規登録', new_admin_admin_user_path
-          li
-            = link_to 'ユーザ名・パスワード変更', edit_admin_admin_user_path
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_theses_path, label: '論文情報管理', items: [{label: '一覧', path: admin_theses_path}, {label: '新規登録', path: new_admin_thesis_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_users_path, label: 'ユーザ情報管理', items: [{label: '一覧', path: admin_users_path}, {label: '新規登録', path: new_admin_user_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_passwords_path, label: 'ユーザパスワード管理', items: [{label: '一覧', path: admin_passwords_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_labos_path, label: '研究室情報管理', items: [{label: '一覧', path: admin_labos_path}]}
+      = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_admin_user_path, label: 'Adminユーザ情報管理', items: [{label: '新規登録', path: new_admin_admin_user_path}, {label: 'ユーザ名・パスワード変更', path: edit_admin_admin_user_path}]}
+
