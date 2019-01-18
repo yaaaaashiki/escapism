@@ -1,5 +1,5 @@
 # Escapism
-Graduation Theses Search System for Students Belonging to Follows
+The Graduation Theses Search System for Students Belonging to Following
 * Intelligence Information Course
 * Department of Integrated Information Technology
 
@@ -22,11 +22,11 @@ etc...
 1. Start up Elasticsearh  
   Refer to wiki ([How to Initialize and Use Elasticsearch](https://github.com/yaaaaashiki/Escapism/wiki/Elasticsearch%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%81%A8%E4%BD%BF%E7%94%A8%E6%B3%95)).
 
-2. Install gem (only when you execute this app for the first time, or someone changed Gemfile)  
-  (See described section below)
+2. Install gems (only when you execute this app for the first time, or someone changed *Gemfile*)  
+  (See a section described in below)
 
-3. Create database (only when you execute this app for the first time, or someone changed files in db directory)  
-  (See described section below)
+3. Create your database (only when you execute this app for the first time, or someone changed files in the *db* directory)  
+  (See a section described in below)
 
 4. Start up this app  
   Execute the following command.
@@ -34,7 +34,7 @@ etc...
       bundle exec rails s
     ```
 
-# Gem install
+# Gems installation
 Execute the following command if there is no bundler
 ```bash
 gem install bundler
@@ -49,26 +49,27 @@ bundle exec rails db:migrate:reset
 bundle exec rails db:seed_fu
 ```
 
-# Test with Rspec 
-Create database for test environment.
+# Tests with Rspec 
+Create a database for test environment.
 ```
 bundle exec rails db:migrate:reset RAILS_ENV=test
 ```
-Execute the test.
+Execute our tests.
 ```
 bundle exec rails spec 
 ```
-Be sure that tests are all succeed, when you do the follows
+Be sure that these tests are all succeed, when you do the following
 - you change server side code
 - commit after updateing test code.
 
-# Test with stylelint
-This app check the stylesheet syntax with stylelint.
-Run the tests when running this app's server.
-So We want you to create Pull Request after confirming the tests are all succeed.
+# Tests with stylelint
+This app checks stylesheet syntax with stylelint.
+Run our tests when running this app's server.
+We want you to create pull requests after you confirm the tests are all succeed using them.
 
-Execute the test.
+Execute the tests.
 ```
 bundle exec rails server
 ```
-If puma's server is runnig, all tests are succeed.
+If puma's server is running, all tests succeed.
+
