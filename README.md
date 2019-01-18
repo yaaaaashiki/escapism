@@ -1,5 +1,5 @@
 # Escapism
-The Graduation Theses Search System for Students Belonging to Following
+The graduation theses search system for students belonging to following
 * Intelligence Information Course
 * Department of Integrated Information Technology
 
