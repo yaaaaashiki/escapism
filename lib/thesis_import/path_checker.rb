@@ -5,7 +5,7 @@ class PathChecker
     end
 
     def thesis_path?(path)
-      self.common_thesis_path?(path) || self.martin_thesis_path?(path) || self.harada_thesis_path?(path) || self.sakuta_thesis_path?(path) || self.yamaguchi_thesis_path?(path)
+      common_thesis_path?(path) || martin_thesis_path?(path) || harada_thesis_path?(path) || sakuta_thesis_path?(path) || yamaguchi_thesis_path?(path)
     end
 
     private
