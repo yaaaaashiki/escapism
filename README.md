@@ -59,8 +59,8 @@ Execute our tests.
 bundle exec rails spec 
 ```
 Be sure that these tests are all succeed, when you do the following
-- you change server side code
-- commit after updateing test code.
+- you change server-side codes.
+- commit after updateing test codes.
 
 # Tests with stylelint
 This app checks stylesheet syntax with stylelint.
