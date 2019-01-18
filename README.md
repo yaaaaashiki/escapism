@@ -22,10 +22,10 @@ etc...
 1. Start up Elasticsearh  
   Refer to wiki ([How to Initialize and Use Elasticsearch](https://github.com/yaaaaashiki/Escapism/wiki/Elasticsearch%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%81%A8%E4%BD%BF%E7%94%A8%E6%B3%95)).
 
-2. Install gems (only when you execute this app for the first time, or someone changed *Gemfile*)  
+2. Install gems (only when you execute this app for the first time, or someone changed `Gemfile`)  
   (See a section described in below)
 
-3. Create your database (only when you execute this app for the first time, or someone changed files in the *db* directory)  
+3. Create your database (only when you execute this app for the first time, or someone changed files in the `db` directory)  
   (See a section described in below)
 
 4. Start up this app  
