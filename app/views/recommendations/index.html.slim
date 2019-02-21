@@ -7,7 +7,7 @@ section#recommendationpage.fadeout
       .col-sm-9.col-xs-9.text-pos
         = search_field_tag :q, params[:q], class: 'form-control textarea', placeholder: 'キーワード(やりたいこと)'
       .col-sm-3.col-xs-3
-        = submit_tag 'Search', class: "button btn-pos"
+        = submit_tag '検索', class: "button btn-pos"
     - if @lab_name
       .page-header.col-sm-12.col-xs-12
         h4
