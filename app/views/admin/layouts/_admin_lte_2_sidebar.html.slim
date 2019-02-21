@@ -1,11 +1,5 @@
 aside.main-sidebar
   section.sidebar
-    form.sidebar-form[action="#" method="get"]
-      .input-group
-        input.form-control[type="text" name="q" placeholder="Search..."]
-        span.input-group-btn
-          button#search-btn.btn.btn-flat[type="submit" name="search"]
-            i.fa.fa-search
     ul.sidebar-menu.tree[data-widget="tree"]
       li.header HEADER
       = render partial: 'admin/layouts/sidebar_group', locals: {path_prefix: admin_theses_path, label: '論文情報管理', items: [{label: '一覧', path: admin_theses_path}, {label: '新規登録', path: new_admin_thesis_path}]}
