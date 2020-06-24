@@ -84,4 +84,8 @@ class Labo < ApplicationRecord
     s = rand.to_s.tr('+', '.')
     s[0, if s.size > 32 then 32 else s.size end]
   end
+
+  def get_english_name
+    @@ARRAY_LABO_DIRECTORY_NAMES[self.id - 1]
+  end
 end

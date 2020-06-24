@@ -1,0 +1,93 @@
+<%
+  gender_kind = 2
+  lab_properies = LaboProperty.all
+  labs = Labo.all
+  lab_properies_array = []
+
+  lab_properies.each_slice(gender_kind) do |lab_man, lab_waman|
+    lab_property_hash = {
+                          laboProfessor: labs.find(lab_man.labo_id).get_english_name,
+                          man: lab_man.number_of_people,
+                          woman: lab_waman.number_of_people
+                        }
+    lab_properies_array.push(lab_property_hash)
+  end
+
+  lab_properies_json_array = lab_properies_array.to_json
+%>
+
+/* スクロールでフェードイン */
+/* 参考サイト: https://theorthodoxworks.com/web-design/scrollanimation/ */
+$('.fade-in-down-wait').css('visibility','hidden');
+$(window).scroll(function() {
+  var windowHeight = $(window).height();
+  var topWindow    = $(window).scrollTop();
+  $('.fade-in-down-wait').each(function() {
+    var targetPosition = $(this).offset().top;
+    if (topWindow > targetPosition - windowHeight + 100){
+     $(this).addClass("fade-in-down");
+    }
+  });
+});
+
+$(function() {
+
+  const barGraphWidth = 28;
+  const labPropertyJSONArray = <%= lab_properies_json_array %>;
+
+  for(let i = 0; i < labPropertyJSONArray.length; i++){
+    let labProperty = labPropertyJSONArray[i];
+    let $genderRatioText = $("#gender_ratio_text_" + labProperty.laboProfessor);
+    let $genderRatioRect = $("#gender_ratio_rect_" + labProperty.laboProfessor);
+    let $svg = $(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
+    let $rectMan = $(document.createElementNS("http://www.w3.org/2000/svg", "rect"));
+    let $rectWoman = $(document.createElementNS("http://www.w3.org/2000/svg", "rect"));
+    let $width = $genderRatioRect.width();
+
+    $genderRatioText.text("男女比 " + labProperty.man + ":" + labProperty.woman);
+    $svg.attr({
+      width: $width * (2 / 3),
+      height: barGraphWidth
+    });
+
+    $rectMan.attr({
+      width: $width * (labProperty.man / (labProperty.man + labProperty.woman)) * (2 / 3),
+      height: barGraphWidth,
+      x: 0,
+      y: 0,
+      fill: "#A9D0F5"
+    });
+
+    $rectWoman.attr({
+      width: $width * (labProperty.woman / (labProperty.man + labProperty.woman)) * (2 / 3),
+      height: barGraphWidth,
+      x: $width * (labProperty.man / (labProperty.man + labProperty.woman)) * (2 / 3),
+      y: 0,
+      fill: "#F5A9F2"
+    });
+
+    $svg.append($rectMan);
+    $svg.append($rectWoman);
+    $genderRatioRect.append($svg);
+  }
+
+  $(".icons img").mouseover(function(){
+    if($(this).hasClass("default_img")){
+      $(this).hide();
+      $(this).next().show();
+    }
+  }).mouseout(function(){
+     if($(this).hasClass("mouseover_img")){
+      $(this).hide();
+      $(this).prev().show();
+    }
+  });
+
+  /*フォントサイズや色の変更*/
+  //TODO css に
+  $(".comment_title").css('font-size', '20px');
+  $(".comment_list").find("p").css("font-size", "14px");
+});
+
+
+
